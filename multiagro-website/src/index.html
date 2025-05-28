@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiAgro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">MultiAgro</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">Sobre</a>
+            <a href="#business">Ramo de Atuação</a>
+            <a href="#features">Características</a>
+            <a href="#products">Produtos</a>
+            <a href="#strategy">Foco Estratégico</a>
+            <a href="#demands">Demandas</a>
+            <a href="#contact">Contato</a>
+            <select id="language-switcher">
+                <option value="pt">Português</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
+        </nav>
+    </header>
+
+    <main>
+        <div class="carousel">
+            <img src="images/agro1.jpg" alt="Agro Image 1" class="carousel-image">
+            <img src="images/agro2.jpg" alt="Agro Image 2" class="carousel-image" style="display:none;">
+            <img src="images/agro3.jpg" alt="Agro Image 3" class="carousel-image" style="display:none;">
+            <img src="images/agro4.jpg" alt="Agro Image 4" class="carousel-image" style="display:none;">
+            <button class="carousel-button prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="carousel-button next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <section id="home">
+            <h2>Bem-vindo à MultiAgro</h2>
+            <p>Excelência, inovação e qualidade no setor agroindustrial, com foco em super foods e atuação global.</p>
+        </section>
+
+        <section id="about">
+            <h2>Sobre a Empresa</h2>
+            <p>
+                A MultiAgro é uma empresa do setor agroindustrial, sediada em Guajayvi, Paraguai, dedicada ao beneficiamento, comercialização e exportação de grãos, com ênfase em produtos reconhecidos internacionalmente como super foods. Atende tanto o mercado interno quanto grandes tradings e mercados globais, destacando-se pela alta qualidade e adaptação às exigências internacionais.
+            </p>
+        </section>
+
+        <section id="business">
+            <h2>Ramo de Atuação</h2>
+            <ul>
+                <li>Indústria de beneficiamento de grãos</li>
+                <li>Comercialização e exportação de commodities agrícolas</li>
+                <li>Serviços integrados ao agronegócio</li>
+            </ul>
+        </section>
+
+        <section id="features">
+            <h2>Características da Empresa</h2>
+            <ul>
+                <li>Estrutura industrial própria, com potencial de modernização e expansão</li>
+                <li>Operação orientada para exportação, priorizando padrões elevados de qualidade e rastreabilidade</li>
+                <li>Forte integração com produtores rurais e cooperativas locais</li>
+                <li>Atuação fundamentada em práticas consolidadas do setor, com abertura para inovação e diversificação</li>
+                <li>Compromisso com excelência, eficiência produtiva e ampliação do portfólio de produtos diferenciados</li>
+            </ul>
+        </section>
+
+        <section id="products">
+            <h2>Produtos Comercializados</h2>
+            <ul>
+                <li>Chia</li>
+                <li>Feijão</li>
+                <li>Gergelim</li>
+                <li>Milho</li>
+            </ul>
+        </section>
+
+        <section id="strategy">
+            <h2>Foco Estratégico</h2>
+            <p>
+                O principal diferencial da MultiAgro é o foco em super foods, alimentos reconhecidos mundialmente pelo elevado valor nutricional e benefícios à saúde. O portfólio é composto por grãos altamente demandados em mercados internacionais que buscam alternativas saudáveis, sustentáveis e rastreáveis.
+            </p>
+            <h3>Pretensões e Objetivos Estratégicos</h3>
+            <ul>
+                <li>Modernização e ampliação da planta industrial, com atualização tecnológica e laboratório próprio</li>
+                <li>Reestruturação estratégica e rebranding institucional</li>
+                <li>Diversificação do portfólio, incluindo ração animal e importação de café brasileiro (white label)</li>
+                <li>Obtenção de certificações internacionais (USDA e europeias)</li>
+                <li>Expansão internacional para Europa, Ásia e América do Norte</li>
+                <li>Profissionalização da gestão e implantação de sistemas de controle</li>
+                <li>Fortalecimento dos canais de comunicação e captação de investidores</li>
+            </ul>
+        </section>
+
+        <section id="demands">
+            <h2>Demandas e Expectativas do Cliente</h2>
+            <ul>
+                <li>Profissionalização da gestão</li>
+                <li>Rebranding e posicionamento institucional</li>
+                <li>Ampliação do portfólio de produtos e mercados</li>
+                <li>Estruturação de novos canais de comunicação</li>
+                <li>Modernização da planta industrial</li>
+                <li>Certificação internacional (USDA e equivalentes europeus)</li>
+                <li>Criação de laboratório próprio para certificação</li>
+                <li>Diversificação de produtos, incluindo ração animal</li>
+                <li>Estudo para entrada em mercados internacionais (Europa, Ásia, América do Norte)</li>
+                <li>Comunicação estratégica para investidores e stakeholders</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contato</h2>
+            <form>
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="5" placeholder="Mensagem" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>MultiAgro S.A. | © 2025 MultiAgro S.A. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
