@@ -223,6 +223,11 @@
             display: flex;
             overflow: hidden; /* Para o border-radius do carrossel */
         }
+        /* Classe para ocultar a hero section em subpáginas via JavaScript */
+        .hero-hidden-on-subpage {
+            display: none !important;
+        }
+
 
         .hero-carousel {
             position: absolute;
@@ -356,12 +361,7 @@
             border: 4px solid var(--verde-principal); 
         }
         /* Remover ou comentar estilos dos ícones */
-        .product-card i {
-            /* font-size: 4rem; */
-            /* color: var(--verde-principal); */
-            /* margin: 0 auto 1rem auto; */
-            /* display: block; */
-        }
+        /* Removed empty ruleset for .product-card i */
         .product-card h4 {
             color: var(--lilas-escuro);
             margin-bottom: 0.5rem;
@@ -474,12 +474,7 @@
             display: flex; /* Para ícones no futuro */
             align-items: center;
         }
-        ul.custom-list li::before { /* Espaço para ícone, pode ser usado com FontAwesome */
-            /* content: '✓'; /* Exemplo */
-            /* color: var(--verde-principal); */
-            /* margin-right: 0.7rem; */
-            /* font-weight: bold; */
-        }
+        /* Removed empty ruleset for ul.custom-list li::before */
         ul.custom-list li:last-child {
             border-bottom: none;
         }
@@ -1004,13 +999,13 @@
                   "proName": "BVPASA:SUDAP"
                 }
               ],
-              "showSymbolLogo": true,
-              "colorTheme": "dark",
-              "isTransparent": false,
-              "displayMode": "adaptive",
-              "locale": "es"
-            }
-              </script>
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": "es"
+}
+;</script>
             </div>
             <!-- TradingView Widget END -->
 
@@ -1171,6 +1166,28 @@
             };
             let currentLang = localStorage.getItem('preferredLang') || 'es';
 
+            // --- Lógica para mostrar/ocultar Hero Section ---
+            const HERO_SECTION_ELEMENT_ID = 'home'; // ID da seção hero/principal
+            const HIDE_HERO_ON_SUBPAGE_CLASS = 'hero-hidden-on-subpage'; // Classe CSS para ocultar
+            const heroSectionElement = document.getElementById(HERO_SECTION_ELEMENT_ID);
+
+            function updateHeroSectionVisibilityBasedOnHash() {
+                if (!heroSectionElement) {
+                    console.warn(`Elemento da seção Hero com ID '${HERO_SECTION_ELEMENT_ID}' não encontrado para visibilidade condicional.`);
+                    return;
+                }
+                // Considera "home" se o hash for vazio, #, ou #home
+                const currentHash = window.location.hash.substring(1).toLowerCase();
+                const homePageHashes = ['', 'home']; 
+
+                if (homePageHashes.includes(currentHash)) {
+                    heroSectionElement.classList.remove(HIDE_HERO_ON_SUBPAGE_CLASS);
+                } else {
+                    heroSectionElement.classList.add(HIDE_HERO_ON_SUBPAGE_CLASS);
+                }
+            }
+
+
             // --- Language Switcher ---
             function setLanguage(lang) {
                 currentLang = lang;
@@ -1212,27 +1229,6 @@
                 menuToggle.textContent = navLinksContainer.classList.contains('active') ? '✕' : '☰';
             });
 
-            // --- Navegação SPA e classe 'active' ---
-            window.navigateToSection = function(targetId) { // Expor globalmente para onclicks
-                showSectionUI(targetId);
-                
-                navLinks.forEach(a => a.classList.remove('active'));
-                const activeLink = document.querySelector(`nav a[href="#${targetId}"]`);
-                if (activeLink) activeLink.classList.add('active');
-                
-                if (navLinksContainer.classList.contains('active')) {
-                    navLinksContainer.classList.remove('active');
-                    menuToggle.textContent = '☰';
-                }
-                // Atualizar URL hash sem recarregar, mas permitindo navegação por histórico
-                if (history.pushState) {
-                    history.pushState(null, null, `#${targetId}`);
-                } else {
-                    window.location.hash = `#${targetId}`;
-                }
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1240,8 +1236,8 @@
                     navigateToSection(targetId);
                 });
             });
-            
-            // --- Função para mostrar seção (apenas UI) ---
+
+            // --- Função para mostrar a seção correta (UI) ---
             function showSectionUI(id) {
                 sections.forEach(s => s.classList.remove('visible'));
                 const targetSection = document.getElementById(id);
@@ -1257,22 +1253,54 @@
                         }
                     }
                 }
-                // O fallback para 'home' se targetSection não for encontrado é tratado
-                // na lógica de carregamento inicial ou navegação (em navigateToSection ou loadInitialViewRevised).
             }
 
-            // --- Carregamento Inicial e Navegação por Histórico ---
+            // --- Função para atualizar a visualização com base no hash atual ---
+            function refreshViewForCurrentHash() {
+                updateHeroSectionVisibilityBasedOnHash(); // Controla visibilidade da hero section
+
+                let sectionIdFromHash = window.location.hash ? window.location.hash.substring(1) : 'home';
+                if (!document.getElementById(sectionIdFromHash)) { // Fallback se hash for inválido
+                    sectionIdFromHash = 'home';
+                }
+                
+                showSectionUI(sectionIdFromHash); // Mostra a seção principal
+
+                // Atualiza links ativos na navegação
+                navLinks.forEach(a => a.classList.remove('active'));
+                const activeLink = document.querySelector(`nav a[href="#${sectionIdFromHash}"]`);
+                if (activeLink) activeLink.classList.add('active');
+                
+                // Fecha menu mobile se estiver aberto
+                if (navLinksContainer.classList.contains('active')) {
+                    navLinksContainer.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            }
+
+            // --- Navegação SPA ---
+            window.navigateToSection = function(targetId) { // Expor globalmente para onclicks
+                if (history.pushState) {
+                    history.pushState(null, null, `#${targetId}`);
+                } else {
+                    window.location.hash = `#${targetId}`;
+                }
+                refreshViewForCurrentHash(); // Atualiza a visualização completa
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // --- Carregamento Inicial ---
             function loadInitialViewRevised() {
                 setLanguage(currentLang); // Aplicar idioma salvo/padrão
-                let initialSectionId = window.location.hash ? window.location.hash.substring(1) : 'home';
-                navigateToSection(initialSectionId); // Use navigateToSection para garantir a lógica de exibição
+                refreshViewForCurrentHash();
             }
-
             loadInitialViewRevised(); // Chamar a versão revisada no carregamento
 
             // Handle back/forward browser navigation
-            window.addEventListener('popstate', loadInitialViewRevised); // Usar a versão revisada
-
+            window.addEventListener('popstate', () => {
+                setLanguage(localStorage.getItem('preferredLang') || 'es'); // Reaplicar idioma
+                refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
+            });
 
             // Ano atual no footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
