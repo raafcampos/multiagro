@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<!-- O atributo lang="es" define o idioma principal da página como espanhol -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <!-- Font Awesome para ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Definição de variáveis CSS (Custom Properties) para o tema do site */
         :root {
             /* Verde um pouco mais escuro */
             --verde-principal: hsl(140, 65%, 35%); /* Ajustado para mais escuro */
@@ -33,6 +35,7 @@
             --transicao-padrao: all 0.3s ease-in-out;
         }
 
+        /* Reset básico e box-sizing */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -40,10 +43,12 @@
         }
 
         html {
+            /* Habilita a rolagem suave para links de âncora */
             scroll-behavior: smooth;
         }
 
         body {
+            /* Estilos base para o corpo da página */
             font-family: 'Montserrat', sans-serif;
             background-color: var(--cinza-fundo);
             color: var(--cinza-texto);
@@ -52,6 +57,7 @@
         }
 
         header {
+            /* Estilos do cabeçalho principal */
             background-color: var(--verde-principal);
             color: var(--branco);
             padding: 1rem 1.5rem; /* Reduzido um pouco para acomodar o seletor de idioma */
@@ -64,10 +70,12 @@
             box-shadow: var(--sombra-leve);
             transition: var(--transicao-padrao);
         }
+        /* Container para a bandeira do Paraguai */
         .paraguay-flag-container {
             display: flex;
             align-items: center;
         }
+        /* Estilos para a bandeira do Paraguai com efeito de gradiente e sombra */
         .paraguay-flag {
             width: 36px;
             height: 24px;
@@ -83,6 +91,7 @@
                 0 0 14px 4px rgba(255, 165, 0, 0.4); /* Laranja mais suave externo (como uma chama) */
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transição suave */
         }
+        /* Efeito hover para a bandeira */
         .paraguay-flag:hover {
             transform: rotate(-5deg) scale(1.1); /* Endireita um pouco e aumenta no hover */
             box-shadow: 
@@ -90,6 +99,7 @@
                 0 0 10px 3px rgba(255, 69, 0, 0.75), /* Brilho mais intenso */
                 0 0 20px 6px rgba(255, 165, 0, 0.55); /* Brilho mais amplo */
         }
+        /* Container do conteúdo do cabeçalho (logo e navegação) */
         .header-content {
             display: flex;
             align-items: center;
@@ -98,6 +108,7 @@
         }
 
         .logo {
+            /* Estilos do logotipo */
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 1px;
@@ -105,12 +116,14 @@
         }
 
         nav ul {
+            /* Estilos da lista de navegação */
             list-style: none;
             display: flex;
             align-items: center; /* Alinhar itens incluindo o seletor de idioma */
         }
 
         nav a {
+            /* Estilos dos links de navegação */
             color: var(--branco);
             margin: 0 0.8rem; /* Espaçamento ajustado */
             text-decoration: none;
@@ -121,16 +134,19 @@
             transition: var(--transicao-padrao);
         }
 
+        /* Estilo para link ativo ou em hover */
         nav a:hover, nav a.active {
             color: var(--lilas-claro);
             border-bottom-color: var(--lilas-principal);
         }
         
+        /* Seletor de idioma */
         .language-switcher {
             margin-left: 1rem;
             font-size: 0.85rem;
         }
         .language-switcher button {
+            /* Estilos dos botões de idioma */
             background: none;
             border: 1px solid var(--lilas-claro);
             color: var(--lilas-claro);
@@ -142,6 +158,7 @@
             margin: 0 0.2rem;
             transition: var(--transicao-padrao);
         }
+        /* Estilo para botão de idioma ativo ou em hover */
         .language-switcher button:hover, .language-switcher button.active-lang {
             background-color: var(--lilas-principal);
             color: var(--branco);
@@ -149,7 +166,7 @@
         }
 
         /* Estilos para o link de navegação de Investidores */
-        nav a.nav-link-investor {
+        nav a.nav-link-investor { /* Estilo especial para o link "Inversionistas" parecer um botão */
             background-image: linear-gradient(to bottom, hsl(220, 15%, 22%), hsl(220, 15%, 12%)); /* Gradiente sutil escuro */
             color: var(--lilas-claro);
             padding: 0.6rem 1.2rem; /* Padding para dar forma de botão */
@@ -160,6 +177,7 @@
             transition: var(--transicao-padrao), background-image 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Adicionar transições específicas */
         }
 
+        /* Efeito hover e ativo para o link de Investidores */
         nav a.nav-link-investor:hover,
         nav a.nav-link-investor.active {
             background-image: linear-gradient(to bottom, hsl(220, 15%, 28%), hsl(220, 15%, 18%)); /* Gradiente um pouco mais claro no hover/active */
@@ -170,6 +188,7 @@
         }
 
 
+        /* Botão de menu hambúrguer para telas menores */
         .menu-toggle {
             display: none; 
             font-size: 1.5rem;
@@ -180,6 +199,7 @@
         }
 
         main {
+            /* Estilos do conteúdo principal da página */
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
@@ -199,6 +219,7 @@
         }
 
         section {
+            /* Estilos base para cada seção de conteúdo */
             padding: 2.5rem 0; /* Aumentado o padding vertical */
             border-bottom: 1px solid var(--verde-claro);
         }
@@ -206,6 +227,7 @@
             border-bottom: none;
         }
 
+        /* Seção Hero (principal, no topo) */
         .hero-section {
             /* background: linear-gradient(135deg, var(--verde-principal), var(--lilas-principal)); */ /* Removido para usar carrossel */
             padding: 0; /* Removido padding para o carrossel ocupar tudo */
@@ -231,6 +253,7 @@
         }
 
 
+        /* Carrossel de imagens da seção Hero */
         .hero-carousel {
             position: absolute;
             top: 0;
@@ -241,11 +264,13 @@
             z-index: 0;
             border-radius: 12px; /* Mantém o arredondamento da seção */
         }
+        /* Container dos slides do carrossel */
         .carousel-slides {
             display: flex;
             height: 100%;
             transition: transform 0.7s ease-in-out;
         }
+        /* Estilo individual de cada slide */
         .carousel-slide {
             min-width: 100%;
             flex-shrink: 0;
@@ -268,6 +293,7 @@
             background: rgba(0, 0, 0, 0.45); /* Overlay escuro */
             z-index: 1;
         }
+        /* Botões de navegação do carrossel (anterior/próximo) */
         .carousel-prev, .carousel-next {
             position: absolute;
             top: 50%;
@@ -288,6 +314,7 @@
             background-color: rgba(255, 255, 255, 0.4);
         }
 
+        /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
         .hero-content-overlay {
             position: relative;
             z-index: 2; /* Acima do carrossel e seu overlay */
@@ -303,6 +330,7 @@
              display: flex; /* Garante que o conteúdo flexível apareça */
         }
         
+        /* Título principal da seção Hero */
         .hero-section h1 {
             font-size: 2.6rem; /* Ajustado */
             font-weight: 700;
@@ -311,6 +339,7 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.5); /* Sombra mais forte para legibilidade */
         }
 
+        /* Subtítulo da seção Hero */
         .hero-section p.subtitle {
             font-size: 1.15rem; /* Ajustado */
             max-width: 750px;
@@ -319,6 +348,7 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Sombra para legibilidade */
         }
         
+        /* Botão Call-to-Action (CTA) na seção Hero */
         .hero-section .cta-btn {
             background-color: var(--branco);
             color: var(--verde-principal);
@@ -331,6 +361,7 @@
             color: var(--lilas-escuro);
         }
 
+        /* Grid para exibir os produtos */
         .products-grid { /* Renomeado de superfoods-grid */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Ajustado minmax */
@@ -338,6 +369,7 @@
             margin-top: 2rem;
         }
 
+        /* Card individual de produto */
         .product-card { /* Renomeado de superfood-card */
             background-color: var(--lilas-claro);
             border-radius: 10px;
@@ -375,6 +407,7 @@
             flex-grow: 1; /* Para que os cards tenham altura similar */
         }
 
+        /* Container para os cards de estatísticas */
         .stats-cards {
             display: flex;
             justify-content: space-around;
@@ -383,6 +416,7 @@
             margin: 2.5rem 0;
         }
 
+        /* Card individual de estatística */
         .stat-card {
             background-color: var(--verde-claro);
             border-radius: 10px;
@@ -404,6 +438,7 @@
             color: var(--verde-escuro);
         }
 
+        /* Botão Call-to-Action (CTA) genérico */
         .cta-btn {
             display: inline-block;
             background-color: var(--lilas-principal);
@@ -424,6 +459,7 @@
             transform: translateY(-2px);
             box-shadow: var(--sombra);
         }
+        /* Variação de cor para o botão CTA */
         .cta-btn.green { /* Botão verde alternativo */
             background-color: var(--verde-principal);
         }
@@ -431,6 +467,7 @@
             background-color: var(--verde-escuro);
         }
 
+        /* Estilo para títulos de seção (H2) */
         h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
@@ -439,6 +476,7 @@
             position: relative;
             padding-bottom: 0.5rem;
         }
+        /* Linha decorativa abaixo do H2 */
         h2::after {
             content: '';
             position: absolute;
@@ -451,6 +489,7 @@
             border-radius: 2px;
         }
         
+        /* Estilo para subtítulos (H3) */
         h3 {
             font-size: 1.5rem;
             margin-top: 2rem;
@@ -458,6 +497,7 @@
             color: var(--lilas-escuro);
         }
         
+        /* Parágrafo introdutório para seções */
         p.section-intro { /* Parágrafo introdutório para seções */
             text-align: center;
             max-width: 800px;
@@ -466,10 +506,12 @@
             color: var(--cinza-texto);
         }
 
+        /* Lista personalizada */
         ul.custom-list {
             list-style: none;
             padding-left: 0;
         }
+        /* Itens da lista personalizada */
         ul.custom-list li {
             padding: 0.7rem 0.5rem; /* Padding ajustado */
             border-bottom: 1px dashed var(--verde-claro);
@@ -480,6 +522,7 @@
         ul.custom-list li:last-child {
             border-bottom: none;
         }
+        /* Links dentro da lista personalizada */
         ul.custom-list a {
             color: var(--verde-escuro);
             text-decoration: none;
@@ -491,6 +534,7 @@
             text-decoration: underline;
         }
         
+        /* Estilos para a seção de Perguntas Frequentes (FAQ) */
         .faq dt {
             font-weight: 600;
             color: var(--lilas-escuro);
@@ -512,12 +556,14 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Formulário de contato */
         form {
             display: flex;
             flex-direction: column;
             max-width: 600px; /* Aumentado */
             margin: 1.5rem auto;
         }
+        /* Labels do formulário */
         form label {
             margin-bottom: 0.5rem;
             font-weight: 500;
@@ -541,6 +587,7 @@
             align-self: flex-start;
         }
         
+        /* Informações de contato */
         .contact-info {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -569,6 +616,7 @@
             border-radius: 10px;
             padding: 2.5rem; /* Manter padding interno */
             margin-bottom: 2.5rem; /* Espaçamento igual às outras seções */
+            /* Esta seção tem um tema escuro para se destacar */
         }
 
         #inversionistas h2,
@@ -614,6 +662,7 @@
             background-color: var(--lilas-escuro);
         }
 
+        /* Imagem/gráfico ilustrativo na seção de investidores */
         .ri-graphic {
             width: 100%;
             max-width: 700px;
@@ -626,6 +675,7 @@
             border: 2px solid hsl(270, 30%, 70%); /* Borda sutil para o gráfico */
         }
 
+        /* Bloco de informações sobre a Bolsa de Valores */
         .bolsa-info {
             background-color: var(--cinza-muito-escuro); /* Fundo da info da bolsa mais escuro */
             padding: 1.5rem;
@@ -634,6 +684,7 @@
             text-align: center;
             border: 1px solid hsl(0, 0%, 25%); /* Borda sutil */
         }
+        /* Logo da Bolsa de Valores */
         .bolsa-logo {
             /* Ajuste para garantir que o logo da bolsa apareça */
             display: block;
@@ -650,6 +701,7 @@
             color: var(--lilas-claro); /* Link da bolsa em cor clara */
         }
 
+        /* Rodapé da página */
         footer {
             background-color: var(--verde-escuro);
             color: var(--lilas-claro);
@@ -661,6 +713,7 @@
         footer p {
             margin-bottom: 0.8rem;
         }
+        /* Links no rodapé */
         .footer-links a {
             color: var(--branco);
             margin: 0 0.7rem;
@@ -672,12 +725,14 @@
             text-decoration: underline;
         }
 
-        /* Responsividade */
+        /* Media Queries para Responsividade */
+        /* Para tablets e desktops menores */
         @media (max-width: 1024px) { /* Ajustado breakpoint para nav */
             .menu-toggle {
                 display: block; 
                 z-index: 1001; 
             }
+            /* Estilos do menu de navegação mobile (hambúrguer) */
             nav ul {
                 display: none; 
                 flex-direction: column;
@@ -694,6 +749,7 @@
                 box-shadow: 5px 0 15px rgba(0,0,0,0.2);
                 z-index: 999;
             }
+            /* Quando o menu mobile está ativo (aberto) */
             nav ul.active {
                 display: flex;
                 left: 0; 
@@ -701,6 +757,7 @@
             nav li {
                 width: 100%;
             }
+            /* Links dentro do menu mobile */
             nav a {
                 display: block;
                 padding: 1rem 1.5rem; /* Padding ajustado */
@@ -713,6 +770,7 @@
                 background-color: var(--verde-escuro);
                 border-bottom-color: var(--lilas-principal);
             }
+            /* Seletor de idioma no menu mobile */
             .language-switcher {
                 margin: 1rem 0 1rem 1.5rem; /* Posicionamento no menu mobile, alinhado com padding de 'nav a' */
                 align-self: flex-start;
@@ -740,6 +798,7 @@
             }
         }
 
+        /* Para tablets menores e celulares em paisagem */
         @media (max-width: 768px) {
             header { padding: 1rem; }
             .logo { font-size: 1.6rem; }
@@ -756,6 +815,7 @@
             form { max-width: 100%; }
         }
 
+        /* Para celulares em retrato */
         @media (max-width: 480px) {
             .logo { font-size: 1.4rem; }
             .hero-section h1 { font-size: 1.8rem; }
@@ -767,11 +827,13 @@
 </head>
 <body>
     <header>
+        <!-- Conteúdo do Cabeçalho: Logo, Navegação, Seletor de Idioma, Botão de Menu Mobile -->
         <div class="header-content">
             <div class="logo">Multiagro</div>
             <nav>
                 <ul id="nav-links">
                     <li><a href="#home" class="active nav-link" data-lang-es="Inicio" data-lang-en="Home" data-lang-pt="Início">Inicio</a></li>
+                    <!-- Outros links de navegação com atributos data-lang-* para internacionalização -->
                     <li><a href="#productos" class="nav-link" data-lang-es="Productos" data-lang-en="Products" data-lang-pt="Produtos">Productos</a></li>
                     <li><a href="#nosotros" class="nav-link" data-lang-es="Nosotros" data-lang-en="About Us" data-lang-pt="Sobre Nós">Nosotros</a></li>
                     <li><a href="#gobernanza" class="nav-link" data-lang-es="Gobernanza" data-lang-en="Governance" data-lang-pt="Governança">Gobernanza</a></li>
@@ -779,6 +841,7 @@
                     <li><a href="#contacto" class="nav-link" data-lang-es="Contacto" data-lang-en="Contact" data-lang-pt="Contato">Contacto</a></li>
                     <li><a href="#inversionistas" class="nav-link nav-link-investor" data-lang-es="Inversionistas" data-lang-en="Investors" data-lang-pt="Investidores">Inversionistas</a></li>
                     <li class="language-switcher">
+                        <!-- Botões para trocar o idioma da página -->
                         <button id="lang-es" class="active-lang">ES</button>
                         <button id="lang-en">EN</button>
                         <button id="lang-pt">PT</button>
@@ -786,6 +849,7 @@
                 </ul>
             </nav>
             <button class="menu-toggle" 
+                    <!-- Atributos data-aria-* para acessibilidade do menu toggle em diferentes idiomas -->
                     data-aria-open-es="Abrir menú" data-aria-open-en="Open menu" data-aria-open-pt="Abrir menu"
                     data-aria-close-es="Cerrar menú" data-aria-close-en="Close menu" data-aria-close-pt="Fechar menu"
                     aria-label="Abrir menú">☰</button>
@@ -794,18 +858,20 @@
 
     <main>
         <!-- Sección de Hero/Principal -->
+        <!-- A classe 'hero-section' é a seção principal no topo da página -->
         <section id="home" class="hero-section">
             <div class="hero-carousel">
                 <div class="carousel-slides">
+                    <!-- Slides do carrossel com imagens e textos alternativos (alt) internacionalizados -->
                     <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" 
+                        <img src="https://www.google.com/maps/place/Multiagro+Agrícola+S.A./@-24.4945933,-56.4075449,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIDLroKPVg!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nrLwTy9rhvir9vap1f4VmIQVsii7pNtgd1ojI8Ib2xUDSQkxlN1cJFMdB8VAo4M4X9ffGaaZJXofXm3RY5QrF-mMwqpZIN7n3aozgE4894X0aim02qhibS0ghxBq6zbUzPfdo7w%3Dw203-h152-k-no!7i8000!8i6000!4m11!1m3!11m2!2seBCNJAtlSnjfI4h2ZOpdgVzM5npKxg!3e3!3m6!1s0x945e27a76c7e4a95:0x7b493881be9488c5!8m2!3d-24.4946695!4d-56.4087235!10e5!16s%2Fg%2F11vyzx8dqb?entry=ttu&g_ep=EgoyMDI1MDUyNi4wIKXMDSoASAFQAw%3D%3D" 
                              alt="Campo de trigo al atardecer, representando la agroindustria moderna."
                              data-alt-es="Campo de trigo al atardecer, representando la agroindustria moderna."
                              data-alt-en="Wheat field at sunset, representing modern agro-industry."
                              data-alt-pt="Campo de trigo ao pôr do sol, representando a agroindústria moderna.">
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80" 
+                        <img src="https://www.google.com/maps/place/Multiagro+Agrícola+S.A./@-24.4945933,-56.4075449,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIDLrsKE3wE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nrm_nrXFcx37CivzCm7a8XoxOLaq3bqCH7xmrdH5S0KIoc8cLoeXq2z-C8TItZfju9sWugn_pr74laPdioioPN78CoTIBC8p1AeDU5M-Z4d75lSRA90IEwcvg8Q5ebKSkeajli3%3Dw114-h86-k-no!7i8000!8i6000!4m11!1m3!11m2!2seBCNJAtlSnjfI4h2ZOpdgVzM5npKxg!3e3!3m6!1s0x945e27a76c7e4a95:0x7b493881be9488c5!8m2!3d-24.4946695!4d-56.4087235!10e5!16s%2Fg%2F11vyzx8dqb?entry=ttu&g_ep=EgoyMDI1MDUyNi4wIKXMDSoASAFQAw%3D%3D" 
                              alt="Vista aérea de finca agrícola productiva."
                              data-alt-es="Vista aérea de finca agrícola productiva."
                              data-alt-en="Aerial view of a productive agricultural farm."
@@ -826,10 +892,12 @@
                              data-alt-pt="Sementes e grãos, conceito de superalimentos.">
                     </div>
                 </div>
+                <!-- Botões de navegação do carrossel com aria-label internacionalizado -->
                 <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
                 <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
             </div>
             <div class="hero-content-overlay">
+                <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
                 <h1 data-lang-es="Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo"
                     data-lang-en="Multiagro: Quality and Tradition in Grains from Paraguay to the World"
                     data-lang-pt="Multiagro: Qualidade e Tradição em Grãos do Paraguai para o Mundo">
@@ -841,6 +909,7 @@
                    data-lang-pt="Especialistas no beneficiamento, comercialização e exportação de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.">
                    Especialistas en el beneficiamiento, comercialización y exportación de granos y superalimentos, conectando la riqueza agrícola de Guajayvi con mercados globales exigentes.
                 </p>
+                <!-- Botão CTA que navega para a seção de produtos -->
                 <a href="#productos" class="cta-btn" onclick="navigateToSection('productos'); return false;" data-lang-es="Conozca Nuestros Productos" data-lang-en="Discover Our Products" data-lang-pt="Conheça Nossos Produtos">
                    Conozca Nuestros Productos
                 </a>
@@ -849,6 +918,7 @@
 
         <!-- Sección Produtos -->
         <section id="productos">
+            <!-- Título e introdução da seção de produtos -->
             <h2 data-lang-es="Nuestros Granos de Calidad Superior" data-lang-en="Our Premium Grains" data-lang-pt="Nossos Grãos de Qualidade Superior">Nuestros Granos de Calidad Superior</h2>
             <p class="section-intro"
                data-lang-es="Ofrecemos una selección de granos cultivados con esmero y procesados bajo estrictos estándares de calidad, con un enfoque especial en superalimentos nutritivos."
@@ -857,6 +927,7 @@
                Ofrecemos una selección de granos cultivados con esmero y procesados bajo estrictos estándares de calidad, con un enfoque especial en superalimentos nutritivos.
             </p>
             <div class="products-grid">
+                <!-- Card de produto individual (Chía) -->
                 <div class="product-card">
                     <img src="https://cdn.awsli.com.br/600x450/1744/1744407/produto/923545737bbb7384b4.jpg" alt="Sementes de Chía">
                     <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
@@ -866,8 +937,11 @@
                        Semillas de chía de alta pureza, ricas en Omega-3, fibra y antioxidantes. Un superalimento versátil para una dieta saludable.
                     </p>
                 </div>
+                 <!-- Card de produto individual (Frijol/Feijão) -->
                  <div class="product-card">
-                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhUXGCEbGBcYGSEgIBsgIB8iIh8fICEgHyggIyIoIB8gITElKCkrLi4uHyAzODMtNygtLisBCgoKDg0OGxAQGy0lICUvMC0tOC8tLy03LS0tLS0vLTAvLS0tLS0tLS8tLS0tLy0tLS0tLS8tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAEBQMGAAECB//EAD8QAAEDAgUCBAQEBQMDBAMBAAECAxEABAUGEiExQVETImFxFDKBkSNCobEHUmLB0STh8BUWM0NygpI0orIX/8QAGQEAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAMBEAAgIBAwIDCAMAAgMAAAAAAAECESEDEjFBUSJh8AQTMnGBkaHBseHxUmIUM0L2gAMAwEAhEDEQAAB5b/9eW71+vE3X/sLh/0K//9k=" alt="Variedade de Frijoles">
+                    <!-- CORREÇÃO: A imagem original abaixo usava um Data URI Base64 que parecia corrompido ou incompleto. -->
+                    <!-- Substitua pelo URL da imagem correta ou um Base64 válido. O exemplo abaixo é um placeholder. -->
+                    <img src="https://via.placeholder.com/120x120.png?text=Feij%C3%A3o" alt="Variedade de Frijoles">
                     <h4 data-lang-es="Frijol" data-lang-en="Beans" data-lang-pt="Feijão">Frijol</h4>
                     <p data-lang-es="Variedades de frijoles seleccionados, fuente esencial de proteínas y nutrientes, fundamentales en la alimentación global."
                        data-lang-en="Selected bean varieties, an essential source of protein and nutrients, fundamental in global nutrition."
@@ -875,6 +949,7 @@
                        Variedades de frijoles seleccionados, fuente esencial de proteínas y nutrientes, fundamentais na alimentação global.
                     </p>
                 </div>
+                <!-- Card de produto individual (Sésamo/Gergelim) -->
                 <div class="product-card">
                     <img src="https://cloudfront-us-east-1.images.arcpublishing.com/estadao/BUEBUDEZWJEYXGWVNKIDFSNQXE.jpg" alt="Sementes de Sésamo">
                     <h4 data-lang-es="Sésamo (Gergelim)" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo (Gergelim)</h4>
@@ -884,6 +959,7 @@
                        Sésamo de primeira qualidade, apreciado por seu sabor e valor nutricional. Ideal para a indústria alimentícia e consumo direto.
                     </p>
                 </div>
+                 <!-- Card de produto individual (Maíz/Milho) -->
                  <div class="product-card">
                     <img src="https://assets.corteva.com/is/image/Corteva/IMG-ArtigoBlog-Hero-SementeMilho-BR?$articleHeader_desktop$" alt="Grãos de Maíz">
                     <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
@@ -898,6 +974,7 @@
 
         <!-- Sobre Nosotros -->
         <section id="nosotros">
+            <!-- Título e introdução da seção "Sobre Nós" -->
             <h2 data-lang-es="Sobre Multiagro" data-lang-en="About Multiagro" data-lang-pt="Sobre a Multiagro">Sobre Multiagro</h2>
             <p class="section-intro"
                data-lang-es="Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de granos, con un firme compromiso con la calidad, la innovación y la sostenibilidad. Nos especializamos en superalimentos, atendiendo tanto al mercado interno como a exigentes mercados internacionales."
@@ -906,6 +983,7 @@
                Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de granos, con un firme compromiso con la calidad, la innovación y la sostenibilidad. Nos especializamos en superalimentos, atendiendo tanto al mercado interno como a exigentes mercados internacionales.
             </p>
             <h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
+            <!-- Lista de Missão e Visão -->
             <ul class="custom-list">
                 <li data-lang-es="<strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la producción paraguaya con el mundo, impulsados por la eficiencia, la innovación y prácticas sostenibles."
                     data-lang-en="<strong>Mission:</strong> To process and market grains and superfoods of the highest quality, connecting Paraguayan production with the world, driven by efficiency, innovation, and sustainable practices."
@@ -919,6 +997,7 @@
                 </li>
             </ul>
             <h3 data-lang-es="Nuestros Valores" data-lang-en="Our Values" data-lang-pt="Nossos Valores">Nuestros Valores</h3>
+            <!-- Lista de Valores da empresa -->
             <ul class="custom-list">
                 <li data-lang-es="Calidad Superior y Trazabilidad" data-lang-en="Superior Quality and Traceability" data-lang-pt="Qualidade Superior e Rastreabilidade">Calidad Superior y Trazabilidad</li>
                 <li data-lang-es="Integridad y Transparencia" data-lang-en="Integrity and Transparency" data-lang-pt="Integridade e Transparência">Integridad y Transparencia</li>
@@ -927,6 +1006,7 @@
                 <li data-lang-es="Orientación al Cliente y Mercados Globales" data-lang-en="Customer Focus and Global Markets" data-lang-pt="Orientação ao Cliente e Mercados Globais">Orientación al Cliente y Mercados Globales</li>
             </ul>
             <div class="stats-cards">
+                <!-- Cards com estatísticas/números da empresa -->
                 <div class="stat-card">
                     <h4 data-lang-es="Años de Experiencia" data-lang-en="Years of Experience" data-lang-pt="Anos de Experiência">Años de Experiencia</h4>
                     <p class="stat-value" data-lang-es="+15" data-lang-en="+15" data-lang-pt="+15">+15</p> <!-- Exemplo -->
@@ -941,6 +1021,7 @@
                 </div>
             </div>
             <div style="text-align:center; margin-top: 2rem;">
+                <!-- Botão CTA para a seção de investidores -->
                 <a class="cta-btn green" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Oportunidades para Inversionistas" data-lang-en="Investor Opportunities" data-lang-pt="Oportunidades para Investidores">
                    Oportunidades para Inversionistas
                 </a>
@@ -949,6 +1030,7 @@
 
         <!-- Gobernanza Corporativa -->
         <section id="gobernanza">
+            <!-- Título e introdução da seção de Governança Corporativa -->
             <h2 data-lang-es="Gobernanza Corporativa" data-lang-en="Corporate Governance" data-lang-pt="Governança Corporativa">Gobernanza Corporativa</h2>
             <p class="section-intro"
                data-lang-es="Multiagro se rige por principios de transparencia, ética y responsabilidad. Nuestra estructura de gobernanza busca asegurar la profesionalización de la gestión y la protección de los intereses de todos nuestros stakeholders."
@@ -957,6 +1039,7 @@
                Multiagro se rige por principios de transparencia, ética y responsabilidad. Nuestra estructura de gobernanza busca asegurar la profesionalización de la gestión y la protección de los intereses de todos nuestros stakeholders.
             </p>
             <h3 data-lang-es="Estructura y Prácticas" data-lang-en="Structure and Practices" data-lang-pt="Estrutura e Práticas">Estructura y Prácticas</h3>
+            <!-- Lista de práticas de governança -->
             <ul class="custom-list">
                 <li data-lang-es="Consejo de Administración Estratégico" data-lang-en="Strategic Board of Directors" data-lang-pt="Conselho de Administração Estratégico">Consejo de Administración Estratégico</li>
                 <li data-lang-es="Dirección Ejecutiva Profesionalizada" data-lang-en="Professionalized Executive Management" data-lang-pt="Direção Executiva Profissionalizada">Dirección Ejecutiva Profesionalizada</li>
@@ -964,6 +1047,7 @@
                 <li data-lang-es="Políticas Claras de Conducta y Cumplimiento" data-lang-en="Clear Conduct and Compliance Policies" data-lang-pt="Políticas Claras de Conduta e Cumprimento">Políticas Claras de Conducta y Cumplimiento</li>
             </ul>
             <h3 data-lang-es="Documentos Relevantes" data-lang-en="Relevant Documents" data-lang-pt="Documentos Relevantes">Documentos Relevantes</h3>
+            <!-- Links para documentos importantes (PDFs) -->
             <ul class="custom-list">
                 <li><a href="/docs/codigo-etica-multiagro.pdf" target="_blank" data-lang-es="Código de Ética y Conducta Multiagro" data-lang-en="Multiagro Code of Ethics and Conduct" data-lang-pt="Código de Ética e Conduta Multiagro">Código de Ética y Conducta Multiagro</a></li>
                 <li><a href="/docs/politica-calidad-multiagro.pdf" target="_blank" data-lang-es="Política de Calidad y Trazabilidad" data-lang-en="Quality and Traceability Policy" data-lang-pt="Política de Qualidade e Rastreabilidade">Política de Calidad y Trazabilidad</a></li>
@@ -973,9 +1057,11 @@
 
         <!-- Relación con Inversionistas -->
         <section id="inversionistas">
+            <!-- Título da seção de Relação com Investidores -->
             <h2 data-lang-es="Relación con Inversionistas" data-lang-en="Investor Relations" data-lang-pt="Relação com Investidores">Relación con Inversionistas</h2>
             
             <!-- TradingView Widget BEGIN -->
+            <!-- Widget da TradingView para exibir cotações de ações -->
             <div class="tradingview-widget-container" style="margin-bottom: 2.5rem;">
               <div class="tradingview-widget-container__widget"></div>
               <div class="tradingview-widget-copyright" style="font-size: 0.8em; text-align: center; margin-top: 0.5rem;">
@@ -983,9 +1069,10 @@
                       <span style="color: var(--lilas-claro);" data-lang-es="Cotizaciones por TradingView" data-lang-en="Quotes by TradingView" data-lang-pt="Cotações por TradingView">Cotizaciones por TradingView</span>
                   </a>
               </div>
+              <!-- Script para carregar o widget da TradingView. A configuração é feita via JSON. -->
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
               {
-              "symbols": [
+              "symbols"; [
                 {
                   "description": "ITAU",
                   "proName": "BVPASA:ITAU"
@@ -1027,16 +1114,17 @@
                   "proName": "BVPASA:SUDAP"
                 }
               ],
-  "showSymbolLogo": true,
-  "colorTheme": "dark",
-  "isTransparent": false,
-  "displayMode": "adaptive",
-  "locale": "es"
+  "showSymbolLogo"; true,
+  "colorTheme"; "dark",
+  "isTransparent"; false,
+  "displayMode"; "adaptive",
+  "locale"; "es"
 }
 ;</script>
             </div>
             <!-- TradingView Widget END -->
 
+            <!-- Introdução da seção de investidores -->
             <p class="section-intro"
                data-lang-es="Multiagro presenta una atractiva oportunidad de inversión en el creciente sector agroindustrial, con un enfoque en superalimentos y mercados de exportación. Estamos comprometidos con la modernización, la expansión y la generación de valor sostenible."
                data-lang-en="Multiagro presents an attractive investment opportunity in the growing agro-industrial sector, with a focus on superfoods and export markets. We are committed to modernization, expansion, and sustainable value generation."
@@ -1044,6 +1132,7 @@
                Multiagro apresenta uma oportunidade de investimento atraente no crescente setor agroindustrial, com foco em superalimentos e mercados de exportação. Estamos comprometidos com a modernização, a expansão e a geração de valor sustentável.
             </p>
 
+            <!-- Informações sobre a listagem na Bolsa de Valores de Assunção -->
             <div class="bolsa-info">
                 <img src="https://www.bolsadevalores.com.py/wp-content/uploads/2024/08/logo.svg" 
                      alt="Logo Bolsa de Valores de Asunción" class="bolsa-logo"
@@ -1063,6 +1152,7 @@
                 <p><a href="https://www.bolsaasu.com.py/" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para más información</a></p>
             </div>
 
+            <!-- Imagem ilustrativa de crescimento -->
             <img class="ri-graphic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Positive_Growth_Chart.svg/700px-Positive_Growth_Chart.svg.png" 
                  alt="Gráfico Ilustrativo de Crecimiento y Estrategia de Negocios"
                  data-alt-es="Gráfico Ilustrativo de Crecimiento y Estrategia de Negocios"
@@ -1070,6 +1160,7 @@
                  data-alt-pt="Gráfico Ilustrativo de Crescimento e Estratégia de Negócios">
             
             <h3 data-lang-es="Foco Estratégico y Oportunidades" data-lang-en="Strategic Focus and Opportunities" data-lang-pt="Foco Estratégico e Oportunidades">Foco Estratégico y Oportunidades</h3>
+            <!-- Lista de focos estratégicos e oportunidades -->
             </p>
             <ul class="custom-list">
                 <li data-lang-es="Modernización y ampliación de planta industrial" data-lang-en="Modernization and expansion of industrial plant" data-lang-pt="Modernização e ampliação da planta industrial">Modernización y ampliación de planta industrial</li>
@@ -1080,6 +1171,7 @@
             </ul>
 
             <h3 data-lang-es="Informes y Presentaciones" data-lang-en="Reports and Presentations" data-lang-pt="Relatórios e Apresentações">Informes y Presentaciones</h3>
+            <!-- Links para relatórios e apresentações para investidores -->
             <ul class="custom-list">
                 <li><a href="/docs/presentacion-inversionistas-multiagro.pdf" target="_blank" data-lang-es="Presentación Institucional para Inversionistas" data-lang-en="Institutional Investor Presentation" data-lang-pt="Apresentação Institucional para Investidores">Presentación Institucional para Inversionistas</a></li>
                 <li><a href="/docs/plan-estrategico-multiagro.pdf" target="_blank" data-lang-es="Plan Estratégico de Crecimiento (Sumario)" data-lang-en="Strategic Growth Plan (Summary)" data-lang-pt="Plano Estratégico de Crescimento (Resumo)">Plan Estratégico de Crecimiento (Sumario)</a></li>
@@ -1087,6 +1179,7 @@
             </ul>
 
             <h3 data-lang-es="Preguntas Frecuentes (FAQ)" data-lang-en="Frequently Asked Questions (FAQ)" data-lang-pt="Perguntas Frequentes (FAQ)">Preguntas Frecuentes (FAQ)</h3>
+            <!-- Seção de Perguntas Frequentes (FAQ) para investidores -->
             <dl class="faq">
                 <dt data-lang-es="¿Cuál es el principal diferencial de Multiagro?" data-lang-en="What is Multiagro's main differentiator?" data-lang-pt="Qual é o principal diferencial da Multiagro?">¿Cuál es el principal diferencial de Multiagro?</dt>
                 <dd data-lang-es="Nuestro foco en superalimentos de alta calidad, la integración con productores locales, la capacidad de adaptación a estándares internacionales y un claro plan de modernización y expansión." 
@@ -1105,12 +1198,15 @@
 
         <!-- Comunicados -->
         <section id="comunicados">
+            <!-- Título da seção de Comunicados Relevantes -->
             <h2 data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</h2>
+            <!-- Lista de comunicados (exemplos) -->
             <ul class="custom-list">
                 <li data-lang-es="10/08/2025 – Anuncio: Inicio de proceso para certificación USDA." data-lang-en="08/10/2025 – Announcement: USDA certification process initiated." data-lang-pt="10/08/2025 – Anúncio: Início do processo para certificação USDA.">10/08/2025 – Anuncio: Inicio de proceso para certificación USDA. <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a></li>
                 <li data-lang-es="20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa." data-lang-en="06/20/2025 – Multiagro participates in international food fair in Europe." data-lang-pt="20/06/2025 – Multiagro participa de feira internacional de alimentos na Europa.">20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa. <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a></li>
             </ul>
             <div style="text-align:center; margin-top:2rem;">
+              <!-- Botão para voltar à seção de investidores -->
               <a class="cta-btn" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Volver a Inversionistas" data-lang-en="Back to Investors" data-lang-pt="Voltar para Investidores">
                  Volver a Inversionistas
               </a>
@@ -1119,6 +1215,7 @@
 
         <!-- Sostenibilidad -->
         <section id="sostenibilidad">
+            <!-- Título e introdução da seção de Sostenibilidade -->
             <h2 data-lang-es="Sostenibilidad y Compromiso Social" data-lang-en="Sustainability and Social Commitment" data-lang-pt="Sustentabilidade e Compromisso Social">Sostenibilidad y Compromiso Social</h2>
             <p class="section-intro"
                data-lang-es="En Multiagro, la sostenibilidad es un pilar fundamental. Buscamos un equilibrio entre el crecimiento económico, el respeto por el medio ambiente y el desarrollo de las comunidades con las que trabajamos, especialmente nuestros productores rurales."
@@ -1127,6 +1224,7 @@
                Na Multiagro, a sustentabilidade é um pilar fundamental. Buscamos um equilíbrio entre o crescimento econômico, o respeito pelo meio ambiente e o desenvolvimento das comunidades com as quais trabalhamos, especialmente nossos produtores rurais.
             </p>
             <ul class="custom-list">
+                <!-- Pilares da sustentabilidade: Ambiental, Social, Governança -->
                 <li data-lang-es="<strong>Ambiental:</strong> Fomento de buenas prácticas agrícolas, optimización de recursos, estudio para aprovechamiento de residuos industriales (ej. ración animal)." 
                     data-lang-en="<strong>Environmental:</strong> Promotion of good agricultural practices, resource optimization, study for industrial waste utilization (e.g., animal feed)."
                     data-lang-pt="<strong>Ambiental:</strong> Fomento de boas práticas agrícolas, otimização de recursos, estudo para aproveitamento de resíduos industriais (ex. ração animal).">
@@ -1144,6 +1242,7 @@
                 </li>
             </ul>
             <p style="margin-top: 2rem; text-align:center;">
+                <!-- Link para o relatório de sustentabilidade -->
                 <a href="/docs/informe-sostenibilidad-multiagro.pdf" target="_blank" class="cta-btn green" data-lang-es="Conozca Más Sobre Nuestro Impacto" data-lang-en="Learn More About Our Impact" data-lang-pt="Saiba Mais Sobre Nosso Impacto">
                    Conozca Más Sobre Nuestro Impacto
                 </a>
@@ -1152,6 +1251,7 @@
 
         <!-- Contacto -->
         <section id="contacto">
+            <!-- Título e introdução da seção de Contato -->
             <h2 data-lang-es="Contacto" data-lang-en="Contact Us" data-lang-pt="Contato">Contacto</h2>
             <p class="section-intro"
                data-lang-es="Estamos a su disposición para consultas sobre nuestros productos, oportunidades de inversión o cualquier otra información."
@@ -1159,6 +1259,7 @@
                data-lang-pt="Estamos à sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.">
                Estamos a sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.
             </p>
+            <!-- Formulário de contato com campos internacionalizados -->
             <form id="contactForm">
                 <label for="nombre" data-lang-es="Nombre Completo" data-lang-en="Full Name" data-lang-pt="Nome Completo">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" 
@@ -1180,6 +1281,7 @@
             </form>
             
             <!-- Mapa Google Maps: Guajayvi, San Pedro, Paraguay -->
+            <!-- Iframe do Google Maps para exibir a localização -->
     <div style="width:100%;max-width:600px;margin:2rem auto 1.5rem auto;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
         <iframe 
             src="https://www.google.com/maps?q=Guajayvi,+San+Pedro,+Paraguay&output=embed"
@@ -1190,6 +1292,7 @@
             data-title-pt="Mapa Multiagro Guajayvi Paraguai"></iframe>
     </div>
 
+    <!-- Informações de contato adicionais -->
     <div class="contact-info">
                 <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:inversionistas@multiagro.com.py">inversionistas@multiagro.com.py</a></p>
                 <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
@@ -1200,10 +1303,12 @@
     </main>
 
     <footer>
+        <!-- Conteúdo do rodapé: informações da empresa, direitos autorais, links úteis -->
         <p data-lang-es="Multiagro S.A. | RUC: XXXXXXX-X" data-lang-en="Multiagro S.A. | Tax ID: XXXXXXX-X" data-lang-pt="Multiagro S.A. | CNPJ/RUC: XXXXXXX-X">Multiagro S.A. | RUC: XXXXXXX-X</p>
         <p><span data-lang-es="Sede: Guajayvi, San Pedro, Paraguay" data-lang-en="Headquarters: Guajayvi, San Pedro, Paraguay" data-lang-pt="Sede: Guajayvi, San Pedro, Paraguai">Sede: Guajayvi, San Pedro, Paraguay</span> | © <span id="currentYear"></span> Multiagro S.A. <span data-lang-es="Todos los derechos reservados." data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">Todos los derechos reservados.</span></p>
         <div class="footer-links">
             <a href="#inversionistas" onclick="navigateToSection('inversionistas');return false;" data-lang-es="Inversionistas" data-lang-en="Investors" data-lang-pt="Investidores">Inversionistas</a> |
+            <!-- Outros links no rodapé -->
             <a href="#sostenibilidad" onclick="navigateToSection('sostenibilidad');return false;" data-lang-es="Sostenibilidad" data-lang-en="Sustainability" data-lang-pt="Sustentabilidade">Sostenibilidad</a> |
             <a href="/docs/politica-privacidad-multiagro.pdf" target="_blank" data-lang-es="Política de Privacidad" data-lang-en="Privacy Policy" data-lang-pt="Política de Privacidade">Política de Privacidad</a>
         </div>
@@ -1211,10 +1316,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Seletores de elementos do DOM
             const navLinksContainer = document.getElementById('nav-links');
             const navLinks = navLinksContainer.querySelectorAll('a.nav-link');
             const menuToggle = document.querySelector('.menu-toggle');
             const sections = document.querySelectorAll('main section');
+            // Objeto para armazenar os botões de idioma
             const langButtons = {
                 es: document.getElementById('lang-es'),
                 en: document.getElementById('lang-en'),
@@ -1222,12 +1329,14 @@
             };
             let currentLang = localStorage.getItem('preferredLang') || 'es';
 
-            // --- Lógica para mostrar/ocultar Hero Section ---
+            // --- Lógica para mostrar/ocultar a Seção Hero ---
+            // A seção Hero (home) só deve ser visível na página inicial.
             const HERO_SECTION_ELEMENT_ID = 'home'; // ID da seção hero/principal
             const HIDE_HERO_ON_SUBPAGE_CLASS = 'hero-hidden-on-subpage'; // Classe CSS para ocultar
             const heroSectionElement = document.getElementById(HERO_SECTION_ELEMENT_ID);
 
             function updateHeroSectionVisibilityBasedOnHash() {
+                // Verifica o hash da URL para determinar se a seção Hero deve ser exibida.
                 if (!heroSectionElement) {
                     console.warn(`Elemento da seção Hero com ID '${HERO_SECTION_ELEMENT_ID}' não encontrado para visibilidade condicional.`);
                     return;
@@ -1243,7 +1352,9 @@
                 }
             }
 
+            // --- Atualiza o aria-label do botão de menu (hambúrguer) ---
             function updateMenuToggleAriaLabel() {
+                // Define o texto do aria-label com base no idioma atual e se o menu está aberto ou fechado.
                 if (!menuToggle) return;
                 const isOpen = navLinksContainer.classList.contains('active');
                 const attrPrefix = isOpen ? 'data-aria-close-' : 'data-aria-open-';
@@ -1256,7 +1367,9 @@
                 }
             }
 
+            // --- Atualiza o widget da TradingView com o idioma selecionado ---
             function updateTradingViewWidget(lang) {
+                // Recria o script do widget da TradingView para aplicar o novo 'locale'.
                 const widgetContainerRoot = document.querySelector('.tradingview-widget-container');
                 if (!widgetContainerRoot) return;
                 const widgetContainer = widgetContainerRoot.querySelector('.tradingview-widget-container__widget');
@@ -1268,6 +1381,7 @@
                 }
                 widgetContainer.innerHTML = ''; 
 
+                // Mapeia o código de idioma do site para o código de locale da TradingView.
                 let tvLocale = 'es';
                 if (lang === 'en') tvLocale = 'en';
                 // Using 'br' for Portuguese locale as it aligns with TradingView's locale codes
@@ -1285,8 +1399,9 @@
             }
 
 
-            // --- Language Switcher ---
+            // --- Lógica do Seletor de Idioma ---
             function setLanguage(lang) {
+                // Define o idioma atual, salva no localStorage e atualiza todos os textos da página.
                 currentLang = lang;
                 localStorage.setItem('preferredLang', lang);
 
@@ -1304,7 +1419,7 @@
                     if (titleText) document.title = titleText;
                 }
 
-                // Update text content for all tagged elements
+                // Atualiza o conteúdo de texto para todos os elementos com atributos data-lang-*
                 document.querySelectorAll('[data-lang-es]').forEach(el => {
                     if (el.tagName === 'TITLE') return; // Skip title tag as it's handled above
                     const text = el.getAttribute(`data-lang-${lang}`);
@@ -1316,7 +1431,7 @@
                         }
                     }
                 });
-                 // Update placeholders
+                 // Atualiza os placeholders de inputs e textareas
                 document.querySelectorAll('input[data-placeholder-es], textarea[data-placeholder-es]').forEach(el => {
                     const placeholderText = el.getAttribute(`data-placeholder-${lang}`);
                     if (placeholderText) {
@@ -1324,27 +1439,29 @@
                     }
                 });
 
-                // Update alt attributes for images
+                // Atualiza os atributos 'alt' das imagens
                 document.querySelectorAll('img[data-alt-es]').forEach(el => {
                     const altText = el.getAttribute(`data-alt-${lang}`);
                     if (altText) el.setAttribute('alt', altText);
                 });
 
-                // Update aria-label attributes
+                // Atualiza os atributos 'aria-label'
                 document.querySelectorAll('[data-aria-es]').forEach(el => {
                     const ariaLabelText = el.getAttribute(`data-aria-${lang}`);
                     if (ariaLabelText) el.setAttribute('aria-label', ariaLabelText);
                 });
-                 // Update title attributes for elements like iframes
+                 // Atualiza os atributos 'title' (ex: para iframes)
                 document.querySelectorAll('[data-title-es]').forEach(el => {
                     const titleText = el.getAttribute(`data-title-${lang}`);
                     if (titleText) el.setAttribute('title', titleText);
                 });
 
+                // Atualiza elementos específicos que dependem do idioma
                 updateMenuToggleAriaLabel();
                 updateTradingViewWidget(lang);
             }
 
+            // Adiciona event listeners aos botões de idioma
             langButtons.es.addEventListener('click', () => setLanguage('es'));
             langButtons.en.addEventListener('click', () => setLanguage('en'));
             langButtons.pt.addEventListener('click', () => setLanguage('pt'));
@@ -1356,6 +1473,7 @@
                 updateMenuToggleAriaLabel();
             });
 
+            // Adiciona event listeners aos links de navegação para a navegação SPA
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1364,8 +1482,9 @@
                 });
             });
 
-            // --- Função para mostrar a seção correta (UI) ---
+            // --- Função para mostrar a seção correta na interface ---
             function showSectionUI(id) {
+                // Oculta todas as seções e exibe apenas a seção alvo.
                 sections.forEach(s => s.classList.remove('visible'));
                 const targetSection = document.getElementById(id);
                 if (targetSection) {
@@ -1382,8 +1501,9 @@
                 }
             }
 
-            // --- Função para atualizar a visualização com base no hash atual ---
+            // --- Função para atualizar a visualização da página com base no hash da URL ---
             function refreshViewForCurrentHash() {
+                // Controla a visibilidade da seção Hero e mostra a seção principal correta.
                 updateHeroSectionVisibilityBasedOnHash(); // Controla visibilidade da hero section
 
                 let sectionIdFromHash = window.location.hash ? window.location.hash.substring(1) : 'home';
@@ -1405,8 +1525,9 @@
                 }
             }
 
-            // --- Navegação SPA ---
+            // --- Lógica de Navegação SPA (Single Page Application) ---
             window.navigateToSection = function(targetId) { // Expor globalmente para onclicks
+                // Atualiza o hash da URL sem recarregar a página e, em seguida, atualiza a visualização.
                 if (history.pushState) {
                     history.pushState(null, null, `#${targetId}`);
                 } else {
@@ -1417,24 +1538,27 @@
             }
             
             // --- Carregamento Inicial ---
+            // Função chamada quando a página é carregada pela primeira vez.
             function loadInitialViewRevised() {
                 setLanguage(currentLang); // Aplicar idioma salvo/padrão
                 refreshViewForCurrentHash();
                 // updateTradingViewWidget(currentLang); // setLanguage already calls it
             }
-            loadInitialViewRevised(); // Chamar a versão revisada no carregamento
+            loadInitialViewRevised();
 
-            // Handle back/forward browser navigation
+            // --- Manipulador para navegação de voltar/avançar do navegador ---
             window.addEventListener('popstate', () => {
+                // Reaplicar o idioma e atualizar a visualização quando o usuário navega pelo histórico.
                 setLanguage(localStorage.getItem('preferredLang') || 'es'); // Reaplicar idioma
                 refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
                 // updateTradingViewWidget(localStorage.getItem('preferredLang') || 'es'); // setLanguage already calls it
             });
 
-            // Ano atual no footer
+            // --- Define o ano atual no rodapé ---
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Simples handler para o formulário de contato
+            // --- Manipulador simples para o formulário de contato ---
+            // Exibe um alerta de confirmação e reseta o formulário.
             const contactForm = document.getElementById('contactForm');
             if(contactForm) {
                 contactForm.addEventListener('submit', function(e) {
@@ -1453,6 +1577,7 @@
             }
 
             // --- Hero Carousel ---
+            // Lógica para o carrossel de imagens na seção Hero.
             const carousel = document.querySelector('.hero-carousel');
             if (carousel) {
                 const slidesContainer = carousel.querySelector('.carousel-slides');
@@ -1463,12 +1588,14 @@
                 const totalSlides = slides.length;
                 let autoPlayInterval;
 
+                // Função para atualizar a posição do carrossel
                 function updateCarousel() {
                     slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
                 }
                 
                 if (totalSlides > 0) {
-                    updateCarousel(); // Posição inicial
+                    // Define a posição inicial do carrossel
+                    updateCarousel(); 
                 }
 
                 if (nextButton && prevButton) { // Verificar se os botões existem
@@ -1485,6 +1612,7 @@
                     });
                 }
                 
+                // Inicia o autoplay do carrossel
                 const startAutoPlay = () => {
                     if (totalSlides <= 1) return; // Não iniciar autoplay se só tiver 1 slide ou menos
                     autoPlayInterval = setInterval(() => {
@@ -1493,12 +1621,14 @@
                     }, 5000); // Muda a cada 5 segundos
                 };
 
+                // Reinicia o autoplay (usado após interação manual)
                 const resetAutoPlay = () => {
                     if (totalSlides <= 1) return;
                     clearInterval(autoPlayInterval);
                     startAutoPlay();
                 };
                 
+                // Ajusta o carrossel em redimensionamento da janela para evitar quebras
                 window.addEventListener('resize', () => {
                     if (totalSlides > 0) {
                         slidesContainer.style.transition = 'none'; 
