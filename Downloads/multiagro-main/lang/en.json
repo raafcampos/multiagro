@@ -1,0 +1,53 @@
+{
+    "title": "Multiagro | Investor Relations",
+    "header": {
+        "logo": "Multiagro",
+        "nav": {
+            "about": "About Multiagro",
+            "governance": "Corporate Governance",
+            "investorRelations": "Investor Relations",
+            "esg": "ESG and Sustainability",
+            "contact": "Contact"
+        }
+    },
+    "home": {
+        "welcome": "Welcome to Multiagro",
+        "tagline": "Excellence, transparency, and innovation in the Brazilian agribusiness.",
+        "mission": "To produce sustainable food and solutions, promoting economic, social, and environmental development.",
+        "vision": "To be a reference in innovation, governance, and socio-environmental responsibility in global agribusiness.",
+        "values": {
+            "integrity": "Integrity",
+            "transparency": "Transparency",
+            "operationalExcellence": "Operational Excellence",
+            "environmentalCommitment": "Environmental and Social Commitment",
+            "investorFocus": "Investor Focus"
+        },
+        "cta": "Access investor information"
+    },
+    "governance": {
+        "title": "Corporate Governance",
+        "structure": "Organizational Structure",
+        "policies": "Corporate Policies",
+        "documents": "Governance Documents"
+    },
+    "investorRelations": {
+        "title": "Investor Relations",
+        "commitment": "Multiagro is listed on the stock exchange, with governance practices aligned to the highest market standards.",
+        "financialDocuments": "Financial Documents and Results",
+        "faq": "FAQ for Investors"
+    },
+    "esg": {
+        "title": "ESG and Sustainability",
+        "description": "Multiagro adopts advanced environmental, social, and governance management practices, integrating sustainability into all production and administrative processes."
+    },
+    "contact": {
+        "title": "Contact",
+        "description": "For investor inquiries, please use the form below or our dedicated channels."
+    },
+    "footer": {
+        "rights": "Multiagro S.A. | All rights reserved."
+    },
+    "language": {
+        "switch": "Switch Language"
+    }
+}
