@@ -120,7 +120,7 @@
             align-items: center;
         }
         .logo img {
-            height: 45px; /* Ajuste a altura conforme necessário */
+            height: 65px; /* Ajuste a altura conforme necessário */
             width: auto; /* Mantém a proporção */
         }
 
@@ -248,15 +248,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* Alinha itens ao topo */
             position: relative; /* Para o carrossel absoluto e o conteúdo */
-            min-height: 500px; /* Altura mínima para o carrossel */
+            min-height: 200px; /* Altura mínima aumentada para acomodar logo + carrossel */
+            background-color: var(--branco); /* Fundo para a seção hero, onde a logo ficará */
         }
 
         /* Mostra a seção ativa (Hero usa flex, outras usam block) */
         .hero-section.visible {
             display: flex;
-            overflow: hidden; /* Para o border-radius do carrossel */
         }
         /* Classe para ocultar a hero section em subpáginas via JavaScript */
         .hero-hidden-on-subpage {
@@ -264,6 +264,17 @@
         }
 
 
+        /* Nova área para o conteúdo principal da Hero (carrossel + texto) */
+        .hero-main-content-area {
+            position: relative;
+            width: 100%;
+            flex-grow: 1; /* Ocupa o espaço vertical restante */
+            display: flex; /* Para centralizar o hero-content-overlay se necessário */
+            flex-direction: column;
+            border-radius: 12px; /* Arredondamento que antes era do carrossel */
+            overflow: hidden; /* Para cortar o carrossel nos cantos arredondados */
+            min-height: 400px; /* Altura mínima para a área do carrossel */
+        }
         /* Carrossel de imagens da seção Hero */
         .hero-carousel {
             position: absolute;
@@ -273,7 +284,7 @@
             height: 100%;
             overflow: hidden;
             z-index: 0;
-            border-radius: 12px; /* Mantém o arredondamento da seção */
+            /* border-radius: 12px; */ /* Movido para .hero-main-content-area */
         }
         /* Container dos slides do carrossel */
         .carousel-slides {
@@ -328,17 +339,29 @@
         /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
         .hero-content-overlay {
             position: relative;
-            z-index: 2; /* Acima do carrossel e seu overlay */
-            padding: 4rem 2rem; /* Padding original da hero-section */
+            z-index: 1; /* Acima do hero-carousel dentro do hero-main-content-area */
+            padding: 2rem; /* Padding geral para o conteúdo de texto */
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Centraliza o conteúdo verticalmente */
             width: 100%;
+            height: 100%; /* Ocupa toda a altura do hero-main-content-area */
             box-sizing: border-box;
         }
         /* Garante que o conteúdo da hero section esteja visível quando a seção está visível */
         .hero-section.visible .hero-content-overlay {
              display: flex; /* Garante que o conteúdo flexível apareça */
+        }
+        /* Estilo para a logo principal na seção Hero */
+        .hero-logo-main {
+            max-width: 726px; /* Aumentado em 10% de 660px. Ajuste se necessário. */
+            height: auto;
+            margin-top: 1.5rem; /* Espaço acima da logo, abaixo do header */
+            margin-bottom: 1.5rem; /* Espaço entre a logo e o conteúdo de texto abaixo (H1) */
+            position: relative; /* Mantém no fluxo, z-index não é mais crítico aqui */
+            /* display: block; */ /* Imagens são inline por padrão, block pode ajudar com margens, mas flex container já cuida */
+            /* margin-left: auto; margin-right: auto; */ /* Já centralizado pelo align-items: center do .hero-section */
         }
         
         /* Título principal da seção Hero */
@@ -352,11 +375,12 @@
 
         /* Subtítulo da seção Hero */
         .hero-section p.subtitle {
-            font-size: 1.15rem; /* Ajustado */
+            font-size: 1.35rem; /* Ajustado */
             max-width: 750px;
             margin-bottom: 2rem;
-            font-weight: 300;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Sombra para legibilidade */
+            font-weight: 500;
+            color: var(--branco); /* Adicionado para garantir cor branca */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Sombra para legibilidade */
         }
         
         /* Botão Call-to-Action (CTA) na seção Hero */
@@ -879,60 +903,72 @@
     <main>
         <!-- Sección de Hero/Principal -->
         <!-- A classe 'hero-section' é a seção principal no topo da página -->
-        <section id="home" class="hero-section">
-            <div class="hero-carousel">
-                <div class="carousel-slides">
-                    <!-- Slides do carrossel com imagens e textos alternativos (alt) internacionalizados -->
-                    <div class="carousel-slide">
-                        <img src="https://agriq.com.br/wp-content/uploads/2023/04/Blog-AgriQ_Agroindustria_Creditos-Shutterstock.jpg" 
-                             alt="Campo de trigo al atardecer, representando la agroindustria moderna."
-                             data-alt-es="Campo de trigo al atardecer, representando la agroindustria moderna."
-                             data-alt-en="Wheat field at sunset, representing modern agro-industry."
-                             data-alt-pt="Campo de trigo ao pôr do sol, representando a agroindústria moderna.">
+        <section id="home" class="hero-section visible"> <!-- Adicionado 'visible' para garantir que apareça por padrão -->
+                <!-- Logo Colorida da Multiagro -->
+                <img src="images/logo.png" 
+                     alt="Logo Multiagro Colorida" 
+                     class="hero-logo-main"
+                     data-alt-es="Logo Multiagro Colorida"
+                     data-alt-en="Multiagro Colored Logo"
+                     data-alt-pt="Logo Multiagro Colorida">
+            
+            <!-- Nova área para o conteúdo principal da Hero (carrossel + texto) -->
+            <div class="hero-main-content-area">
+                <div class="hero-carousel">
+                    <div class="carousel-slides">
+                        <!-- Slides do carrossel com imagens e textos alternativos (alt) internacionalizados -->
+                        <div class="carousel-slide">
+                            <img src="https://agriq.com.br/wp-content/uploads/2023/04/Blog-AgriQ_Agroindustria_Creditos-Shutterstock.jpg" 
+                                 alt="Campo de trigo al atardecer, representando la agroindustria moderna."
+                                 data-alt-es="Campo de trigo al atardecer, representando la agroindustria moderna."
+                                 data-alt-en="Wheat field at sunset, representing modern agro-industry."
+                                 data-alt-pt="Campo de trigo ao pôr do sol, representando a agroindústria moderna.">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://dm0fehhuxv6f6.cloudfront.net/wp-content/uploads/2024/06/12165312/O-que-e-agroindustria-Entenda-o-conceito.png" 
+                                 alt="Vista aérea de finca agrícola productiva."
+                                 data-alt-es="Vista aérea de finca agrícola productiva."
+                                 data-alt-en="Aerial view of a productive agricultural farm."
+                                 data-alt-pt="Vista aérea de fazenda agrícola produtiva.">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://www.utphysicians.com/wp-content/uploads/2021/03/Super-foods-web-1024x683.jpg.webp" 
+                                 alt="Línea de producción de alimentos saludables, superalimentos."
+                                 data-alt-es="Línea de producción de alimentos saludables, superalimentos."
+                                 data-alt-en="Production line of healthy foods, superfoods."
+                                 data-alt-pt="Linha de produção de alimentos saudáveis, superalimentos.">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Semillas y granos, concepto de superalimentos."
+                                 data-alt-es="Semillas y granos, concepto de superalimentos."
+                                 data-alt-en="Seeds and grains, superfoods concept."
+                                 data-alt-pt="Sementes e grãos, conceito de superalimentos.">
+                        </div>
                     </div>
-                    <div class="carousel-slide">
-                        <img src="https://dm0fehhuxv6f6.cloudfront.net/wp-content/uploads/2024/06/12165312/O-que-e-agroindustria-Entenda-o-conceito.png" 
-                             alt="Vista aérea de finca agrícola productiva."
-                             data-alt-es="Vista aérea de finca agrícola productiva."
-                             data-alt-en="Aerial view of a productive agricultural farm."
-                             data-alt-pt="Vista aérea de fazenda agrícola produtiva.">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://www.utphysicians.com/wp-content/uploads/2021/03/Super-foods-web-1024x683.jpg.webp" 
-                             alt="Línea de producción de alimentos saludables, superalimentos."
-                             data-alt-es="Línea de producción de alimentos saludables, superalimentos."
-                             data-alt-en="Production line of healthy foods, superfoods."
-                             data-alt-pt="Linha de produção de alimentos saudáveis, superalimentos.">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" 
-                             alt="Semillas y granos, concepto de superalimentos."
-                             data-alt-es="Semillas y granos, concepto de superalimentos."
-                             data-alt-en="Seeds and grains, superfoods concept."
-                             data-alt-pt="Sementes e grãos, conceito de superalimentos.">
-                    </div>
+                    <!-- Botões de navegação do carrossel com aria-label internacionalizado -->
+                    <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
+                    <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
                 </div>
-                <!-- Botões de navegação do carrossel com aria-label internacionalizado -->
-                <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
-                <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
-            </div>
-            <div class="hero-content-overlay">
-                <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
-                <h1 data-lang-es="Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo"
-                    data-lang-en="Multiagro: Quality and Tradition in Grains from Paraguay to the World"
-                    data-lang-pt="Multiagro: Qualidade e Tradição em Grãos do Paraguai para o Mundo">
-                    Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo
-                </h1>
-                <p class="subtitle" 
-                   data-lang-es="Especialistas en el beneficiamiento, comercialización y exportación de granos y superalimentos, conectando la riqueza agrícola de Guajayvi con mercados globales exigentes."
-                   data-lang-en="Specialists in the processing, commercialization, and export of grains and superfoods, connecting the agricultural wealth of Guajayvi with demanding global markets."
-                   data-lang-pt="Especialistas no beneficiamento, comercialização e exportação de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.">
-                   Especialistas en el beneficiamiento, comercialización y exportación de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.
-                </p>
-                <!-- Botão CTA que navega para a seção de produtos -->
-                <a href="#productos" class="cta-btn" onclick="navigateToSection('productos'); return false;" data-lang-es="Conozca Nuestros Productos" data-lang-en="Discover Our Products" data-lang-pt="Conheça Nossos Produtos">
-                   Conozca Nuestros Productos
-                </a>
+                <div class="hero-content-overlay">
+                    <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
+                    <h1 data-lang-es="Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo"
+                        data-lang-en="Multiagro: Quality and Tradition in Grains from Paraguay to the World"
+
+                        data-lang-pt="Multiagro: Qualidade e Tradição em Grãos do Paraguai para o Mundo">
+                        Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo
+                    </h1>
+                    <p class="subtitle" 
+                       data-lang-es="Especialistas en el beneficiamiento, comercialización y exportación de granos y superalimentos, conectando la riqueza agrícola de Guajayvi con mercados globales exigentes."
+                       data-lang-en="Specialists in the processing, commercialization, and export of grains and superfoods, connecting the agricultural wealth of Guajayvi with demanding global markets."
+                       data-lang-pt="Especialistas no beneficiamento, comercialização e exportação de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.">
+                       Especialistas en el beneficiamiento, comercialización y exportación de granos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.
+                    </p>
+                    <!-- Botão CTA que navega para a seção de produtos -->
+                    <a href="#productos" class="cta-btn" onclick="navigateToSection('productos'); return false;" data-lang-es="Conozca Nuestros Productos" data-lang-en="Discover Our Products" data-lang-pt="Conheça Nossos Produtos">
+                       Conozca Nuestros Productos
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -1188,7 +1224,7 @@
             </div>
 
             <!-- Imagem ilustrativa de crescimento -->
-            <img class="ri-graphic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Positive_Growth_Chart.svg/700px-Positive_Growth_Chart.svg.png" 
+            <img class="ri-graphic" src="https://img.freepik.com/fotos-premium/conceito-de-analise-e-investimento-com-a-mao-do-empresario-tocando-a-tela-virtual-com-grafico-de-crescimento-do-mercado-de-acoes_670147-479.jpg" 
                  alt="Gráfico Ilustrativo de Crecimento e Estratégia de Negócios"
                  data-alt-es="Gráfico Ilustrativo de Crecimiento e Estrategia de Negocios"
                  data-alt-en="Illustrative Growth and Business Strategy Chart"
