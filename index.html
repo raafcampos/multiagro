@@ -112,10 +112,16 @@
 
         .logo {
             /* Estilos do logotipo */
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--branco);
+            /* font-size: 1.8rem; */ /* Removido pois agora é uma imagem */
+            /* font-weight: 700; */ /* Removido */
+            /* letter-spacing: 1px; */ /* Removido */
+            /* color: var(--branco); */ /* Removido */
+            display: flex; /* Para alinhar a imagem se necessário */
+            align-items: center;
+        }
+        .logo img {
+            height: 45px; /* Ajuste a altura conforme necessário */
+            width: auto; /* Mantém a proporção */
         }
 
         nav ul {
@@ -152,9 +158,9 @@
             /* Estilos dos botões de idioma */
             background: none;
             border: 1px solid var(--lilas-claro);
-            color: var(--lilas-claro);
+            color: var(--branco); /* Alterado para branco para melhor contraste inicial */
             padding: 0.3rem 0.6rem;
-            border-radius: 4px;
+            border-radius: 15px; /* Mais arredondado */
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
@@ -173,7 +179,7 @@
             background-image: linear-gradient(to bottom, hsl(220, 15%, 22%), hsl(220, 15%, 12%)); /* Gradiente sutil escuro */
             color: var(--lilas-claro);
             padding: 0.6rem 1.2rem; /* Padding para dar forma de botão */
-            border-radius: 6px; /* Bordas arredondadas */
+            border-radius: 25px; /* Efeito pílula */
             border-bottom: none; /* Remover a borda inferior padrão dos links de navegação */
             margin-left: 0.8rem; /* Manter algum espaçamento dos outros itens */
             box-shadow: 0 1px 3px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.08); /* Sombra externa e interna sutil */
@@ -199,6 +205,8 @@
             border: none;
             color: var(--branco);
             cursor: pointer;
+            padding: 0.3rem 0.5rem; /* Adicionado padding */
+            border-radius: 8px; /* Levemente arredondado */
         }
 
         main {
@@ -746,11 +754,13 @@
                 width: 80%; /* Aumentado */
                 max-width: 320px; /* Máximo */
                 height: 100vh;
-                background-color: var(--verde-principal);
+                background-color: var(--verde-escuro); /* Um pouco mais escuro para contraste com itens */
                 padding-top: 5rem; /* Aumentado espaço */
                 transition: left 0.4s ease-in-out;
                 box-shadow: 5px 0 15px rgba(0,0,0,0.2);
                 z-index: 999;
+                border-top-right-radius: 25px; /* Canto superior direito arredondado */
+                border-bottom-right-radius: 25px; /* Canto inferior direito arredondado */
             }
             /* Quando o menu mobile está ativo (aberto) */
             nav ul.active {
@@ -758,20 +768,24 @@
                 left: 0; 
             }
             nav li {
-                width: 100%;
+                width: calc(100% - 2rem); /* Ajustar largura para acomodar margens */
+                margin: 0.3rem 1rem; /* Adicionar margem para espaçar e mostrar o arredondamento */
             }
             /* Links dentro do menu mobile */
             nav a {
                 display: block;
-                padding: 1rem 1.5rem; /* Padding ajustado */
+                padding: 0.8rem 1.5rem; /* Padding ajustado */
                 margin: 0;
                 font-size: 1rem;
-                border-bottom: 1px solid var(--verde-escuro);
+                /* border-bottom: 1px solid var(--verde-escuro); */ /* Removida borda inferior */
                 width: 100%;
+                border-radius: 10px; /* Arredondar os links */
+                color: var(--lilas-claro); /* Cor do texto dos links */
             }
             nav a:hover, nav a.active {
-                background-color: var(--verde-escuro);
-                border-bottom-color: var(--lilas-principal);
+                background-color: var(--verde-principal); /* Fundo no hover/active */
+                color: var(--branco); /* Texto branco no hover/active */
+                /* border-bottom-color: var(--lilas-principal); */ /* Removido */
             }
             /* Seletor de idioma no menu mobile */
             .language-switcher {
@@ -784,20 +798,21 @@
                 /* Resetar para o estilo padrão dos links no menu mobile */
                 background-image: none;
                 background-color: transparent; 
-                color: var(--branco); 
-                padding: 1rem 1.5rem; 
+                color: var(--lilas-claro); /* Cor inicial do link de investidor */
+                padding: 0.8rem 1.5rem; 
                 border-radius: 0;
                 box-shadow: none;
                 margin-left: 0; 
-                border-bottom: 1px solid var(--verde-escuro); 
+                /* border-bottom: 1px solid var(--verde-escuro); */ /* Removida borda */
                 transform: none; 
+                border-radius: 10px; /* Arredondar como os outros links */
             }
 
             nav ul li a.nav-link-investor:hover,
             nav ul li a.nav-link-investor.active {
-                background-color: var(--verde-escuro); 
-                border-bottom-color: var(--lilas-principal); 
-                color: var(--lilas-claro); 
+                background-color: var(--verde-principal); /* Fundo no hover/active */
+                /* border-bottom-color: var(--lilas-principal); */ /* Removido */
+                color: var(--branco); /* Texto branco no hover/active */
             }
         }
 
@@ -805,7 +820,7 @@
         @media (max-width: 768px) {
             header { padding: 1rem; }
             .logo { font-size: 1.6rem; }
-            main {
+            .logo img { height: 40px; } /* Ajuste da altura do logo para telas menores */            main {
                 margin: 1rem auto;
                 padding: 1.5rem 1rem; /* Padding ajustado */
             }
@@ -821,10 +836,10 @@
         /* Para celulares em retrato */
         @media (max-width: 480px) {
             .logo { font-size: 1.4rem; }
+            .logo img { height: 35px; } /* Ajuste da altura do logo para celulares */
             .hero-section h1 { font-size: 1.8rem; }
             .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; }
             .product-card img { width: 100px; height: 100px;}
-            .product-card h4 { font-size: 1.1rem;}
         }
     </style>
 </head>
@@ -832,7 +847,9 @@
     <header>
         <!-- Conteúdo do Cabeçalho: Logo, Navegação, Seletor de Idioma, Botão de Menu Mobile -->
         <div class="header-content">
-            <div class="logo">Multiagro</div>
+            <div class="logo">
+                <img src="images/ChatGPT Image 29 de mai. de 2025, 12_41_09-2.png" alt="Logotipo Multiagro">
+            </div>
             <nav>
                 <ul id="nav-links">
                     <li><a href="#home" class="active nav-link" data-lang-es="Inicio" data-lang-en="Home" data-lang-pt="Início">Inicio</a></li>
@@ -867,21 +884,21 @@
                 <div class="carousel-slides">
                     <!-- Slides do carrossel com imagens e textos alternativos (alt) internacionalizados -->
                     <div class="carousel-slide">
-                        <img src="https://www.google.com/maps/place/Multiagro+Agrícola+S.A./@-24.4945933,-56.4075449,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIDLroKPVg!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nrLwTy9rhvir9vap1f4VmIQVsii7pNtgd1ojI8Ib2xUDSQkxlN1cJFMdB8VAo4M4X9ffGaaZJXofXm3RY5QrF-mMwqpZIN7n3aozgE4894X0aim02qhibS0ghxBq6zbUzPfdo7w%3Dw203-h152-k-no!7i8000!8i6000!4m11!1m3!11m2!2seBCNJAtlSnjfI4h2ZOpdgVzM5npKxg!3e3!3m6!1s0x945e27a76c7e4a95:0x7b493881be9488c5!8m2!3d-24.4946695!4d-56.4087235!10e5!16s%2Fg%2F11vyzx8dqb?entry=ttu&g_ep=EgoyMDI1MDUyNi4wIKXMDSoASAFQAw%3D%3D" 
+                        <img src="https://agriq.com.br/wp-content/uploads/2023/04/Blog-AgriQ_Agroindustria_Creditos-Shutterstock.jpg" 
                              alt="Campo de trigo al atardecer, representando la agroindustria moderna."
                              data-alt-es="Campo de trigo al atardecer, representando la agroindustria moderna."
                              data-alt-en="Wheat field at sunset, representing modern agro-industry."
                              data-alt-pt="Campo de trigo ao pôr do sol, representando a agroindústria moderna.">
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://www.google.com/maps/place/Multiagro+Agrícola+S.A./@-24.4945933,-56.4075449,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIDLrsKE3wE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nrm_nrXFcx37CivzCm7a8XoxOLaq3bqCH7xmrdH5S0KIoc8cLoeXq2z-C8TItZfju9sWugn_pr74laPdioioPN78CoTIBC8p1AeDU5M-Z4d75lSRA90IEwcvg8Q5ebKSkeajli3%3Dw114-h86-k-no!7i8000!8i6000!4m11!1m3!11m2!2seBCNJAtlSnjfI4h2ZOpdgVzM5npKxg!3e3!3m6!1s0x945e27a76c7e4a95:0x7b493881be9488c5!8m2!3d-24.4946695!4d-56.4087235!10e5!16s%2Fg%2F11vyzx8dqb?entry=ttu&g_ep=EgoyMDI1MDUyNi4wIKXMDSoASAFQAw%3D%3D" 
+                        <img src="https://dm0fehhuxv6f6.cloudfront.net/wp-content/uploads/2024/06/12165312/O-que-e-agroindustria-Entenda-o-conceito.png" 
                              alt="Vista aérea de finca agrícola productiva."
                              data-alt-es="Vista aérea de finca agrícola productiva."
                              data-alt-en="Aerial view of a productive agricultural farm."
                              data-alt-pt="Vista aérea de fazenda agrícola produtiva.">
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=1200&q=80" 
+                        <img src="https://www.utphysicians.com/wp-content/uploads/2021/03/Super-foods-web-1024x683.jpg.webp" 
                              alt="Línea de producción de alimentos saludables, superalimentos."
                              data-alt-es="Línea de producción de alimentos saludables, superalimentos."
                              data-alt-en="Production line of healthy foods, superfoods."
@@ -1167,10 +1184,6 @@
                    data-lang-pt="A Multiagro S.A. orgulha-se de fazer parte da Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Esta presença destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferece aos investidores uma plataforma sólida e regulamentada para participar do futuro da agroindústria paraguaia.">
                    Multiagro S.A. se enorgullece de formar parte de la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Esta presença subraya nuestro compromisso com a transparência, las melhores práticas de gobernanza corporativa e oferece aos investidores uma plataforma sólida e regulada para participar no futuro da agroindústria paraguaia.
                 </p>
-                <p>
-                    <strong data-lang-es="Ticker/Símbolo de Negociación:" data-lang-en="Ticker/Trading Symbol:" data-lang-pt="Ticker/Símbolo de Negociação:">Ticker/Símbolo de Negociación:</strong> <span data-lang-es="MAGRO (Ejemplo)" data-lang-en="MAGRO (Example)" data-lang-pt="MAGRO (Exemplo)">MAGRO (Ejemplo)</span><br>
-                    <em data-lang-es="(Por favor, confirme el ticker oficial)" data-lang-en="(Please confirm official ticker)" data-lang-pt="(Por favor, confirme o ticker oficial)"></em>
-                </p>
                 <p><a href="https://www.bolsaasu.com.py/" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para mais informações</a></p>
             </div>
 
@@ -1418,7 +1431,7 @@
                 script.async = true;
                 script.innerHTML = JSON.stringify({
                     "symbols": [ { "description": "ITAU", "proName": "BVPASA:ITAU" }, { "description": "BASA", "proName": "BVPASA:BASA" }, { "description": "ATLA", "proName": "BVPASA:ATLA" }, { "description": "VISION", "proName": "BVPASA:VISI" }, { "description": "FRIGOM", "proName": "BVPASA:FRIGOM" }, { "description": "TELECEL", "proName": "BVPASA:TLCLP" }, { "description": "CACONCE", "proName": "BVPASA:CACON" }, { "description": "FRIGOCHI", "proName": "BVPASA:FRICC" }, { "description": "GNB", "proName": "BVPASA:GNB" }, { "description": "SUDAMERIS", "proName": "BVPASA:SUDAP" } ],
-                    "showSymbolLogo": true, "colorTheme": "dark", "isTransparent": false, "displayMode": "adaptive", "locale": tvLocale
+                    "showSymbolLogo": true, "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": tvLocale
                 });
                 widgetContainer.appendChild(script);
             }
