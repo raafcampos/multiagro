@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Font Awesome para ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <style>
         /* Definição de variáveis CSS (Custom Properties) para o tema do site */
         :root {
@@ -980,58 +983,8 @@
                     data-lang-pt="Presença Global da Multiagro">
                     Presencia Global de Multiagro
                 </h3>
-                <div style="position:relative;">
-                    <img src="https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/worldmap_background.png"
-                         alt="Mapa Mundi"
-                         style="width:100%;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.07);filter: grayscale(0.3);">
-                    <svg viewBox="0 0 1200 600" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;">
-                        <!-- Paraguai destacado em verde -->
-                        <circle cx="390" cy="510" r="14" fill="#1e824c" stroke="#fff" stroke-width="3">
-                            <title>Paraguay</title>
-                        </circle>
-                        <!-- Outros países de destino destacados em lilás -->
-                        <!-- México -->
-                        <circle cx="120" cy="320" r="11" fill="#8e44ad">
-                            <title>México</title>
-                        </circle>
-                        <!-- Colômbia -->
-                        <circle cx="210" cy="400" r="10" fill="#8e44ad">
-                            <title>Colombia</title>
-                        </circle>
-                        <!-- Bolívia -->
-                        <circle cx="340" cy="500" r="10" fill="#8e44ad">
-                            <title>Bolivia</title>
-                        </circle>
-                        <!-- Brasil -->
-                        <circle cx="440" cy="520" r="13" fill="#8e44ad">
-                            <title>Brasil</title>
-                        </circle>
-                        <!-- Argentina -->
-                        <circle cx="400" cy="570" r="12" fill="#8e44ad">
-                            <title>Argentina</title>
-                        </circle>
-                        <!-- EUA -->
-                        <circle cx="200" cy="180" r="13" fill="#8e44ad">
-                            <title>Estados Unidos</title>
-                        </circle>
-                        <!-- China -->
-    <circle cx="950" cy="270" r="13" fill="#8e44ad">
-      <title>China</title>
-    </circle>
-    <!-- Portugal -->
-    <circle cx="520" cy="220" r="10" fill="#8e44ad">
-      <title>Portugal</title>
-    </circle>
-    <!-- Espanha -->
-    <circle cx="540" cy="230" r="10" fill="#8e44ad">
-      <title>España</title>
-    </circle>
-    <!-- França -->
-    <circle cx="570" cy="210" r="10" fill="#8e44ad">
-      <title>França</title>
-    </circle>
-                    </svg>
-                </div>
+                <!-- Contêiner para o mapa Leaflet -->
+                <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);"></div>
                 <p style="text-align:center;margin-top:1rem;font-size:0.98rem;color:#555;"
                    data-lang-es="Exportamos a: México, Colombia, Bolivia, Brasil, Argentina, Estados Unidos, China, Portugal, España, Francia."
                    data-lang-en="We export to: Mexico, Colombia, Bolivia, Brazil, Argentina, USA, China, Portugal, Spain, France."
@@ -1383,6 +1336,9 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+       crossorigin=""></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Seletores de elementos do DOM
@@ -1612,6 +1568,67 @@
                 setLanguage(currentLang); // Aplicar idioma salvo/padrão
                 refreshViewForCurrentHash();
                 // updateTradingViewWidget(currentLang); // setLanguage already calls it
+                if (document.getElementById('mapid') && typeof L !== 'undefined') { // Garante que o elemento do mapa existe e Leaflet está carregado
+                    initLeafletMap();
+                }
+            }
+
+            // --- Leaflet Map Initialization ---
+            let mapInstance = null; // Para manter referência ao mapa e poder removê-lo se necessário
+
+            function initLeafletMap() {
+                if (mapInstance) {
+                    mapInstance.remove(); // Remove o mapa anterior para evitar duplicação
+                    mapInstance = null;
+                }
+
+                // Inicializa o mapa sem setView, pois fitBounds cuidará disso
+                mapInstance = L.map('mapid'); 
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(mapInstance);
+
+                const countries = [
+                    { nameEs: 'Paraguay', nameEn: 'Paraguay', namePt: 'Paraguai', lat: -23.4425, lng: -58.4438, color: 'green', radius: 10 },
+                    { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, color: '#8e44ad', radius: 7 },
+                    { nameEs: 'Colombia', nameEn: 'Colombia', namePt: 'Colômbia', lat: 4.5709, lng: -74.2973, color: '#8e44ad', radius: 7 },
+                    { nameEs: 'Bolivia', nameEn: 'Bolivia', namePt: 'Bolívia', lat: -16.2902, lng: -63.5887, color: '#8e44ad', radius: 7 },
+                    { nameEs: 'Brasil', nameEn: 'Brazil', namePt: 'Brasil', lat: -14.2350, lng: -51.9253, color: '#8e44ad', radius: 8 },
+                    { nameEs: 'Argentina', nameEn: 'Argentina', namePt: 'Argentina', lat: -38.4161, lng: -63.6167, color: '#8e44ad', radius: 8 },
+                    { nameEs: 'Estados Unidos', nameEn: 'United States', namePt: 'Estados Unidos', lat: 37.0902, lng: -95.7129, color: '#8e44ad', radius: 8 },
+                    { nameEs: 'China', nameEn: 'China', namePt: 'China', lat: 35.8617, lng: 104.1954, color: '#8e44ad', radius: 8 },
+                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, color: '#8e44ad', radius: 7 },
+                    { nameEs: 'España', nameEn: 'Spain', namePt: 'Espanha', lat: 40.4637, lng: -3.7492, color: '#8e44ad', radius: 7 },
+                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, color: '#8e44ad', radius: 7 }
+                ];
+
+                const markersArray = []; // Array para armazenar os marcadores
+
+                countries.forEach(country => {
+                    let popupName = country.nameEs; // Padrão para espanhol
+                    if (currentLang === 'en') popupName = country.nameEn;
+                    else if (currentLang === 'pt') popupName = country.namePt;
+
+                    const circle = L.circleMarker([country.lat, country.lng], {
+                        color: country.color === 'green' ? '#1e824c' : country.color,
+                        fillColor: country.color === 'green' ? '#1e824c' : country.color,
+                        fillOpacity: 0.7,
+                        radius: country.radius,
+                        weight: country.color === 'green' ? 3 : 1,
+                        stroke: true
+                    })
+                    .addTo(mapInstance)
+                    .bindPopup(popupName);
+                    markersArray.push(circle);
+                });
+
+                if (markersArray.length > 0) {
+                    const group = new L.featureGroup(markersArray);
+                    mapInstance.fitBounds(group.getBounds().pad(0.1)); // pad(0.1) adiciona 10% de margem
+                } else {
+                    // Fallback se não houver marcadores, centraliza de forma genérica
+                    mapInstance.setView([-15, -50], 3); 
+                }
             }
             loadInitialViewRevised();
 
