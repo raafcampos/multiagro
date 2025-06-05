@@ -866,6 +866,169 @@
             .product-card img { width: 100px; height: 100px;}
         }
     </style>
+    <!-- Estilos Adicionais para Botões de Perguntas Pré-definidas no Chat -->
+    <style>
+        .predefined-question-button {
+            background-color: var(--lilas-claro);
+            color: var(--lilas-escuro);
+            border: 1px solid var(--lilas-principal);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .predefined-question-button:hover {
+            background-color: hsl(270, 60%, 90%);
+        }
+    </style>
+    <style>
+        /* Chat Widget Styles */
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001; /* Above header */
+        }
+
+        #chat-toggle-button {
+            background-color: var(--verde-principal);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #chat-toggle-button:hover {
+            background-color: var(--verde-escuro);
+            transform: scale(1.1);
+        }
+
+        #chat-window {
+            width: 350px;
+            max-height: 500px;
+            background-color: var(--branco);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex; /* Initially none, controlled by JS */
+            flex-direction: column;
+            overflow: hidden;
+            position: absolute;
+            bottom: 80px; /* Above the toggle button */
+            right: 0;
+        }
+
+        #chat-header {
+            background-color: var(--verde-principal);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chat-close-window-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: var(--cinza-fundo);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .chat-message.user {
+            background-color: var(--lilas-principal);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-message.bot {
+            background-color: #e9e9eb; /* Um cinza claro neutro */
+            color: var(--cinza-texto);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-message .timestamp {
+            font-size: 0.75em;
+            display: block;
+            margin-top: 5px;
+            text-align: right;
+        }
+        .chat-message.bot .timestamp {
+            color: rgba(0,0,0,0.5); 
+        }
+        .chat-message.user .timestamp {
+            color: rgba(255,255,255,0.7);
+        }
+
+        #chat-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background-color: var(--branco);
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        #chat-input:focus {
+            outline: none;
+            border-color: var(--verde-principal);
+            box-shadow: 0 0 0 2px var(--verde-claro);
+        }
+
+        #chat-send-button {
+            background-color: var(--verde-principal);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        #chat-send-button:hover {
+            background-color: var(--verde-escuro);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -1387,6 +1550,25 @@
         </div>
     </footer>
 
+    <!-- Chatbot Widget HTML -->
+    <div id="chat-widget-container">
+        <button id="chat-toggle-button" aria-label="Abrir chat">
+            <span class="chat-icon">💬</span>
+            <span class="chat-close-icon" style="display:none;">✕</span>
+        </button>
+        <div id="chat-window" style="display:none;">
+            <div id="chat-header">
+                Chat Multiagro
+                <button id="chat-close-window-button" aria-label="Fechar chat">✕</button>
+            </div>
+            <div id="chat-messages"></div>
+            <div id="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Digite sua dúvida...">
+                <button id="chat-send-button">Enviar</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
        crossorigin=""></script>
@@ -1778,6 +1960,157 @@
                 startAutoPlay();
             }
         });
+        
+        // Simulated Chatbot Logic
+        const chatToggleButton = document.getElementById('chat-toggle-button');
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessagesContainer = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSendButton = document.getElementById('chat-send-button');
+        const chatCloseWindowButton = document.getElementById('chat-close-window-button');
+        const chatIcon = chatToggleButton.querySelector('.chat-icon');
+        const chatCloseIcon = chatToggleButton.querySelector('.chat-close-icon');
+
+        let isChatOpen = false; // Inicia como falso, será aberto programaticamente
+
+        const predefinedQAs = [
+            { id: 'products', questionText: "Quais são seus produtos?", botResponse: "Nossos principais produtos são Chía, Feijão (Frijol), Gergelim (Sésamo) e Milho (Maíz). Você pode encontrar mais detalhes na seção 'Productos' do nosso site!" },
+            { id: 'contact', questionText: "Como posso entrar em contato?", botResponse: "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em inversionistas@multiagro.com.py." },
+            { id: 'about', questionText: "Mais sobre a Multiagro", botResponse: "A Multiagro é uma empresa de Guajayvi, Paraguai, dedicada ao beneficiamento, comercialização e exportação de grãos, com foco em qualidade e superalimentos. Saiba mais na seção 'Nosotros'!" },
+            { id: 'investors', questionText: "Informações para Investidores", botResponse: "Informações para investidores estão disponíveis na seção 'Inversionistas'. Lá você encontrará detalhes sobre nossas oportunidades e como entrar em contato com nossa área de RI." }
+        ];
+
+        function removePredefinedQuestions() {
+            const containerToRemove = document.getElementById('predefined-questions-container');
+            if (containerToRemove) {
+                containerToRemove.remove();
+            }
+        }
+
+        function toggleChatWindow() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatWindow.style.display = 'flex';
+                chatIcon.style.display = 'none';
+                chatCloseIcon.style.display = 'inline';
+                chatToggleButton.setAttribute('aria-label', 'Fechar chat');
+                if (chatMessagesContainer.children.length === 0) { 
+                    addBotMessage("Olá! 👋 Sou o assistente virtual da Multiagro. Como posso ajudar você hoje?");
+                    displayPredefinedQuestions();
+                }
+            } else {
+                chatWindow.style.display = 'none';
+                chatIcon.style.display = 'inline';
+                chatCloseIcon.style.display = 'none';
+                chatToggleButton.setAttribute('aria-label', 'Abrir chat');
+                removePredefinedQuestions(); // Mover para cá: remover perguntas apenas ao fechar o chat
+            }
+        }
+
+        if (chatToggleButton) chatToggleButton.addEventListener('click', toggleChatWindow);
+        if (chatCloseWindowButton) chatCloseWindowButton.addEventListener('click', toggleChatWindow);
+
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', sender);
+            
+            const messageText = document.createElement('span');
+            messageText.textContent = message; // Use textContent to prevent XSS
+            messageDiv.appendChild(messageText);
+
+            const timestampSpan = document.createElement('span');
+            timestampSpan.classList.add('timestamp');
+            timestampSpan.textContent = getCurrentTime();
+            messageDiv.appendChild(timestampSpan);
+            
+            chatMessagesContainer.appendChild(messageDiv);
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function addBotMessage(message) {
+            addMessageToChat(message, 'bot');
+        }
+
+        function addUserMessage(message) {
+            addMessageToChat(message, 'user');
+        }
+
+        function displayPredefinedQuestions() {
+            // Remove qualquer conjunto anterior de perguntas para evitar duplicatas
+            removePredefinedQuestions();
+
+            const questionsContainer = document.createElement('div');
+            questionsContainer.id = 'predefined-questions-container';
+            questionsContainer.style.padding = '5px 0px 10px 0px'; // Ajuste no padding
+            questionsContainer.style.display = 'flex';
+            questionsContainer.style.flexDirection = 'column';
+            questionsContainer.style.gap = '8px';
+
+            predefinedQAs.forEach(qa => {
+                const button = document.createElement('button');
+                button.textContent = qa.questionText;
+                button.classList.add('predefined-question-button'); // Classe para estilização CSS
+
+                button.addEventListener('click', () => {
+                    addUserMessage(qa.questionText); 
+                    addBotMessage(qa.botResponse);   
+                    removePredefinedQuestions(); // Remove os botões após um ser clicado
+                });
+                questionsContainer.appendChild(button);
+            });
+            // Adiciona o container de perguntas após a última mensagem (que deve ser a de boas-vindas do bot)
+            chatMessagesContainer.appendChild(questionsContainer);
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function getSimulatedBotResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            if (lowerMessage.includes("olá") || lowerMessage.includes("oi") || lowerMessage.includes("bom dia") || lowerMessage.includes("boa tarde") || lowerMessage.includes("boa noite")) {
+                return "Olá! Como posso ajudar você hoje com informações sobre a Multiagro?";
+            } else if (lowerMessage.includes("produtos") || lowerMessage.includes("grãos") || lowerMessage.includes("o que vocês vendem")) {
+                return "Nossos principais produtos são Chía, Feijão (Frijol), Gergelim (Sésamo) e Milho (Maíz). Você pode encontrar mais detalhes na seção 'Productos' do nosso site!";
+            } else if (lowerMessage.includes("contato") || lowerMessage.includes("falar com") || lowerMessage.includes("telefone")) {
+                return "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em inversionistas@multiagro.com.py.";
+            } else if (lowerMessage.includes("obrigado") || lowerMessage.includes("valeu")) {
+                return "De nada! Se precisar de mais alguma coisa, é só perguntar. 😊";
+            } else if (lowerMessage.includes("história") || lowerMessage.includes("sobre nós") || lowerMessage.includes("quem são vocês")) {
+                return "A Multiagro é uma empresa de Guajayvi, Paraguai, dedicada ao beneficiamento, comercialização e exportação de grãos, com foco em qualidade e superalimentos. Saiba mais na seção 'Nosotros'!";
+            } else if (lowerMessage.includes("investidores") || lowerMessage.includes("investir")) {
+                return "Informações para investidores estão disponíveis na seção 'Inversionistas'. Lá você encontrará detalhes sobre nossas oportunidades e como entrar em contato com nossa área de RI.";
+            } else {
+                return "Desculpe, não entendi bem sua pergunta. Poderia reformular ou perguntar sobre nossos produtos, contato, ou sobre a Multiagro em geral?";
+            }
+        }
+
+        function handleSendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addUserMessage(message);
+                removePredefinedQuestions(); // Remove botões de pergunta se o usuário digitar algo
+                chatInput.value = ''; 
+
+                setTimeout(() => {
+                    const botResponse = getSimulatedBotResponse(message);
+                    addBotMessage(botResponse);
+                }, 1000 + Math.random() * 1000);
+            }
+        }
+
+        if (chatSendButton) chatSendButton.addEventListener('click', handleSendMessage);
+        if (chatInput) chatInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+
+        // Auto-open chat window on page load
+        if (chatToggleButton && chatWindow) {
+            toggleChatWindow(); // Abre o chat
+        }
     </script>
 </body>
 </html>
