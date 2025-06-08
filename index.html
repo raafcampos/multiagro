@@ -275,14 +275,37 @@
         .hero-main-content-area {
             position: relative;
             width: 100%;
-            flex-grow: 1; /* Ocupa o espaço vertical restante */
-            display: flex; /* Para centralizar o hero-content-overlay se necessário */
-            flex-direction: column;
-            border-radius: 12px; /* Arredondamento que antes era do carrossel */
+            /* max-width: 900px; */ /* Removido ou ajustado para permitir maior largura, ex: max-width: 100%; ou um valor maior */
+            margin: 0 auto 2rem auto; /* Centralizado e com margem inferior */
+            border-radius: 12px;
             overflow: hidden; /* Para cortar o carrossel nos cantos arredondados */
+
             min-height: 400px; /* Altura mínima para a área do carrossel */
         }
         /* Carrossel de imagens da seção Hero */
+        .hero-static-image { /* Nova classe para a imagem estática da hero section */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0; /* Atrás do overlay e do conteúdo */
+        }
+
+        .hero-main-content-area::after { /* Overlay escuro para contraste do texto, aplicado ao contêiner */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1; /* Acima da imagem estática, abaixo do hero-content-overlay */
+            border-radius: 12px; /* Para acompanhar o border-radius do pai */
+        }
+
+        /* REMOVIDO: .hero-carousel e seus estilos relacionados */
         .hero-carousel {
             position: absolute;
             top: 0;
@@ -291,7 +314,6 @@
             height: 100%;
             overflow: hidden;
             z-index: 0;
-            /* border-radius: 12px; */ /* Movido para .hero-main-content-area */
         }
         /* Container dos slides do carrossel */
         .carousel-slides {
@@ -333,7 +355,7 @@
             padding: 0.8rem 1rem;
             font-size: 1.5rem;
             cursor: pointer;
-            z-index: 3; /* Acima do slide e overlay */
+            z-index: 3; /* Acima da imagem estática e do overlay ::after */
             border-radius: 50%;
             transition: background-color 0.3s ease;
         }
@@ -343,12 +365,13 @@
             background-color: rgba(255, 255, 255, 0.4);
         }
         
-        /* Legenda do produto em cada slide do carrossel hero */
+        /* REMOVIDO: .slide-product-caption - não há mais slides individuais com legendas assim */
         .slide-product-caption {
             position: absolute;
             bottom: 25px;
             left: 25px;
-            z-index: 2; /* Acima da imagem e do overlay ::after */
+            /* z-index: 2; */ /* Ajustado para z-index: 3 se for sobrepor o overlay ::after */
+            z-index: 3; 
             color: var(--branco);
             background-color: rgba(0, 0, 0, 0.55); /* Fundo semi-transparente para a legenda */
             padding: 0.6rem 1rem;
@@ -366,7 +389,7 @@
         /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
         .hero-content-overlay {
             position: relative;
-            z-index: 1; /* Acima do hero-carousel dentro do hero-main-content-area */
+            z-index: 2; /* Acima do overlay ::after, abaixo dos botões de navegação se existissem */
             padding: 2rem; /* Padding geral para o conteúdo de texto */
             display: flex;
             flex-direction: column;
@@ -426,88 +449,36 @@
             color: var(--lilas-escuro);
         }
 
-        /* Card individual de produto */
-        .product-card { /* Renomeado de superfood-card */
-            background-color: var(--lilas-claro);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--sombra-leve);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--sombra);
-        }
-        /* Estilos para as imagens dos produtos */
-        .product-card img { 
-            width: 120px;
-            height: 120px;
-            object-fit: cover; /* Reativado para bom encaixe da imagem */
-            border-radius: 50%;
-            margin: 0 auto 1rem auto; /* Centralizado */
-            border: 4px solid var(--verde-principal); 
-        }
-        /* Remover ou comentar estilos dos ícones */
-        /* Removed empty ruleset for .product-card i */
-        .product-card h4 {
-            color: var(--lilas-escuro);
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem; /* Ajustado */
-        }
-        .product-card p {
-            font-size: 0.9rem;
-            color: var(--cinza-texto);
-            flex-grow: 1; /* Para que os cards tenham altura similar */
-        }
+        /* REMOVIDO: .product-card e seus estilos, pois eram usados pelas miniaturas que foram removidas */
 
-        /* Estilos para o Carrossel de Produtos */
-        .product-carousel-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 2rem;
-            margin-bottom: 2.5rem; /* Espaço antes do mapa */
-        }
-
-        .product-display-area {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            padding: 1rem;
-            background-color: var(--branco); /* Fundo para destaque */
-            border-radius: 10px;
-            box-shadow: var(--sombra-leve);
-            max-width: 700px; /* Limita a largura da área de display */
+        /* Novo container para a imagem estática de produtos */
+        .product-static-image-container {
             width: 100%;
-        }
-
-        #display-product-img {
-            max-width: 100%;
-            width: 350px; /* Tamanho da imagem em destaque */
-            height: 350px;
-            object-fit: cover;
+            max-width: 700px; /* Ou o tamanho desejado */
+            margin: 2rem auto; /* Centralizar */
             border-radius: 10px;
-            margin-bottom: 1.5rem;
-            border: 5px solid var(--verde-principal);
+            overflow: hidden;
             box-shadow: var(--sombra-leve);
         }
-
-        #display-product-title {
-            font-size: 2rem; /* Aumentado para destaque */
-            color: var(--verde-escuro);
-            margin-bottom: 0.75rem;
-            font-weight: 600;
+        .product-static-image-container img {
+            width: 100%;
+            height: auto; /* Manter proporção */
+            display: block;
+            object-fit: cover; /* Ou contain, dependendo da imagem */
         }
 
-        #display-product-desc {
-            font-size: 1.05rem; /* Levemente aumentado */
-            color: var(--cinza-texto);
-            line-height: 1.6;
-        }
+        /* REMOVIDO: .product-carousel-container e seus estilos específicos para carrossel */
+        /* .product-carousel-container {
+            margin-top: 2rem;
+            margin-bottom: 2.5rem; 
+            position: relative; 
+            width: 100%;
+            border-radius: 12px; 
+            overflow: hidden; 
+            min-height: 400px; 
+        } */
 
+        /* REMOVIDO: .product-thumbnail-nav e seus estilos, pois as miniaturas foram removidas */
         .product-thumbnail-nav {
             display: flex;
             flex-wrap: wrap;
@@ -517,41 +488,6 @@
             max-width: 900px; /* Limita a largura da navegação de miniaturas */
             width: 100%;
         }
-
-        .product-thumbnail-nav .product-card { /* Estilos para os cards quando são miniaturas */
-            cursor: pointer;
-            width: 160px; /* Largura da miniatura */
-            padding: 0.8rem;
-            border: 3px solid transparent; /* Borda para o estado ativo */
-            background-color: var(--lilas-claro); /* Fundo sutil para miniaturas */
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        }
-        .product-thumbnail-nav .product-card:hover {
-            transform: translateY(-3px); /* Leve elevação no hover */
-            box-shadow: var(--sombra);
-        }
-
-        .product-thumbnail-nav .product-card img {
-            width: 80px; /* Tamanho da imagem na miniatura */
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 0.5rem;
-            border: 3px solid var(--verde-claro);
-        }
-
-        .product-thumbnail-nav .product-card h4 {
-            font-size: 0.95rem; /* Tamanho do título na miniatura */
-            margin-bottom: 0.3rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        .product-thumbnail-nav .product-card p {
-            display: none; /* Ocultar descrição na miniatura */
-        }
-
         .product-thumbnail-nav .product-card.active-thumbnail {
             border-color: var(--lilas-principal);
             box-shadow: 0 0 12px rgba(128, 0, 128, 0.5); /* Sombra lilás mais pronunciada */
@@ -990,7 +926,7 @@
             .hero-section h1 { font-size: 1.8rem; }
             .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; }
             .product-card img { width: 100px; height: 100px;}
-        }
+        } 
     </style>
     <!-- Estilos Adicionais para Botões de Perguntas Pré-definidas no Chat -->
     <style>
@@ -1205,63 +1141,15 @@
             
             <!-- Nova área para o conteúdo principal da Hero (carrossel + texto) -->
             <div class="hero-main-content-area">
-                <div class="hero-carousel">
-                    <div class="carousel-slides">
-                        <!-- Slides do carrossel com imagens e textos alternativos (alt) internacionalizados -->
-                        <div class="carousel-slide">
-                            <img src="images/chia.png" 
-                                 alt="Sementes de Chía em destaque"
-                                 data-alt-es="Sementes de Chía em destaque"
-                                 data-alt-en="Chia Seeds featured"
-                                 data-alt-pt="Sementes de Chia em destaque">
-                            <div class="slide-product-caption">
-                                <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/mung.png" 
-                                 alt="Grãos de Feijão Mungo em destaque"
-                                 data-alt-es="Grãos de Frijol Mungo em destaque"
-                                 data-alt-en="Mung Beans featured"
-                                 data-alt-pt="Grãos de Feijão Mungo em destaque">
-                            <div class="slide-product-caption">
-                                <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/sesame.png" 
-                                 alt="Sementes de Gergelim em destaque"
-                                 data-alt-es="Sementes de Sésamo em destaque"
-                                 data-alt-en="Sesame Seeds featured"
-                                 data-alt-pt="Sementes de Gergelim em destaque">
-                            <div class="slide-product-caption">
-                                <h4 data-lang-es="Sésamo" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo</h4>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/sorghum.png" 
-                                 alt="Grãos de Sorgo em destaque"
-                                 data-alt-es="Grãos de Sorgo em destaque"
-                                 data-alt-en="Sorghum Grains featured"
-                                 data-alt-pt="Grãos de Sorgo em destaque">
-                            <div class="slide-product-caption">
-                                <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
-                            </div>
-                        </div>
-                        <!-- Se quiser adicionar os outros dois produtos (corn, soybean) ao carrossel hero,
-                             você pode adicionar mais dois <div class="carousel-slide">...</div> aqui,
-                             seguindo o mesmo padrão. Lembre-se que o totalSlides no JavaScript
-                             é calculado dinamicamente, então ele se ajustará.
-                        <div class="carousel-slide">
-                            <img src="images/corn.png" alt="Milho em destaque" data-alt-es="Maíz en destaque" data-alt-en="Corn featured" data-alt-pt="Milho em destaque">
-                            <div class="slide-product-caption"><h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4></div>
-                        </div>
-                        -->
-                    </div>
-                    <!-- Botões de navegação do carrossel com aria-label internacionalizado -->
-                    <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
-                    <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
-                </div>
+                <!-- Imagem Estática da Seção Hero -->
+                <img src="images/chia.png" 
+                     alt="Campo de cultivo Multiagro com grãos de alta qualidade" 
+                     class="hero-static-image"
+                     data-alt-es="Campo de cultivo Multiagro com grãos de alta qualidade"
+                     data-alt-en="Multiagro cultivation field with high-quality grains"
+                     data-alt-pt="Campo de cultivo Multiagro com grãos de alta qualidade">
+                
+                <!-- Conteúdo Sobreposto -->
                 <div class="hero-content-overlay">
                     <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
                     <h1 data-lang-es="Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo"
@@ -1285,6 +1173,7 @@
         </section>
 
         <!-- Seção Produtos -->
+        <!-- Seção Produtos -->
         <section id="productos">
             <!-- Título e introdução da seção de produtos -->
             <h2 data-lang-es="Nuestros Granos de Calidad Superior" data-lang-en="Our Premium Grains" data-lang-pt="Nossos Grãos de Qualidade Superior">Nuestros Granos de Calidad Superior</h2>
@@ -1295,79 +1184,13 @@
                Ofrecemos una selección de granos cultivados com esmero y procesados bajo estrictos estándares de calidad, con um enfoque especial em superalimentos nutritivos.
             </p>
             
-            <div class="product-carousel-container">
-                <div class="product-display-area">
-                    <img id="display-product-img" src="" alt="" 
-                         data-alt-es="" data-alt-en="" data-alt-pt="">
-                    <h3 id="display-product-title" 
-                        data-lang-es="" data-lang-en="" data-lang-pt=""></h3>
-                    <p id="display-product-desc" 
-                       data-lang-es="" data-lang-en="" data-lang-pt=""></p>
-                </div>
-
-                <div class="product-thumbnail-nav">
-                    <!-- Os .product-card originais serão movidos/renderizados aqui pelo JS ou estarão aqui e serão estilizados -->
-                    <!-- Card de produto individual (Chía) -->
-                    <div class="product-card" data-index="0">
-                        <img src="images/chia.png" alt="Sementes de Chía" data-alt-es="Sementes de Chía" data-alt-en="Chia Seeds" data-alt-pt="Sementes de Chia">
-                        <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
-                        <p data-lang-es="Semillas de chía de alta pureza, ricas en Omega-3, fibra y antioxidantes. Un superalimento versátil para una dieta saludable."
-                           data-lang-en="High-purity chia seeds, rich in Omega-3, fiber, and antioxidants. A versatile superfood for a healthy diet."
-                           data-lang-pt="Sementes de chia de alta pureza, ricas em Ômega-3, fibra e antioxidantes. Um superalimento versátil para uma dieta saudável.">
-                           Semillas de chía de alta pureza, ricas en Omega-3, fibra y antioxidantes. Un superalimento versátil para uma dieta saludable.
-                        </p>
-                    </div>
-                     <!-- Card de produto individual (Frijol Mungo / Mung Beans / Feijão Mungo) -->
-                     <div class="product-card" data-index="1">
-                        <img src="images/mung.png" alt="Grãos de Frijol Mungo" data-alt-es="Grãos de Frijol Mungo" data-alt-en="Mung Beans" data-alt-pt="Grãos de Feijão Mungo">
-                        <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
-                        <p data-lang-es="Frijol mungo de alta calidad, conocido por su valor nutricional y versatilidad culinaria. Ideal para brotes y platos saludables."
-                           data-lang-en="High-quality mung beans, known for their nutritional value and culinary versatility. Ideal for sprouts and healthy dishes."
-                           data-lang-pt="Feijão mungo de alta qualidade, conhecido por seu valor nutricional e versatilidade culinária. Ideal para brotos e pratos saudáveis.">
-                           Frijol mungo de alta calidad, conocido por su valor nutricional y versatilidad culinaria. Ideal para brotes y platos saludables.
-                        </p>
-                    </div>
-                    <!-- Card de produto individual (Sésamo/Gergelim) -->
-                    <div class="product-card" data-index="2">
-                        <img src="images/sesame.png" alt="Sementes de Sésamo" data-alt-es="Sementes de Sésamo" data-alt-en="Sesame Seeds" data-alt-pt="Sementes de Gergelim">
-                        <h4 data-lang-es="Sésamo (Gergelim)" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo (Gergelim)</h4>
-                        <p data-lang-es="Sésamo de primera calidad, apreciado por su sabor y valor nutricional. Ideal para la industria alimentaria y consumo directo."
-                           data-lang-en="Premium quality sesame, valued for its flavor and nutritional value. Ideal for the food industry and direct consumption."
-                           data-lang-pt="Gergelim de primeira qualidade, apreciado por seu sabor e valor nutricional. Ideal para a indústria alimentícia e consumo direto.">
-                           Sésamo de primera calidad, apreciado por seu sabor e valor nutricional. Ideal para a indústria alimentícia e consumo directo.
-                        </p>
-                    </div>
-                    <!-- Card de produto individual (Sorgo / Sorghum) -->
-                    <div class="product-card" data-index="3">
-                        <img src="images/sorghum.png" alt="Grãos de Sorgo" data-alt-es="Grãos de Sorgo" data-alt-en="Sorghum Grains" data-alt-pt="Grãos de Sorgo">
-                        <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
-                        <p data-lang-es="Sorgo, un grano ancestral y nutritivo, libre de gluten. Excelente para alimentación humana y animal."
-                           data-lang-en="Sorghum, an ancient and nutritious gluten-free grain. Excellent for human and animal feed."
-                           data-lang-pt="Sorgo, um grão ancestral e nutritivo, livre de glúten. Excelente para alimentação humana e animal.">
-                           Sorgo, un grano ancestral y nutritivo, libre de gluten. Excelente para alimentación humana y animal.
-                        </p>
-                    </div>
-                     <!-- Card de produto individual (Maíz/Milho) -->
-                     <div class="product-card" data-index="4">
-                        <img src="images/corn.png" alt="Grãos de Maíz" data-alt-es="Grãos de Maíz" data-alt-en="Corn Grains" data-alt-pt="Grãos de Milho">
-                        <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
-                        <p data-lang-es="Maíz seleccionado para diversas aplicaciones industriales y consumo, garantizando calidad y trazabilidad desde el origen."
-                           data-lang-en="Selected corn for various industrial applications and consumption, ensuring quality and traceability from the origin."
-                           data-lang-pt="Milho selecionado para diversas aplicações industriais e consumo, garantindo qualidade e rastreabilidade desde a origem.">
-                           Milho selecionado para diversas aplicações industriais e consumo, garantindo qualidade e rastreabilidade desde a origem.
-                        </p>
-                    </div>
-                    <!-- Card de produto individual (Soja / Soybean) -->
-                    <div class="product-card" data-index="5">
-                        <img src="images/soybean.png" alt="Grãos de Soja" data-alt-es="Grãos de Soja" data-alt-en="Soybeans" data-alt-pt="Grãos de Soja">
-                        <h4 data-lang-es="Soja" data-lang-en="Soybean" data-lang-pt="Soja">Soja</h4>
-                        <p data-lang-es="Soja de alta calidad, rica en proteínas y nutrientes esenciales. Fundamental para la industria alimentaria y la nutrición global."
-                           data-lang-en="High-quality soybeans, rich in protein and essential nutrients. Fundamental for the food industry and global nutrition."
-                           data-lang-pt="Soja de alta qualidade, rica em proteínas e nutrientes essenciais. Fundamental para a indústria alimentícia e a nutrição global.">
-                           Soja de alta calidad, rica en proteínas y nutrientes esenciales. Fundamental para la industria alimentaria y la nutrición global.
-                        </p>
-                    </div>
-                </div>
+            <!-- Imagem Estática para a Seção de Produtos -->
+            <div class="product-static-image-container">
+                <img src="images/chia.png" <!-- Substitua pelo caminho da sua imagem geral de produtos -->
+                     alt="Variedade de grãos e superalimentos da Multiagro"
+                     data-alt-es="Variedad de granos y superalimentos de Multiagro"
+                     data-alt-en="Variety of grains and superfoods from Multiagro"
+                     data-alt-pt="Variedade de grãos e superalimentos da Multiagro">
             </div>
 
             <!-- Mapa Mundi de Exportação (agora ao final da seção de produtos) -->
@@ -1378,7 +1201,6 @@
                     data-lang-pt="Presença Global da Multiagro">
                     Presencia Global de Multiagro
                 </h3>
-                <!-- Contêiner para o mapa Leaflet -->
                 <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);"></div>
                 <p style="text-align:center;margin-top:1rem;font-size:0.98rem;color:#555;"
                    data-lang-es="Exportamos a: México, Colombia, Bolivia, Brasil, Argentina, Estados Unidos, China, Portugal, España, Francia."
@@ -1388,7 +1210,6 @@
                 </p>
             </div>
         </section>
-
         <!-- Sobre Nosotros -->
         <section id="nosotros">
             <!-- Título e introdução da seção "Sobre Nós" -->
@@ -1900,7 +1721,6 @@
                 // Atualiza elementos específicos que dependem do idioma
                 updateMenuToggleAriaLabel();
                 updateTradingViewWidget(lang);
-                updateDisplayedProductTextForLanguageChange(); // Atualiza o texto do produto em destaque
             }
 
             // Adiciona event listeners aos botões de idioma
@@ -1986,9 +1806,7 @@
                 refreshViewForCurrentHash();
                 // updateTradingViewWidget(currentLang); // setLanguage already calls it
                 if (document.getElementById('mapid') && typeof L !== 'undefined') { // Garante que o elemento do mapa existe e Leaflet está carregado
-                    initLeafletMap();
                 }
-                initializeProductCarousel(); // Inicializa o carrossel de produtos
             }
 
             // --- Leaflet Map Initialization ---
@@ -2048,6 +1866,10 @@
                     mapInstance.setView([-15, -50], 3); 
                 }
             }
+            // Chamar initLeafletMap aqui, após a definição da função e antes de loadInitialViewRevised
+            // ou dentro de loadInitialViewRevised, garantindo que o DOM do mapa esteja pronto.
+            // Movido para ser chamado dentro de loadInitialViewRevised para garantir que o elemento #mapid está visível.
+
             loadInitialViewRevised();
 
             // --- Manipulador para navegação de voltar/avançar do navegador ---
@@ -2055,6 +1877,9 @@
                 // Reaplicar o idioma e atualizar a visualização quando o usuário navega pelo histórico.
                 setLanguage(localStorage.getItem('preferredLang') || 'es'); // Reaplicar idioma
                 refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
+                if (document.getElementById('mapid') && typeof L !== 'undefined' && document.getElementById('productos').classList.contains('visible')) {
+                    initLeafletMap(); // Reinicializa o mapa se a seção de produtos estiver visível
+                }
                 // updateTradingViewWidget(localStorage.getItem('preferredLang') || 'es'); // setLanguage already calls it
             });
 
@@ -2080,130 +1905,20 @@
                 });
             }
 
-            // --- Hero Carousel ---
-            // Lógica para o carrossel de imagens na seção Hero.
-            const carousel = document.querySelector('.hero-carousel');
-            if (carousel) {
-                const slidesContainer = carousel.querySelector('.carousel-slides');
-                const slides = Array.from(slidesContainer.children);
-                const nextButton = carousel.querySelector('.carousel-next');
-                const prevButton = carousel.querySelector('.carousel-prev');
-                let currentIndex = 0;
-                const totalSlides = slides.length;
-                let autoPlayInterval;
+            // --- Lógica do Carrossel Removida ---
+            // Todo o código JavaScript relacionado aos carrosséis e navegação por miniaturas
+            // foi removido, pois os carrosséis foram substituídos por imagens estáticas.
 
-                // Função para atualizar a posição do carrossel
-                function updateCarousel() {
-                    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }
-                
-                if (totalSlides > 0) {
-                    // Define a posição inicial do carrossel
-                    updateCarousel(); 
-                }
-
-                if (nextButton && prevButton) { // Verificar se os botões existem
-                    nextButton.addEventListener('click', () => {
-                        currentIndex = (currentIndex + 1) % totalSlides;
-                        updateCarousel();
-                        resetAutoPlay();
-                    });
-
-                    prevButton.addEventListener('click', () => {
-                        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                        updateCarousel();
-                        resetAutoPlay();
-                    });
-                }
-                
-                // Inicia o autoplay do carrossel
-                const startAutoPlay = () => {
-                    if (totalSlides <= 1) return; // Não iniciar autoplay se só tiver 1 slide ou menos
-                    autoPlayInterval = setInterval(() => {
-                        currentIndex = (currentIndex + 1) % totalSlides;
-                        updateCarousel();
-                    }, 5000); // Muda a cada 5 segundos
-                };
-
-                // Reinicia o autoplay (usado após interação manual)
-                const resetAutoPlay = () => {
-                    if (totalSlides <= 1) return;
-                    clearInterval(autoPlayInterval);
-                    startAutoPlay();
-                };
-                
-                // Ajusta o carrossel em redimensionamento da janela para evitar quebras
-                window.addEventListener('resize', () => {
-                    if (totalSlides > 0) {
-                        slidesContainer.style.transition = 'none'; 
-                        updateCarousel();
-                        slidesContainer.offsetHeight; // Forçar reflow
-                        slidesContainer.style.transition = 'transform 0.7s ease-in-out';
-                    }
-                });
-
-                startAutoPlay();
-            }
-
-            // --- Product Carousel Logic ---
-            const productDisplayImg = document.getElementById('display-product-img');
-            const productDisplayTitle = document.getElementById('display-product-title');
-            const productDisplayDesc = document.getElementById('display-product-desc');
-            const thumbnailNav = document.querySelector('.product-thumbnail-nav');
-            let productThumbnailCards = [];
-            let currentProductIndex = 0;
-
-            function updateDisplayedProduct(index) {
-                if (index < 0 || index >= productThumbnailCards.length) return;
-
-                currentProductIndex = index;
-                const selectedCard = productThumbnailCards[index];
-
-                // Atualiza a imagem em destaque
-                const imgElement = selectedCard.querySelector('img');
-                productDisplayImg.src = imgElement.src;
-                // Os atributos data-alt-* já estão no imgElement, setLanguage cuidará da tradução do alt
-                // Apenas garantimos que o alt inicial seja o do idioma corrente
-                productDisplayImg.alt = imgElement.getAttribute(`data-alt-${currentLang}`) || imgElement.alt;
-
-
-                // Atualiza o título e a descrição em destaque
-                updateDisplayedProductTextForLanguageChange();
-
-                // Atualiza a classe ativa nas miniaturas
-                productThumbnailCards.forEach(card => card.classList.remove('active-thumbnail'));
-                selectedCard.classList.add('active-thumbnail');
-            }
-            
-            // Função para atualizar apenas os textos do produto em destaque (usada na troca de idioma)
-            function updateDisplayedProductTextForLanguageChange() {
-                if (currentProductIndex < 0 || currentProductIndex >= productThumbnailCards.length) return;
-                const activeThumbnailCard = productThumbnailCards[currentProductIndex];
-                
-                const titleElement = activeThumbnailCard.querySelector('h4');
-                productDisplayTitle.textContent = titleElement.getAttribute(`data-lang-${currentLang}`) || titleElement.textContent;
-
-                const descElement = activeThumbnailCard.querySelector('p');
-                productDisplayDesc.textContent = descElement.getAttribute(`data-lang-${currentLang}`) || descElement.textContent;
-                
-                // Atualiza também o alt da imagem em destaque, caso o idioma tenha mudado
-                const imgElement = activeThumbnailCard.querySelector('img');
-                productDisplayImg.alt = imgElement.getAttribute(`data-alt-${currentLang}`) || imgElement.alt;
-            }
-
-            function initializeProductCarousel() {
-                if (!thumbnailNav) return;
-                productThumbnailCards = Array.from(thumbnailNav.querySelectorAll('.product-card'));
-                productThumbnailCards.forEach((card, index) => {
-                    card.setAttribute('data-index', index); // Garante que o data-index está lá
-                    card.addEventListener('click', () => updateDisplayedProduct(index));
-                });
-
-                if (productThumbnailCards.length > 0) {
-                    updateDisplayedProduct(0); // Exibe o primeiro produto por padrão
+            // A inicialização do mapa Leaflet agora é chamada dentro de loadInitialViewRevised
+            // e também no evento popstate para garantir que o mapa seja renderizado corretamente
+            // quando a seção de produtos se torna visível.
+            function loadInitialViewRevised() {
+                setLanguage(currentLang);
+                refreshViewForCurrentHash();
+                if (document.getElementById('mapid') && typeof L !== 'undefined' && document.getElementById('productos').classList.contains('visible')) {
+                    initLeafletMap();
                 }
             }
-            // A inicialização do carrossel de produtos é chamada em loadInitialViewRevised
         });
         
         // Simulated Chatbot Logic
