@@ -120,7 +120,7 @@
             align-items: center;
         }
         .logo a { /* Estilos para o texto do logo "Multiagro" */
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--branco);
             text-decoration: none;
@@ -281,32 +281,6 @@
         .hero-hidden-on-subpage {
             display: none !important;
         }
-
-        /* REMOVED/COMMENTED OUT: Static image styles, replaced by carousel */
-        /* .hero-static-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        } */
-
-        /* REMOVED/COMMENTED OUT: General overlay for hero-main-content-area, as slides will have their own */
-        /* .hero-main-content-area::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1; /* Acima da imagem estática, abaixo do hero-content-overlay */
-            border-radius: 12px;
-        } */
-
-        /* Styles for Hero Carousel (re-enabled and active) */
         .hero-carousel {
             position: absolute;
             top: 0;
@@ -314,8 +288,8 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0; /* Behind hero-content-overlay */
-            border-radius: 12px; /* Match parent container rounding */
+            z-index: 0; /* Atrás do hero-content-overlay */
+            border-radius: 12px;
         }
         /* Container dos slides do carrossel */
         .carousel-slides {
@@ -333,8 +307,9 @@
         .carousel-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit:cover; /* Ensures the entire image is visible, scaled down to fit */
             display: block;
+            background-color: var(--cinza-muito-escuro); /* Fills empty space if aspect ratios differ */
         }
         .carousel-slide::after { /* Overlay para contraste do texto */
             content: '';
@@ -343,28 +318,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.45); /* Dark overlay for text contrast on each slide */
+            background: rgba(158, 158, 158, 0.45); /* Dark overlay for text contrast on each slide */
             z-index: 1;
         }
         /* Botões de navegação do carrossel (anterior/próximo) */
         .carousel-prev, .carousel-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            padding: 0.8rem 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 3; /* Above slide overlays and hero-content-overlay */
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
+            z-index: 3; /* Acima do hero-content-overlay */
         }
         .carousel-prev { left: 20px; }
         .carousel-next { right: 20px; }
         .carousel-prev:hover, .carousel-next:hover {
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         /* REMOVIDO: .slide-product-caption - não há mais slides individuais com legendas assim */
@@ -409,7 +373,7 @@
         }
         /* Estilo para a logo principal na seção Hero */
         .hero-logo-main { /* Agora estiliza o texto "Multiagro" */
-            font-size: 4.37rem; /* Tamanho da fonte aumentado em 15% (3.8 * 1.15) */
+            font-size: 6.37rem; /* Tamanho da fonte aumentado em 15% (3.8 * 1.15) */
             font-weight: 700; /* Negrito */
             color: var(--verde-principal); /* Cor verde principal */
             text-shadow: 1px 1px 3px var(--verde-escuro); /* Sombra verde escura para legibilidade */
