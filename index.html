@@ -261,6 +261,18 @@
             background-color: var(--branco); /* Fundo para a seção hero, onde a logo ficará */
         }
 
+        /* Nova área para o conteúdo principal da Hero (carrossel + texto) */
+        .hero-main-content-area {
+            position: relative;
+            width: 100%;
+            /* max-width: 900px; */ /* Removido ou ajustado para permitir maior largura, ex: max-width: 100%; ou um valor maior */
+            margin: 0 auto 2rem auto; /* Centralizado e com margem inferior */
+            border-radius: 12px; /* Mantido */
+            overflow: hidden; /* Para cortar o carrossel nos cantos arredondados */
+            height: 0; /* Necessário para o truque de padding-bottom do aspect ratio */
+            padding-bottom: 50%; /* Proporção 16:8 ou 2:1 (8 / 16 * 100) */
+        }
+
         /* Mostra a seção ativa (Hero usa flex, outras usam block) */
         .hero-section.visible {
             display: flex;
@@ -270,30 +282,19 @@
             display: none !important;
         }
 
-
-        /* Nova área para o conteúdo principal da Hero (carrossel + texto) */
-        .hero-main-content-area {
-            position: relative;
-            width: 100%;
-            /* max-width: 900px; */ /* Removido ou ajustado para permitir maior largura, ex: max-width: 100%; ou um valor maior */
-            margin: 0 auto 2rem auto; /* Centralizado e com margem inferior */
-            border-radius: 12px;
-            overflow: hidden; /* Para cortar o carrossel nos cantos arredondados */
-
-            min-height: 400px; /* Altura mínima para a área do carrossel */
-        }
-        /* Carrossel de imagens da seção Hero */
-        .hero-static-image { /* Nova classe para a imagem estática da hero section */
+        /* REMOVED/COMMENTED OUT: Static image styles, replaced by carousel */
+        /* .hero-static-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 0; /* Atrás do overlay e do conteúdo */
-        }
+            z-index: 0;
+        } */
 
-        .hero-main-content-area::after { /* Overlay escuro para contraste do texto, aplicado ao contêiner */
+        /* REMOVED/COMMENTED OUT: General overlay for hero-main-content-area, as slides will have their own */
+        /* .hero-main-content-area::after {
             content: '';
             position: absolute;
             top: 0;
@@ -302,10 +303,10 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.45);
             z-index: 1; /* Acima da imagem estática, abaixo do hero-content-overlay */
-            border-radius: 12px; /* Para acompanhar o border-radius do pai */
-        }
+            border-radius: 12px;
+        } */
 
-        /* REMOVIDO: .hero-carousel e seus estilos relacionados */
+        /* Styles for Hero Carousel (re-enabled and active) */
         .hero-carousel {
             position: absolute;
             top: 0;
@@ -313,7 +314,8 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0;
+            z-index: 0; /* Behind hero-content-overlay */
+            border-radius: 12px; /* Match parent container rounding */
         }
         /* Container dos slides do carrossel */
         .carousel-slides {
@@ -341,7 +343,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.45); /* Overlay escuro */
+            background: rgba(0, 0, 0, 0.45); /* Dark overlay for text contrast on each slide */
             z-index: 1;
         }
         /* Botões de navegação do carrossel (anterior/próximo) */
@@ -355,7 +357,7 @@
             padding: 0.8rem 1rem;
             font-size: 1.5rem;
             cursor: pointer;
-            z-index: 3; /* Acima da imagem estática e do overlay ::after */
+            z-index: 3; /* Above slide overlays and hero-content-overlay */
             border-radius: 50%;
             transition: background-color 0.3s ease;
         }
@@ -364,7 +366,7 @@
         .carousel-prev:hover, .carousel-next:hover {
             background-color: rgba(255, 255, 255, 0.4);
         }
-        
+
         /* REMOVIDO: .slide-product-caption - não há mais slides individuais com legendas assim */
         .slide-product-caption {
             position: absolute;
@@ -388,15 +390,17 @@
 
         /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
         .hero-content-overlay {
-            position: relative;
-            z-index: 2; /* Acima do overlay ::after, abaixo dos botões de navegação se existissem */
+            position: absolute; /* Alterado para absoluto para sobrepor cada slide */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Ocupa toda a altura do slide pai */
+            z-index: 2; /* Acima do overlay ::after do slide, abaixo dos botões de navegação do carrossel */
             padding: 2rem; /* Padding geral para o conteúdo de texto */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center; /* Centraliza o conteúdo verticalmente */
-            width: 100%;
-            height: 100%; /* Ocupa toda a altura do hero-main-content-area */
             box-sizing: border-box;
         }
         /* Garante que o conteúdo da hero section esteja visível quando a seção está visível */
@@ -423,7 +427,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--branco);
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5); /* Sombra mais forte para legibilidade */
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* Sombra mais forte para legibilidade */
         }
 
         /* Subtítulo da seção Hero */
@@ -433,7 +437,7 @@
             margin-bottom: 2rem;
             font-weight: 500;
             color: var(--branco); /* Adicionado para garantir cor branca */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Sombra para legibilidade */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para legibilidade */
         }
         
         /* Botão Call-to-Action (CTA) na seção Hero */
@@ -441,7 +445,7 @@
             background-color: var(--branco);
             color: var(--verde-principal);
             font-weight: 600;
-            position: relative; /* Para garantir z-index se necessário */
+            position: relative; /* Mantido, z-index é relativo ao .hero-content-overlay */
             z-index: 2;
         }
         .hero-section .cta-btn:hover {
@@ -1198,34 +1202,62 @@
             
             <!-- Nova área para o conteúdo principal da Hero (carrossel + texto) -->
             <div class="hero-main-content-area">
-                <!-- Imagem Estática da Seção Hero -->
-                <img src="images/chia.png" 
-                     alt="Campo de cultivo Multiagro com grãos de alta qualidade" 
-                     class="hero-static-image"
-                     data-alt-es="Campo de cultivo Multiagro com grãos de alta qualidade"
-                     data-alt-en="Multiagro cultivation field with high-quality grains"
-                     data-alt-pt="Campo de cultivo Multiagro com grãos de alta qualidade">
-                
-                <!-- Conteúdo Sobreposto -->
+                <!-- Hero Carousel -->
+                <div class="hero-carousel">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal1.jpg" alt="Paisagem agrícola Multiagro"
+                                 data-alt-es="Paisaje agrícola Multiagro"
+                                 data-alt-en="Multiagro agricultural landscape"
+                                 data-alt-pt="Paisagem agrícola Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal2.png" alt="Grãos de qualidade Multiagro"
+                                 data-alt-es="Granos de calidad Multiagro"
+                                 data-alt-en="Multiagro quality grains"
+                                 data-alt-pt="Grãos de qualidade Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                        <!-- Outros slides seguem o mesmo padrão -->
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal3.jpg" alt="Paisagem agrícola Multiagro"
+                                 data-alt-es="Paisaje agrícola Multiagro"
+                                 data-alt-en="Multiagro agricultural landscape"
+                                 data-alt-pt="Paisagem agrícola Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal4.png" alt="Paisagem agrícola Multiagro"
+                                 data-alt-es="Paisaje agrícola Multiagro"
+                                 data-alt-en="Multiagro agricultural landscape"
+                                 data-alt-pt="Paisagem agrícola Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                    </div>
+                    <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
+                    <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
+                </div>
+
+                <!-- Conteúdo Sobreposto (único e sobre todo o carrossel) -->
                 <div class="hero-content-overlay">
                     <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
                     <h1 data-lang-es="Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo"
                         data-lang-en="Multiagro: Quality and Tradition in Grains from Paraguay to the World"
-
                         data-lang-pt="Multiagro: Qualidade e Tradição em Grãos do Paraguai para o Mundo">
                         Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo
                     </h1>
-                    <p class="subtitle" 
+                    <p class="subtitle"
                        data-lang-es="Especialistas en el beneficiamiento, comercialización y exportación de granos y superalimentos, conectando la riqueza agrícola de Guajayvi con mercados globales exigentes."
                        data-lang-en="Specialists in the processing, commercialization, and export of grains and superfoods, connecting the agricultural wealth of Guajayvi with demanding global markets."
                        data-lang-pt="Especialistas no beneficiamento, comercialização e exportação de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.">
                        Especialistas en el beneficiamiento, comercialización y exportación de granos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.
                     </p>
-                    <!-- Botão CTA que navega para a seção de produtos -->
                     <a href="#productos" class="cta-btn" onclick="navigateToSection('productos'); return false;" data-lang-es="Conozca Nuestros Productos" data-lang-en="Discover Our Products" data-lang-pt="Conheça Nossos Produtos">
                        Conozca Nuestros Productos
                     </a>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -1833,6 +1865,21 @@
                     const titleText = el.getAttribute(`data-title-${lang}`);
                     if (titleText) el.setAttribute('title', titleText);
                 });
+                
+                // Update aria-labels for hero carousel buttons if they exist
+                const heroCarouselElem = document.querySelector('.hero-section .hero-carousel');
+                if (heroCarouselElem) {
+                    const prevBtn = heroCarouselElem.querySelector('.carousel-prev');
+                    const nextBtn = heroCarouselElem.querySelector('.carousel-next');
+                    if (prevBtn) {
+                        const prevAria = prevBtn.getAttribute(`data-aria-${lang}`) || prevBtn.getAttribute('data-aria-es');
+                        if (prevAria) prevBtn.setAttribute('aria-label', prevAria);
+                    }
+                    if (nextBtn) {
+                        const nextAria = nextBtn.getAttribute(`data-aria-${lang}`) || nextBtn.getAttribute('data-aria-es');
+                        if (nextAria) nextBtn.setAttribute('aria-label', nextAria);
+                    }
+                }
 
                 // Atualiza elementos específicos que dependem do idioma
                 updateMenuToggleAriaLabel();
@@ -2033,9 +2080,57 @@
                 });
             }
 
-            // --- Lógica do Carrossel Removida ---
-            // Todo o código JavaScript relacionado aos carrosséis e navegação por miniaturas
-            // foi removido, pois os carrosséis foram substituídos por imagens estáticas.
+            // --- Hero Carousel Logic ---
+            const heroCarousel = document.querySelector('.hero-section .hero-carousel');
+            if (heroCarousel) {
+                const slidesContainer = heroCarousel.querySelector('.carousel-slides');
+                const slides = heroCarousel.querySelectorAll('.carousel-slide');
+                const prevButton = heroCarousel.querySelector('.carousel-prev');
+                const nextButton = heroCarousel.querySelector('.carousel-next');
+                let currentSlideIndex = 0;
+                const slideIntervalTime = 7000; // 7 seconds for auto-slide
+                let slideTimer;
+
+                function goToSlide(index) {
+                    if (!slidesContainer || slides.length === 0) return;
+                    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+                    currentSlideIndex = index;
+                }
+
+                function nextSlideAuto() {
+                    let newIndex = currentSlideIndex + 1;
+                    if (newIndex >= slides.length) newIndex = 0;
+                    goToSlide(newIndex);
+                }
+
+                function startSlideTimer() {
+                    if (slides.length > 1) {
+                        clearInterval(slideTimer); // Clear existing timer before starting a new one
+                        slideTimer = setInterval(nextSlideAuto, slideIntervalTime);
+                    }
+                }
+
+                if (prevButton && nextButton && slides.length > 0) {
+                    prevButton.addEventListener('click', () => {
+                        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+                        goToSlide(currentSlideIndex);
+                        startSlideTimer(); // Reset timer on manual navigation
+                    });
+
+                    nextButton.addEventListener('click', () => {
+                        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                        goToSlide(currentSlideIndex);
+                        startSlideTimer(); // Reset timer on manual navigation
+                    });
+                }
+                if (slides.length > 0) { // Initialize and start timer if slides exist
+                    goToSlide(0);
+                    startSlideTimer();
+                    heroCarousel.addEventListener('mouseenter', () => clearInterval(slideTimer));
+                    heroCarousel.addEventListener('mouseleave', startSlideTimer);
+                }
+            }
+            // --- End Hero Carousel Logic ---
 
             // A inicialização do mapa Leaflet agora é chamada dentro de loadInitialViewRevised
             // e também no evento popstate para garantir que o mapa seja renderizado corretamente
