@@ -1,0 +1,10 @@
+{
+    "greeting": "Hello! Welcome to our chatbot service.",
+    "goodbye": "Thank you for using our chatbot. See you soon!",
+    "ask_name": "Please, what is your name?",
+    "user_query_prompt": "Enter your question:",
+    "generic_response": "Understood. Processing your request...",
+    "error_message": "Sorry, an error occurred. Please try again later.",
+    "welcome_user": "Hello, {user_name}! How can I help you today?",
+    "detailed_error": "A detailed error occurred: {error_code}"
+}

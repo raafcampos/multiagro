@@ -119,10 +119,17 @@
             display: flex; /* Para alinhar a imagem se necessário */
             align-items: center;
         }
-        .logo img {
-            height: 65px; /* Ajuste a altura conforme necessário */
-            width: auto; /* Mantém a proporção */
+        .logo a { /* Estilos para o texto do logo "Multiagro" */
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--branco);
+            text-decoration: none;
+            letter-spacing: 1px;
         }
+        /* .logo img {
+            height: 65px; /* Ajuste a altura conforme necessário */
+            /* width: auto; */ /* Mantém a proporção */
+        /* } */
 
         nav ul {
             /* Estilos da lista de navegação */
@@ -335,6 +342,26 @@
         .carousel-prev:hover, .carousel-next:hover {
             background-color: rgba(255, 255, 255, 0.4);
         }
+        
+        /* Legenda do produto em cada slide do carrossel hero */
+        .slide-product-caption {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            z-index: 2; /* Acima da imagem e do overlay ::after */
+            color: var(--branco);
+            background-color: rgba(0, 0, 0, 0.55); /* Fundo semi-transparente para a legenda */
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            max-width: calc(100% - 50px); /* Evitar que a legenda seja muito larga */
+        }
+
+        .slide-product-caption h4 {
+            margin: 0;
+            font-size: 1.6rem; /* Tamanho do nome do produto no slide */
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
 
         /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
         .hero-content-overlay {
@@ -354,14 +381,17 @@
              display: flex; /* Garante que o conteúdo flexível apareça */
         }
         /* Estilo para a logo principal na seção Hero */
-        .hero-logo-main {
-            max-width: 726px; /* Aumentado em 10% de 660px. Ajuste se necessário. */
-            height: auto;
+        .hero-logo-main { /* Agora estiliza o texto "Multiagro" */
+            font-size: 4.37rem; /* Tamanho da fonte aumentado em 15% (3.8 * 1.15) */
+            font-weight: 700; /* Negrito */
+            color: var(--verde-principal); /* Cor verde principal */
+            text-shadow: 1px 1px 3px var(--verde-escuro); /* Sombra verde escura para legibilidade */
             margin-top: 1.5rem; /* Espaço acima da logo, abaixo do header */
             margin-bottom: 1.5rem; /* Espaço entre a logo e o conteúdo de texto abaixo (H1) */
-            position: relative; /* Mantém no fluxo, z-index não é mais crítico aqui */
-            /* display: block; */ /* Imagens são inline por padrão, block pode ajudar com margens, mas flex container já cuida */
-            /* margin-left: auto; margin-right: auto; */ /* Já centralizado pelo align-items: center do .hero-section */
+            text-align: center; /* Centraliza o texto */
+            /* max-width e height: auto removidos pois eram para a imagem */
+            /* position: relative; não é mais crítico aqui */
+            /* display: block; e margin-left/right: auto; são cobertos pelo flex do pai */
         }
         
         /* Título principal da seção Hero */
@@ -396,13 +426,14 @@
             color: var(--lilas-escuro);
         }
 
-        /* Grid para exibir os produtos */
-        .products-grid { /* Renomeado de superfoods-grid */
+        /* Grid para exibir os produtos - AGORA USADO COMO NAVEGAÇÃO DE MINIATURAS */
+        /* .products-grid foi movido e agora é .product-thumbnail-nav */
+        /* .products-grid { 
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Ajustado minmax */
             gap: 2rem;
-            margin-top: 2rem;
-        }
+            margin-top: 2rem; 
+        } */
 
         /* Card individual de produto */
         .product-card { /* Renomeado de superfood-card */
@@ -440,6 +471,103 @@
             font-size: 0.9rem;
             color: var(--cinza-texto);
             flex-grow: 1; /* Para que os cards tenham altura similar */
+        }
+
+        /* Estilos para o Carrossel de Produtos */
+        .product-carousel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+            margin-bottom: 2.5rem; /* Espaço antes do mapa */
+        }
+
+        .product-display-area {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 1rem;
+            background-color: var(--branco); /* Fundo para destaque */
+            border-radius: 10px;
+            box-shadow: var(--sombra-leve);
+            max-width: 700px; /* Limita a largura da área de display */
+            width: 100%;
+        }
+
+        #display-product-img {
+            max-width: 100%;
+            width: 350px; /* Tamanho da imagem em destaque */
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 5px solid var(--verde-principal);
+            box-shadow: var(--sombra-leve);
+        }
+
+        #display-product-title {
+            font-size: 2rem; /* Aumentado para destaque */
+            color: var(--verde-escuro);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        #display-product-desc {
+            font-size: 1.05rem; /* Levemente aumentado */
+            color: var(--cinza-texto);
+            line-height: 1.6;
+        }
+
+        .product-thumbnail-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem; /* Espaço entre miniaturas */
+            padding: 1rem 0;
+            max-width: 900px; /* Limita a largura da navegação de miniaturas */
+            width: 100%;
+        }
+
+        .product-thumbnail-nav .product-card { /* Estilos para os cards quando são miniaturas */
+            cursor: pointer;
+            width: 160px; /* Largura da miniatura */
+            padding: 0.8rem;
+            border: 3px solid transparent; /* Borda para o estado ativo */
+            background-color: var(--lilas-claro); /* Fundo sutil para miniaturas */
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .product-thumbnail-nav .product-card:hover {
+            transform: translateY(-3px); /* Leve elevação no hover */
+            box-shadow: var(--sombra);
+        }
+
+        .product-thumbnail-nav .product-card img {
+            width: 80px; /* Tamanho da imagem na miniatura */
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+            border: 3px solid var(--verde-claro);
+        }
+
+        .product-thumbnail-nav .product-card h4 {
+            font-size: 0.95rem; /* Tamanho do título na miniatura */
+            margin-bottom: 0.3rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .product-thumbnail-nav .product-card p {
+            display: none; /* Ocultar descrição na miniatura */
+        }
+
+        .product-thumbnail-nav .product-card.active-thumbnail {
+            border-color: var(--lilas-principal);
+            box-shadow: 0 0 12px rgba(128, 0, 128, 0.5); /* Sombra lilás mais pronunciada */
+            transform: scale(1.05); /* Leve aumento para destacar */
+        }
+        .product-thumbnail-nav .product-card.active-thumbnail img {
+            border-color: var(--lilas-principal);
         }
 
         /* Container para os cards de estatísticas */
@@ -844,14 +972,20 @@
         @media (max-width: 768px) {
             header { padding: 1rem; }
             .logo { font-size: 1.6rem; }
-            .logo img { height: 40px; } /* Ajuste da altura do logo para telas menores */            main {
+            /* .logo img { height: 40px; } */ /* Ajuste da altura do logo para telas menores */
+            .logo a { font-size: 1.6rem; } /* Ajuste do tamanho da fonte do logo para telas menores */
+            main {
                 margin: 1rem auto;
                 padding: 1.5rem 1rem; /* Padding ajustado */
             }
             .hero-section { padding: 3rem 1rem; }
             .hero-section h1 { font-size: 2rem; }
             .hero-section p.subtitle { font-size: 1rem; }
-            .stats-cards { flex-direction: column; }
+            .stats-cards { 
+                flex-direction: column; 
+                gap: 1rem; /* Reduzir o gap quando em coluna */
+            }
+            .stat-card { min-width: unset; } /* Permitir que o card ocupe a largura disponível */
             h2 { font-size: 1.8rem; }
             h3 { font-size: 1.3rem; }
             form { max-width: 100%; }
@@ -860,7 +994,8 @@
         /* Para celulares em retrato */
         @media (max-width: 480px) {
             .logo { font-size: 1.4rem; }
-            .logo img { height: 35px; } /* Ajuste da altura do logo para celulares */
+            /* .logo img { height: 35px; } */ /* Ajuste da altura do logo para celulares */
+            .logo a { font-size: 1.4rem; } /* Ajuste do tamanho da fonte do logo para celulares */
             .hero-section h1 { font-size: 1.8rem; }
             .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; }
             .product-card img { width: 100px; height: 100px;}
@@ -1036,7 +1171,7 @@
         <div class="header-content">
             <div class="logo">
                 <a href="#home" onclick="navigateToSection('home'); return false;" aria-label="Ir para o início" data-aria-es="Ir para o início" data-aria-en="Go to home" data-aria-pt="Ir para o início">
-                    <img src="images/Logo_branca.png" alt="Logo Multiagro" data-alt-es="Logo Multiagro" data-alt-en="Multiagro Logo" data-alt-pt="Logo Multiagro">
+                    Multiagro
                 </a>
             </div>
             <nav>
@@ -1068,14 +1203,14 @@
     <main>
         <!-- Sección de Hero/Principal -->
         <!-- A classe 'hero-section' é a seção principal no topo da página -->
-        <section id="home" class="hero-section visible"> <!-- Adicionado 'visible' para garantir que apareça por padrão -->
-                <!-- Logo Colorida da Multiagro -->
-                <img src="images/logo.png" 
-                     alt="Logo Multiagro Colorida" 
-                     class="hero-logo-main"
-                     data-alt-es="Logo Multiagro Colorida"
-                     data-alt-en="Multiagro Colored Logo"
-                     data-alt-pt="Logo Multiagro Colorida">
+        <section id="home" class="hero-section">
+            <!-- Texto "Multiagro" como logo principal na seção Hero -->
+            <div class="hero-logo-main"
+                 data-lang-es="Multiagro"
+                 data-lang-en="Multiagro"
+                 data-lang-pt="Multiagro">
+                Multiagro
+            </div>
             
             <!-- Nova área para o conteúdo principal da Hero (carrossel + texto) -->
             <div class="hero-main-content-area">
@@ -1083,33 +1218,54 @@
                     <div class="carousel-slides">
                         <!-- Slides do carrossel com imagens e textos alternativos (alt) internacionalizados -->
                         <div class="carousel-slide">
-                            <img src="https://agriq.com.br/wp-content/uploads/2023/04/Blog-AgriQ_Agroindustria_Creditos-Shutterstock.jpg" 
-                                 alt="Campo de trigo al atardecer, representando la agroindustria moderna."
-                                 data-alt-es="Campo de trigo al atardecer, representando la agroindustria moderna."
-                                 data-alt-en="Wheat field at sunset, representing modern agro-industry."
-                                 data-alt-pt="Campo de trigo ao pôr do sol, representando a agroindústria moderna.">
+                            <img src="images/chia.png" 
+                                 alt="Sementes de Chía em destaque"
+                                 data-alt-es="Sementes de Chía em destaque"
+                                 data-alt-en="Chia Seeds featured"
+                                 data-alt-pt="Sementes de Chia em destaque">
+                            <div class="slide-product-caption">
+                                <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
+                            </div>
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://dm0fehhuxv6f6.cloudfront.net/wp-content/uploads/2024/06/12165312/O-que-e-agroindustria-Entenda-o-conceito.png" 
-                                 alt="Vista aérea de finca agrícola productiva."
-                                 data-alt-es="Vista aérea de finca agrícola productiva."
-                                 data-alt-en="Aerial view of a productive agricultural farm."
-                                 data-alt-pt="Vista aérea de fazenda agrícola produtiva.">
+                            <img src="images/mung.png" 
+                                 alt="Grãos de Feijão Mungo em destaque"
+                                 data-alt-es="Grãos de Frijol Mungo em destaque"
+                                 data-alt-en="Mung Beans featured"
+                                 data-alt-pt="Grãos de Feijão Mungo em destaque">
+                            <div class="slide-product-caption">
+                                <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
+                            </div>
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://www.utphysicians.com/wp-content/uploads/2021/03/Super-foods-web-1024x683.jpg.webp" 
-                                 alt="Línea de producción de alimentos saludables, superalimentos."
-                                 data-alt-es="Línea de producción de alimentos saludables, superalimentos."
-                                 data-alt-en="Production line of healthy foods, superfoods."
-                                 data-alt-pt="Linha de produção de alimentos saudáveis, superalimentos.">
+                            <img src="images/sesame.png" 
+                                 alt="Sementes de Gergelim em destaque"
+                                 data-alt-es="Sementes de Sésamo em destaque"
+                                 data-alt-en="Sesame Seeds featured"
+                                 data-alt-pt="Sementes de Gergelim em destaque">
+                            <div class="slide-product-caption">
+                                <h4 data-lang-es="Sésamo" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo</h4>
+                            </div>
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" 
-                                 alt="Semillas y granos, concepto de superalimentos."
-                                 data-alt-es="Semillas y granos, concepto de superalimentos."
-                                 data-alt-en="Seeds and grains, superfoods concept."
-                                 data-alt-pt="Sementes e grãos, conceito de superalimentos.">
+                            <img src="images/sorghum.png" 
+                                 alt="Grãos de Sorgo em destaque"
+                                 data-alt-es="Grãos de Sorgo em destaque"
+                                 data-alt-en="Sorghum Grains featured"
+                                 data-alt-pt="Grãos de Sorgo em destaque">
+                            <div class="slide-product-caption">
+                                <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
+                            </div>
                         </div>
+                        <!-- Se quiser adicionar os outros dois produtos (corn, soybean) ao carrossel hero,
+                             você pode adicionar mais dois <div class="carousel-slide">...</div> aqui,
+                             seguindo o mesmo padrão. Lembre-se que o totalSlides no JavaScript
+                             é calculado dinamicamente, então ele se ajustará.
+                        <div class="carousel-slide">
+                            <img src="images/corn.png" alt="Milho em destaque" data-alt-es="Maíz en destaque" data-alt-en="Corn featured" data-alt-pt="Milho em destaque">
+                            <div class="slide-product-caption"><h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4></div>
+                        </div>
+                        -->
                     </div>
                     <!-- Botões de navegação do carrossel com aria-label internacionalizado -->
                     <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
@@ -1147,49 +1303,79 @@
                data-lang-pt="Oferecemos uma seleção de grãos cultivados com esmero e processados sob rigorosos padrões de qualidade, com um foco especial em superalimentos nutritivos.">
                Ofrecemos una selección de granos cultivados com esmero y procesados bajo estrictos estándares de calidad, con um enfoque especial em superalimentos nutritivos.
             </p>
+            
+            <div class="product-carousel-container">
+                <div class="product-display-area">
+                    <img id="display-product-img" src="" alt="" 
+                         data-alt-es="" data-alt-en="" data-alt-pt="">
+                    <h3 id="display-product-title" 
+                        data-lang-es="" data-lang-en="" data-lang-pt=""></h3>
+                    <p id="display-product-desc" 
+                       data-lang-es="" data-lang-en="" data-lang-pt=""></p>
+                </div>
 
-            <div class="products-grid">
-                <!-- Card de produto individual (Chía) -->
-                <div class="product-card">
-                    <img src="https://cdn.awsli.com.br/600x450/1744/1744407/produto/923545737bbb7384b4.jpg" alt="Sementes de Chía">
-                    <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
-                    <p data-lang-es="Semillas de chía de alta pureza, ricas en Omega-3, fibra y antioxidantes. Un superalimento versátil para una dieta saludable."
-                       data-lang-en="High-purity chia seeds, rich in Omega-3, fiber, and antioxidants. A versatile superfood for a healthy diet."
-                       data-lang-pt="Sementes de chia de alta pureza, ricas em Ômega-3, fibra e antioxidantes. Um superalimento versátil para uma dieta saudável.">
-                       Semillas de chía de alta pureza, ricas en Omega-3, fibra y antioxidantes. Un superalimento versátil para uma dieta saudável.
-                    </p>
-                </div>
-                 <!-- Card de produto individual (Frijol/Feijão) -->
-                 <div class="product-card">
-                    <!-- CORREÇÃO: A imagem original abaixo usava um Data URI Base64 que parecia corrompido ou incompleto. -->
-                    <!-- Substitua pelo URL da imagem correta ou um Base64 válido. O exemplo abaixo é um placeholder. -->
-                    <img src="https://neofeed.com.br/wp-content/uploads/2023/01/BetterSeeds.jpg">
-                    <h4 data-lang-es="Frijol" data-lang-en="Beans" data-lang-pt="Feijão">Frijol</h4>
-                    <p data-lang-es="Variedades de frijoles seleccionados, fuente esencial de proteínas y nutrientes, fundamentales in la alimentación global."
-                       data-lang-en="Selected bean varieties, an essential source of protein and nutrients, fundamental in global nutrition."
-                       data-lang-pt="Variedades de feijões selecionados, fonte essencial de proteínas e nutrientes, fundamentais na alimentação global.">
-                       Variedades de frijoles seleccionados, fuente esencial de proteínas y nutrientes, fundamentales na alimentação global.
-                    </p>
-                </div>
-                <!-- Card de produto individual (Sésamo/Gergelim) -->
-                <div class="product-card">
-                    <img src="https://cloudfront-us-east-1.images.arcpublishing.com/estadao/BUEBUDEZWJEYXGWVNKIDFSNQXE.jpg" alt="Sementes de Sésamo">
-                    <h4 data-lang-es="Sésamo (Gergelim)" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo (Gergelim)</h4>
-                    <p data-lang-es="Sésamo de primera calidad, apreciado por su sabor y valor nutricional. Ideal para la industria alimentaria y consumo direto."
-                       data-lang-en="Premium quality sesame, valued for its flavor and nutritional value. Ideal for the food industry and direct consumption."
-                       data-lang-pt="Gergelim de primeira qualidade, apreciado por seu sabor e valor nutricional. Ideal para a indústria alimentícia e consumo direto.">
-                       Sésamo de primeira qualidade, apreciado por seu sabor e valor nutricional. Ideal para a indústria alimentícia e consumo direto.
-                    </p>
-                </div>
-                 <!-- Card de produto individual (Maíz/Milho) -->
-                 <div class="product-card">
-                    <img src="https://assets.corteva.com/is/image/Corteva/IMG-ArtigoBlog-Hero-SementeMilho-BR?$articleHeader_desktop$" alt="Grãos de Maíz">
-                    <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
-                    <p data-lang-es="Maíz seleccionado para diversas aplicaciones industriales y consumo, garantizando calidad y trazabilidad desde el origen."
-                       data-lang-en="Selected corn for various industrial applications and consumption, ensuring quality and traceability from the origin."
-                       data-lang-pt="Milho selecionado para diversas aplicações industriais e consumo, garantindo qualidade e rastreabilidade desde a origem.">
-                       Milho selecionado para diversas aplicações industriais e consumo, garantindo qualidade e rastreabilidade desde a origem.
-                    </p>
+                <div class="product-thumbnail-nav">
+                    <!-- Os .product-card originais serão movidos/renderizados aqui pelo JS ou estarão aqui e serão estilizados -->
+                    <!-- Card de produto individual (Chía) -->
+                    <div class="product-card" data-index="0">
+                        <img src="images/chia.png" alt="Sementes de Chía" data-alt-es="Sementes de Chía" data-alt-en="Chia Seeds" data-alt-pt="Sementes de Chia">
+                        <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
+                        <p data-lang-es="Semillas de chía de alta pureza, ricas en Omega-3, fibra y antioxidantes. Un superalimento versátil para una dieta saludable."
+                           data-lang-en="High-purity chia seeds, rich in Omega-3, fiber, and antioxidants. A versatile superfood for a healthy diet."
+                           data-lang-pt="Sementes de chia de alta pureza, ricas em Ômega-3, fibra e antioxidantes. Um superalimento versátil para uma dieta saudável.">
+                           Semillas de chía de alta pureza, ricas en Omega-3, fibra y antioxidantes. Un superalimento versátil para uma dieta saludable.
+                        </p>
+                    </div>
+                     <!-- Card de produto individual (Frijol Mungo / Mung Beans / Feijão Mungo) -->
+                     <div class="product-card" data-index="1">
+                        <img src="images/mung.png" alt="Grãos de Frijol Mungo" data-alt-es="Grãos de Frijol Mungo" data-alt-en="Mung Beans" data-alt-pt="Grãos de Feijão Mungo">
+                        <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
+                        <p data-lang-es="Frijol mungo de alta calidad, conocido por su valor nutricional y versatilidad culinaria. Ideal para brotes y platos saludables."
+                           data-lang-en="High-quality mung beans, known for their nutritional value and culinary versatility. Ideal for sprouts and healthy dishes."
+                           data-lang-pt="Feijão mungo de alta qualidade, conhecido por seu valor nutricional e versatilidade culinária. Ideal para brotos e pratos saudáveis.">
+                           Frijol mungo de alta calidad, conocido por su valor nutricional y versatilidad culinaria. Ideal para brotes y platos saludables.
+                        </p>
+                    </div>
+                    <!-- Card de produto individual (Sésamo/Gergelim) -->
+                    <div class="product-card" data-index="2">
+                        <img src="images/sesame.png" alt="Sementes de Sésamo" data-alt-es="Sementes de Sésamo" data-alt-en="Sesame Seeds" data-alt-pt="Sementes de Gergelim">
+                        <h4 data-lang-es="Sésamo (Gergelim)" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo (Gergelim)</h4>
+                        <p data-lang-es="Sésamo de primera calidad, apreciado por su sabor y valor nutricional. Ideal para la industria alimentaria y consumo directo."
+                           data-lang-en="Premium quality sesame, valued for its flavor and nutritional value. Ideal for the food industry and direct consumption."
+                           data-lang-pt="Gergelim de primeira qualidade, apreciado por seu sabor e valor nutricional. Ideal para a indústria alimentícia e consumo direto.">
+                           Sésamo de primera calidad, apreciado por seu sabor e valor nutricional. Ideal para a indústria alimentícia e consumo directo.
+                        </p>
+                    </div>
+                    <!-- Card de produto individual (Sorgo / Sorghum) -->
+                    <div class="product-card" data-index="3">
+                        <img src="images/sorghum.png" alt="Grãos de Sorgo" data-alt-es="Grãos de Sorgo" data-alt-en="Sorghum Grains" data-alt-pt="Grãos de Sorgo">
+                        <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
+                        <p data-lang-es="Sorgo, un grano ancestral y nutritivo, libre de gluten. Excelente para alimentación humana y animal."
+                           data-lang-en="Sorghum, an ancient and nutritious gluten-free grain. Excellent for human and animal feed."
+                           data-lang-pt="Sorgo, um grão ancestral e nutritivo, livre de glúten. Excelente para alimentação humana e animal.">
+                           Sorgo, un grano ancestral y nutritivo, libre de gluten. Excelente para alimentación humana y animal.
+                        </p>
+                    </div>
+                     <!-- Card de produto individual (Maíz/Milho) -->
+                     <div class="product-card" data-index="4">
+                        <img src="images/corn.png" alt="Grãos de Maíz" data-alt-es="Grãos de Maíz" data-alt-en="Corn Grains" data-alt-pt="Grãos de Milho">
+                        <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
+                        <p data-lang-es="Maíz seleccionado para diversas aplicaciones industriales y consumo, garantizando calidad y trazabilidad desde el origen."
+                           data-lang-en="Selected corn for various industrial applications and consumption, ensuring quality and traceability from the origin."
+                           data-lang-pt="Milho selecionado para diversas aplicações industriais e consumo, garantindo qualidade e rastreabilidade desde a origem.">
+                           Milho selecionado para diversas aplicações industriais e consumo, garantindo qualidade e rastreabilidade desde a origem.
+                        </p>
+                    </div>
+                    <!-- Card de produto individual (Soja / Soybean) -->
+                    <div class="product-card" data-index="5">
+                        <img src="images/soybean.png" alt="Grãos de Soja" data-alt-es="Grãos de Soja" data-alt-en="Soybeans" data-alt-pt="Grãos de Soja">
+                        <h4 data-lang-es="Soja" data-lang-en="Soybean" data-lang-pt="Soja">Soja</h4>
+                        <p data-lang-es="Soja de alta calidad, rica en proteínas y nutrientes esenciales. Fundamental para la industria alimentaria y la nutrición global."
+                           data-lang-en="High-quality soybeans, rich in protein and essential nutrients. Fundamental for the food industry and global nutrition."
+                           data-lang-pt="Soja de alta qualidade, rica em proteínas e nutrientes essenciais. Fundamental para a indústria alimentícia e a nutrição global.">
+                           Soja de alta calidad, rica en proteínas y nutrientes esenciales. Fundamental para la industria alimentaria y la nutrición global.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -1217,9 +1403,15 @@
             <!-- Título e introdução da seção "Sobre Nós" -->
             <h2 data-lang-es="Sobre Multiagro" data-lang-en="About Multiagro" data-lang-pt="Sobre a Multiagro">Sobre Multiagro</h2>
             <p class="section-intro"
-               data-lang-es="Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de granos, con un firme compromiso con la calidad, la innovación y la sostenibilidad. Nos especializamos en superalimentos, atendiendo tanto al mercado interno como a exigentes mercados internacionais."
-               data-lang-en="From Guajayvi, Paraguay, Multiagro is dedicated to the processing, commercialization, and export of grains, with a firm commitment to quality, innovation, and sustainability. We specialize in superfoods, serving both the domestic market and demanding international markets."
-               data-lang-pt="Desde Guajayvi, Paraguai, a Multiagro se dedica ao beneficiamento, comercialização e exportação de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade. Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.">
+               data-lang-es="MultiAgro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados.
+
+               La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, MultiAgro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
+               data-lang-en="MultiAgro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains.
+
+               The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, MultiAgro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
+               data-lang-pt="A MultiAgro atua no mercado desde 2004, dedicando-se à importação e exportação de grãos, com ênfase em grãos especiais classificados como superfoods. Entre os principais produtos comercializados estão chia, feijão mungo, gergelim, sorgo, milho e soja, além de outros grãos diferenciados.
+
+               A empresa dispõe de uma fábrica especializada no beneficiamento desses produtos, atendendo aos mais rigorosos padrões de qualidade. Com ampla experiência também na comercialização de produtos orgânicos, a MultiAgro oferece ao mercado tanto os itens tradicionais quanto linhas certificadas, agregando valor e diversidade ao portfólio para atender diferentes mercados e exigências de clientes nacionais e internacionais.">
                Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade. Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
             </p>
             <h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
@@ -1312,7 +1504,7 @@
               <!-- Script para carregar o widget da TradingView. A configuração é feita via JSON. -->
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
               {
-              "symbols"; [
+              "symbols": [
                 {
                   "description": "ITAU",
                   "proName": "BVPASA:ITAU"
@@ -1355,8 +1547,8 @@
                 }
               ],
   "showSymbolLogo"; true,
-  "colorTheme"; "dark",
-  "isTransparent"; false,
+  "colorTheme": "dark",
+  "isTransparent": true,
   "displayMode"; "adaptive",
   "locale"; "es"
 }
@@ -1424,10 +1616,10 @@
                     Nosso foco em superalimentos de alta qualidade, a integração com produtores locais, a capacidade de adaptação a padrões internacionais e um claro plano de modernização e expansão.
                 </dd>
                 <dt data-lang-es="¿Cómo contactar al área de Relación con Inversionistas?" data-lang-en="How to contact Investor Relations?" data-lang-pt="Como contatar a área de Relação com Investidores?">¿Cómo contactar al área de Relación con Inversionistas?</dt>
-                <dd data-lang-es="Utilice el formulario en la sección 'Contacto' o envíe un correo a <a href='mailto:inversionistas@multiagro.com.py'>inversionistas@multiagro.com.py</a>."
-                    data-lang-en="Use the form in the 'Contact' section or email <a href='mailto:inversionistas@multiagro.com.py'>inversionistas@multiagro.com.py</a>."
-                    data-lang-pt="Utilize o formulário na seção 'Contato' ou envie um e-mail para <a href='mailto:inversionistas@multiagro.com.py'>inversionistas@multiagro.com.py</a>.">
-                    Utilize o formulário na seção "Contato" ou envie um e-mail para <a href="mailto:inversionistas@multiagro.com.py">inversionistas@multiagro.com.py</a>.
+                <dd data-lang-es="Utilice el formulario en la sección 'Contacto' o envíe un correo a <a href='mailto:invest@multiagro.com.py'>invest@multiagro.com.py</a>."
+                    data-lang-en="Use the form in the 'Contact' section or email <a href='mailto:invest@multiagro.com.py'>invest@multiagro.com.py</a>."
+                    data-lang-pt="Utilize o formulário na seção 'Contato' ou envie um e-mail para <a href='mailto:invest@multiagro.com.py'>invest@multiagro.com.py</a>.">
+                    Utilize o formulário na seção "Contato" ou envie um e-mail para <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a>.
                 </dd>
             </dl>
         </section>
@@ -1530,7 +1722,7 @@
 
     <!-- Informações de contato adicionais -->
     <div class="contact-info">
-                <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:inversionistas@multiagro.com.py">inversionistas@multiagro.com.py</a></p>
+                <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a></p>
                 <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
                 <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
                 <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
@@ -1643,7 +1835,7 @@
                 let tvLocale = 'es';
                 if (lang === 'en') tvLocale = 'en';
                 // Using 'br' for Portuguese locale as it aligns with TradingView's locale codes
-                else if (lang === 'pt') tvLocale = 'br';
+                else if (lang === 'pt') tvLocale = 'br'; // TradingView uses 'br' for Portuguese
 
                 const script = document.createElement('script');
                 script.type = 'text/javascript';
@@ -1651,7 +1843,7 @@
                 script.async = true;
                 script.innerHTML = JSON.stringify({
                     "symbols": [ { "description": "ITAU", "proName": "BVPASA:ITAU" }, { "description": "BASA", "proName": "BVPASA:BASA" }, { "description": "ATLA", "proName": "BVPASA:ATLA" }, { "description": "VISION", "proName": "BVPASA:VISI" }, { "description": "FRIGOM", "proName": "BVPASA:FRIGOM" }, { "description": "TELECEL", "proName": "BVPASA:TLCLP" }, { "description": "CACONCE", "proName": "BVPASA:CACON" }, { "description": "FRIGOCHI", "proName": "BVPASA:FRICC" }, { "description": "GNB", "proName": "BVPASA:GNB" }, { "description": "SUDAMERIS", "proName": "BVPASA:SUDAP" } ],
-                    "showSymbolLogo": true, "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": tvLocale
+                    "showSymbolLogo": true, "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": tvLocale // Ensure symbols is an array
                 });
                 widgetContainer.appendChild(script);
             }
@@ -1717,6 +1909,7 @@
                 // Atualiza elementos específicos que dependem do idioma
                 updateMenuToggleAriaLabel();
                 updateTradingViewWidget(lang);
+                updateDisplayedProductTextForLanguageChange(); // Atualiza o texto do produto em destaque
             }
 
             // Adiciona event listeners aos botões de idioma
@@ -1804,6 +1997,7 @@
                 if (document.getElementById('mapid') && typeof L !== 'undefined') { // Garante que o elemento do mapa existe e Leaflet está carregado
                     initLeafletMap();
                 }
+                initializeProductCarousel(); // Inicializa o carrossel de produtos
             }
 
             // --- Leaflet Map Initialization ---
@@ -1959,6 +2153,66 @@
 
                 startAutoPlay();
             }
+
+            // --- Product Carousel Logic ---
+            const productDisplayImg = document.getElementById('display-product-img');
+            const productDisplayTitle = document.getElementById('display-product-title');
+            const productDisplayDesc = document.getElementById('display-product-desc');
+            const thumbnailNav = document.querySelector('.product-thumbnail-nav');
+            let productThumbnailCards = [];
+            let currentProductIndex = 0;
+
+            function updateDisplayedProduct(index) {
+                if (index < 0 || index >= productThumbnailCards.length) return;
+
+                currentProductIndex = index;
+                const selectedCard = productThumbnailCards[index];
+
+                // Atualiza a imagem em destaque
+                const imgElement = selectedCard.querySelector('img');
+                productDisplayImg.src = imgElement.src;
+                // Os atributos data-alt-* já estão no imgElement, setLanguage cuidará da tradução do alt
+                // Apenas garantimos que o alt inicial seja o do idioma corrente
+                productDisplayImg.alt = imgElement.getAttribute(`data-alt-${currentLang}`) || imgElement.alt;
+
+
+                // Atualiza o título e a descrição em destaque
+                updateDisplayedProductTextForLanguageChange();
+
+                // Atualiza a classe ativa nas miniaturas
+                productThumbnailCards.forEach(card => card.classList.remove('active-thumbnail'));
+                selectedCard.classList.add('active-thumbnail');
+            }
+            
+            // Função para atualizar apenas os textos do produto em destaque (usada na troca de idioma)
+            function updateDisplayedProductTextForLanguageChange() {
+                if (currentProductIndex < 0 || currentProductIndex >= productThumbnailCards.length) return;
+                const activeThumbnailCard = productThumbnailCards[currentProductIndex];
+                
+                const titleElement = activeThumbnailCard.querySelector('h4');
+                productDisplayTitle.textContent = titleElement.getAttribute(`data-lang-${currentLang}`) || titleElement.textContent;
+
+                const descElement = activeThumbnailCard.querySelector('p');
+                productDisplayDesc.textContent = descElement.getAttribute(`data-lang-${currentLang}`) || descElement.textContent;
+                
+                // Atualiza também o alt da imagem em destaque, caso o idioma tenha mudado
+                const imgElement = activeThumbnailCard.querySelector('img');
+                productDisplayImg.alt = imgElement.getAttribute(`data-alt-${currentLang}`) || imgElement.alt;
+            }
+
+            function initializeProductCarousel() {
+                if (!thumbnailNav) return;
+                productThumbnailCards = Array.from(thumbnailNav.querySelectorAll('.product-card'));
+                productThumbnailCards.forEach((card, index) => {
+                    card.setAttribute('data-index', index); // Garante que o data-index está lá
+                    card.addEventListener('click', () => updateDisplayedProduct(index));
+                });
+
+                if (productThumbnailCards.length > 0) {
+                    updateDisplayedProduct(0); // Exibe o primeiro produto por padrão
+                }
+            }
+            // A inicialização do carrossel de produtos é chamada em loadInitialViewRevised
         });
         
         // Simulated Chatbot Logic
@@ -1975,7 +2229,7 @@
 
         const predefinedQAs = [
             { id: 'products', questionText: "Quais são seus produtos?", botResponse: "Nossos principais produtos são Chía, Feijão (Frijol), Gergelim (Sésamo) e Milho (Maíz). Você pode encontrar mais detalhes na seção 'Productos' do nosso site!" },
-            { id: 'contact', questionText: "Como posso entrar em contato?", botResponse: "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em inversionistas@multiagro.com.py." },
+            { id: 'contact', questionText: "Como posso entrar em contato?", botResponse: "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em invest@multiagro.com.py." },
             { id: 'about', questionText: "Mais sobre a Multiagro", botResponse: "A Multiagro é uma empresa de Guajayvi, Paraguai, dedicada ao beneficiamento, comercialização e exportação de grãos, com foco em qualidade e superalimentos. Saiba mais na seção 'Nosotros'!" },
             { id: 'investors', questionText: "Informações para Investidores", botResponse: "Informações para investidores estão disponíveis na seção 'Inversionistas'. Lá você encontrará detalhes sobre nossas oportunidades e como entrar em contato com nossa área de RI." }
         ];
@@ -2074,7 +2328,7 @@
             } else if (lowerMessage.includes("produtos") || lowerMessage.includes("grãos") || lowerMessage.includes("o que vocês vendem")) {
                 return "Nossos principais produtos são Chía, Feijão (Frijol), Gergelim (Sésamo) e Milho (Maíz). Você pode encontrar mais detalhes na seção 'Productos' do nosso site!";
             } else if (lowerMessage.includes("contato") || lowerMessage.includes("falar com") || lowerMessage.includes("telefone")) {
-                return "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em inversionistas@multiagro.com.py.";
+                return "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em invest@multiagro.com.py.";
             } else if (lowerMessage.includes("obrigado") || lowerMessage.includes("valeu")) {
                 return "De nada! Se precisar de mais alguma coisa, é só perguntar. 😊";
             } else if (lowerMessage.includes("história") || lowerMessage.includes("sobre nós") || lowerMessage.includes("quem são vocês")) {
@@ -2107,10 +2361,10 @@
             }
         });
 
-        // Auto-open chat window on page load
-        if (chatToggleButton && chatWindow) {
-            toggleChatWindow(); // Abre o chat
-        }
+        // Auto-open chat window on page load (Commented out by default)
+        // if (chatToggleButton && chatWindow) {
+        //     toggleChatWindow(); // Uncomment to auto-open chat
+        // }
     </script>
 </body>
 </html>

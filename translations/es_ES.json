@@ -1,0 +1,9 @@
+{
+    "greeting": "¡Hola! Bienvenido a nuestro servicio de chatbot.",
+    "goodbye": "Gracias por usar nuestro chatbot. ¡Hasta pronto!",
+    "ask_name": "¿Por favor, cuál es tu nombre?",
+    "user_query_prompt": "Escribe tu pregunta:",
+    "generic_response": "Entendido. Procesando su solicitud...",
+    "error_message": "Lo sentimos, ocurrió un error. Por favor, inténtelo de nuevo más tarde.",
+    "welcome_user": "¡Hola, {user_name}! ¿Cómo puedo ayudarte hoy?"
+}
