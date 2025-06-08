@@ -449,33 +449,66 @@
             color: var(--lilas-escuro);
         }
 
-        /* REMOVIDO: .product-card e seus estilos, pois eram usados pelas miniaturas que foram removidas */
+        /* Container para os cards de produtos */
+        .product-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grade responsiva */
+            gap: 1.5rem; /* Espaçamento entre os cards */
+            margin-top: 2rem;
+            margin-bottom: 2.5rem; /* Espaço antes do mapa */
+        }
 
-        /* Novo container para a imagem estática de produtos */
-        .product-static-image-container {
+        /* Card individual de produto */
+        .product-card {
+            background-color: var(--lilas-claro);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--sombra-leve);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Para alinhar conteúdo se descrições variarem */
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra);
+        }
+        /* Estilos para as imagens dos produtos nos cards */
+        .product-card img { 
+            width: 120px; /* Tamanho da imagem do produto */
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%; /* Imagens redondas */
+            margin: 0 auto 1rem auto; /* Centralizado */
+            border: 4px solid var(--verde-principal); 
+        }
+        .product-card h4 {
+            color: var(--lilas-escuro);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        .product-card p {
+            font-size: 0.9rem;
+            color: var(--cinza-texto);
+            flex-grow: 1; /* Para que os cards tenham altura similar se as descrições variarem */
+            margin-bottom: 0; /* Remover margem inferior padrão do parágrafo se não houver botão */
+        }
+
+        /* REMOVIDO: .product-static-image-container e seus estilos */
+        /* .product-static-image-container {
             width: 100%;
-            max-width: 700px; /* Ou o tamanho desejado */
-            margin: 2rem auto; /* Centralizar */
+            max-width: 700px; 
+            margin: 2rem auto; 
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--sombra-leve);
         }
         .product-static-image-container img {
             width: 100%;
-            height: auto; /* Manter proporção */
+            height: auto; 
             display: block;
-            object-fit: cover; /* Ou contain, dependendo da imagem */
-        }
-
-        /* REMOVIDO: .product-carousel-container e seus estilos específicos para carrossel */
-        /* .product-carousel-container {
-            margin-top: 2rem;
-            margin-bottom: 2.5rem; 
-            position: relative; 
-            width: 100%;
-            border-radius: 12px; 
-            overflow: hidden; 
-            min-height: 400px; 
+            object-fit: cover; 
         } */
 
         /* REMOVIDO: .product-thumbnail-nav e seus estilos, pois as miniaturas foram removidas */
@@ -497,6 +530,30 @@
             border-color: var(--lilas-principal);
         }
 
+        /* Legenda do Mapa */
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem; /* Espaço entre os itens da legenda */
+            margin-top: 1.25rem; /* Espaço acima da legenda */
+            padding: 0.75rem;
+            background-color: var(--lilas-claro); /* Fundo sutil para a legenda */
+            border-radius: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .legend-color-box {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
         /* Container para os cards de estatísticas */
         .stats-cards {
             display: flex;
@@ -924,8 +981,8 @@
             /* .logo img { height: 35px; } */ /* Ajuste da altura do logo para celulares */
             .logo a { font-size: 1.4rem; } /* Ajuste do tamanho da fonte do logo para celulares */
             .hero-section h1 { font-size: 1.8rem; }
-            .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; }
-            .product-card img { width: 100px; height: 100px;}
+            .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; } 
+            /* .product-card img { width: 100px; height: 100px;} */ /* Ajustado no estilo principal de .product-card img */
         } 
     </style>
     <!-- Estilos Adicionais para Botões de Perguntas Pré-definidas no Chat -->
@@ -1183,14 +1240,57 @@
                data-lang-pt="Oferecemos uma seleção de grãos cultivados com esmero e processados sob rigorosos padrões de qualidade, com um foco especial em superalimentos nutritivos.">
                Ofrecemos una selección de granos cultivados com esmero y procesados bajo estrictos estándares de calidad, con um enfoque especial em superalimentos nutritivos.
             </p>
-            
-            <!-- Imagem Estática para a Seção de Produtos -->
-            <div class="product-static-image-container">
-                <img src="images/chia.png" <!-- Substitua pelo caminho da sua imagem geral de produtos -->
-                     alt="Variedade de grãos e superalimentos da Multiagro"
-                     data-alt-es="Variedad de granos y superalimentos de Multiagro"
-                     data-alt-en="Variety of grains and superfoods from Multiagro"
-                     data-alt-pt="Variedade de grãos e superalimentos da Multiagro">
+
+            <!-- Container para os Cards de Produtos -->
+            <div class="product-cards-container">
+                <!-- Card 1: Chía -->
+                <div class="product-card">
+                    <img src="images/chia.png" alt="Sementes de Chía" data-alt-es="Sementes de Chía" data-alt-en="Chia Seeds" data-alt-pt="Sementes de Chia">
+                    <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
+                    <p data-lang-es="Rica en Omega-3, fibra y antioxidantes. Ideal para una dieta saludable y nutritiva."
+                       data-lang-en="Rich in Omega-3, fiber, and antioxidants. Ideal for a healthy and nutritious diet."
+                       data-lang-pt="Rica em Ômega-3, fibra e antioxidantes. Ideal para uma dieta saudável e nutritiva.">Rica en Omega-3, fibra y antioxidantes. Ideal para una dieta saludable y nutritiva.</p>
+                </div>
+                <!-- Card 2: Mungo -->
+                <div class="product-card">
+                    <img src="images/mung.png" alt="Grãos de Feijão Mungo" data-alt-es="Grãos de Frijol Mungo" data-alt-en="Mung Beans" data-alt-pt="Grãos de Feijão Mungo">
+                    <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
+                    <p data-lang-es="Alto valor proteico y versatilidad culinaria. Excelente para sopas, ensaladas y germinados."
+                       data-lang-en="High protein value and culinary versatility. Excellent for soups, salads, and sprouts."
+                       data-lang-pt="Alto valor proteico e versatilidade culinária. Excelente para sopas, saladas e brotos.">Alto valor proteico y versatilidad culinaria. Excelente para sopas, ensaladas y germinados.</p>
+                </div>
+                <!-- Card 3: Gergelim -->
+                <div class="product-card">
+                    <img src="images/sesame.png" alt="Sementes de Gergelim" data-alt-es="Sementes de Sésamo" data-alt-en="Sesame Seeds" data-alt-pt="Sementes de Gergelim">
+                    <h4 data-lang-es="Sésamo" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo</h4>
+                    <p data-lang-es="Fuente de calcio y grasas saludables. Perfecto para panificación, tahini y decoración de platos."
+                       data-lang-en="Source of calcium and healthy fats. Perfect for baking, tahini, and dish garnishing."
+                       data-lang-pt="Fonte de cálcio e gorduras saudáveis. Perfeito para panificação, tahine e decoração de pratos.">Fuente de calcio y grasas saludables. Perfecto para panificación, tahini y decoración de platos.</p>
+                </div>
+                <!-- Card 4: Sorgo -->
+                <div class="product-card">
+                    <img src="images/sorghum.png" alt="Grãos de Sorgo" data-alt-es="Grãos de Sorgo" data-alt-en="Sorghum Grains" data-alt-pt="Grãos de Sorgo">
+                    <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
+                    <p data-lang-es="Grano ancestral sin gluten, rico en nutrientes. Utilizado en harinas, alimentación animal y como cereal."
+                       data-lang-en="Gluten-free ancient grain, rich in nutrients. Used in flours, animal feed, and as a cereal."
+                       data-lang-pt="Grão ancestral sem glúten, rico em nutrientes. Utilizado em farinhas, alimentação animal e como cereal.">Grano ancestral sin gluten, rico en nutrientes. Utilizado en harinas, alimentación animal y como cereal.</p>
+                </div>
+                <!-- Card 5: Milho -->
+                <div class="product-card">
+                    <img src="images/corn.png" alt="Grãos de Milho" data-alt-es="Grãos de Maíz" data-alt-en="Corn Grains" data-alt-pt="Grãos de Milho">
+                    <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
+                    <p data-lang-es="Versátil y energético, base de la alimentación. Para consumo humano, animal e industrial."
+                       data-lang-en="Versatile and energetic, a dietary staple. For human, animal, and industrial consumption."
+                       data-lang-pt="Versátil e energético, base da alimentação. Para consumo humano, animal e industrial.">Versátil y energético, base de la alimentación. Para consumo humano, animal e industrial.</p>
+                </div>
+                <!-- Card 6: Soja -->
+                <div class="product-card">
+                    <img src="images/soybean.png" alt="Grãos de Soja" data-alt-es="Grãos de Soja" data-alt-en="Soybeans" data-alt-pt="Grãos de Soja">
+                    <h4 data-lang-es="Soja" data-lang-en="Soybean" data-lang-pt="Soja">Soja</h4>
+                    <p data-lang-es="Alta en proteínas y nutrientes esenciales. Fundamental en la industria alimentaria y de piensos."
+                       data-lang-en="High in protein and essential nutrients. Fundamental in the food and feed industry."
+                       data-lang-pt="Alta em proteínas e nutrientes essenciais. Fundamental na indústria alimentícia e de rações.">Alta en proteínas y nutrientes esenciales. Fundamental en la industria alimentaria y de piensos.</p>
+                </div>
             </div>
 
             <!-- Mapa Mundi de Exportação (agora ao final da seção de produtos) -->
@@ -1201,13 +1301,29 @@
                     data-lang-pt="Presença Global da Multiagro">
                     Presencia Global de Multiagro
                 </h3>
-                <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);"></div>
+                <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:var(--sombra-leve);"></div>
+                <!-- Legenda do Mapa -->
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #1e824c;"></span>
+                        <span data-lang-es="Paraguay" data-lang-en="Paraguay" data-lang-pt="Paraguai">País de Origen</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #8816bd;"></span>
+                        <span data-lang-es="Países Atendidos" data-lang-en="Countries Served" data-lang-pt="Países Atendidos">Países Atendidos</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #fd7e14;"></span>
+                        <span data-lang-es="En Negociación" data-lang-en="In Negotiation" data-lang-pt="Em Negociação">En Negociación</span>
+                    </div>
+                </div>
+                <!-- O parágrafo abaixo foi removido pois a legenda cumpre melhor a função -->
+                <!-- 
                 <p style="text-align:center;margin-top:1rem;font-size:0.98rem;color:#555;"
-                   data-lang-es="Exportamos a: México, Colombia, Bolivia, Brasil, Argentina, Estados Unidos, China, Portugal, España, Francia."
-                   data-lang-en="We export to: Mexico, Colombia, Bolivia, Brazil, Argentina, USA, China, Portugal, Spain, France."
-                   data-lang-pt="Exportamos para: México, Colômbia, Bolívia, Brasil, Argentina, EUA, China, Portugal, Espanha, França.">
-                   Exportamos a: México, Colombia, Bolivia, Brasil, Argentina, Estados Unidos, China, Portugal, España, Francia.
-                </p>
+                   data-lang-es="Categorização dos países será refletida aqui ou na legenda."
+                   data-lang-en="Country categorization will be reflected here or in the legend."
+                   data-lang-pt="A categorização dos países será refletida aqui ou na legenda.">
+                </p> -->
             </div>
         </section>
         <!-- Sobre Nosotros -->
@@ -1825,19 +1941,22 @@
                 }).addTo(mapInstance);
 
                 const countries = [
-                    { nameEs: 'Paraguay', nameEn: 'Paraguay', namePt: 'Paraguai', lat: -23.4425, lng: -58.4438, color: 'green', radius: 10 },
-                    { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, color: '#8e44ad', radius: 7 },
-                    { nameEs: 'Colombia', nameEn: 'Colombia', namePt: 'Colômbia', lat: 4.5709, lng: -74.2973, color: '#8e44ad', radius: 7 },
-                    { nameEs: 'Bolivia', nameEn: 'Bolivia', namePt: 'Bolívia', lat: -16.2902, lng: -63.5887, color: '#8e44ad', radius: 7 },
-                    { nameEs: 'Brasil', nameEn: 'Brazil', namePt: 'Brasil', lat: -14.2350, lng: -51.9253, color: '#8e44ad', radius: 8 },
-                    { nameEs: 'Argentina', nameEn: 'Argentina', namePt: 'Argentina', lat: -38.4161, lng: -63.6167, color: '#8e44ad', radius: 8 },
-                    { nameEs: 'Estados Unidos', nameEn: 'United States', namePt: 'Estados Unidos', lat: 37.0902, lng: -95.7129, color: '#8e44ad', radius: 8 },
-                    { nameEs: 'China', nameEn: 'China', namePt: 'China', lat: 35.8617, lng: 104.1954, color: '#8e44ad', radius: 8 },
-                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, color: '#8e44ad', radius: 7 },
-                    { nameEs: 'España', nameEn: 'Spain', namePt: 'Espanha', lat: 40.4637, lng: -3.7492, color: '#8e44ad', radius: 7 },
-                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, color: '#8e44ad', radius: 7 }
+                    // País de Origem
+                    { nameEs: 'Paraguay', nameEn: 'Paraguay', namePt: 'Paraguai', lat: -23.4425, lng: -58.4438, status: 'origem', radius: 10 },
+                    // Países Atendidos
+                    { nameEs: 'Brasil', nameEn: 'Brazil', namePt: 'Brasil', lat: -14.2350, lng: -51.9253, status: 'atendido', radius: 8 },
+                    { nameEs: 'Argentina', nameEn: 'Argentina', namePt: 'Argentina', lat: -38.4161, lng: -63.6167, status: 'atendido', radius: 8 },
+                    { nameEs: 'Bolivia', nameEn: 'Bolivia', namePt: 'Bolívia', lat: -16.2902, lng: -63.5887, status: 'atendido', radius: 7 },
+                    { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, status: 'atendido', radius: 7 },
+                    { nameEs: 'Chile', nameEn: 'Chile', namePt: 'Chile', lat: -35.6751, lng: -71.5430, status: 'atendido', radius: 7 },
+                    { nameEs: 'Colombia', nameEn: 'Colombia', namePt: 'Colômbia', lat: 4.5709, lng: -74.2973, status: 'atendido', radius: 7 },
+                    // Países em Negociação
+                    { nameEs: 'Estados Unidos', nameEn: 'United States', namePt: 'Estados Unidos', lat: 37.0902, lng: -95.7129, status: 'negociacao', radius: 8 },
+                    { nameEs: 'China', nameEn: 'China', namePt: 'China', lat: 35.8617, lng: 104.1954, status: 'negociacao', radius: 8 },
+                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, status: 'negociacao', radius: 7 },
+                    { nameEs: 'España', nameEn: 'Spain', namePt: 'Espanha', lat: 40.4637, lng: -3.7492, status: 'negociacao', radius: 7 },
+                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, status: 'negociacao', radius: 7 }
                 ];
-
                 const markersArray = []; // Array para armazenar os marcadores
 
                 countries.forEach(country => {
@@ -1845,12 +1964,21 @@
                     if (currentLang === 'en') popupName = country.nameEn;
                     else if (currentLang === 'pt') popupName = country.namePt;
 
+                    let markerColor;
+                    if (country.status === 'origem') {
+                        markerColor = '#1e824c'; // Verde escuro
+                    } else if (country.status === 'atendido') {
+                        markerColor = '#8816bd'; // Azul
+                    } else { // 'negociacao'
+                        markerColor = '#fd7e14'; // Laranja
+                    }
+
                     const circle = L.circleMarker([country.lat, country.lng], {
-                        color: country.color === 'green' ? '#1e824c' : country.color,
-                        fillColor: country.color === 'green' ? '#1e824c' : country.color,
+                        color: markerColor,
+                        fillColor: markerColor,
                         fillOpacity: 0.7,
                         radius: country.radius,
-                        weight: country.color === 'green' ? 3 : 1,
+                        weight: country.status === 'origem' ? 3 : 1.5, // Destaque para origem
                         stroke: true
                     })
                     .addTo(mapInstance)
