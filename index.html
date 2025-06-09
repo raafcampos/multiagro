@@ -678,9 +678,12 @@
             border-radius: 10px;
         }
         .coming-soon-container img {
-            max-width: 150px;
-            margin-bottom: 1rem;
-            opacity: 0.7;
+            width: 250px; /* Tamanho da imagem do produto */
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%; /* Imagens redondas */
+            margin: 0 auto 1rem auto; /* Centralizado */
+            border: 4px solid var(--verde-principal); 
         }
         .coming-soon-text {
             font-size: 1.3rem;
@@ -689,10 +692,7 @@
         }
 
         /* Estilos para o vídeo de fundo na seção "Sobre Nós" */
-        #nosotros {
-            /* position: relative; Removido, não mais necessário para o vídeo como background */
-            /* overflow: hidden; Removido, não mais necessário para o vídeo como background */
-        }
+
         .video-background-container {
             /* position: absolute; Removido */
             /* top: 0; Removido */
@@ -735,10 +735,7 @@
         }
         
         /* Wrapper para o conteúdo da seção "Sobre Nós" ficar acima do vídeo */
-        .nosotros-content-wrapper {
-            /* position: relative; Removido */
-            /* z-index: 2; Removido */
-        }
+
 
         /* Formulário de contato */
         form {
@@ -1373,7 +1370,7 @@
             <div class="product-segment">
                 <h3 data-lang-es="Nutrición Animal" data-lang-en="Animal Nutrition" data-lang-pt="Nutrição Animal">Nutrición Animal</h3>
                 <div class="coming-soon-container">
-                    <img src="images/racao_animal_placeholder.jpg" alt="Ração Animal" 
+                    <img src="images/racao.png" alt="Ração Animal" 
                          data-alt-es="Ración Animal" data-alt-en="Animal Feed" data-alt-pt="Ração Animal">
                     <p class="coming-soon-text"
                        data-lang-es="Próximamente: Soluciones innovadoras para la nutrición animal."
