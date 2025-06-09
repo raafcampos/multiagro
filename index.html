@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- O atributo lang="es" define o idioma principal da página como espanhol -->
+<!-- O atributo lang="es" define o idioma principal da página como espanhol -->x
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -648,6 +648,30 @@
             color: var(--lilas-principal);
             text-decoration: underline;
         }
+
+        /* Estilos para o vídeo de fundo na seção "Sobre Nós" */
+        #nosotros {
+            /* position: relative; Removido, não mais necessário para o vídeo como background */
+            /* overflow: hidden; Removido, não mais necessário para o vídeo como background */
+        }
+        .video-background-container {
+            /* position: absolute; Removido */
+            /* top: 0; Removido */
+            /* left: 0; Removido */
+            width: 100%;
+            height: 400px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
+            /* z-index: 0; Removido */
+            overflow: hidden;
+            margin: 2rem 0; /* Adiciona espaço vertical ao redor do vídeo */
+            border-radius: 8px; /* Opcional: para cantos arredondados no container do vídeo */
+            background-color: var(--cinza-muito-escuro); /* Cor de fundo caso o vídeo demore a carregar */
+        }
+        .video-background-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz o vídeo cobrir todo o container, cortando se necessário */
+        }
+        /* .video-background-container::after - Removido, overlay não é mais necessário */
         
         /* Estilos para a seção de Perguntas Frequentes (FAQ) */
         .faq dt {
@@ -669,6 +693,12 @@
             border-left: 3px solid var(--verde-claro);
             background-color: #fdfcff; /* Fundo levemente lilás */
             margin-bottom: 0.5rem;
+        }
+        
+        /* Wrapper para o conteúdo da seção "Sobre Nós" ficar acima do vídeo */
+        .nosotros-content-wrapper {
+            /* position: relative; Removido */
+            /* z-index: 2; Removido */
         }
 
         /* Formulário de contato */
@@ -1324,63 +1354,81 @@
         </section>
         <!-- Sobre Nosotros -->
         <section id="nosotros">
-            <!-- Título e introdução da seção "Sobre Nós" -->
-            <h2 data-lang-es="Sobre Multiagro" data-lang-en="About Multiagro" data-lang-pt="Sobre a Multiagro">Sobre Multiagro</h2>
-            <p class="section-intro"
-               data-lang-es="MultiAgro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados.
-
-               La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, MultiAgro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
-               data-lang-en="MultiAgro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains.
-
-               The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, MultiAgro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
-               data-lang-pt="A MultiAgro atua no mercado desde 2004, dedicando-se à importação e exportação de grãos, com ênfase em grãos especiais classificados como superfoods. Entre os principais produtos comercializados estão chia, feijão mungo, gergelim, sorgo, milho e soja, além de outros grãos diferenciados.
-
-               A empresa dispõe de uma fábrica especializada no beneficiamento desses produtos, atendendo aos mais rigorosos padrões de qualidade. Com ampla experiência também na comercialização de produtos orgânicos, a MultiAgro oferece ao mercado tanto os itens tradicionais quanto linhas certificadas, agregando valor e diversidade ao portfólio para atender diferentes mercados e exigências de clientes nacionais e internacionais.">
-               Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade. Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
-            </p>
-            <h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
-            <!-- Lista de Missão e Visão -->
-            <ul class="custom-list">
-                <li data-lang-es="<strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la producción paraguaya con el mundo, impulsados por la eficiencia, la innovación y prácticas sostenibles."
-                    data-lang-en="<strong>Mission:</strong> To process and market grains and superfoods of the highest quality, connecting Paraguayan production with the world, driven by efficiency, innovation, and sustainable practices."
-                    data-lang-pt="<strong>Missão:</strong> Processar e comercializar grãos e superalimentos da mais alta qualidade, conectando a produção paraguaia com o mundo, impulsionados pela eficiência, inovação e práticas sustentáveis.">
-                    <strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la produção paraguaya com o mundo, impulsados por a eficiência, a inovação e práticas sustentáveis.
-                </li>
-                <li data-lang-es="<strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados y superalimentos, reconocida globalmente por la excelencia, confiabilidad y nuestro compromiso con el desarrollo integral."
-                    data-lang-en="<strong>Vision:</strong> To be the leading agro-industry in Paraguay in the export of differentiated grains and superfoods, globally recognized for excellence, reliability, and our commitment to integral development."
-                    data-lang-pt="<strong>Visão:</strong> Ser a agroindústria líder no Paraguai na exportação de grãos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.">
-                    <strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.
-                </li>
-            </ul>
-            <h3 data-lang-es="Nuestros Valores" data-lang-en="Our Values" data-lang-pt="Nossos Valores">Nuestros Valores</h3>
-            <!-- Lista de Valores da empresa -->
-            <ul class="custom-list">
-                <li data-lang-es="Calidad Superior y Trazabilidad" data-lang-en="Superior Quality and Traceability" data-lang-pt="Qualidade Superior e Rastreabilidade">Calidad Superior y Trazabilidad</li>
-                <li data-lang-es="Integridad y Transparencia" data-lang-en="Integrity and Transparency" data-lang-pt="Integridade e Transparência">Integridad y Transparencia</li>
-                <li data-lang-es="Innovación y Adaptabilidad" data-lang-en="Innovation and Adaptability" data-lang-pt="Inovação e Adaptabilidade">Innovación y Adaptabilidad</li>
-                <li data-lang-es="Compromiso con Productores y Comunidades" data-lang-en="Commitment to Producers and Communities" data-lang-pt="Compromisso com Produtores e Comunidades">Compromiso con Productores y Comunidades</li>
-                <li data-lang-es="Orientación al Cliente y Mercados Globales" data-lang-en="Customer Focus and Global Markets" data-lang-pt="Orientação ao Cliente e Mercados Globais">Orientación al Cliente y Mercados Globales</li>
-            </ul>
-            <div class="stats-cards">
-                <!-- Cards com estatísticas/números da empresa -->
-                <div class="stat-card">
-                    <h4 data-lang-es="Años de Experiencia" data-lang-en="Years of Experience" data-lang-pt="Anos de Experiência">Años de Experiencia</h4>
-                    <p class="stat-value" data-lang-es="+15" data-lang-en="+15" data-lang-pt="+15">+15</p> <!-- Exemplo -->
+            <div class="nosotros-content-wrapper">
+                <!-- Título e introdução da seção "Sobre Nós" -->
+                <h2 data-lang-es="Sobre Multiagro" data-lang-en="About Multiagro" data-lang-pt="Sobre a Multiagro">Sobre Multiagro</h2>
+                <p class="section-intro"
+                   data-lang-es="MultiAgro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados.
+    
+                   La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, MultiAgro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
+                   data-lang-en="MultiAgro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains.
+    
+                   The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, MultiAgro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
+                   data-lang-pt="A MultiAgro atua no mercado desde 2004, dedicando-se à importação e exportação de grãos, com ênfase em grãos especiais classificados como superfoods. Entre os principais produtos comercializados estão chia, feijão mungo, gergelim, sorgo, milho e soja, além de outros grãos diferenciados.
+    
+                   A empresa dispõe de uma fábrica especializada no beneficiamento desses produtos, atendendo aos mais rigorosos padrões de qualidade. Com ampla experiência também na comercialização de produtos orgânicos, a MultiAgro oferece ao mercado tanto os itens tradicionais quanto linhas certificadas, agregando valor e diversidade ao portfólio para atender diferentes mercados e exigências de clientes nacionais e internacionais.">
+                   Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade. Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
+                </p>
+                <!-- Container do Vídeo movido para cá -->
+                <div class="video-background-container">
+                    <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                        <source src="videos/video1.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
                 </div>
-                <div class="stat-card">
-                    <h4 data-lang-es="Mercados Atendidos" data-lang-en="Markets Served" data-lang-pt="Mercados Atendidos">Mercados Atendidos</h4>
-                    <p class="stat-value" data-lang-es="+20 Países" data-lang-en="+20 Countries" data-lang-pt="+20 Países">+20 Países</p> <!-- Exemplo -->
+                <h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
+                <!-- Lista de Missão e Visão -->
+                <ul class="custom-list">
+                    <li data-lang-es="<strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la producción paraguaya con el mundo, impulsados por la eficiencia, la innovación y prácticas sostenibles."
+                        data-lang-en="<strong>Mission:</strong> To process and market grains and superfoods of the highest quality, connecting Paraguayan production with the world, driven by efficiency, innovation, and sustainable practices."
+                        data-lang-pt="<strong>Missão:</strong> Processar e comercializar grãos e superalimentos da mais alta qualidade, conectando a produção paraguaia com o mundo, impulsionados pela eficiência, inovação e práticas sustentáveis.">
+                        <strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la produção paraguaya com o mundo, impulsados por a eficiência, a inovação e práticas sustentáveis.
+                    </li>
+                    <li data-lang-es="<strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados y superalimentos, reconocida globalmente por la excelencia, confiabilidad y nuestro compromiso con el desarrollo integral."
+                        data-lang-en="<strong>Vision:</strong> To be the leading agro-industry in Paraguay in the export of differentiated grains and superfoods, globally recognized for excellence, reliability, and our commitment to integral development."
+                        data-lang-pt="<strong>Visão:</strong> Ser a agroindústria líder no Paraguai na exportação de grãos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.">
+                        <strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.
+                    </li>
+                </ul>
+                <h3 data-lang-es="Nuestros Valores" data-lang-en="Our Values" data-lang-pt="Nossos Valores">Nuestros Valores</h3>
+                <!-- Lista de Valores da empresa -->
+                <ul class="custom-list">
+                    <li data-lang-es="Calidad Superior y Trazabilidad" data-lang-en="Superior Quality and Traceability" data-lang-pt="Qualidade Superior e Rastreabilidade">Calidad Superior y Trazabilidad</li>
+                    <li data-lang-es="Integridad y Transparencia" data-lang-en="Integrity and Transparency" data-lang-pt="Integridade e Transparência">Integridad y Transparencia</li>
+                    <li data-lang-es="Innovación y Adaptabilidad" data-lang-en="Innovation and Adaptability" data-lang-pt="Inovação e Adaptabilidade">Innovación y Adaptabilidad</li>
+                    <li data-lang-es="Compromiso con Productores y Comunidades" data-lang-en="Commitment to Producers and Communities" data-lang-pt="Compromisso com Produtores e Comunidades">Compromiso con Productores y Comunidades</li>
+                    <li data-lang-es="Orientación al Cliente y Mercados Globales" data-lang-en="Customer Focus and Global Markets" data-lang-pt="Orientação ao Cliente e Mercados Globais">Orientación al Cliente y Mercados Globais</li>
+                </ul>
+                <div class="stats-cards">
+                    <!-- Cards com estatísticas/números da empresa -->
+                    <div class="stat-card">
+                        <h4 data-lang-es="Años de Experiencia" data-lang-en="Years of Experience" data-lang-pt="Anos de Experiência">Años de Experiencia</h4>
+                        <p class="stat-value" 
+                           data-lang-es="+20 Años" 
+                           data-lang-en="+20 Years" 
+                           data-lang-pt="+20 Anos">+20 Años</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 data-lang-es="Mercados Atendidos" data-lang-en="Markets Served" data-lang-pt="Mercados Atendidos">Mercados Atendidos</h4>
+                        <p class="stat-value" 
+                           data-lang-es="+5 Países" 
+                           data-lang-en="+5 Countries" 
+                           data-lang-pt="+5 Países">+5 Países</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 data-lang-es="Capacidad Productiva" data-lang-en="Productive Capacity" data-lang-pt="Capacidade Produtiva">Capacidad Productiva</h4>
+                        <p class="stat-value" 
+                           data-lang-es="&gt; 10.000 t por año" 
+                           data-lang-en="&gt; 10,000 t per year" 
+                           data-lang-pt="&gt; 10.000 t por ano">&gt; 10.000 t por año</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h4 data-lang-es="Capacidad Productiva" data-lang-en="Productive Capacity" data-lang-pt="Capacidade Produtiva">Capacidad Productiva</h4>
-                    <p class="stat-value" data-lang-es="En Expansión" data-lang-en="Expanding" data-lang-pt="Em Expansão">En Expansión</p>
+                <div style="text-align:center; margin-top: 2rem;">
+                    <!-- Botão CTA para a seção de investidores -->
+                    <a class="cta-btn green" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Oportunidades para Inversionistas" data-lang-en="Investor Opportunities" data-lang-pt="Oportunidades para Investidores">
+                       Oportunidades para Inversionistas
+                    </a>
                 </div>
-            </div>
-            <div style="text-align:center; margin-top: 2rem;">
-                <!-- Botão CTA para a seção de investidores -->
-                <a class="cta-btn green" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Oportunidades para Inversionistas" data-lang-en="Investor Opportunities" data-lang-pt="Oportunidades para Investidores">
-                   Oportunidades para Inversionistas
-                </a>
             </div>
         </section>
 
