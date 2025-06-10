@@ -18,8 +18,8 @@
         /* Definição de variáveis CSS (Custom Properties) para o tema do site */
         :root {
             /* Verde um pouco mais escuro */
-            --verde-principal: hsl(140, 65%, 35%); /* Ajustado para mais escuro */
-            --verde-escuro: hsl(140, 70%, 25%);   /* Ajustado para mais escuro */
+            --verde-principal: hsl(140, 40%, 28%); /* Ajustado para mais escuro */
+            --verde-escuro: hsl(140, 40%, 35%);   /* Ajustado para mais escuro */
             --verde-claro: hsl(140, 60%, 88%);   /* Levemente ajustado */
             
             --lilas-principal: hsl(270, 50%, 55%); /* Lilás um pouco menos vibrante para combinar */
@@ -1177,13 +1177,14 @@
         <!-- Sección de Hero/Principal -->
         <!-- A classe 'hero-section' é a seção principal no topo da página -->
         <section id="home" class="hero-section">
-            <!-- Texto "Multiagro" como logo principal na seção Hero -->
-            <div class="hero-logo-main"
-                 data-lang-es="Multiagro"
-                 data-lang-en="Multiagro"
-                 data-lang-pt="Multiagro">
-                Multiagro
-            </div>
+
+                                        <!-- Container do Vídeo movido para cá -->
+                <div class="video-background-container">
+                    <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                        <source src="videos/video6.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
             
             <!-- Nova área para o conteúdo principal da Hero (carrossel + texto) -->
             <div class="hero-main-content-area">
@@ -1244,7 +1245,7 @@
                 </div>
             </div>
             </div>
-        </section>
+                </section>
 
         <!-- Seção Produtos -->
         <!-- Seção Produtos -->
@@ -1319,23 +1320,6 @@
                            data-lang-pt="Alta em proteínas e nutrientes essenciais. Fundamental na indústria alimentícia e de rações.">Alta en proteínas y nutrientes esenciales. Fundamental en la industria alimentaria y de piensos.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Segmento 2: Ração Animal -->
-            <div class="product-segment">
-                <h3 data-lang-es="Nutrición Animal" data-lang-en="Animal Nutrition" data-lang-pt="Nutrição Animal">Nutrición Animal</h3>
-                <div class="coming-soon-container">
-                    <img src="images/racao.png" alt="Ração Animal" 
-                         data-alt-es="Ración Animal" data-alt-en="Animal Feed" data-alt-pt="Ração Animal">
-                    <p class="coming-soon-text"
-                       data-lang-es="PRÓXIMAMENTE: Soluciones innovadoras para la nutrición animal."
-                       data-lang-en="COMING SOON: Innovative solutions for animal nutrition."
-                       data-lang-pt="EM BREVE: Soluções inovadoras para a nutrição animal.">
-                       Próximamente: Soluciones innovadoras para la nutrición animal.
-                    </p>
-                </div>
-            </div>
-
             <!-- Segmento 3: Alimentos - Linha Don Luís -->
             <div class="product-segment">
                 <h3 data-lang-es="Alimentos – Línea Don Luís" data-lang-en="Foods – Don Luís Line" data-lang-pt="Alimentos – Linha Don Luís">Alimentos – Línea Don Luís</h3>
@@ -1379,34 +1363,26 @@
                            Una mezcla nutritiva de cereales seleccionados para un desayuno completo y energético.
                         </p>
                     </div>
-                </div>
             </div>
 
-            <!-- Mapa Mundi de Exportação (agora ao final da seção de produtos) -->
-            <div class="product-segment" style="width:100%;max-width:800px;margin:3rem auto 0 auto;">
-                <h3 style="text-align:center;margin-bottom:1rem;"
-                    data-lang-es="Presencia Global de Multiagro"
-                    data-lang-en="Multiagro Global Presence"
-                    data-lang-pt="Presença Global da Multiagro">
-                    Presencia Global de Multiagro
-                </h3>
-                <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:var(--sombra-leve);"></div>
-                <!-- Legenda do Mapa -->
-                <div class="map-legend">
-                    <div class="legend-item">
-                        <span class="legend-color-box" style="background-color: #1e824c;"></span>
-                        <span data-lang-es="Paraguay" data-lang-en="Paraguay" data-lang-pt="Paraguai">País de Origen</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color-box" style="background-color: #8816bd;"></span>
-                        <span data-lang-es="Países Atendidos" data-lang-en="Countries Served" data-lang-pt="Países Atendidos">Países Atendidos</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color-box" style="background-color: #fd7e14;"></span>
-                        <span data-lang-es="En Negociación" data-lang-en="In Negotiation" data-lang-pt="Em Negociação">En Negociación</span>
-                    </div>
+            <!-- Segmento 2: Ração Animal -->
+            <div class="product-segment">
+                <h3 data-lang-es="Nutrición Animal" data-lang-en="Animal Nutrition" data-lang-pt="Nutrição Animal">Nutrición Animal</h3>
+                <div class="coming-soon-container">
+                    <img src="images/racao.png" alt="Ração Animal" 
+                         data-alt-es="Ración Animal" data-alt-en="Animal Feed" data-alt-pt="Ração Animal">
+                    <p class="coming-soon-text"
+                       data-lang-es="PRÓXIMAMENTE: Soluciones innovadoras para la nutrición animal."
+                       data-lang-en="COMING SOON: Innovative solutions for animal nutrition."
+                       data-lang-pt="EM BREVE: Soluções inovadoras para a nutrição animal.">
+                       Próximamente: Soluciones innovadoras para la nutrición animal.
+                    </p>
                 </div>
             </div>
+            </div>
+            </div>
+
+
         </section>
         <!-- Sobre Nosotros -->
         <section id="nosotros">
@@ -1488,6 +1464,31 @@
                     </a>
                 </div>
             </div>
+                        <!-- Mapa Mundi de Exportação (agora ao final da seção de produtos) -->
+            <div class="product-segment" style="width:100%;max-width:800px;margin:3rem auto 0 auto;">
+                <h3 style="text-align:center;margin-bottom:1rem;"
+                    data-lang-es="Presencia Global de Multiagro"
+                    data-lang-en="Multiagro Global Presence"
+                    data-lang-pt="Presença Global da Multiagro">
+                    Presencia Global de Multiagro
+                </h3>
+                <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:var(--sombra-leve);"></div>
+                <!-- Legenda do Mapa -->
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #1e824c;"></span>
+                        <span data-lang-es="Paraguay" data-lang-en="Paraguay" data-lang-pt="Paraguai">País de Origen</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #8816bd;"></span>
+                        <span data-lang-es="Países Atendidos" data-lang-en="Countries Served" data-lang-pt="Países Atendidos">Países Atendidos</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #fd7e14;"></span>
+                        <span data-lang-es="En Negociación" data-lang-en="In Negotiation" data-lang-pt="Em Negociação">En Negociación</span>
+                    </div>
+                </div>
+        </div>
         </section>
 
         <!-- Gobernanza Corporativa -->
