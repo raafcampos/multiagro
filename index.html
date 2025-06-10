@@ -84,7 +84,6 @@
             height: 24px;
             background: linear-gradient(to bottom, #d52b1e 33.33%, #ffffff 33.33% 66.66%, #0038a8 66.66%);
             margin-right: 15px; /* Levemente aumentado para acomodar a sombra e rotação */
-            /* border: 1px solid #ddd; -- Removido para melhor efeito de brilho */
             transform: rotate(-7deg); /* Inclinação para a esquerda */
             box-shadow: 
                 /* Sombra base para profundidade, considerando a rotação */
@@ -111,11 +110,6 @@
         }
 
         .logo {
-            /* Estilos do logotipo */
-            /* font-size: 1.8rem; */ /* Removido pois agora é uma imagem */
-            /* font-weight: 700; */ /* Removido */
-            /* letter-spacing: 1px; */ /* Removido */
-            /* color: var(--branco); */ /* Removido */
             display: flex; /* Para alinhar a imagem se necessário */
             align-items: center;
         }
@@ -247,7 +241,6 @@
 
         /* Seção Hero (principal, no topo) */
         .hero-section {
-            /* background: linear-gradient(135deg, var(--verde-principal), var(--lilas-principal)); */ /* Removido para usar carrossel */
             padding: 0; /* Removido padding para o carrossel ocupar tudo */
             /* border-radius: 12px; */ /* Movido para o carrossel */
             text-align: center;
@@ -265,7 +258,6 @@
         .hero-main-content-area {
             position: relative;
             width: 100%;
-            /* max-width: 900px; */ /* Removido ou ajustado para permitir maior largura, ex: max-width: 100%; ou um valor maior */
             margin: 0 auto 2rem auto; /* Centralizado e com margem inferior */
             border-radius: 12px; /* Mantido */
             overflow: hidden; /* Para cortar o carrossel nos cantos arredondados */
@@ -331,7 +323,6 @@
             background-color: rgba(0, 0, 0, 0.4);
         }
 
-        /* REMOVIDO: .slide-product-caption - não há mais slides individuais com legendas assim */
         .slide-product-caption {
             position: absolute;
             bottom: 25px;
@@ -380,9 +371,6 @@
             margin-top: 1.5rem; /* Espaço acima da logo, abaixo do header */
             margin-bottom: 1.5rem; /* Espaço entre a logo e o conteúdo de texto abaixo (H1) */
             text-align: center; /* Centraliza o texto */
-            /* max-width e height: auto removidos pois eram para a imagem */
-            /* position: relative; não é mais crítico aqui */
-            /* display: block; e margin-left/right: auto; são cobertos pelo flex do pai */
         }
         
         /* Título principal da seção Hero */
@@ -444,12 +432,12 @@
         }
         /* Estilos para as imagens dos produtos nos cards */
         .product-card img { 
-            width: 120px; /* Tamanho da imagem do produto */
-            height: 120px;
-            object-fit: cover;
-            border-radius: 50%; /* Imagens redondas */
-            margin: 0 auto 1rem auto; /* Centralizado */
-            border: 4px solid var(--verde-principal); 
+            width: 200px; /* Tamanho da imagem do produto */
+            height: auto;
+            object-fit: scale-down;
+            border-radius: 8%; /* Imagens redondas */
+            margin: 0 auto 4rem auto; /* Centralizado */
+            border: 0px solid var(--verde-principal); 
         }
         .product-card h4 {
             color: var(--lilas-escuro);
@@ -462,24 +450,6 @@
             flex-grow: 1; /* Para que os cards tenham altura similar se as descrições variarem */
             margin-bottom: 0; /* Remover margem inferior padrão do parágrafo se não houver botão */
         }
-
-        /* REMOVIDO: .product-static-image-container e seus estilos */
-        /* .product-static-image-container {
-            width: 100%;
-            max-width: 700px; 
-            margin: 2rem auto; 
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--sombra-leve);
-        }
-        .product-static-image-container img {
-            width: 100%;
-            height: auto; 
-            display: block;
-            object-fit: cover; 
-        } */
-
-        /* REMOVIDO: .product-thumbnail-nav e seus estilos, pois as miniaturas foram removidas */
         .product-thumbnail-nav {
             display: flex;
             flex-wrap: wrap;
@@ -678,12 +648,12 @@
             border-radius: 10px;
         }
         .coming-soon-container img {
-            width: 250px; /* Tamanho da imagem do produto */
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%; /* Imagens redondas */
+            width: 400px;/* Tamanho da imagem do produto */
+            height: aulto;
+            object-fit: scale-down;
+            border-radius: 4%; /* Imagens redondas */
             margin: 0 auto 1rem auto; /* Centralizado */
-            border: 4px solid var(--verde-principal); 
+            border: 0px solid var(--verde-principal); 
         }
         .coming-soon-text {
             font-size: 1.3rem;
@@ -694,12 +664,8 @@
         /* Estilos para o vídeo de fundo na seção "Sobre Nós" */
 
         .video-background-container {
-            /* position: absolute; Removido */
-            /* top: 0; Removido */
-            /* left: 0; Removido */
             width: 100%;
             height: 400px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
-            /* z-index: 0; Removido */
             overflow: hidden;
             margin: 2rem 0; /* Adiciona espaço vertical ao redor do vídeo */
             border-radius: 8px; /* Opcional: para cantos arredondados no container do vídeo */
@@ -710,9 +676,6 @@
             height: 100%;
             object-fit: cover; /* Faz o vídeo cobrir todo o container, cortando se necessário */
         }
-        /* .video-background-container::after - Removido, overlay não é mais necessário */
-        
-        /* Estilos para a seção de Perguntas Frequentes (FAQ) */
         .faq dt {
             font-weight: 600;
             color: var(--lilas-escuro);
@@ -733,11 +696,8 @@
             background-color: #fdfcff; /* Fundo levemente lilás */
             margin-bottom: 0.5rem;
         }
-        
         /* Wrapper para o conteúdo da seção "Sobre Nós" ficar acima do vídeo */
-
-
-        /* Formulário de contato */
+       /* Formulário de contato */
         form {
             display: flex;
             flex-direction: column;
@@ -955,7 +915,6 @@
             nav a:hover, nav a.active {
                 background-color: var(--verde-principal); /* Fundo no hover/active */
                 color: var(--branco); /* Texto branco no hover/active */
-                /* border-bottom-color: var(--lilas-principal); */ /* Removido */
             }
             /* Seletor de idioma no menu mobile */
             .language-switcher {
@@ -977,11 +936,9 @@
                 transform: none; 
                 border-radius: 10px; /* Arredondar como os outros links */
             }
-
             nav ul li a.nav-link-investor:hover,
             nav ul li a.nav-link-investor.active {
                 background-color: var(--verde-principal); /* Fundo no hover/active */
-                /* border-bottom-color: var(--lilas-principal); */ /* Removido */
                 color: var(--branco); /* Texto branco no hover/active */
             }
         }
@@ -1012,11 +969,9 @@
         /* Para celulares em retrato */
         @media (max-width: 480px) {
             .logo { font-size: 1.4rem; }
-            /* .logo img { height: 35px; } */ /* Ajuste da altura do logo para celulares */
             .logo a { font-size: 1.4rem; } /* Ajuste do tamanho da fonte do logo para celulares */
             .hero-section h1 { font-size: 1.8rem; }
             .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; } 
-            /* .product-card img { width: 100px; height: 100px;} */ /* Ajustado no estilo principal de .product-card img */
         } 
     </style>
     <!-- Estilos Adicionais para Botões de Perguntas Pré-definidas no Chat -->
@@ -1373,9 +1328,9 @@
                     <img src="images/racao.png" alt="Ração Animal" 
                          data-alt-es="Ración Animal" data-alt-en="Animal Feed" data-alt-pt="Ração Animal">
                     <p class="coming-soon-text"
-                       data-lang-es="Próximamente: Soluciones innovadoras para la nutrición animal."
-                       data-lang-en="Coming Soon: Innovative solutions for animal nutrition."
-                       data-lang-pt="Em Breve: Soluções inovadoras para a nutrição animal.">
+                       data-lang-es="PRÓXIMAMENTE: Soluciones innovadoras para la nutrición animal."
+                       data-lang-en="COMING SOON: Innovative solutions for animal nutrition."
+                       data-lang-pt="EM BREVE: Soluções inovadoras para a nutrição animal.">
                        Próximamente: Soluciones innovadoras para la nutrición animal.
                     </p>
                 </div>
@@ -1451,13 +1406,6 @@
                         <span data-lang-es="En Negociación" data-lang-en="In Negotiation" data-lang-pt="Em Negociação">En Negociación</span>
                     </div>
                 </div>
-                <!-- O parágrafo abaixo foi removido pois a legenda cumpre melhor a função -->
-                <!-- 
-                <p style="text-align:center;margin-top:1rem;font-size:0.98rem;color:#555;"
-                   data-lang-es="Categorização dos países será refletida aqui ou na legenda."
-                   data-lang-en="Country categorization will be reflected here or in the legend."
-                   data-lang-pt="A categorização dos países será refletida aqui ou na legenda.">
-                </p> -->
             </div>
         </section>
         <!-- Sobre Nosotros -->
