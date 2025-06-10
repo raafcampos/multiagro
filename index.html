@@ -749,6 +749,30 @@
         .contact-info a:hover {
             text-decoration: underline;
         }
+        /* Estilos para links de redes sociais na seção de contato */
+        .contact-info .social-media-links {
+            margin-top: 1.5rem; /* Espaço acima dos links sociais */
+            padding-top: 1rem;
+            border-top: 1px solid var(--lilas-principal); /* Linha separadora sutil */
+        }
+        .contact-info .social-media-links p strong { /* Para o título "Siga-nos em:" */
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            color: var(--lilas-escuro);
+        }
+        .contact-info .social-media-links a {
+            display: inline-flex; /* Para alinhar ícone e texto verticalmente */
+            align-items: center;
+            margin: 0.3rem 0.8rem; /* Espaçamento entre os links */
+            color: var(--lilas-escuro);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .contact-info .social-media-links a i {
+            margin-right: 0.5rem; /* Espaço entre o ícone e o texto */
+            font-size: 1.3rem; /* Tamanho do ícone */
+        }
 
         /* Estilos específicos para a seção de Investidores com tons escuros */
         #inversionistas {
@@ -864,6 +888,10 @@
         .footer-links a:hover {
             color: var(--lilas-principal);
             text-decoration: underline;
+        }
+        /* Estilo para ícones de redes sociais no rodapé */
+        .footer-links a .fab {
+            font-size: 1.3rem; /* Tamanho dos ícones sociais no rodapé */
         }
 
         /* Media Queries para Responsividade */
@@ -1191,6 +1219,13 @@
                 <!-- Hero Carousel -->
                 <div class="hero-carousel">
                     <div class="carousel-slides">
+                    <div class="carousel-slide">
+                    <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                        <source src="videos/video7.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+                        
                         <div class="carousel-slide">
                             <img src="images/paginaprincipal1.jpg" alt="Paisagem agrícola Multiagro"
                                  data-alt-es="Paisaje agrícola Multiagro"
@@ -1764,6 +1799,20 @@
                 <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
                 <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
                 <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
+                
+                <!-- Links de Redes Sociais -->
+                <div class="social-media-links">
+                    <p><strong data-lang-es="Síganos en nuestras redes:" data-lang-en="Follow us on our networks:" data-lang-pt="Siga-nos em nossas redes:">Síganos en nuestras redes:</strong></p>
+                    <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro">
+                        <i class="fab fa-linkedin"></i> <span data-lang-es="LinkedIn" data-lang-en="LinkedIn" data-lang-pt="LinkedIn">LinkedIn</span>
+                    </a>
+                    <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
+                        <i class="fab fa-facebook-square"></i> <span data-lang-es="Facebook" data-lang-en="Facebook" data-lang-pt="Facebook">Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
+                        <i class="fab fa-instagram"></i> <span data-lang-es="Instagram" data-lang-en="Instagram" data-lang-pt="Instagram">Instagram</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -1777,6 +1826,17 @@
             <!-- Outros links no rodapé -->
             <a href="#sostenibilidad" onclick="navigateToSection('sostenibilidad');return false;" data-lang-es="Sostenibilidad" data-lang-en="Sustainability" data-lang-pt="Sustentabilidade">Sostenibilidad</a> |
             <a href="/docs/politica-privacidad-multiagro.pdf" target="_blank" data-lang-es="Política de Privacidad" data-lang-en="Privacy Policy" data-lang-pt="Política de Privacidade">Política de Privacidad</a>
+            
+            <!-- Ícones de Redes Sociais no Rodapé -->
+            <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro" style="margin-left: 1.5rem;"> <!-- Margem para separar dos links de texto -->
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
     </footer>
 
