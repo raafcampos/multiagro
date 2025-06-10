@@ -1794,11 +1794,11 @@
             <div id="chat-messages"></div>
             <div id="chat-input-area">
                 <input type="text" id="chat-input" placeholder="Digite sua dúvida...">
-                <button id="chat-send-button">Enviar</button>
+                <button id="chat-send-button" data-lang-es="Enviar" data-lang-en="Send" data-lang-pt="Enviar">Enviar</button>
+                <button id="chat-show-predefined-button" style="display:none; margin-left: 5px; padding: 10px 15px; background-color: var(--lilas-claro); color: var(--lilas-escuro); border: 1px solid var(--lilas-principal); border-radius: 20px; cursor: pointer; font-size: 13px;" data-lang-es="Preguntas Principales" data-lang-en="Main Questions" data-lang-pt="Perguntas Principais">Perguntas Principais</button>
             </div>
         </div>
     </div>
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
        crossorigin=""></script>
@@ -1904,6 +1904,12 @@
                 const pageTitleData = document.querySelector('head title');
                 if (pageTitleData) {
                     const titleText = pageTitleData.getAttribute(`data-lang-${lang}`);
+                    // Update chat button texts based on language
+                    const chatSendBtn = document.getElementById('chat-send-button');
+                    const chatShowPredefinedBtn = document.getElementById('chat-show-predefined-button');
+                    if(chatSendBtn) chatSendBtn.textContent = chatSendBtn.getAttribute(`data-lang-${lang}`) || chatSendBtn.textContent;
+                    if(chatShowPredefinedBtn) chatShowPredefinedBtn.textContent = chatShowPredefinedBtn.getAttribute(`data-lang-${lang}`) || chatShowPredefinedBtn.textContent;
+
                     if (titleText) document.title = titleText;
                 }
 
@@ -2231,40 +2237,82 @@
         const chatCloseWindowButton = document.getElementById('chat-close-window-button');
         const chatIcon = chatToggleButton.querySelector('.chat-icon');
         const chatCloseIcon = chatToggleButton.querySelector('.chat-close-icon');
+        const chatShowPredefinedButton = document.getElementById('chat-show-predefined-button');
 
         let isChatOpen = false; // Inicia como falso, será aberto programaticamente
 
         const predefinedQAs = [
-            { id: 'products', questionText: "Quais são seus produtos?", botResponse: "Nossos principais produtos são Chía, Feijão (Frijol), Gergelim (Sésamo) e Milho (Maíz). Você pode encontrar mais detalhes na seção 'Productos' do nosso site!" },
-            { id: 'contact', questionText: "Como posso entrar em contato?", botResponse: "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em invest@multiagro.com.py." },
-            { id: 'about', questionText: "Mais sobre a Multiagro", botResponse: "A Multiagro é uma empresa de Guajayvi, Paraguai, dedicada ao beneficiamento, comercialização e exportação de grãos, com foco em qualidade e superalimentos. Saiba mais na seção 'Nosotros'!" },
-            { id: 'investors', questionText: "Informações para Investidores", botResponse: "Informações para investidores estão disponíveis na seção 'Inversionistas'. Lá você encontrará detalhes sobre nossas oportunidades e como entrar em contato com nossa área de RI." }
+            {
+                id: 'products_overview',
+                questionText: "Quais são seus principais produtos?",
+                botResponse: "Nossas principais linhas são: \n1. Beneficiamento de Grãos: Chía, Feijão Mungo, Gergelim, Sorgo, Milho e Soja. \n2. Alimentos Don Luís: Café, Açúcar e Cereais selecionados. \n3. Nutrição Animal (em breve!). \nVeja detalhes na seção 'Productos'."
+            },
+            {
+                id: 'contact_info',
+                questionText: "Como posso entrar em contato?",
+                botResponse: "Para contato geral, use o formulário na seção 'Contacto' ou o e-mail info@multiagro.com.py. Para investidores, o e-mail é invest@multiagro.com.py. Nosso telefone é +595 XXX XXX XXX e estamos em Guajayvi, San Pedro, Paraguai."
+            },
+            {
+                id: 'about_multiagro',
+                questionText: "Conte-me mais sobre a Multiagro.",
+                botResponse: "A Multiagro, desde 2004 em Guajayvi, Paraguai, é especialista no beneficiamento, comercialização e exportação de grãos, com foco em superalimentos e produtos orgânicos. Nossa missão é conectar a produção paraguaia ao mundo com qualidade e inovação. Mais em 'Nosotros'."
+            },
+            {
+                id: 'investor_info',
+                questionText: "Informações para Investidores?",
+                botResponse: "A Multiagro S.A. está listada na Bolsa de Valores de Asunción (BVPASA). Na seção 'Inversionistas', você encontra nosso foco estratégico, relatórios, e informações sobre como participar do futuro da agroindústria paraguaia."
+            },
+            {
+                id: 'sustainability_info',
+                questionText: "Qual o compromisso com a sustentabilidade?",
+                botResponse: "A sustentabilidade é um pilar! Focamos no ambiental (boas práticas agrícolas), social (apoio a produtores de Guajayvi) e governança (ética e transparência). Detalhes na seção 'Sostenibilidad'."
+            },
+            {
+                id: 'export_markets',
+                questionText: "Vocês exportam para quais mercados?",
+                botResponse: "Sim, exportamos para diversos mercados globais, incluindo países da América Latina, e estamos em negociação com EUA, China e Europa. Veja nosso mapa de presença global no final da seção 'Nosotros'."
+            }
         ];
 
         function removePredefinedQuestions() {
             const containerToRemove = document.getElementById('predefined-questions-container');
             if (containerToRemove) {
                 containerToRemove.remove();
+                if (chatShowPredefinedButton && isChatOpen) {
+                    chatShowPredefinedButton.style.display = 'inline-block';
+                }
             }
         }
 
         function toggleChatWindow() {
             isChatOpen = !isChatOpen;
+            const currentSiteLang = localStorage.getItem('preferredLang') || 'es';
+            const openChatLabel = currentSiteLang === 'pt' ? 'Fechar chat' : (currentSiteLang === 'en' ? 'Close chat' : 'Cerrar chat');
+            const closeChatLabel = currentSiteLang === 'pt' ? 'Abrir chat' : (currentSiteLang === 'en' ? 'Open chat' : 'Abrir chat');
+
             if (isChatOpen) {
                 chatWindow.style.display = 'flex';
                 chatIcon.style.display = 'none';
                 chatCloseIcon.style.display = 'inline';
-                chatToggleButton.setAttribute('aria-label', 'Fechar chat');
+                chatToggleButton.setAttribute('aria-label', openChatLabel);
                 if (chatMessagesContainer.children.length === 0) { 
                     addBotMessage("Olá! 👋 Sou o assistente virtual da Multiagro. Como posso ajudar você hoje?");
                     displayPredefinedQuestions();
+                } else {
+                    if (!document.getElementById('predefined-questions-container') && chatShowPredefinedButton) {
+                        chatShowPredefinedButton.style.display = 'inline-block';
+                    } else if (chatShowPredefinedButton) {
+                         chatShowPredefinedButton.style.display = 'none';
+                    }
                 }
             } else {
                 chatWindow.style.display = 'none';
                 chatIcon.style.display = 'inline';
                 chatCloseIcon.style.display = 'none';
-                chatToggleButton.setAttribute('aria-label', 'Abrir chat');
-                removePredefinedQuestions(); // Mover para cá: remover perguntas apenas ao fechar o chat
+                chatToggleButton.setAttribute('aria-label', closeChatLabel);
+                if (chatShowPredefinedButton) {
+                    chatShowPredefinedButton.style.display = 'none';
+                }
             }
         }
 
@@ -2326,24 +2374,57 @@
             // Adiciona o container de perguntas após a última mensagem (que deve ser a de boas-vindas do bot)
             chatMessagesContainer.appendChild(questionsContainer);
             chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            if (chatShowPredefinedButton) chatShowPredefinedButton.style.display = 'none';
         }
 
         function getSimulatedBotResponse(userMessage) {
             const lowerMessage = userMessage.toLowerCase();
+
+            // Check for direct matches with predefined questions first (more specific)
+            if (lowerMessage.includes("quais são seus principais produtos") || lowerMessage.includes("que produtos vocês têm")) {
+                return predefinedQAs.find(qa => qa.id === 'products_overview').botResponse;
+            }
+            if (lowerMessage.includes("como posso entrar em contato") || lowerMessage.includes("fale com vocês")) {
+                return predefinedQAs.find(qa => qa.id === 'contact_info').botResponse;
+            }
+            if (lowerMessage.includes("conte-me mais sobre a multiagro") || lowerMessage.includes("quem é a multiagro")) {
+                return predefinedQAs.find(qa => qa.id === 'about_multiagro').botResponse;
+            }
+            if (lowerMessage.includes("informações para investidores") || lowerMessage.includes("quero investir")) {
+                return predefinedQAs.find(qa => qa.id === 'investor_info').botResponse;
+            }
+            if (lowerMessage.includes("compromisso com a sustentabilidade") || lowerMessage.includes("sustentabilidade na multiagro")) {
+                return predefinedQAs.find(qa => qa.id === 'sustainability_info').botResponse;
+            }
+            if (lowerMessage.includes("exportam para quais mercados") || lowerMessage.includes("para onde exportam")) {
+                return predefinedQAs.find(qa => qa.id === 'export_markets').botResponse;
+            }
+
+            // General keyword matching
             if (lowerMessage.includes("olá") || lowerMessage.includes("oi") || lowerMessage.includes("bom dia") || lowerMessage.includes("boa tarde") || lowerMessage.includes("boa noite")) {
-                return "Olá! Como posso ajudar você hoje com informações sobre a Multiagro?";
-            } else if (lowerMessage.includes("produtos") || lowerMessage.includes("grãos") || lowerMessage.includes("o que vocês vendem")) {
-                return "Nossos principais produtos são Chía, Feijão (Frijol), Gergelim (Sésamo) e Milho (Maíz). Você pode encontrar mais detalhes na seção 'Productos' do nosso site!";
-            } else if (lowerMessage.includes("contato") || lowerMessage.includes("falar com") || lowerMessage.includes("telefone")) {
-                return "Você pode nos contatar através do formulário na seção 'Contacto', pelo e-mail info@multiagro.com.py ou para investidores em invest@multiagro.com.py.";
-            } else if (lowerMessage.includes("obrigado") || lowerMessage.includes("valeu")) {
-                return "De nada! Se precisar de mais alguma coisa, é só perguntar. 😊";
-            } else if (lowerMessage.includes("história") || lowerMessage.includes("sobre nós") || lowerMessage.includes("quem são vocês")) {
-                return "A Multiagro é uma empresa de Guajayvi, Paraguai, dedicada ao beneficiamento, comercialização e exportação de grãos, com foco em qualidade e superalimentos. Saiba mais na seção 'Nosotros'!";
-            } else if (lowerMessage.includes("investidores") || lowerMessage.includes("investir")) {
-                return "Informações para investidores estão disponíveis na seção 'Inversionistas'. Lá você encontrará detalhes sobre nossas oportunidades e como entrar em contato com nossa área de RI.";
+                return "Olá! 👋 Sou o assistente virtual da Multiagro. Como posso ajudar? Você pode perguntar sobre nossos produtos, contato, ou usar o botão 'Perguntas Principais'.";
+            } else if (lowerMessage.includes("produto") || lowerMessage.includes("grão") || lowerMessage.includes("vendem") || lowerMessage.includes("chia") || lowerMessage.includes("mungo") || lowerMessage.includes("gergelim") || lowerMessage.includes("sésamo") || lowerMessage.includes("sorgo") || lowerMessage.includes("milho") || lowerMessage.includes("maíz") || lowerMessage.includes("soja") || lowerMessage.includes("café") || lowerMessage.includes("açúcar") || lowerMessage.includes("cereal") || lowerMessage.includes("ração")) {
+                return "Falando em produtos, oferecemos Chía, Feijão Mungo, Gergelim, Sorgo, Milho, Soja, e a linha Don Luís (Café, Açúcar, Cereais). Em breve, teremos Nutrição Animal! Mais detalhes na seção 'Productos'. O que gostaria de saber especificamente?";
+            } else if (lowerMessage.includes("contato") || lowerMessage.includes("falar com") || lowerMessage.includes("telefone") || lowerMessage.includes("email") || lowerMessage.includes("endereço")) {
+                return "Para contato: e-mail info@multiagro.com.py (geral) ou invest@multiagro.com.py (investidores), telefone +595 XXX XXX XXX. Estamos em Guajayvi, San Pedro, Paraguai. Veja mais na seção 'Contacto'.";
+            } else if (lowerMessage.includes("obrigado") || lowerMessage.includes("valeu") || lowerMessage.includes("grato")) {
+                return "De nada! Se precisar de mais alguma coisa, é só perguntar ou clique em 'Perguntas Principais'. 😊";
+            } else if (lowerMessage.includes("história") || lowerMessage.includes("sobre") || lowerMessage.includes("quem são")) {
+                return "A Multiagro, desde 2004, atua em Guajayvi, Paraguai, focada em grãos de qualidade e superalimentos para o mercado nacional e internacional. Conheça nossa missão, visão e valores na seção 'Nosotros'.";
+            } else if (lowerMessage.includes("investidor") || lowerMessage.includes("investir") || lowerMessage.includes("ações") || lowerMessage.includes("bolsa") || lowerMessage.includes("bvpasa")) {
+                return "Para investidores: A Multiagro S.A. é listada na BVPASA. Detalhes sobre oportunidades, nosso foco estratégico e relatórios estão na seção 'Inversionistas'.";
+            } else if (lowerMessage.includes("sustentabilidade") || lowerMessage.includes("meio ambiente") || lowerMessage.includes("social") || lowerMessage.includes("governança")) {
+                return "Nosso compromisso com a sustentabilidade envolve práticas ambientais responsáveis, apoio à comunidade de Guajayvi e governança transparente. Saiba mais na seção 'Sostenibilidad'.";
+            } else if (lowerMessage.includes("localização") || lowerMessage.includes("onde fica")) {
+                return "Nossa sede e planta de processamento estão em Guajayvi, Departamento de San Pedro, Paraguai. Há um mapa na seção 'Contacto'.";
+            } else if (lowerMessage.includes("exportação") || lowerMessage.includes("exportam") || lowerMessage.includes("mercados") || lowerMessage.includes("países")) {
+                return "Sim, exportamos para diversos países! Conectamos a produção paraguaia com o mundo. Veja nosso mapa de presença global no final da seção 'Nosotros'.";
+            } else if (lowerMessage.includes("don luis")) {
+                return "A linha Don Luís oferece produtos selecionados como Café, Açúcar e Cereais, levando o melhor do campo para sua mesa. Veja mais na seção 'Productos'.";
+            } else if (lowerMessage.includes("orgânico") || lowerMessage.includes("organicos")) {
+                return "Sim, temos ampla experiência na comercialização de produtos orgânicos, oferecendo linhas certificadas além dos tradicionais. Consulte-nos para mais detalhes sobre a disponibilidade atual.";
             } else {
-                return "Desculpe, não entendi bem sua pergunta. Poderia reformular ou perguntar sobre nossos produtos, contato, ou sobre a Multiagro em geral?";
+                return "Desculpe, não entendi bem. Poderia reformular? Você também pode clicar em 'Perguntas Principais' para ver os tópicos que posso ajudar.";
             }
         }
 
@@ -2359,6 +2440,13 @@
                     addBotMessage(botResponse);
                 }, 1000 + Math.random() * 1000);
             }
+        }
+
+        if (chatShowPredefinedButton) {
+            chatShowPredefinedButton.addEventListener('click', () => {
+                addBotMessage("Certo! Aqui estão as principais perguntas que posso ajudar a responder:");
+                displayPredefinedQuestions();
+            });
         }
 
         if (chatSendButton) chatSendButton.addEventListener('click', handleSendMessage);
