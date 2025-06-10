@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- O atributo lang="es" define o idioma principal da página como espanhol -->x
+<!-- O atributo lang="es" define o idioma principal da página como espanhol -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1164,6 +1164,29 @@
         #chat-send-button:hover {
             background-color: var(--verde-escuro);
         }
+
+        /* Estilos para botões de ação dentro das mensagens do bot */
+        .chat-action-buttons-container {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap; /* Permite que os botões quebrem linha se necessário */
+        }
+
+        .chat-action-button {
+            background-color: hsl(270, 60%, 92%); /* Lilás um pouco mais suave que o predefined-question-button */
+            color: var(--lilas-escuro);
+            border: 1px solid hsl(270, 50%, 75%); /* Borda lilás mais suave */
+            padding: 6px 12px;
+            border-radius: 15px; /* Mais arredondado */
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8em;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .chat-action-button:hover {
+            background-color: hsl(270, 60%, 85%);
+        }
     </style>
 </head>
 <body>
@@ -1969,7 +1992,7 @@
                     const chatShowPredefinedBtn = document.getElementById('chat-show-predefined-button');
                     if(chatSendBtn) chatSendBtn.textContent = chatSendBtn.getAttribute(`data-lang-${lang}`) || chatSendBtn.textContent;
                     if(chatShowPredefinedBtn) chatShowPredefinedBtn.textContent = chatShowPredefinedBtn.getAttribute(`data-lang-${lang}`) || chatShowPredefinedBtn.textContent;
-
+                // Note: i18n for inline action buttons will be handled when they are created.
                     if (titleText) document.title = titleText;
                 }
 
@@ -2356,7 +2379,7 @@
                 chatCloseIcon.style.display = 'inline';
                 chatToggleButton.setAttribute('aria-label', openChatLabel);
                 if (chatMessagesContainer.children.length === 0) { 
-                    addBotMessage("Olá! 👋 Sou o assistente virtual da Multiagro. Como posso ajudar você hoje?");
+                    addBotMessage("Olá! 👋 Sou o assistente virtual da Multiagro. Como posso ajudar você hoje?", { addActionButtons: false });
                     displayPredefinedQuestions();
                 } else {
                     if (!document.getElementById('predefined-questions-container') && chatShowPredefinedButton) {
@@ -2383,14 +2406,22 @@
             return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
 
-        function addMessageToChat(message, sender) {
+        function removeBotActionButtons() {
+            const actionButtonContainers = chatMessagesContainer.querySelectorAll('.chat-action-buttons-container');
+            actionButtonContainers.forEach(container => container.remove());
+        }
+
+        function addMessageToChat(message, sender, options = {}) {
+            if (sender === 'bot') { // Only remove action buttons before adding a new bot message.
+                removeBotActionButtons();
+            }
+
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('chat-message', sender);
             
             const messageText = document.createElement('span');
-            messageText.textContent = message; // Use textContent to prevent XSS
+            messageText.innerHTML = message; // Use innerHTML to allow line breaks like \n to be <br>
             messageDiv.appendChild(messageText);
-
             const timestampSpan = document.createElement('span');
             timestampSpan.classList.add('timestamp');
             timestampSpan.textContent = getCurrentTime();
@@ -2398,14 +2429,55 @@
             
             chatMessagesContainer.appendChild(messageDiv);
             chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
+            // Add action buttons if it's a bot message and addActionButtons is true
+            if (sender === 'bot' && options.addActionButtons) {
+                const currentSiteLang = localStorage.getItem('preferredLang') || 'es';
+                const actionsContainer = document.createElement('div');
+                actionsContainer.classList.add('chat-action-buttons-container');
+
+                const backButton = document.createElement('button');
+                backButton.classList.add('chat-action-button');
+                backButton.setAttribute('data-lang-pt', "Voltar às perguntas principais");
+                backButton.setAttribute('data-lang-en', "Back to main questions");
+                backButton.setAttribute('data-lang-es', "Volver a preguntas principales");
+                backButton.textContent = backButton.getAttribute(`data-lang-${currentSiteLang}`) || backButton.getAttribute('data-lang-pt');
+                backButton.addEventListener('click', () => {
+                    let msg;
+                    if (currentSiteLang === 'pt') msg = "Certo! Retornando às perguntas principais:";
+                    else if (currentSiteLang === 'en') msg = "Okay! Returning to the main questions:";
+                    else msg = "¡Claro! Volviendo a las preguntas principales:";
+                    addBotMessage(msg, { addActionButtons: false });
+                    displayPredefinedQuestions();
+                });
+
+                const endButton = document.createElement('button');
+                endButton.classList.add('chat-action-button');
+                endButton.setAttribute('data-lang-pt', "Encerrar chat");
+                endButton.setAttribute('data-lang-en', "End chat");
+                endButton.setAttribute('data-lang-es', "Cerrar chat");
+                endButton.textContent = endButton.getAttribute(`data-lang-${currentSiteLang}`) || endButton.getAttribute('data-lang-pt');
+                endButton.addEventListener('click', () => {
+                    toggleChatWindow(); // This will also hide the chatShowPredefinedButton
+                });
+
+                actionsContainer.appendChild(backButton);
+                actionsContainer.appendChild(endButton);
+                messageDiv.appendChild(actionsContainer); // Append to the message div itself
+                chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            }
         }
 
-        function addBotMessage(message) {
-            addMessageToChat(message, 'bot');
+
+        function addBotMessage(message, options = { addActionButtons: true }) {
+            // Replace \n with <br> for HTML display
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            addMessageToChat(formattedMessage, 'bot', options);
         }
 
         function addUserMessage(message) {
-            addMessageToChat(message, 'user');
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            addMessageToChat(formattedMessage, 'user');
         }
 
         function displayPredefinedQuestions() {
@@ -2426,7 +2498,7 @@
 
                 button.addEventListener('click', () => {
                     addUserMessage(qa.questionText); 
-                    addBotMessage(qa.botResponse);   
+                    addBotMessage(qa.botResponse); // This will add action buttons by default
                     removePredefinedQuestions(); // Remove os botões após um ser clicado
                 });
                 questionsContainer.appendChild(button);
@@ -2504,8 +2576,14 @@
 
         if (chatShowPredefinedButton) {
             chatShowPredefinedButton.addEventListener('click', () => {
-                addBotMessage("Certo! Aqui estão as principais perguntas que posso ajudar a responder:");
+                const currentSiteLang = localStorage.getItem('preferredLang') || 'es';
+                let messageText = "Certo! Aqui estão as principais perguntas que posso ajudar a responder:";
+                if (currentSiteLang === 'en') messageText = "Okay! Here are the main questions I can help answer:";
+                else if (currentSiteLang === 'es') messageText = "¡Claro! Aquí están las principales preguntas que puedo ayudar a responder:";
+                
+                addBotMessage(messageText, { addActionButtons: false });
                 displayPredefinedQuestions();
+                // chatShowPredefinedButton.style.display = 'none'; // Already handled by displayPredefinedQuestions
             });
         }
 
