@@ -48,4 +48,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Update other text elements based on translations
             });
     }
+    
 });
