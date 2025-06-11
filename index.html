@@ -1216,11 +1216,11 @@
                     </li>
                 </ul>
             </nav>
-            <button class="menu-toggle" 
-                    <!-- Atributos data-aria-* para acessibilidade do menu toggle em diferentes idiomas -->
+            <!-- Atributos data-aria-* para acessibilidade do menu toggle em diferentes idiomas -->
+            <button class="menu-toggle"
                     data-aria-open-es="Abrir menú" data-aria-open-en="Open menu" data-aria-open-pt="Abrir menu"
                     data-aria-close-es="Cerrar menú" data-aria-close-en="Close menu" data-aria-close-pt="Fechar menu"
-                    aria-label="Abrir menú">☰</button>
+                    aria-label="Abrir menú">☰</button> <!-- O texto '☰' é o ícone do menu hambúrguer -->
         </div>
     </header>
 
@@ -2105,7 +2105,7 @@
                 
                 showSectionUI(sectionIdFromHash); // Mostra a seção principal
 
-                // Atualiza links ativos na navegação
+                // Atualiza links ativos na navegação e estado do menu mobile
                 navLinks.forEach(a => a.classList.remove('active'));
                 const activeLink = document.querySelector(`nav a[href="#${sectionIdFromHash}"]`);
                 if (activeLink) activeLink.classList.add('active');
@@ -2114,12 +2114,17 @@
                 if (navLinksContainer.classList.contains('active')) {
                     navLinksContainer.classList.remove('active');
                     menuToggle.textContent = '☰';
+                    updateMenuToggleAriaLabel(); // Adicionado para consistência
+                }
+
+                // Initialize map if 'nosotros' section is now visible and map elements are ready
+                if (sectionIdFromHash === 'nosotros' && document.getElementById('mapid') && typeof L !== 'undefined') {
+                    initLeafletMap();
                 }
             }
 
             // --- Lógica de Navegação SPA (Single Page Application) ---
             window.navigateToSection = function(targetId) { // Expor globalmente para onclicks
-                // Atualiza o hash da URL sem recarregar a página e, em seguida, atualiza a visualização.
                 if (history.pushState) {
                     history.pushState(null, null, `#${targetId}`);
                 } else {
@@ -2134,9 +2139,7 @@
             function loadInitialViewRevised() {
                 setLanguage(currentLang); // Aplicar idioma salvo/padrão
                 refreshViewForCurrentHash();
-                // updateTradingViewWidget(currentLang); // setLanguage already calls it
-                if (document.getElementById('mapid') && typeof L !== 'undefined') { // Garante que o elemento do mapa existe e Leaflet está carregado
-                }
+                // A inicialização do mapa agora é tratada dentro de refreshViewForCurrentHash
             }
 
             // --- Leaflet Map Initialization ---
@@ -2219,11 +2222,8 @@
                 // Reaplicar o idioma e atualizar a visualização quando o usuário navega pelo histórico.
                 setLanguage(localStorage.getItem('preferredLang') || 'es'); // Reaplicar idioma
                 refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
-                if (document.getElementById('mapid') && typeof L !== 'undefined' && document.getElementById('productos').classList.contains('visible')) {
-                    initLeafletMap(); // Reinicializa o mapa se a seção de produtos estiver visível
-                }
-                // updateTradingViewWidget(localStorage.getItem('preferredLang') || 'es'); // setLanguage already calls it
-            });
+                // A inicialização do mapa é tratada por refreshViewForCurrentHash se 'nosotros' for a seção ativa
+            }); 
 
             // --- Define o ano atual no rodapé ---
             document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -2299,16 +2299,11 @@
             }
             // --- End Hero Carousel Logic ---
 
-            // A inicialização do mapa Leaflet agora é chamada dentro de loadInitialViewRevised
-            // e também no evento popstate para garantir que o mapa seja renderizado corretamente
-            // quando a seção de produtos se torna visível.
-            function loadInitialViewRevised() {
-                setLanguage(currentLang);
-                refreshViewForCurrentHash();
-                if (document.getElementById('mapid') && typeof L !== 'undefined' && document.getElementById('productos').classList.contains('visible')) {
-                    initLeafletMap();
-                }
-            }
+            // A inicialização do mapa Leaflet agora é chamada dentro de refreshViewForCurrentHash
+            // para garantir que o mapa seja renderizado corretamente
+            // quando a seção 'nosotros' se torna visível.
+            // Correção: A função loadInitialViewRevised já foi definida e modificada anteriormente.
+            // A segunda definição de loadInitialViewRevised foi removida.
         });
         
         // Simulated Chatbot Logic
