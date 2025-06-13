@@ -732,9 +732,35 @@
         .contact-info {
             margin-top: 2rem;
             padding: 1.5rem;
-            background-color: var(--lilas-claro);
+            background-color: var(--lilas-claro); /* Cor de fallback ou base */
             border-radius: 8px;
             text-align: center;
+            position: relative; /* Para posicionar o vídeo de fundo */
+            overflow: hidden; /* Para cortar o vídeo nos cantos arredondados */
+        }
+        .contact-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Atrás do conteúdo */
+        }
+        .contact-video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25; /* Ajuste a transparência aqui (0.0 a 1.0) */
+        }
+        .contact-info-overlay-content {
+            position: relative;
+            z-index: 1; /* Acima do vídeo */
+        }
+        /* Ajuste opcional de cor para melhor contraste sobre o vídeo */
+        .contact-info-overlay-content p,
+        .contact-info-overlay-content strong,
+        .contact-info-overlay-content a {
+            /* color: var(--preto-azulado); /* Exemplo se o vídeo for muito claro */
         }
         .contact-info strong {
             color: var(--lilas-escuro);
@@ -1232,7 +1258,7 @@
                                         <!-- Container do Vídeo movido para cá -->
                 <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
-                        <source src="videos/video6.mp4" type="video/mp4">
+                        <source src="videos/video8.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
@@ -1380,11 +1406,15 @@
                 </div>
             <!-- Segmento 3: Alimentos - Linha Don Luís -->
             <div class="product-segment">
-                <h3 data-lang-es="Alimentos – Línea Don Luís" data-lang-en="Foods – Don Luís Line" data-lang-pt="Alimentos – Linha Don Luís">Alimentos – Línea Don Luís</h3>
+                <h3 data-lang-es="(PRÓXIMAMENTE) Alimentos – Línea Don Luís" 
+                    data-lang-en="(COMING SOON) Foods – Don Luís Line" 
+                    data-lang-pt="(EM BREVE) Alimentos – Linha Don Luís">
+                    (PRÓXIMAMENTE) Alimentos – Línea Don Luís
+                </h3>
                 <p class="segment-intro"
-                   data-lang-es="Descubra la calidad y el sabor de nuestra línea de alimentos seleccionados Don Luís, pensada para llevar lo mejor del campo a su mesa."
-                   data-lang-en="Discover the quality and taste of our Don Luís selected food line, designed to bring the best of the countryside to your table."
-                   data-lang-pt="Descubra a qualidade e o sabor da nossa linha de alimentos selecionados Don Luís, pensada para levar o melhor do campo para a sua mesa.">
+                   data-lang-es="Descubra la calidad y el sabor de nuestra futura línea de alimentos seleccionados Don Luís, pensada para llevar lo mejor del campo a su mesa."
+                   data-lang-en="Discover the quality and taste of our upcoming Don Luís selected food line, designed to bring the best of the countryside to your table."
+                   data-lang-pt="Descubra a qualidade e o sabor da nossa futura linha de alimentos selecionados Don Luís, pensada para levar o melhor do campo para a sua mesa.">
                    Descubra la calidad y el sabor de nuestra línea de alimentos seleccionados Don Luís, pensada para llevar lo mejor del campo a su mesa.
                 </p>
                 <div class="product-cards-container">
@@ -1425,14 +1455,18 @@
 
             <!-- Segmento 2: Ração Animal -->
             <div class="product-segment">
-                <h3 data-lang-es="Nutrición Animal" data-lang-en="Animal Nutrition" data-lang-pt="Nutrição Animal">Nutrición Animal</h3>
+                <h3 data-lang-es="(PRÓXIMAMENTE) Nutrición Animal" 
+                    data-lang-en="(COMING SOON) Animal Nutrition" 
+                    data-lang-pt="(EM BREVE) Nutrição Animal">
+                    (PRÓXIMAMENTE) Nutrición Animal
+                </h3>
                 <div class="coming-soon-container">
                     <img src="images/racao.png" alt="Ração Animal" 
                          data-alt-es="Ración Animal" data-alt-en="Animal Feed" data-alt-pt="Ração Animal">
                     <p class="coming-soon-text"
-                       data-lang-es="PRÓXIMAMENTE: Soluciones innovadoras para la nutrición animal."
-                       data-lang-en="COMING SOON: Innovative solutions for animal nutrition."
-                       data-lang-pt="EM BREVE: Soluções inovadoras para a nutrição animal.">
+                       data-lang-es="Soluciones innovadoras para la nutrición animal."
+                       data-lang-en="Innovative solutions for animal nutrition."
+                       data-lang-pt="Soluções inovadoras para a nutrição animal.">
                        Próximamente: Soluciones innovadoras para la nutrición animal.
                     </p>
                 </div>
@@ -1449,7 +1483,7 @@
                 <!-- Container do Vídeo movido para cá -->
                 <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
-                        <source src="videos/video1.mp4" type="video/mp4">
+                        <source src="videos/video2.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
@@ -1628,13 +1662,17 @@
                 <img src="https://www.bolsadevalores.com.py/wp-content/uploads/2024/08/logo.svg" 
                      alt="Logo Bolsa de Valores de Asunción" class="bolsa-logo"
                      data-alt-es="Logo Bolsa de Valores de Asunción"
-                     data-alt-en="Asunción Stock Exchange Logo"
+                     data-alt-en="Asunción Stock Exchange Logo" 
                      data-alt-pt="Logo Bolsa de Valores de Assunção">
-                <h3 data-lang-es="Multiagro en la Bolsa de Valores de Asunción" data-lang-en="Multiagro on the Asunción Stock Exchange" data-lang-pt="Multiagro na Bolsa de Valores de Assunção">Multiagro en la Bolsa de Valores de Asunción</h3>
-                <p data-lang-es="Multiagro S.A. se enorgullece de formar parte de la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Esta presencia subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrece a los inversores una plataforma sólida y regulada para participar en el futuro de la agroindustria paraguaya."
-                   data-lang-en="Multiagro S.A. is proud to be part of the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This presence underscores our commitment to transparency, best corporate governance practices, and offers investors a solid and regulated platform to participate in the future of Paraguayan agribusiness."
-                   data-lang-pt="A Multiagro S.A. orgulha-se de fazer parte da Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Esta presença destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferece aos investidores uma plataforma sólida e regulamentada para participar do futuro da agroindústria paraguaia.">
-                   Multiagro S.A. se enorgullece de formar parte de la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Esta presença subraya nuestro compromisso com a transparência, las melhores práticas de gobernanza corporativa e oferece aos investidores uma plataforma sólida e regulada para participar no futuro da agroindústria paraguaia.
+                <h3 data-lang-es="Multiagro: Preparándose para la Bolsa de Valores de Asunción" 
+                    data-lang-en="Multiagro: Preparing for the Asunción Stock Exchange" 
+                    data-lang-pt="Multiagro: Preparando-se para a Bolsa de Valores de Assunção">
+                    Multiagro: Preparándose para la Bolsa de Valores de Asunción
+                </h3>
+                <p data-lang-es="Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya."
+                   data-lang-en="Multiagro S.A. is in an advanced stage of preparation for its entry into the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This significant future step underscores our commitment to transparency, best corporate governance practices, and will offer investors a solid and regulated platform to participate in the growth of Paraguayan agribusiness."
+                   data-lang-pt="A Multiagro S.A. está em um avançado processo de preparação para sua entrada na Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Este importante passo futuro destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferecerá aos investidores uma plataforma sólida e regulamentada para participar do crescimento da agroindústria paraguaia.">
+                   Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya.
                 </p>
                 <p><a href="https://www.bolsaasu.com.py/" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para mais informações</a></p>
             </div>
@@ -1657,11 +1695,27 @@
                 <li data-lang-es="Profesionalización continua de la gestión y procesos" data-lang-en="Continuous professionalization of management and processes" data-lang-pt="Profissionalização contínua da gestão e processos">Profesionalización continua de la gestión y procesos</li>
             </ul>
 
-            <h3 data-lang-es="Informes y Presentaciones" data-lang-en="Reports and Presentations" data-lang-pt="Relatórios e Apresentações">Informes y Presentaciones</h3>
+            <h3 data-lang-es="(PRÓXIMAMENTE) Informes y Presentaciones" 
+                data-lang-en="(COMING SOON) Reports and Presentations" 
+                data-lang-pt="(EM BREVE) Relatórios e Apresentações">
+                (PRÓXIMAMENTE) Informes y Presentaciones
+            </h3>
             <!-- Links para relatórios e apresentações para investidores -->
             <ul class="custom-list">
-                <li><a href="/docs/presentacion-inversionistas-multiagro.pdf" target="_blank" data-lang-es="Presentación Institucional para Inversionistas" data-lang-en="Institutional Investor Presentation" data-lang-pt="Apresentação Institucional para Investidores">Presentación Institucional para Inversionistas</a></li>
-                <li><a href="/docs/plan-estrategico-multiagro.pdf" target="_blank" data-lang-es="Plan Estratégico de Crecimiento (Sumario)" data-lang-en="Strategic Growth Plan (Summary)" data-lang-pt="Plano Estratégico de Crescimento (Resumo)">Plan Estratégico de Crecimiento (Sumario)</a></li>
+                <li><a href="/docs/presentacion-inversionistas-multiagro.pdf" target="_blank" 
+                       data-lang-es="(PRÓXIMAMENTE) Presentación Institucional para Inversionistas" 
+                       data-lang-en="(COMING SOON) Institutional Investor Presentation" 
+                       data-lang-pt="(EM BREVE) Apresentação Institucional para Investidores">
+                       (PRÓXIMAMENTE) Presentación Institucional para Inversionistas
+                    </a>
+                </li>
+                <li><a href="/docs/plan-estrategico-multiagro.pdf" target="_blank" 
+                       data-lang-es="(PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)" 
+                       data-lang-en="(COMING SOON) Strategic Growth Plan (Summary)" 
+                       data-lang-pt="(EM BREVE) Plano Estratégico de Crescimento (Resumo)">
+                       (PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)
+                    </a>
+                </li>
                 <li><a href="#comunicados" onclick="navigateToSection('comunicados');return false;" data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</a></li>
             </ul>
 
@@ -1689,8 +1743,18 @@
             <h2 data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</h2>
             <!-- Lista de comunicados (exemplos) -->
             <ul class="custom-list">
-                <li data-lang-es="10/08/2025 – Anuncio: Inicio de proceso para certificación USDA." data-lang-en="08/10/2025 – Announcement: USDA certification process initiated." data-lang-pt="10/08/2025 – Anúncio: Início do processo para certificação USDA.">10/08/2025 – Anuncio: Inicio de proceso para certificación USDA. <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a></li>
-                <li data-lang-es="20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa." data-lang-en="06/20/2025 – Multiagro participates in international food fair in Europe." data-lang-pt="20/06/2025 – Multiagro participa de feira internacional de alimentos na Europa.">20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa. <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a></li>
+                <li data-lang-es="(PRÓXIMAMENTE) 10/08/2025 – Anuncio: Inicio de proceso para certificación USDA." 
+                    data-lang-en="(COMING SOON) 08/10/2025 – Announcement: USDA certification process initiated." 
+                    data-lang-pt="(EM BREVE) 10/08/2025 – Anúncio: Início do processo para certificação USDA.">
+                    (PRÓXIMAMENTE) 10/08/2025 – Anuncio: Inicio de proceso para certificación USDA. 
+                    <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a>
+                </li>
+                <li data-lang-es="(PRÓXIMAMENTE) 20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa." 
+                    data-lang-en="(COMING SOON) 06/20/2025 – Multiagro participates in international food fair in Europe." 
+                    data-lang-pt="(EM BREVE) 20/06/2025 – Multiagro participa de feira internacional de alimentos na Europa.">
+                    (PRÓXIMAMENTE) 20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa. 
+                    <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a>
+                </li>
             </ul>
             <div style="text-align:center; margin-top:2rem;">
               <!-- Botão para voltar à seção de investidores -->
@@ -1745,6 +1809,7 @@
 
         <!-- Contacto -->
         <section id="contacto">
+            
             <!-- Título e introdução da seção de Contato -->
             <h2 data-lang-es="Contacto" data-lang-en="Contact Us" data-lang-pt="Contato">Contacto</h2>
             <p class="section-intro"
@@ -1752,9 +1817,10 @@
                data-lang-en="We are available for inquiries about our products, investment opportunities, or any other information."
                data-lang-pt="Estamos à sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.">
                Estamos a sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.
-            </p>
+                        </p>
             <!-- Formulário de contato com campos internacionalizados -->
             <form id="contactForm">
+            
                 <label for="nombre" data-lang-es="Nombre Completo" data-lang-en="Full Name" data-lang-pt="Nome Completo">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" 
                        data-placeholder-es="Su nombre" data-placeholder-en="Your name" data-placeholder-pt="Seu nome" placeholder="Su nombre" required>
@@ -1776,6 +1842,7 @@
             
             <!-- Mapa Google Maps: Guajayvi, San Pedro, Paraguay -->
             <!-- Iframe do Google Maps para exibir a localização -->
+             
     <div style="width:100%;max-width:600px;margin:2rem auto 1.5rem auto;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
         <iframe 
             src="https://www.google.com/maps?q=Guajayvi,+San+Pedro,+Paraguay&output=embed"
@@ -1784,35 +1851,39 @@
             data-title-es="Mapa Multiagro Guajayvi Paraguay"
             data-title-en="Multiagro Guajayvi Paraguay Map"
             data-title-pt="Mapa Multiagro Guajayvi Paraguai"></iframe>
+            
     </div>
 
     <!-- Informações de contato adicionais -->
     <div class="contact-info">
-                <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a></p>
-                <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
-                <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
-                <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
-                
-                <!-- Links de Redes Sociais -->
-                <div class="social-media-links">
-                    <p><strong data-lang-es="Síganos en nuestras redes:" data-lang-en="Follow us on our networks:" data-lang-pt="Siga-nos em nossas redes:">Síganos en nuestras redes:</strong></p>
-                    <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro">
-                        <i class="fab fa-linkedin"></i> <span data-lang-es="LinkedIn" data-lang-en="LinkedIn" data-lang-pt="LinkedIn">LinkedIn</span>
-                    </a>
-                    <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
-                        <i class="fab fa-facebook-square"></i> <span data-lang-es="Facebook" data-lang-en="Facebook" data-lang-pt="Facebook">Facebook</span>
-                    </a>
-                    <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
-                        <i class="fab fa-instagram"></i> <span data-lang-es="Instagram" data-lang-en="Instagram" data-lang-pt="Instagram">Instagram</span>
-                    </a>
-                </div>
+ 
+        <div class="contact-info-overlay-content">
+            <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a></p>
+            <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
+            <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
+            <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
+            
+            <!-- Links de Redes Sociais -->
+            <div class="social-media-links">
+                <p><strong data-lang-es="Síganos en nuestras redes:" data-lang-en="Follow us on our networks:" data-lang-pt="Siga-nos em nossas redes:">Síganos en nuestras redes:</strong></p>
+                <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro">
+                    <i class="fab fa-linkedin"></i> <span data-lang-es="LinkedIn" data-lang-en="LinkedIn" data-lang-pt="LinkedIn">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
+                    <i class="fab fa-facebook-square"></i> <span data-lang-es="Facebook" data-lang-en="Facebook" data-lang-pt="Facebook">Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
+                    <i class="fab fa-instagram"></i> <span data-lang-es="Instagram" data-lang-en="Instagram" data-lang-pt="Instagram">Instagram</span>
+                </a>
             </div>
+        </div>
+                </div>
         </section>
     </main>
 
     <footer>
         <!-- Conteúdo do rodapé: informações da empresa, direitos autorais, links úteis -->
-        <p data-lang-es="Multiagro S.A. | RUC: XXXXXXX-X" data-lang-en="Multiagro S.A. | Tax ID: XXXXXXX-X" data-lang-pt="Multiagro S.A. | CNPJ/RUC: XXXXXXX-X">Multiagro S.A. | RUC: XXXXXXX-X</p>
+        <p data-lang-es="Multiagro S.A. | RUC: 80050297-3" data-lang-en="Multiagro S.A. | Tax ID: 80050297-3" data-lang-pt="Multiagro S.A. | CNPJ/RUC: 80050297-3">Multiagro S.A. | RUC: 80050297-3</p>
         <p><span data-lang-es="Sede: Guajayvi, San Pedro, Paraguay" data-lang-en="Headquarters: Guajayvi, San Pedro, Paraguay" data-lang-pt="Sede: Guajayvi, San Pedro, Paraguai">Sede: Guajayvi, San Pedro, Paraguay</span> | © <span id="currentYear"></span> Multiagro S.A. <span data-lang-es="Todos los derechos reservados." data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">Todos los derechos reservados.</span></p>
         <div class="footer-links">
             <a href="#inversionistas" onclick="navigateToSection('inversionistas');return false;" data-lang-es="Inversionistas" data-lang-en="Investors" data-lang-pt="Investidores">Inversionistas</a> |
@@ -2145,15 +2216,15 @@
                     { nameEs: 'Brasil', nameEn: 'Brazil', namePt: 'Brasil', lat: -14.2350, lng: -51.9253, status: 'atendido', radius: 8 },
                     { nameEs: 'Argentina', nameEn: 'Argentina', namePt: 'Argentina', lat: -38.4161, lng: -63.6167, status: 'atendido', radius: 8 },
                     { nameEs: 'Bolivia', nameEn: 'Bolivia', namePt: 'Bolívia', lat: -16.2902, lng: -63.5887, status: 'atendido', radius: 7 },
-                    { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, status: 'atendido', radius: 7 },
                     { nameEs: 'Chile', nameEn: 'Chile', namePt: 'Chile', lat: -35.6751, lng: -71.5430, status: 'atendido', radius: 7 },
+                    { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, status: 'atendido', radius: 7 },
                     { nameEs: 'Colombia', nameEn: 'Colombia', namePt: 'Colômbia', lat: 4.5709, lng: -74.2973, status: 'atendido', radius: 7 },
                     // Países em Negociação
                     { nameEs: 'Estados Unidos', nameEn: 'United States', namePt: 'Estados Unidos', lat: 37.0902, lng: -95.7129, status: 'negociacao', radius: 8 },
                     { nameEs: 'China', nameEn: 'China', namePt: 'China', lat: 35.8617, lng: 104.1954, status: 'negociacao', radius: 8 },
-                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, status: 'negociacao', radius: 7 },
                     { nameEs: 'España', nameEn: 'Spain', namePt: 'Espanha', lat: 40.4637, lng: -3.7492, status: 'negociacao', radius: 7 },
-                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, status: 'negociacao', radius: 7 }
+                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, status: 'negociacao', radius: 7 },
+                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, status: 'negociacao', radius: 7 }
                 ];
                 const markersArray = []; // Array para armazenar os marcadores
 
