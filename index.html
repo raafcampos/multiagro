@@ -1253,27 +1253,632 @@
     <main>
         <!-- Sección de Hero/Principal -->
         <!-- A classe 'hero-section' é a seção principal no topo da página -->
-        <section id="home" class="hero-section"><div id="home-content-placeholder"></div></section>
+        <section id="home" class="hero-section">
+
+                                        <!-- Container do Vídeo movido para cá -->
+                <div class="video-background-container">
+                    <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                        <source src="videos/video8.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            
+            <!-- Nova área para o conteúdo principal da Hero (carrossel + texto) -->
+            <div class="hero-main-content-area">
+                <!-- Hero Carousel -->
+                <div class="hero-carousel">
+                    <div class="carousel-slides">
+                    <div class="carousel-slide">
+                    <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                        <source src="videos/video7.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+                        
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal1.jpg" alt="Paisagem agrícola Multiagro"
+                                 data-alt-es="Paisaje agrícola Multiagro"
+                                 data-alt-en="Multiagro agricultural landscape"
+                                 data-alt-pt="Paisagem agrícola Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal2.png" alt="Grãos de qualidade Multiagro"
+                                 data-alt-es="Granos de calidad Multiagro"
+                                 data-alt-en="Multiagro quality grains"
+                                 data-alt-pt="Grãos de qualidade Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                        <!-- Outros slides seguem o mesmo padrão -->
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal3.jpg" alt="Paisagem agrícola Multiagro"
+                                 data-alt-es="Paisaje agrícola Multiagro"
+                                 data-alt-en="Multiagro agricultural landscape"
+                                 data-alt-pt="Paisagem agrícola Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/paginaprincipal4.png" alt="Paisagem agrícola Multiagro"
+                                 data-alt-es="Paisaje agrícola Multiagro"
+                                 data-alt-en="Multiagro agricultural landscape"
+                                 data-alt-pt="Paisagem agrícola Multiagro">
+                            <!-- SEM TEXTO AQUI -->
+                        </div>
+                    </div>
+                    <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
+                    <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
+                </div>
+
+                <!-- Conteúdo Sobreposto (único e sobre todo o carrossel) -->
+                <div class="hero-content-overlay">
+                    <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
+                    <h1 data-lang-es="Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo"
+                        data-lang-en="Multiagro: Quality and Tradition in Grains from Paraguay to the World"
+                        data-lang-pt="Multiagro: Qualidade e Tradição em Grãos do Paraguai para o Mundo">
+                        Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo
+                    </h1>
+                    <p class="subtitle"
+                       data-lang-es="Especialistas en el beneficiamiento, comercialización y exportación de granos y superalimentos, conectando la riqueza agrícola de Guajayvi con mercados globales exigentes."
+                       data-lang-en="Specialists in the processing, commercialization, and export of grains and superfoods, connecting the agricultural wealth of Guajayvi with demanding global markets."
+                       data-lang-pt="Especialistas no beneficiamento, comercialização e exportação de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.">
+                       Especialistas en el beneficiamiento, comercialización y exportación de granos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.
+                    </p>
+                    <a href="#productos" class="cta-btn" onclick="navigateToSection('productos'); return false;" data-lang-es="Conozca Nuestros Productos" data-lang-en="Discover Our Products" data-lang-pt="Conheça Nossos Produtos">
+                       Conozca Nuestros Productos
+                    </a>
+                </div>
+            </div>
+            </div>
+                </section>
 
         <!-- Seção Produtos -->
-        <section id="productos"><div id="productos-content-placeholder"></div></section>
+        <!-- Seção Produtos -->
+        <section id="productos">
+            <!-- Título e introdução da seção de produtos -->
+            <h2 data-lang-es="Nuestras Líneas de Actuación" 
+                data-lang-en="Our Lines of Business" 
+                data-lang-pt="Nossas Linhas de Atuação">Nuestras Líneas de Actuación</h2>
+            <p class="section-intro"
+               data-lang-es="Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal."
+               data-lang-en="Discover our diverse lines of business, from the processing of high-quality grains and our line of selected foods, to future solutions for animal nutrition."
+               data-lang-pt="Conheça nossas diversas linhas de atuação, desde o beneficiamento de grãos de alta qualidade e nossa linha de alimentos selecionados, até futuras soluções para nutrição animal.">
+               Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal.
+            </p>
+
+            <!-- Segmento 1: Beneficiamento de Grãos -->
+            <div class="product-segment">
+                <h3 data-lang-es="Beneficiamiento de Granos" data-lang-en="Grain Processing" data-lang-pt="Beneficiamento de Grãos">Beneficiamiento de Granos</h3>
+                <p class="segment-intro"
+                   data-lang-es="Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes."
+                   data-lang-en="Our specialty is processing high-quality grains, with an emphasis on superfoods, ensuring purity and nutritional value for demanding markets."
+                   data-lang-pt="Nossa especialidade é o processamento de grãos de alta qualidade, com ênfase em superalimentos, garantindo pureza e valor nutricional para mercados exigentes.">
+                   Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes.
+                </p>
+                <div class="product-cards-container">
+                    <!-- Card 1: Chía -->
+                    <div class="product-card">
+                        <img src="images/chia.png" alt="Sementes de Chía" data-alt-es="Semillas de Chía" data-alt-en="Chia Seeds" data-alt-pt="Sementes de Chia">
+                        <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
+                        <p data-lang-es="Rica en Omega-3, fibra y antioxidantes. Ideal para una dieta saludable y nutritiva."
+                           data-lang-en="Rich in Omega-3, fiber, and antioxidants. Ideal for a healthy and nutritious diet."
+                           data-lang-pt="Rica em Ômega-3, fibra e antioxidantes. Ideal para uma dieta saudável e nutritiva.">Rica en Omega-3, fibra y antioxidantes. Ideal para una dieta saludable y nutritiva.</p>
+                    </div>
+                    <!-- Card 2: Mungo -->
+                    <div class="product-card">
+                        <img src="images/mung.png" alt="Grãos de Feijão Mungo" data-alt-es="Granos de Frijol Mungo" data-alt-en="Mung Beans" data-alt-pt="Grãos de Feijão Mungo">
+                        <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
+                        <p data-lang-es="Alto valor proteico y versatilidad culinaria. Excelente para sopas, ensaladas y germinados."
+                           data-lang-en="High protein value and culinary versatility. Excellent for soups, salads, and sprouts."
+                           data-lang-pt="Alto valor proteico e versatilidade culinária. Excelente para sopas, saladas e brotos.">Alto valor proteico y versatilidad culinaria. Excelente para sopas, ensaladas y germinados.</p>
+                    </div>
+                    <!-- Card 3: Gergelim -->
+                    <div class="product-card">
+                        <img src="images/sesame.png" alt="Sementes de Gergelim" data-alt-es="Semillas de Sésamo" data-alt-en="Sesame Seeds" data-alt-pt="Sementes de Gergelim">
+                        <h4 data-lang-es="Sésamo" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo</h4>
+                        <p data-lang-es="Fuente de calcio y grasas saludables. Perfecto para panificación, tahini y decoración de platos."
+                           data-lang-en="Source of calcium and healthy fats. Perfect for baking, tahini, and dish garnishing."
+                           data-lang-pt="Fonte de cálcio e gorduras saudáveis. Perfeito para panificação, tahine e decoração de pratos.">Fuente de calcio y grasas saludables. Perfecto para panificación, tahini y decoración de platos.</p>
+                    </div>
+                    <!-- Card 4: Sorgo -->
+                    <div class="product-card">
+                        <img src="images/sorghum.png" alt="Grãos de Sorgo" data-alt-es="Granos de Sorgo" data-alt-en="Sorghum Grains" data-alt-pt="Grãos de Sorgo">
+                        <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
+                        <p data-lang-es="Grano ancestral sin gluten, rico en nutrientes. Utilizado en harinas, alimentación animal y como cereal."
+                           data-lang-en="Gluten-free ancient grain, rich in nutrients. Used in flours, animal feed, and as a cereal."
+                           data-lang-pt="Grão ancestral sem glúten, rico em nutrientes. Utilizado em farinhas, alimentação animal e como cereal.">Grano ancestral sin gluten, rico en nutrientes. Utilizado en harinas, alimentación animal y como cereal.</p>
+                    </div>
+                    <!-- Card 5: Milho -->
+                    <div class="product-card">
+                        <img src="images/corn.png" alt="Grãos de Milho" data-alt-es="Granos de Maíz" data-alt-en="Corn Grains" data-alt-pt="Grãos de Milho">
+                        <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
+                        <p data-lang-es="Versátil y energético, base de la alimentación. Para consumo humano, animal e industrial."
+                           data-lang-en="Versatile and energetic, a dietary staple. For human, animal, and industrial consumption."
+                           data-lang-pt="Versátil e energético, base da alimentação. Para consumo humano, animal e industrial.">Versátil y energético, base de la alimentación. Para consumo humano, animal e industrial.</p>
+                    </div>
+                    <!-- Card 6: Soja -->
+                    <div class="product-card">
+                        <img src="images/soybean.png" alt="Grãos de Soja" data-alt-es="Granos de Soja" data-alt-en="Soybeans" data-alt-pt="Grãos de Soja">
+                        <h4 data-lang-es="Soja" data-lang-en="Soybean" data-lang-pt="Soja">Soja</h4>
+                        <p data-lang-es="Alta en proteínas y nutrientes esenciales. Fundamental en la industria alimentaria y de piensos."
+                           data-lang-en="High in protein and essential nutrients. Fundamental in the food and feed industry."
+                           data-lang-pt="Alta em proteínas e nutrientes essenciais. Fundamental na indústria alimentícia e de rações.">Alta en proteínas y nutrientes esenciales. Fundamental en la industria alimentaria y de piensos.</p>
+                    </div>
+                </div>
+            <!-- Segmento 3: Alimentos - Linha Don Luís -->
+            <div class="product-segment">
+                <h3 data-lang-es="(PRÓXIMAMENTE) Alimentos – Línea Don Luís" 
+                    data-lang-en="(COMING SOON) Foods – Don Luís Line" 
+                    data-lang-pt="(EM BREVE) Alimentos – Linha Don Luís">
+                    (PRÓXIMAMENTE) Alimentos – Línea Don Luís
+                </h3>
+                <p class="segment-intro"
+                   data-lang-es="Descubra la calidad y el sabor de nuestra futura línea de alimentos seleccionados Don Luís, pensada para llevar lo mejor del campo a su mesa."
+                   data-lang-en="Discover the quality and taste of our upcoming Don Luís selected food line, designed to bring the best of the countryside to your table."
+                   data-lang-pt="Descubra a qualidade e o sabor da nossa futura linha de alimentos selecionados Don Luís, pensada para levar o melhor do campo para a sua mesa.">
+                   Descubra la calidad y el sabor de nuestra línea de alimentos seleccionados Don Luís, pensada para llevar lo mejor del campo a su mesa.
+                </p>
+                <div class="product-cards-container">
+                    <!-- Card Café Don Luís -->
+                    <div class="product-card">
+                        <img src="images/cafe.png" alt="Café Don Luís" 
+                             data-alt-es="Café Don Luís" data-alt-en="Don Luís Coffee" data-alt-pt="Café Don Luís">
+                        <h4 data-lang-es="Café Don Luís" data-lang-en="Don Luís Coffee" data-lang-pt="Café Don Luís">Café Don Luís</h4>
+                        <p data-lang-es="Granos de café seleccionados y tostados artesanalmente para un aroma y sabor incomparables."
+                           data-lang-en="Selected coffee beans, artisanally roasted for an incomparable aroma and flavor."
+                           data-lang-pt="Grãos de café selecionados e torrados artesanalmente para um aroma e sabor incomparáveis.">
+                           Granos de café seleccionados y tostados artesanalmente para un aroma y sabor incomparables.
+                        </p>
+                    </div>
+                    <!-- Card Açúcar Don Luís -->
+                    <div class="product-card">
+                        <img src="images/acucar.png" alt="Açúcar Don Luís"
+                             data-alt-es="Azúcar Don Luís" data-alt-en="Don Luís Sugar" data-alt-pt="Açúcar Don Luís">
+                        <h4 data-lang-es="Azúcar Don Luís" data-lang-en="Don Luís Sugar" data-lang-pt="Açúcar Don Luís">Azúcar Don Luís</h4>
+                        <p data-lang-es="Azúcar de alta pureza, ideal para endulzar sus momentos con la calidad que merece."
+                           data-lang-en="High-purity sugar, ideal for sweetening your moments with the quality you deserve."
+                           data-lang-pt="Açúcar de alta pureza, ideal para adoçar seus momentos com a qualidade que você merece.">
+                           Azúcar de alta pureza, ideal para endulzar sus momentos con la calidad que merece.
+                        </p>
+                    </div>
+                    <!-- Card Cereais Don Luís -->
+                    <div class="product-card">
+                        <img src="images/cereais.png" alt="Cereais Selecionados Don Luís"
+                             data-alt-es="Cereales Seleccionados Don Luís" data-alt-en="Don Luís Selected Cereals" data-alt-pt="Cereais Selecionados Don Luís">
+                        <h4 data-lang-es="Cereales Seleccionados Don Luís" data-lang-en="Don Luís Selected Cereals" data-lang-pt="Cereais Selecionados Don Luís">Cereales Seleccionados Don Luís</h4>
+                        <p data-lang-es="Una mezcla nutritiva de cereales seleccionados para un desayuno completo y energético."
+                           data-lang-en="A nutritious mix of selected cereals for a complete and energetic breakfast."
+                           data-lang-pt="Uma mistura nutritiva de cereais selecionados para um café da manhã completo e energético.">
+                           Una mezcla nutritiva de cereales seleccionados para un desayuno completo y energético.
+                        </p>
+                    </div>
+            </div>
+
+            <!-- Segmento 2: Ração Animal -->
+            <div class="product-segment">
+                <h3 data-lang-es="(PRÓXIMAMENTE) Nutrición Animal" 
+                    data-lang-en="(COMING SOON) Animal Nutrition" 
+                    data-lang-pt="(EM BREVE) Nutrição Animal">
+                    (PRÓXIMAMENTE) Nutrición Animal
+                </h3>
+                <div class="coming-soon-container">
+                    <img src="images/racao.png" alt="Ração Animal" 
+                         data-alt-es="Ración Animal" data-alt-en="Animal Feed" data-alt-pt="Ração Animal">
+                    <p class="coming-soon-text"
+                       data-lang-es="Soluciones innovadoras para la nutrición animal."
+                       data-lang-en="Innovative solutions for animal nutrition."
+                       data-lang-pt="Soluções inovadoras para a nutrição animal.">
+                       Próximamente: Soluciones innovadoras para la nutrición animal.
+                    </p>
+                </div>
+            </div>
+            </div>
+            </div>
+
+
+        </section>
         <!-- Sobre Nosotros -->
-        <section id="nosotros"><div id="nosotros-content-placeholder"></div></section>
+        <section id="nosotros">
+            <div class="nosotros-content-wrapper">
+                                <h2 data-lang-es="Sobre Multiagro" data-lang-en="About Multiagro" data-lang-pt="Sobre a Multiagro">Sobre Multiagro</h2>
+                <!-- Container do Vídeo movido para cá -->
+                <div class="video-background-container">
+                    <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                        <source src="videos/video2.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+                                <!-- Título e introdução da seção "Sobre Nós" -->
+
+                <p class="section-intro"
+                   data-lang-es="Multiagro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados.
+    
+                   La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, Multiagro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
+                   data-lang-en="Multiagro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains.
+    
+                   The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, Multiagro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
+                   data-lang-pt="A Multiagro atua no mercado desde 2004, dedicando-se à importação e exportação de grãos, com ênfase em grãos especiais classificados como superfoods. Entre os principais produtos comercializados estão chia, feijão mungo, gergelim, sorgo, milho e soja, além de outros grãos diferenciados.
+    
+                   A empresa dispõe de uma fábrica especializada no beneficiamento desses produtos, atendendo aos mais rigorosos padrões de qualidade. Com ampla experiência também na comercialização de produtos orgânicos, a Multiagro oferece ao mercado tanto os itens tradicionais quanto linhas certificadas, agregando valor e diversidade ao portfólio para atender diferentes mercados e exigências de clientes nacionais e internacionais.">
+                   Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade. Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
+                </p>
+
+                <h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
+                <!-- Lista de Missão e Visão -->
+                <ul class="custom-list">
+                    <li data-lang-es="<strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la producción paraguaya con el mundo, impulsados por la eficiencia, la innovación y prácticas sostenibles."
+                        data-lang-en="<strong>Mission:</strong> To process and market grains and superfoods of the highest quality, connecting Paraguayan production with the world, driven by efficiency, innovation, and sustainable practices."
+                        data-lang-pt="<strong>Missão:</strong> Processar e comercializar grãos e superalimentos da mais alta qualidade, conectando a produção paraguaia com o mundo, impulsionados pela eficiência, inovação e práticas sustentáveis.">
+                        <strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la produção paraguaya com o mundo, impulsados por a eficiência, a inovação e práticas sustentáveis.
+                    </li>
+                    <li data-lang-es="<strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados y superalimentos, reconocida globalmente por la excelencia, confiabilidad y nuestro compromiso con el desarrollo integral."
+                        data-lang-en="<strong>Vision:</strong> To be the leading agro-industry in Paraguay in the export of differentiated grains and superfoods, globally recognized for excellence, reliability, and our commitment to integral development."
+                        data-lang-pt="<strong>Visão:</strong> Ser a agroindústria líder no Paraguai na exportação de grãos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.">
+                        <strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.
+                    </li>
+                </ul>
+                <h3 data-lang-es="Nuestros Valores" data-lang-en="Our Values" data-lang-pt="Nossos Valores">Nuestros Valores</h3>
+                <!-- Lista de Valores da empresa -->
+                <ul class="custom-list">
+                    <li data-lang-es="Calidad Superior y Trazabilidad" data-lang-en="Superior Quality and Traceability" data-lang-pt="Qualidade Superior e Rastreabilidade">Calidad Superior y Trazabilidad</li>
+                    <li data-lang-es="Integridad y Transparencia" data-lang-en="Integrity and Transparency" data-lang-pt="Integridade e Transparência">Integridad y Transparencia</li>
+                    <li data-lang-es="Innovación y Adaptabilidad" data-lang-en="Innovation and Adaptability" data-lang-pt="Inovação e Adaptabilidade">Innovación y Adaptabilidad</li>
+                    <li data-lang-es="Compromiso con Productores y Comunidades" data-lang-en="Commitment to Producers and Communities" data-lang-pt="Compromisso com Produtores e Comunidades">Compromiso con Productores y Comunidades</li>
+                    <li data-lang-es="Orientación al Cliente y Mercados Globales" data-lang-en="Customer Focus and Global Markets" data-lang-pt="Orientação ao Cliente e Mercados Globais">Orientación al Cliente y Mercados Globais</li>
+                </ul>
+                <div class="stats-cards">
+                    <!-- Cards com estatísticas/números da empresa -->
+                    <div class="stat-card">
+                        <h4 data-lang-es="Años de Experiencia" data-lang-en="Years of Experience" data-lang-pt="Anos de Experiência">Años de Experiencia</h4>
+                        <p class="stat-value" 
+                           data-lang-es="+20 Años" 
+                           data-lang-en="+20 Years" 
+                           data-lang-pt="+20 Anos">+20 Años</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 data-lang-es="Mercados Atendidos" data-lang-en="Markets Served" data-lang-pt="Mercados Atendidos">Mercados Atendidos</h4>
+                        <p class="stat-value" 
+                           data-lang-es="+5 Países" 
+                           data-lang-en="+5 Countries" 
+                           data-lang-pt="+5 Países">+5 Países</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 data-lang-es="Capacidad Productiva" data-lang-en="Productive Capacity" data-lang-pt="Capacidade Produtiva">Capacidad Productiva</h4>
+                        <p class="stat-value" 
+                           data-lang-es="&gt; 10.000 t por año" 
+                           data-lang-en="&gt; 10,000 t per year" 
+                           data-lang-pt="&gt; 10.000 t por ano">&gt; 10.000 t por año</p>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top: 2rem;">
+                    <!-- Botão CTA para a seção de investidores -->
+                    <a class="cta-btn green" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Oportunidades para Inversionistas" data-lang-en="Investor Opportunities" data-lang-pt="Oportunidades para Investidores">
+                       Oportunidades para Inversionistas
+                    </a>
+                </div>
+            </div>
+                        <!-- Mapa Mundi de Exportação (agora ao final da seção de produtos) -->
+            <div class="product-segment" style="width:100%;max-width:800px;margin:3rem auto 0 auto;">
+                <h3 style="text-align:center;margin-bottom:1rem;"
+                    data-lang-es="Presencia Global de Multiagro"
+                    data-lang-en="Multiagro Global Presence"
+                    data-lang-pt="Presença Global da Multiagro">
+                    Presencia Global de Multiagro
+                </h3>
+                <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:var(--sombra-leve);"></div>
+                <!-- Legenda do Mapa -->
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #1e824c;"></span>
+                        <span data-lang-es="Paraguay" data-lang-en="Paraguay" data-lang-pt="Paraguai">País de Origen</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #8816bd;"></span>
+                        <span data-lang-es="Países Atendidos" data-lang-en="Countries Served" data-lang-pt="Países Atendidos">Países Atendidos</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color-box" style="background-color: #fd7e14;"></span>
+                        <span data-lang-es="En Negociación" data-lang-en="In Negotiation" data-lang-pt="Em Negociação">En Negociación</span>
+                    </div>
+                </div>
+        </div>
+        </section>
 
         <!-- Gobernanza Corporativa -->
-        <section id="gobernanza"><div id="gobernanza-content-placeholder"></div></section>
+        <section id="gobernanza">
+            <!-- Título e introdução da seção de Governança Corporativa -->
+            <h2 data-lang-es="Gobernanza Corporativa" data-lang-en="Corporate Governance" data-lang-pt="Governança Corporativa">Gobernanza Corporativa</h2>
+            <p class="section-intro"
+               data-lang-es="Multiagro se rige por principios de transparencia, ética y responsabilidad. Nuestra estructura de gobernanza busca asegurar la profesionalización de la gestión y la protección de los intereses de todos nuestros stakeholders."
+               data-lang-en="Multiagro is governed by principles of transparency, ethics, and responsibility. Our governance structure aims to ensure professional management and protect the interests of all our stakeholders."
+               data-lang-pt="A Multiagro rege-se por princípios de transparência, ética e responsabilidade. Nossa estrutura de governança busca assegurar a profissionalização da gestão e a proteção dos interesses de todos os nossos stakeholders.">
+               Multiagro se rige por principios de transparencia, ética y responsabilidad. Nuestra estructura de gobernanza busca asegurar la profesionalización de la gestión e a proteção dos interesses de todos os nossos stakeholders.
+            </p>
+            <h3 data-lang-es="Estructura y Prácticas" data-lang-en="Structure and Practices" data-lang-pt="Estrutura e Práticas">Estructura y Prácticas</h3>
+            <!-- Lista de práticas de governança -->
+            <ul class="custom-list">
+                <li data-lang-es="Consejo de Administración Estratégico" data-lang-en="Strategic Board of Directors" data-lang-pt="Conselho de Administração Estratégico">Consejo de Administración Estratégico</li>
+                <li data-lang-es="Dirección Ejecutiva Profesionalizada" data-lang-en="Professionalized Executive Management" data-lang-pt="Direção Executiva Profissionalizada">Dirección Ejecutiva Profesionalizada</li>
+                <li data-lang-es="Comités de Asesoramiento (Auditoría, Riesgos)" data-lang-en="Advisory Committees (Audit, Risk)" data-lang-pt="Comitês de Assessoria (Auditoria, Riscos)">Comités de Asesoramiento (Auditoría, Riesgos)</li>
+                <li data-lang-es="Políticas Claras de Conducta y Cumplimiento" data-lang-en="Clear Conduct and Compliance Policies" data-lang-pt="Políticas Claras de Conduta e Cumprimento">Políticas Claras de Conducta y Cumplimiento</li>
+            </ul>
+            <h3 data-lang-es="Documentos Relevantes" data-lang-en="Relevant Documents" data-lang-pt="Documentos Relevantes">Documentos Relevantes</h3>
+            <!-- Links para documentos importantes (PDFs) -->
+            <ul class="custom-list">
+                <li><a href="/docs/codigo-etica-multiagro.pdf" target="_blank" data-lang-es="Código de Ética y Conducta Multiagro" data-lang-en="Multiagro Code of Ethics and Conduct" data-lang-pt="Código de Ética e Conduta Multiagro">Código de Ética y Conducta Multiagro</a></li>
+                <li><a href="/docs/politica-calidad-multiagro.pdf" target="_blank" data-lang-es="Política de Calidad y Trazabilidad" data-lang-en="Quality and Traceability Policy" data-lang-pt="Política de Qualidade e Rastreabilidade">Política de Calidad y Trazabilidad</a></li>
+                <li><a href="/docs/estatuto-social-multiagro.pdf" target="_blank" data-lang-es="Estatuto Social (Resumen)" data-lang-en="Bylaws (Summary)" data-lang-pt="Estatuto Social (Resumo)">Estatuto Social (Resumen)</a></li>
+            </ul>
+        </section>
 
         <!-- Relación com Inversionistas -->
-        <section id="inversionistas"><div id="inversionistas-content-placeholder"></div></section>
+        <section id="inversionistas">
+            <!-- Título da seção de Relação com Investidores -->
+            <h2 data-lang-es="Relación con Inversionistas" data-lang-en="Investor Relations" data-lang-pt="Relação com Investidores">Relación con Inversionistas</h2>
+            
+            <!-- TradingView Widget BEGIN -->
+            <!-- Widget da TradingView para exibir cotações de ações -->
+            <div class="tradingview-widget-container" style="margin-bottom: 2.5rem;">
+              <div class="tradingview-widget-container__widget"></div>
+              <div class="tradingview-widget-copyright" style="font-size: 0.8em; text-align: center; margin-top: 0.5rem;">
+                  <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                      <span style="color: var(--lilas-claro);" data-lang-es="Cotizaciones por TradingView" data-lang-en="Quotes by TradingView" data-lang-pt="Cotações por TradingView">Cotizaciones por TradingView</span>
+                  </a>
+              </div>
+              <!-- Script para carregar o widget da TradingView. A configuração é feita via JSON. -->
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                  "symbols": [
+                    { "description": "BASA", "proName": "BVPASA:BASA" },
+                    { "description": "VISIÓN BANCO", "proName": "BVPASA:VISI" },
+                    { "description": "FRIGOCONCEP", "proName": "BVPASA:FRIGO" },
+                    { "description": "TIGO", "proName": "BVPASA:TELEF" },
+                    { "description": "CADIEM CECON", "proName": "BVPASA:CACON" },
+                    { "description": "FRIGOCHORTI", "proName": "BVPASA:FRICC" },
+                    { "description": "GNB PARAGUAY", "proName": "BVPASA:GNBP" },
+                    { "description": "SUDAMERIS", "proName": "BVPASA:SUDAP" },
+                    { "description": "BBVA PARAGUAY", "proName": "BVPASA:BBVA" },
+                    { "description": "CEMENTOS CONC", "proName": "BVPASA:CEMP" }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "dark",
+    "isTransparent": true,
+    "displayMode": "adaptive",
+    "locale": tvLocale // tvLocale será 'es', 'en', ou 'br'
+}
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+            <!-- Introdução da seção de investidores -->
+            <p class="section-intro"
+               data-lang-es="Multiagro presenta una atractiva oportunidad de inversión en el creciente sector agroindustrial, con un enfoque en superalimentos y mercados de exportación. Estamos comprometidos con la modernización, la expansión y la generación de valor sostenible."
+               data-lang-en="Multiagro presents an attractive investment opportunity in the growing agro-industrial sector, with a focus on superfoods and export markets. We are committed to modernization, expansion, and sustainable value generation."
+               data-lang-pt="A Multiagro apresenta uma oportunidade de investimento atraente no crescente setor agroindustrial, com foco em superalimentos e mercados de exportação. Estamos comprometidos com a modernização, a expansão e a geração de valor sustentável.">
+               Multiagro apresenta uma oportunidade de investimento atraente no crescente setor agroindustrial, com foco em superalimentos e mercados de exportação. Estamos comprometidos com a modernização, a expansão e a geração de valor sustentável.
+            </p>
+
+            <!-- Informações sobre a listagem na Bolsa de Valores de Assunção -->
+            <div class="bolsa-info">
+                <img src="https://www.bolsadevalores.com.py/wp-content/uploads/2024/08/logo.svg" 
+                     alt="Logo Bolsa de Valores de Asunción" class="bolsa-logo"
+                     data-alt-es="Logo Bolsa de Valores de Asunción"
+                     data-alt-en="Asunción Stock Exchange Logo" 
+                     data-alt-pt="Logo Bolsa de Valores de Assunção">
+                <h3 data-lang-es="Multiagro: Preparándose para la Bolsa de Valores de Asunción" 
+                    data-lang-en="Multiagro: Preparing for the Asunción Stock Exchange" 
+                    data-lang-pt="Multiagro: Preparando-se para a Bolsa de Valores de Assunção">
+                    Multiagro: Preparándose para la Bolsa de Valores de Asunción
+                </h3>
+                <p data-lang-es="Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya."
+                   data-lang-en="Multiagro S.A. is in an advanced stage of preparation for its entry into the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This significant future step underscores our commitment to transparency, best corporate governance practices, and will offer investors a solid and regulated platform to participate in the growth of Paraguayan agribusiness."
+                   data-lang-pt="A Multiagro S.A. está em um avançado processo de preparação para sua entrada na Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Este importante passo futuro destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferecerá aos investidores uma plataforma sólida e regulamentada para participar do crescimento da agroindústria paraguaia.">
+                   Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya.
+                </p>
+                <p><a href="https://www.bolsaasu.com.py/" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para mais informações</a></p>
+            </div>
+
+            <!-- Imagem ilustrativa de crescimento -->
+            <img class="ri-graphic" src="https://img.freepik.com/fotos-premium/conceito-de-analise-e-investimento-com-a-mao-do-empresario-tocando-a-tela-virtual-com-grafico-de-crescimento-do-mercado-de-acoes_670147-479.jpg" 
+                 alt="Gráfico Ilustrativo de Crecimento e Estratégia de Negócios"
+                 data-alt-es="Gráfico Ilustrativo de Crecimiento e Estrategia de Negocios"
+                 data-alt-en="Illustrative Growth and Business Strategy Chart"
+                 data-alt-pt="Gráfico Ilustrativo de Crescimento e Estratégia de Negócios">
+            
+            <h3 data-lang-es="Foco Estratégico y Oportunidades" data-lang-en="Strategic Focus and Opportunities" data-lang-pt="Foco Estratégico e Oportunidades">Foco Estratégico y Oportunidades</h3>
+            <!-- Lista de focos estratégicos e oportunidades -->
+            </p>
+            <ul class="custom-list">
+                <li data-lang-es="Modernización y ampliación de planta industrial" data-lang-en="Modernization and expansion of industrial plant" data-lang-pt="Modernização e ampliação da planta industrial">Modernización y ampliación de planta industrial</li>
+                <li data-lang-es="Obtención de certificaciones internacionales (USDA, Europeas)" data-lang-en="Obtaining international certifications (USDA, European)" data-lang-pt="Obtenção de certificações internacionais (USDA, Europeias)">Obtención de certificaciones internacionais (USDA, Europeas)</li>
+                <li data-lang-es="Diversificación de portafolio (ej. ración animal, café white label)" data-lang-en="Portfolio diversification (e.g., animal feed, white-label coffee)" data-lang-pt="Diversificação de portfólio (ex. ração animal, café white label)">Diversificación de portafolio (ej. ración animal, café white label)</li>
+                <li data-lang-es="Expansión a nuevos mercados internacionales (Europa, Asia, América del Norte)" data-lang-en="Expansion into new international markets (Europe, Asia, North America)" data-lang-pt="Expansão para novos mercados internacionais (Europa, Ásia, América do Norte)">Expansión a nuevos mercados internacionais (Europa, Asia, América del Norte)</li>
+                <li data-lang-es="Profesionalización continua de la gestión y procesos" data-lang-en="Continuous professionalization of management and processes" data-lang-pt="Profissionalização contínua da gestão e processos">Profesionalización continua de la gestión y procesos</li>
+            </ul>
+
+            <h3 data-lang-es="(PRÓXIMAMENTE) Informes y Presentaciones" 
+                data-lang-en="(COMING SOON) Reports and Presentations" 
+                data-lang-pt="(EM BREVE) Relatórios e Apresentações">
+                (PRÓXIMAMENTE) Informes y Presentaciones
+            </h3>
+            <!-- Links para relatórios e apresentações para investidores -->
+            <ul class="custom-list">
+                <li><a href="/docs/presentacion-inversionistas-multiagro.pdf" target="_blank" 
+                       data-lang-es="(PRÓXIMAMENTE) Presentación Institucional para Inversionistas" 
+                       data-lang-en="(COMING SOON) Institutional Investor Presentation" 
+                       data-lang-pt="(EM BREVE) Apresentação Institucional para Investidores">
+                       (PRÓXIMAMENTE) Presentación Institucional para Inversionistas
+                    </a>
+                </li>
+                <li><a href="/docs/plan-estrategico-multiagro.pdf" target="_blank" 
+                       data-lang-es="(PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)" 
+                       data-lang-en="(COMING SOON) Strategic Growth Plan (Summary)" 
+                       data-lang-pt="(EM BREVE) Plano Estratégico de Crescimento (Resumo)">
+                       (PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)
+                    </a>
+                </li>
+                <li><a href="#comunicados" onclick="navigateToSection('comunicados');return false;" data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</a></li>
+            </ul>
+
+            <h3 data-lang-es="Preguntas Frecuentes (FAQ)" data-lang-en="Frequently Asked Questions (FAQ)" data-lang-pt="Perguntas Frequentes (FAQ)">Preguntas Frecuentes (FAQ)</h3>
+            <!-- Seção de Perguntas Frequentes (FAQ) para investidores -->
+            <dl class="faq">
+                <dt data-lang-es="¿Cuál es el principal diferencial de Multiagro?" data-lang-en="What is Multiagro's main differentiator?" data-lang-pt="Qual é o principal diferencial da Multiagro?">¿Cuál es el principal diferencial de Multiagro?</dt>
+                <dd data-lang-es="Nuestro foco en superalimentos de alta calidad, la integración con productores locales, la capacidad de adaptación a estándares internacionales y un claro plan de modernización y expansión." 
+                    data-lang-en="Our focus on high-quality superfoods, integration with local producers, adaptability to international standards, and a clear plan for modernization and expansion."
+                    data-lang-pt="Nosso foco em superalimentos de alta qualidade, a integração com produtores locais, a capacidade de adaptação a padrões internacionais e um claro plano de modernização e expansão.">
+                    Nosso foco em superalimentos de alta qualidade, a integração com produtores locais, a capacidade de adaptação a padrões internacionais e um claro plano de modernização e expansão.
+                </dd>
+                <dt data-lang-es="¿Cómo contactar al área de Relación con Inversionistas?" data-lang-en="How to contact Investor Relations?" data-lang-pt="Como contatar a área de Relação com Investidores?">¿Cómo contactar al área de Relación con Inversionistas?</dt>
+                <dd data-lang-es="Utilice el formulario en la sección 'Contacto' o envíe un correo a <a href='mailto:invest@multiagro.com.py'>invest@multiagro.com.py</a>."
+                    data-lang-en="Use the form in the 'Contact' section or email <a href='mailto:invest@multiagro.com.py'>invest@multiagro.com.py</a>."
+                    data-lang-pt="Utilize o formulário na seção 'Contato' ou envie um e-mail para <a href='mailto:invest@multiagro.com.py'>invest@multiagro.com.py</a>.">
+                    Utilize o formulário na seção "Contato" ou envie um e-mail para <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a>.
+                </dd>
+            </dl>
+        </section>
 
         <!-- Comunicados -->
-        <section id="comunicados"><div id="comunicados-content-placeholder"></div></section>
+        <section id="comunicados">
+            <!-- Título da seção de Comunicados Relevantes -->
+            <h2 data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</h2>
+            <!-- Lista de comunicados (exemplos) -->
+            <ul class="custom-list">
+                <li data-lang-es="(PRÓXIMAMENTE) 10/08/2025 – Anuncio: Inicio de proceso para certificación USDA." 
+                    data-lang-en="(COMING SOON) 08/10/2025 – Announcement: USDA certification process initiated." 
+                    data-lang-pt="(EM BREVE) 10/08/2025 – Anúncio: Início do processo para certificação USDA.">
+                    (PRÓXIMAMENTE) 10/08/2025 – Anuncio: Inicio de proceso para certificación USDA. 
+                    <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a>
+                </li>
+                <li data-lang-es="(PRÓXIMAMENTE) 20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa." 
+                    data-lang-en="(COMING SOON) 06/20/2025 – Multiagro participates in international food fair in Europe." 
+                    data-lang-pt="(EM BREVE) 20/06/2025 – Multiagro participa de feira internacional de alimentos na Europa.">
+                    (PRÓXIMAMENTE) 20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa. 
+                    <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a>
+                </li>
+            </ul>
+            <div style="text-align:center; margin-top:2rem;">
+              <!-- Botão para voltar à seção de investidores -->
+              <a class="cta-btn" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Volver a Inversionistas" data-lang-en="Back to Investors" data-lang-pt="Voltar para Investidores">
+                 Volver a Inversionistas
+              </a>
+            </div>
+        </section>
 
         <!-- Sostenibilidad -->
-        <section id="sostenibilidad"><div id="sostenibilidad-content-placeholder"></div></section>
+        <section id="sostenibilidad">
+            <!-- Título e introdução da seção de Sostenibilidade -->
+            <h2 data-lang-es="Sostenibilidad y Compromiso Social" data-lang-en="Sustainability and Social Commitment" data-lang-pt="Sustentabilidade e Compromisso Social">Sostenibilidad y Compromiso Social</h2>
+            <p class="section-intro"
+               data-lang-es="En Multiagro, la sostenibilidad es un pilar fundamental. Buscamos un equilibrio entre el crecimiento económico, el respeto por el medio ambiente y el desarrollo de las comunidades con las que trabajamos, especialmente nuestros productores rurales."
+               data-lang-en="At Multiagro, sustainability is a fundamental pillar. We seek a balance between economic growth, respect for the environment, and the development of the communities we work with, especially our rural producers."
+               data-lang-pt="Na Multiagro, a sustentabilidade é um pilar fundamental. Buscamos um equilíbrio entre o crescimento econômico, o respeito pelo meio ambiente e o desenvolvimento das comunidades com as quais trabalhamos, especialmente nossos produtores rurais.">
+               Na Multiagro, a sustentabilidade é um pilar fundamental. Buscamos um equilíbrio entre o crescimento econômico, o respeito pelo meio ambiente e o desenvolvimento das comunidades com as quais trabalhamos, especialmente nossos produtores rurais.
+            </p>
+            <!-- Container do Vídeo para Sustentabilidade -->
+            <div class="video-background-container">
+                <video autoplay loop muted playsinline poster="images/sustentabilidade_placeholder.jpg">
+                    <source src="videos/video5.mp4" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
+            </div>
+            <ul class="custom-list">
+                <!-- Pilares da sustentabilidade: Ambiental, Social, Governança -->
+                <li data-lang-es="<strong>Ambiental:</strong> Fomento de buenas prácticas agrícolas, optimización de recursos, estudio para aprovechamiento de residuos industriales (ej. ración animal)." 
+                    data-lang-en="<strong>Environmental:</strong> Promotion of good agricultural practices, resource optimization, study for industrial waste utilization (e.g., animal feed)."
+                    data-lang-pt="<strong>Ambiental:</strong> Fomento de boas práticas agrícolas, otimização de recursos, estudo para aproveitamento de resíduos industriais (ex. ração animal).">
+                    <strong>Ambiental:</strong> Fomento de boas práticas agrícolas, otimização de recursos, estudo para aproveitamento de resíduos industriais (ex. ração animal).
+                </li>
+                <li data-lang-es="<strong>Social:</strong> Fuerte integración y apoyo a productores rurales y cooperativas locales, contribuyendo al desarrollo económico de la región de Guajayvi." 
+                    data-lang-en="<strong>Social:</strong> Strong integration and support for rural producers and local cooperatives, contributing to the economic development of the Guajayvi region."
+                    data-lang-pt="<strong>Social:</strong> Forte integração e apoio a produtores rurais e cooperativas locais, contribuindo para o desenvolvimento econômico da região de Guajayvi.">
+                    <strong>Social:</strong> Fuerte integração e apoio a produtores rurais e cooperativas locais, contribuindo ao desenvolvimento econômico da região de Guajayvi.
+                </li>
+                <li data-lang-es="<strong>Gobernanza:</strong> Operación ética y transparente, compromiso con la calidad y la seguridad alimentaria, buscando certificaciones que validen nuestras prácticas." 
+                    data-lang-en="<strong>Governance:</strong> Ethical and transparent operation, commitment to quality and food safety, seeking certifications that validate our practices."
+                    data-lang-pt="<strong>Governança:</strong> Operação ética e transparente, compromisso com a qualidade e a segurança alimentar, buscando certificações que validem nossas práticas.">
+                    <strong>Governança:</strong> Operação ética e transparente, compromisso com a qualidade e a segurança alimentar, buscando certificações que validem nossas práticas.
+                </li>
+            </ul>
+            <p style="margin-top: 2rem; text-align:center;">
+                <!-- Link para o relatório de sustentabilidade -->
+                <a href="/docs/informe-sostenibilidad-multiagro.pdf" target="_blank" class="cta-btn green" data-lang-es="Conozca Más Sobre Nuestro Impacto" data-lang-en="Learn More About Our Impact" data-lang-pt="Saiba Mais Sobre Nosso Impacto">
+                   Conozca Más Sobre Nuestro Impacto
+                </a>
+            </p>
+        </section>
 
         <!-- Contacto -->
-        <section id="contacto"><div id="contacto-content-placeholder"></div></section>
+        <section id="contacto">
+            
+            <!-- Título e introdução da seção de Contato -->
+            <h2 data-lang-es="Contacto" data-lang-en="Contact Us" data-lang-pt="Contato">Contacto</h2>
+            <p class="section-intro"
+               data-lang-es="Estamos a su disposición para consultas sobre nuestros productos, oportunidades de inversión o cualquier otra información."
+               data-lang-en="We are available for inquiries about our products, investment opportunities, or any other information."
+               data-lang-pt="Estamos à sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.">
+               Estamos a sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.
+                        </p>
+            <!-- Formulário de contato com campos internacionalizados -->
+            <form id="contactForm">
+            
+                <label for="nombre" data-lang-es="Nombre Completo" data-lang-en="Full Name" data-lang-pt="Nome Completo">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" 
+                       data-placeholder-es="Su nombre" data-placeholder-en="Your name" data-placeholder-pt="Seu nome" placeholder="Su nombre" required>
+                
+                <label for="email" data-lang-es="Correo Electrónico" data-lang-en="Email" data-lang-pt="E-mail">Correo Electrónico</label>
+                <input type="email" id="email" name="email" 
+                       data-placeholder-es="suemail@ejemplo.com" data-placeholder-en="youremail@example.com" data-placeholder-pt="seuemail@exemplo.com" placeholder="suemail@ejemplo.com" required>
+
+                <label for="asunto" data-lang-es="Asunto" data-lang-en="Subject" data-lang-pt="Assunto">Asunto</label>
+                <input type="text" id="asunto" name="asunto" 
+                       data-placeholder-es="Ej: Consulta sobre Chía" data-placeholder-en="E.g.: Inquiry about Chia" data-placeholder-pt="Ex: Consulta sobre Chia" placeholder="Ej: Consulta sobre Chía" required>
+                
+                <label for="mensaje" data-lang-es="Mensaje" data-lang-en="Message" data-lang-pt="Mensagem">Mensaje</label>
+                <textarea id="mensaje" name="mensagem" rows="5" 
+                          data-placeholder-es="Escriba su mensaje aquí..." data-placeholder-en="Write your message here..." data-placeholder-pt="Escreva sua mensagem aqui..." placeholder="Escriba su mensagem aqui..." required></textarea>
+                
+                <button type="submit" class="cta-btn" data-lang-es="Enviar Mensaje" data-lang-en="Send Message" data-lang-pt="Enviar Mensagem">Enviar Mensaje</button>
+            </form>
+            
+            <!-- Mapa Google Maps: Guajayvi, San Pedro, Paraguay -->
+            <!-- Iframe do Google Maps para exibir a localização -->
+             
+    <div style="width:100%;max-width:600px;margin:2rem auto 1.5rem auto;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+        <iframe 
+            src="https://www.google.com/maps?q=Guajayvi,+San+Pedro,+Paraguay&output=embed"
+            width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa Multiagro Guajayvi Paraguay"
+            data-title-es="Mapa Multiagro Guajayvi Paraguay"
+            data-title-en="Multiagro Guajayvi Paraguay Map"
+            data-title-pt="Mapa Multiagro Guajayvi Paraguai"></iframe>
+            
+    </div>
+
+    <!-- Informações de contato adicionais -->
+    <div class="contact-info">
+ 
+        <div class="contact-info-overlay-content">
+            <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a></p>
+            <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
+            <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
+            <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
+            
+            <!-- Links de Redes Sociais -->
+            <div class="social-media-links">
+                <p><strong data-lang-es="Síganos en nuestras redes:" data-lang-en="Follow us on our networks:" data-lang-pt="Siga-nos em nossas redes:">Síganos en nuestras redes:</strong></p>
+                <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro">
+                    <i class="fab fa-linkedin"></i> <span data-lang-es="LinkedIn" data-lang-en="LinkedIn" data-lang-pt="LinkedIn">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
+                    <i class="fab fa-facebook-square"></i> <span data-lang-es="Facebook" data-lang-en="Facebook" data-lang-pt="Facebook">Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
+                    <i class="fab fa-instagram"></i> <span data-lang-es="Instagram" data-lang-en="Instagram" data-lang-pt="Instagram">Instagram</span>
+                </a>
+            </div>
+        </div>
+                </div>
+        </section>
     </main>
 
     <footer>
@@ -1287,13 +1892,13 @@
             <a href="/docs/politica-privacidad-multiagro.pdf" target="_blank" data-lang-es="Política de Privacidad" data-lang-en="Privacy Policy" data-lang-pt="Política de Privacidade">Política de Privacidad</a>
             
             <!-- Ícones de Redes Sociais no Rodapé -->
-            <a href="https://www.linkedin.com/company/multiagro-superfoods" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro" style="margin-left: 1.5rem;"> <!-- Margem para separar dos links de texto -->
+            <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro" style="margin-left: 1.5rem;"> <!-- Margem para separar dos links de texto -->
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61577928593848" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
+            <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
                 <i class="fab fa-facebook-square"></i>
             </a>
-            <a href="https://www.instagram.com/multiagropy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
+            <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
@@ -1322,196 +1927,6 @@
        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
        crossorigin=""></script>
     <script>
-        // New map to store loaded section content
-        const loadedSectionContent = new Map();
-
-        let currentLang; // Declare here for broader scope
-
-        // Global variable for TradingView locale
-        window.tvLocale = 'es'; // Default
-
-        async function loadSectionContent(sectionId) {
-            const sectionElement = document.getElementById(sectionId);
-            if (!sectionElement) {
-                console.error(`Section element with ID '${sectionId}' not found.`);
-                return;
-            }
-
-            // Use a placeholder div inside the section to load content
-            let contentPlaceholder = sectionElement.querySelector(`#${sectionId}-content-placeholder`);
-            if (!contentPlaceholder) {
-                contentPlaceholder = document.createElement('div');
-                contentPlaceholder.id = `${sectionId}-content-placeholder`;
-                sectionElement.appendChild(contentPlaceholder);
-            }
-
-            // Check if content is already loaded
-            if (loadedSectionContent.has(sectionId)) {
-                contentPlaceholder.innerHTML = loadedSectionContent.get(sectionId);
-                // Re-execute scripts for already loaded content
-                executeScriptsInElement(contentPlaceholder);
-                return;
-            }
-
-            const filePath = `sections/${sectionId}.html`;
-            try {
-                const response = await fetch(filePath);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const htmlContent = await response.text();
-                contentPlaceholder.innerHTML = htmlContent;
-                loadedSectionContent.set(sectionId, htmlContent); // Store content
-
-                // Execute scripts within the newly loaded content
-                executeScriptsInElement(contentPlaceholder);
-
-            } catch (error) {
-                console.error(`Failed to load section content for ${sectionId}:`, error);
-                contentPlaceholder.innerHTML = `<p>Error loading content for ${sectionId}. Please try again later.</p>`;
-            }
-        }
-
-        function executeScriptsInElement(element) {
-            const scripts = element.querySelectorAll('script');
-            scripts.forEach(oldScript => {
-                const newScript = document.createElement('script');
-                Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                newScript.textContent = oldScript.textContent;
-                // Replace the old script with the new one to ensure execution
-                if (oldScript.parentNode) {
-                    oldScript.parentNode.replaceChild(newScript, oldScript);
-                } else {
-                    // If script is not attached to DOM (e.g., in a fragment), append it to body to execute
-                    document.body.appendChild(newScript);
-                    newScript.remove(); // Remove immediately after execution if not needed in DOM
-                }
-            });
-        }
-
-        // --- Hero Carousel Logic ---
-        function initializeHeroCarousel() {
-            const heroCarousel = document.querySelector('.hero-section .hero-carousel');
-            if (heroCarousel) {
-                const slidesContainer = heroCarousel.querySelector('.carousel-slides');
-                const slides = heroCarousel.querySelectorAll('.carousel-slide');
-                const prevButton = heroCarousel.querySelector('.carousel-prev');
-                const nextButton = heroCarousel.querySelector('.carousel-next');
-                let currentSlideIndex = 0;
-                const slideIntervalTime = 7000; // 7 seconds for auto-slide
-                let slideTimer;
-
-                function goToSlide(index) {
-                    if (!slidesContainer || slides.length === 0) return;
-                    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-                    currentSlideIndex = index;
-                }
-
-                function nextSlideAuto() {
-                    let newIndex = currentSlideIndex + 1;
-                    if (newIndex >= slides.length) newIndex = 0;
-                    goToSlide(newIndex);
-                }
-
-                function startSlideTimer() {
-                    if (slides.length > 1) {
-                        clearInterval(slideTimer); // Clear existing timer before starting a new one
-                        slideTimer = setInterval(nextSlideAuto, slideIntervalTime);
-                    }
-                }
-
-                if (prevButton && nextButton && slides.length > 0) {
-                    prevButton.addEventListener('click', () => {
-                        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-                        goToSlide(currentSlideIndex);
-                        startSlideTimer(); // Reset timer on manual navigation
-                    });
-
-                    nextButton.addEventListener('click', () => {
-                        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-                        goToSlide(currentSlideIndex);
-                        startSlideTimer(); // Reset timer on manual navigation
-                    });
-                }
-                if (slides.length > 0) { // Initialize and start timer if slides exist
-                    goToSlide(0);
-                    startSlideTimer();
-                    heroCarousel.addEventListener('mouseenter', () => clearInterval(slideTimer));
-                    heroCarousel.addEventListener('mouseleave', startSlideTimer);
-                }
-            }
-        }
-
-        // --- Leaflet Map Initialization ---
-        let mapInstance = null; // Para manter referência ao mapa e poder removê-lo se necessário
-
-        function initLeafletMap() {
-            if (mapInstance) {
-                mapInstance.remove(); // Remove o mapa anterior para evitar duplicação
-                mapInstance = null;
-            }
-
-            // Inicializa o mapa sem setView, pois fitBounds cuidará disso
-            mapInstance = L.map('mapid'); 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(mapInstance);
-
-            const countries = [
-                // País de Origem
-                { nameEs: 'Paraguay', nameEn: 'Paraguay', namePt: 'Paraguai', lat: -23.4425, lng: -58.4438, status: 'origem', radius: 10 },
-                // Países Atendidos
-                { nameEs: 'Brasil', nameEn: 'Brazil', namePt: 'Brasil', lat: -14.2350, lng: -51.9253, status: 'atendido', radius: 8 },
-                { nameEs: 'Argentina', nameEn: 'Argentina', namePt: 'Argentina', lat: -38.4161, lng: -63.6167, status: 'atendido', radius: 8 },
-                { nameEs: 'Bolivia', nameEn: 'Bolivia', namePt: 'Bolívia', lat: -16.2902, lng: -63.5887, status: 'atendido', radius: 7 },
-                { nameEs: 'Chile', nameEn: 'Chile', namePt: 'Chile', lat: -35.6751, lng: -71.5430, status: 'atendido', radius: 7 },
-                { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, status: 'atendido', radius: 7 },
-                { nameEs: 'Colombia', nameEn: 'Colombia', namePt: 'Colômbia', lat: 4.5709, lng: -74.2973, status: 'atendido', radius: 7 },
-                // Países em Negociação
-                { nameEs: 'Estados Unidos', nameEn: 'United States', namePt: 'Estados Unidos', lat: 37.0902, lng: -95.7129, status: 'negociacao', radius: 8 },
-                { nameEs: 'China', nameEn: 'China', namePt: 'China', lat: 35.8617, lng: 104.1954, status: 'negociacao', radius: 8 },
-                { nameEs: 'España', nameEn: 'Spain', namePt: 'Espanha', lat: 40.4637, lng: -3.7492, status: 'negociacao', radius: 7 },
-                { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, status: 'negociacao', radius: 7 },
-                { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, status: 'negociacao', radius: 7 }
-            ];
-            const markersArray = []; // Array para armazenar os marcadores
-
-            countries.forEach(country => {
-                let popupName = country.nameEs; // Padrão para espanhol
-                if (currentLang === 'en') popupName = country.nameEn;
-                else if (currentLang === 'pt') popupName = country.namePt;
-
-                let markerColor;
-                if (country.status === 'origem') {
-                    markerColor = '#1e824c'; // Verde escuro
-                } else if (country.status === 'atendido') {
-                    markerColor = '#8816bd'; // Azul
-                } else { // 'negociacao'
-                    markerColor = '#fd7e14'; // Laranja
-                }
-
-                const circle = L.circleMarker([country.lat, country.lng], {
-                    color: markerColor,
-                    fillColor: markerColor,
-                    fillOpacity: 0.7,
-                    radius: country.radius,
-                    weight: country.status === 'origem' ? 3 : 1.5, // Destaque para origem
-                    stroke: true
-                })
-                .addTo(mapInstance)
-                .bindPopup(popupName);
-                markersArray.push(circle);
-            });
-
-            if (markersArray.length > 0) {
-                const group = new L.featureGroup(markersArray);
-                mapInstance.fitBounds(group.getBounds().pad(0.1)); // pad(0.1) adiciona 10% de margem
-            } else {
-                // Fallback se não houver marcadores, centraliza de forma genérica
-                mapInstance.setView([-15, -50], 3); 
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             // Seletores de elementos do DOM
             const navLinksContainer = document.getElementById('nav-links');
@@ -1524,7 +1939,7 @@
                 en: document.getElementById('lang-en'),
                 pt: document.getElementById('lang-pt')
             };
-            currentLang = localStorage.getItem('preferredLang') || 'es';
+            let currentLang = localStorage.getItem('preferredLang') || 'es';
 
             // --- Lógica para mostrar/ocultar a Seção Hero ---
             // A seção Hero (home) só deve ser visível na página inicial.
@@ -1564,6 +1979,49 @@
                 }
             }
 
+            // --- Atualiza o widget da TradingView com o idioma selecionado ---
+            function updateTradingViewWidget(lang) {
+                // Recria o script do widget da TradingView para aplicar o novo 'locale'.
+                const widgetContainerRoot = document.querySelector('.tradingview-widget-container');
+                if (!widgetContainerRoot) return;
+                const widgetContainer = widgetContainerRoot.querySelector('.tradingview-widget-container__widget');
+                if (!widgetContainer) return;
+
+                const oldScript = widgetContainerRoot.querySelector('script[src*="tradingview.com/external-embedding/embed-widget-ticker-tape.js"]');
+                if (oldScript) {
+                    oldScript.remove();
+                }
+                widgetContainer.innerHTML = ''; 
+
+                // Mapeia o código de idioma do site para o código de locale da TradingView.
+                let tvLocale = 'es';
+                if (lang === 'en') tvLocale = 'en';
+                // Using 'br' for Portuguese locale as it aligns with TradingView's locale codes
+                else if (lang === 'pt') tvLocale = 'br'; // TradingView uses 'br' for Portuguese
+
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+                script.async = true;
+                script.innerHTML = JSON.stringify({
+                    "symbols": [
+                        { "description": "BASA", "proName": "BVPASA:BASA" },
+                        { "description": "VISIÓN BANCO", "proName": "BVPASA:VISI" },
+                        { "description": "FRIGOCONCEP", "proName": "BVPASA:FRIGO" },
+                        { "description": "TIGO", "proName": "BVPASA:TELEF" },
+                        { "description": "CADIEM CECON", "proName": "BVPASA:CACON" },
+                        { "description": "FRIGOCHORTI", "proName": "BVPASA:FRICC" },
+                        { "description": "GNB PARAGUAY", "proName": "BVPASA:GNBP" },
+                        { "description": "SUDAMERIS", "proName": "BVPASA:SUDAP" },
+                        { "description": "BBVA PARAGUAY", "proName": "BVPASA:BBVA" },
+                        { "description": "CEMENTOS CONC", "proName": "BVPASA:CEMP" }
+                    ],
+                    "showSymbolLogo": true, "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": tvLocale
+                });
+                widgetContainer.appendChild(script);
+            }
+
+
             // --- Lógica do Seletor de Idioma ---
             function setLanguage(lang) {
                 // Define o idioma atual, salva no localStorage e atualiza todos os textos da página.
@@ -1589,11 +2047,6 @@
                 // Note: i18n for inline action buttons will be handled when they are created.
                     if (titleText) document.title = titleText;
                 }
-
-                // Update global tvLocale for TradingView widget
-                if (lang === 'en') window.tvLocale = 'en';
-                else if (lang === 'pt') window.tvLocale = 'br'; // TradingView uses 'br' for Portuguese
-                else window.tvLocale = 'es'; // Default for 'es'
 
                 // Atualiza o conteúdo de texto para todos os elementos com atributos data-lang-*
                 document.querySelectorAll('[data-lang-es]').forEach(el => {
@@ -1647,7 +2100,9 @@
                     }
                 }
 
+                // Atualiza elementos específicos que dependem do idioma
                 updateMenuToggleAriaLabel();
+                updateTradingViewWidget(lang);
             }
 
             // Adiciona event listeners aos botões de idioma
@@ -1672,38 +2127,26 @@
             });
 
             // --- Função para mostrar a seção correta na interface ---
-            async function showSectionUI(id) {
-                // Oculta todas as seções
+            function showSectionUI(id) {
+                // Oculta todas as seções e exibe apenas a seção alvo.
                 sections.forEach(s => s.classList.remove('visible'));
-
-                // Load content for the target section
-                await loadSectionContent(id); // Wait for content to load
-
                 const targetSection = document.getElementById(id);
                 if (targetSection) {
                     targetSection.classList.add('visible');
-
-                    // If 'home' is activated, also load and show 'productos'
+                    // Se a seção "home" for ativada, mostrar também "productos"
+                    // Isso mantém o comportamento de carregar a home junto com produtos na carga inicial
+                    // e quando se navega para #home.
                     if (id === 'home') {
-                        await loadSectionContent('productos');
                         const productosSection = document.getElementById('productos');
                         if (productosSection) {
                             productosSection.classList.add('visible');
                         }
-                        initializeHeroCarousel(); // Initialize carousel after home content is loaded
-                    }
-
-                    // Initialize map if 'nosotros' section is now visible and map elements are ready
-                    if (id === 'nosotros' && document.getElementById('mapid') && typeof L !== 'undefined') {
-                        initLeafletMap();
                     }
                 }
-                // Re-apply language after content is loaded
-                setLanguage(currentLang);
             }
 
             // --- Função para atualizar a visualização da página com base no hash da URL ---
-            async function refreshViewForCurrentHash() {
+            function refreshViewForCurrentHash() {
                 // Controla a visibilidade da seção Hero e mostra a seção principal correta.
                 updateHeroSectionVisibilityBasedOnHash(); // Controla visibilidade da hero section
 
@@ -1712,7 +2155,7 @@
                     sectionIdFromHash = 'home';
                 }
                 
-                await showSectionUI(sectionIdFromHash); // Mostra a seção principal
+                showSectionUI(sectionIdFromHash); // Mostra a seção principal
 
                 // Atualiza links ativos na navegação e estado do menu mobile
                 navLinks.forEach(a => a.classList.remove('active'));
@@ -1725,32 +2168,113 @@
                     menuToggle.textContent = '☰';
                     updateMenuToggleAriaLabel(); // Adicionado para consistência
                 }
+
+                // Initialize map if 'nosotros' section is now visible and map elements are ready
+                if (sectionIdFromHash === 'nosotros' && document.getElementById('mapid') && typeof L !== 'undefined') {
+                    initLeafletMap();
+                }
             }
 
             // --- Lógica de Navegação SPA (Single Page Application) ---
-            window.navigateToSection = async function(targetId) { // Expor globalmente para onclicks
+            window.navigateToSection = function(targetId) { // Expor globalmente para onclicks
                 if (history.pushState) {
                     history.pushState(null, null, `#${targetId}`);
                 } else {
                     window.location.hash = `#${targetId}`;
                 }
-                await refreshViewForCurrentHash(); // Atualiza a visualização completa
+                refreshViewForCurrentHash(); // Atualiza a visualização completa
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
             
             // --- Carregamento Inicial ---
             // Função chamada quando a página é carregada pela primeira vez.
-            async function loadInitialViewRevised() {
-                await refreshViewForCurrentHash();
-                setLanguage(currentLang); // Aplicar idioma salvo/padrão após o carregamento inicial
+            function loadInitialViewRevised() {
+                setLanguage(currentLang); // Aplicar idioma salvo/padrão
+                refreshViewForCurrentHash();
+                // A inicialização do mapa agora é tratada dentro de refreshViewForCurrentHash
             }
+
+            // --- Leaflet Map Initialization ---
+            let mapInstance = null; // Para manter referência ao mapa e poder removê-lo se necessário
+
+            function initLeafletMap() {
+                if (mapInstance) {
+                    mapInstance.remove(); // Remove o mapa anterior para evitar duplicação
+                    mapInstance = null;
+                }
+
+                // Inicializa o mapa sem setView, pois fitBounds cuidará disso
+                mapInstance = L.map('mapid'); 
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(mapInstance);
+
+                const countries = [
+                    // País de Origem
+                    { nameEs: 'Paraguay', nameEn: 'Paraguay', namePt: 'Paraguai', lat: -23.4425, lng: -58.4438, status: 'origem', radius: 10 },
+                    // Países Atendidos
+                    { nameEs: 'Brasil', nameEn: 'Brazil', namePt: 'Brasil', lat: -14.2350, lng: -51.9253, status: 'atendido', radius: 8 },
+                    { nameEs: 'Argentina', nameEn: 'Argentina', namePt: 'Argentina', lat: -38.4161, lng: -63.6167, status: 'atendido', radius: 8 },
+                    { nameEs: 'Bolivia', nameEn: 'Bolivia', namePt: 'Bolívia', lat: -16.2902, lng: -63.5887, status: 'atendido', radius: 7 },
+                    { nameEs: 'Chile', nameEn: 'Chile', namePt: 'Chile', lat: -35.6751, lng: -71.5430, status: 'atendido', radius: 7 },
+                    { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, status: 'atendido', radius: 7 },
+                    { nameEs: 'Colombia', nameEn: 'Colombia', namePt: 'Colômbia', lat: 4.5709, lng: -74.2973, status: 'atendido', radius: 7 },
+                    // Países em Negociação
+                    { nameEs: 'Estados Unidos', nameEn: 'United States', namePt: 'Estados Unidos', lat: 37.0902, lng: -95.7129, status: 'negociacao', radius: 8 },
+                    { nameEs: 'China', nameEn: 'China', namePt: 'China', lat: 35.8617, lng: 104.1954, status: 'negociacao', radius: 8 },
+                    { nameEs: 'España', nameEn: 'Spain', namePt: 'Espanha', lat: 40.4637, lng: -3.7492, status: 'negociacao', radius: 7 },
+                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, status: 'negociacao', radius: 7 },
+                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, status: 'negociacao', radius: 7 }
+                ];
+                const markersArray = []; // Array para armazenar os marcadores
+
+                countries.forEach(country => {
+                    let popupName = country.nameEs; // Padrão para espanhol
+                    if (currentLang === 'en') popupName = country.nameEn;
+                    else if (currentLang === 'pt') popupName = country.namePt;
+
+                    let markerColor;
+                    if (country.status === 'origem') {
+                        markerColor = '#1e824c'; // Verde escuro
+                    } else if (country.status === 'atendido') {
+                        markerColor = '#8816bd'; // Azul
+                    } else { // 'negociacao'
+                        markerColor = '#fd7e14'; // Laranja
+                    }
+
+                    const circle = L.circleMarker([country.lat, country.lng], {
+                        color: markerColor,
+                        fillColor: markerColor,
+                        fillOpacity: 0.7,
+                        radius: country.radius,
+                        weight: country.status === 'origem' ? 3 : 1.5, // Destaque para origem
+                        stroke: true
+                    })
+                    .addTo(mapInstance)
+                    .bindPopup(popupName);
+                    markersArray.push(circle);
+                });
+
+                if (markersArray.length > 0) {
+                    const group = new L.featureGroup(markersArray);
+                    mapInstance.fitBounds(group.getBounds().pad(0.1)); // pad(0.1) adiciona 10% de margem
+                } else {
+                    // Fallback se não houver marcadores, centraliza de forma genérica
+                    mapInstance.setView([-15, -50], 3); 
+                }
+            }
+            // Chamar initLeafletMap aqui, após a definição da função e antes de loadInitialViewRevised
+            // ou dentro de loadInitialViewRevised, garantindo que o DOM do mapa esteja pronto.
+            // Movido para ser chamado dentro de loadInitialViewRevised para garantir que o elemento #mapid está visível.
 
             loadInitialViewRevised();
 
             // --- Manipulador para navegação de voltar/avançar do navegador ---
-            window.addEventListener('popstate', async () => {
+            window.addEventListener('popstate', () => {
                 // Reaplicar o idioma e atualizar a visualização quando o usuário navega pelo histórico.
-                await refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
+                setLanguage(localStorage.getItem('preferredLang') || 'es'); // Reaplicar idioma
+                refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
+                // A inicialização do mapa é tratada por refreshViewForCurrentHash se 'nosotros' for a seção ativa
             }); 
 
             // --- Define o ano atual no rodapé ---
@@ -1774,6 +2298,64 @@
                     this.reset();
                 });
             }
+
+            // --- Hero Carousel Logic ---
+            const heroCarousel = document.querySelector('.hero-section .hero-carousel');
+            if (heroCarousel) {
+                const slidesContainer = heroCarousel.querySelector('.carousel-slides');
+                const slides = heroCarousel.querySelectorAll('.carousel-slide');
+                const prevButton = heroCarousel.querySelector('.carousel-prev');
+                const nextButton = heroCarousel.querySelector('.carousel-next');
+                let currentSlideIndex = 0;
+                const slideIntervalTime = 7000; // 7 seconds for auto-slide
+                let slideTimer;
+
+                function goToSlide(index) {
+                    if (!slidesContainer || slides.length === 0) return;
+                    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+                    currentSlideIndex = index;
+                }
+
+                function nextSlideAuto() {
+                    let newIndex = currentSlideIndex + 1;
+                    if (newIndex >= slides.length) newIndex = 0;
+                    goToSlide(newIndex);
+                }
+
+                function startSlideTimer() {
+                    if (slides.length > 1) {
+                        clearInterval(slideTimer); // Clear existing timer before starting a new one
+                        slideTimer = setInterval(nextSlideAuto, slideIntervalTime);
+                    }
+                }
+
+                if (prevButton && nextButton && slides.length > 0) {
+                    prevButton.addEventListener('click', () => {
+                        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+                        goToSlide(currentSlideIndex);
+                        startSlideTimer(); // Reset timer on manual navigation
+                    });
+
+                    nextButton.addEventListener('click', () => {
+                        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                        goToSlide(currentSlideIndex);
+                        startSlideTimer(); // Reset timer on manual navigation
+                    });
+                }
+                if (slides.length > 0) { // Initialize and start timer if slides exist
+                    goToSlide(0);
+                    startSlideTimer();
+                    heroCarousel.addEventListener('mouseenter', () => clearInterval(slideTimer));
+                    heroCarousel.addEventListener('mouseleave', startSlideTimer);
+                }
+            }
+            // --- End Hero Carousel Logic ---
+
+            // A inicialização do mapa Leaflet agora é chamada dentro de refreshViewForCurrentHash
+            // para garantir que o mapa seja renderizado corretamente
+            // quando a seção 'nosotros' se torna visível.
+            // Correção: A função loadInitialViewRevised já foi definida e modificada anteriormente.
+            // A segunda definição de loadInitialViewRevised foi removida.
         });
         
         // Simulated Chatbot Logic
