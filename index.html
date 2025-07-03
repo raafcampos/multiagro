@@ -14,8 +14,1180 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <!-- Seu arquivo de estilo local -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Definição de variáveis CSS (Custom Properties) para o tema do site */
+        :root {
+            /* Verde um pouco mais escuro */
+            --verde-principal: hsl(140, 40%, 28%); /* Ajustado para mais escuro */
+            --verde-escuro: hsl(140, 40%, 35%);   /* Ajustado para mais escuro */
+            --verde-claro: hsl(140, 60%, 88%);   /* Levemente ajustado */
+            
+            --lilas-principal: hsl(270, 50%, 55%); /* Lilás um pouco menos vibrante para combinar */
+            --lilas-escuro: hsl(270, 50%, 40%);
+            --lilas-claro: hsl(270, 60%, 95%);
+            
+            --preto-azulado: hsl(220, 15%, 15%); /* Preto com leve tom azulado */
+            --cinza-muito-escuro: hsl(0, 0%, 10%);
+            --cinza-texto: #333;
+            --cinza-fundo: #f9f9f9;
+            --branco: #fff;
+            
+            --sombra: 0 5px 15px rgba(0,0,0,0.1);
+            --sombra-leve: 0 2px 8px rgba(0,0,0,0.07);
+
+            --transicao-padrao: all 0.3s ease-in-out;
+        }
+
+        /* Reset básico e box-sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            /* Habilita a rolagem suave para links de âncora */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Estilos base para o corpo da página */
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cinza-fundo);
+            color: var(--cinza-texto);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        header {
+            /* Estilos do cabeçalho principal */
+            background-color: var(--verde-principal);
+            color: var(--branco);
+            padding: 1rem 1.5rem; /* Reduzido um pouco para acomodar o seletor de idioma */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--sombra-leve);
+            transition: var(--transicao-padrao);
+        }
+        /* Container para a bandeira do Paraguai */
+        .paraguay-flag-container {
+            display: flex;
+            align-items: center;
+        }
+        /* Estilos para a bandeira do Paraguai com efeito de gradiente e sombra */
+        .paraguay-flag {
+            width: 36px;
+            height: 24px;
+            background: linear-gradient(to bottom, #d52b1e 33.33%, #ffffff 33.33% 66.66%, #0038a8 66.66%);
+            margin-right: 15px; /* Levemente aumentado para acomodar a sombra e rotação */
+            transform: rotate(-7deg); /* Inclinação para a esquerda */
+            box-shadow: 
+                /* Sombra base para profundidade, considerando a rotação */
+                1px 1px 4px rgba(0, 0, 0, 0.25), 
+                /* Camadas de brilho "flamejante" */
+                0 0 7px 2px rgba(255, 69, 0, 0.6),  /* Laranja-avermelhado intenso (como uma brasa) */
+                0 0 14px 4px rgba(255, 165, 0, 0.4); /* Laranja mais suave externo (como uma chama) */
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transição suave */
+        }
+        /* Efeito hover para a bandeira */
+        .paraguay-flag:hover {
+            transform: rotate(-5deg) scale(1.1); /* Endireita um pouco e aumenta no hover */
+            box-shadow: 
+                2px 2px 6px rgba(0, 0, 0, 0.3),
+                0 0 10px 3px rgba(255, 69, 0, 0.75), /* Brilho mais intenso */
+                0 0 20px 6px rgba(255, 165, 0, 0.55); /* Brilho mais amplo */
+        }
+        /* Container do conteúdo do cabeçalho (logo e navegação) */
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex; /* Para alinhar a imagem se necessário */
+            align-items: center;
+        }
+        .logo a { /* Estilos para o texto do logo "Multiagro" */
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--branco);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        /* .logo img {
+            height: 65px; /* Ajuste a altura conforme necessário */
+            /* width: auto; */ /* Mantém a proporção */
+        /* } */
+
+        nav ul {
+            /* Estilos da lista de navegação */
+            list-style: none;
+            display: flex;
+            align-items: center; /* Alinhar itens incluindo o seletor de idioma */
+        }
+
+        nav a {
+            /* Estilos dos links de navegação */
+            color: var(--branco);
+            margin: 0 0.8rem; /* Espaçamento ajustado */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem; /* Tamanho ajustado */
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid transparent;
+            transition: var(--transicao-padrao);
+        }
+
+        /* Estilo para link ativo ou em hover */
+        nav a:hover, nav a.active {
+            color: var(--lilas-claro);
+            border-bottom-color: var(--lilas-principal);
+        }
+        
+        /* Seletor de idioma */
+        .language-switcher {
+            margin-left: 1rem;
+            font-size: 0.85rem;
+        }
+        .language-switcher button {
+            /* Estilos dos botões de idioma */
+            background: none;
+            border: 1px solid var(--lilas-claro);
+            color: var(--branco); /* Alterado para branco para melhor contraste inicial */
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px; /* Mais arredondado */
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            margin: 0 0.2rem;
+            transition: var(--transicao-padrao);
+        }
+        /* Estilo para botão de idioma ativo ou em hover */
+        .language-switcher button:hover, .language-switcher button.active-lang {
+            background-color: var(--lilas-principal);
+            color: var(--branco);
+            border-color: var(--lilas-principal);
+        }
+
+        /* Estilos para o link de navegação de Investidores */
+        nav a.nav-link-investor { /* Estilo especial para o link "Inversionistas" parecer um botão */
+            background-image: linear-gradient(to bottom, hsl(220, 15%, 22%), hsl(220, 15%, 12%)); /* Gradiente sutil escuro */
+            color: var(--lilas-claro);
+            padding: 0.6rem 1.2rem; /* Padding para dar forma de botão */
+            border-radius: 25px; /* Efeito pílula */
+            border-bottom: none; /* Remover a borda inferior padrão dos links de navegação */
+            margin-left: 0.8rem; /* Manter algum espaçamento dos outros itens */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.08); /* Sombra externa e interna sutil */
+            transition: var(--transicao-padrao), background-image 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Adicionar transições específicas */
+        }
+
+        /* Efeito hover e ativo para o link de Investidores */
+        nav a.nav-link-investor:hover,
+        nav a.nav-link-investor.active {
+            background-image: linear-gradient(to bottom, hsl(220, 15%, 28%), hsl(220, 15%, 18%)); /* Gradiente um pouco mais claro no hover/active */
+            color: var(--branco);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.1);
+            border-bottom: none; /* Garantir que a borda inferior não reapareça */
+            transform: translateY(-1px); /* Leve elevação no hover */
+        }
+
+
+        /* Botão de menu hambúrguer para telas menores */
+        .menu-toggle {
+            display: none; 
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--branco);
+            cursor: pointer;
+            padding: 0.3rem 0.5rem; /* Adicionado padding */
+            border-radius: 8px; /* Levemente arredondado */
+        }
+
+        main {
+            /* Estilos do conteúdo principal da página */
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--branco);
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+        }
+
+        /* Oculta todas as seções por padrão */
+        main section {
+            display: none;
+        }
+
+        /* Mostra a seção ativa que não é a hero section */
+        main section.visible {
+            display: block;
+        }
+
+        section {
+            /* Estilos base para cada seção de conteúdo */
+            padding: 2.5rem 0; /* Aumentado o padding vertical */
+            border-bottom: 1px solid var(--verde-claro);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Seção Hero (principal, no topo) */
+        .hero-section {
+            padding: 0; /* Removido padding para o carrossel ocupar tudo */
+            /* border-radius: 12px; */ /* Movido para o carrossel */
+            text-align: center;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Alinha itens ao topo */
+            position: relative; /* Para o carrossel absoluto e o conteúdo */
+            min-height: 200px; /* Altura mínima aumentada para acomodar logo + carrossel */
+            background-color: var(--branco); /* Fundo para a seção hero, onde a logo ficará */
+        }
+
+        /* Nova área para o conteúdo principal da Hero (carrossel + texto) */
+        .hero-main-content-area {
+            position: relative;
+            width: 100%;
+            margin: 0 auto 2rem auto; /* Centralizado e com margem inferior */
+            border-radius: 12px; /* Mantido */
+            overflow: hidden; /* Para cortar o carrossel nos cantos arredondados */
+            height: 0; /* Necessário para o truque de padding-bottom do aspect ratio */
+            padding-bottom: 50%; /* Proporção 16:8 ou 2:1 (8 / 16 * 100) */
+        }
+
+        /* Mostra a seção ativa (Hero usa flex, outras usam block) */
+        .hero-section.visible {
+            display: flex;
+        }
+        /* Classe para ocultar a hero section em subpáginas via JavaScript */
+        .hero-hidden-on-subpage {
+            display: none !important;
+        }
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* Atrás do hero-content-overlay */
+            border-radius: 12px;
+        }
+        /* Container dos slides do carrossel */
+        .carousel-slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.7s ease-in-out;
+        }
+        /* Estilo individual de cada slide */
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            height: 100%;
+            position: relative; /* Para o overlay */
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit:cover; /* Ensures the entire image is visible, scaled down to fit */
+            display: block;
+            background-color: var(--cinza-muito-escuro); /* Fills empty space if aspect ratios differ */
+        }
+        .carousel-slide::after { /* Overlay para contraste do texto */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(158, 158, 158, 0.45); /* Dark overlay for text contrast on each slide */
+            z-index: 1;
+        }
+        /* Botões de navegação do carrossel (anterior/próximo) */
+        .carousel-prev, .carousel-next {
+            z-index: 3; /* Acima do hero-content-overlay */
+        }
+        .carousel-prev { left: 20px; }
+        .carousel-next { right: 20px; }
+        .carousel-prev:hover, .carousel-next:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .slide-product-caption {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            /* z-index: 2; */ /* Ajustado para z-index: 3 se for sobrepor o overlay ::after */
+            z-index: 3; 
+            color: var(--branco);
+            background-color: rgba(0, 0, 0, 0.55); /* Fundo semi-transparente para a legenda */
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            max-width: calc(100% - 50px); /* Evitar que a legenda seja muito larga */
+        }
+
+        .slide-product-caption h4 {
+            margin: 0;
+            font-size: 1.6rem; /* Tamanho do nome do produto no slide */
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
+        .hero-content-overlay {
+            position: absolute; /* Alterado para absoluto para sobrepor cada slide */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Ocupa toda a altura do slide pai */
+            z-index: 2; /* Acima do overlay ::after do slide, abaixo dos botões de navegação do carrossel */
+            padding: 2rem; /* Padding geral para o conteúdo de texto */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centraliza o conteúdo verticalmente */
+            box-sizing: border-box;
+        }
+        /* Garante que o conteúdo da hero section esteja visível quando a seção está visível */
+        .hero-section.visible .hero-content-overlay {
+             display: flex; /* Garante que o conteúdo flexível apareça */
+        }
+        /* Estilo para a logo principal na seção Hero */
+        .hero-logo-main { /* Agora estiliza o texto "Multiagro" */
+            font-size: 6.37rem; /* Tamanho da fonte aumentado em 15% (3.8 * 1.15) */
+            font-weight: 700; /* Negrito */
+            color: var(--verde-principal); /* Cor verde principal */
+            text-shadow: 1px 1px 3px var(--verde-escuro); /* Sombra verde escura para legibilidade */
+            margin-top: 1.5rem; /* Espaço acima da logo, abaixo do header */
+            margin-bottom: 1.5rem; /* Espaço entre a logo e o conteúdo de texto abaixo (H1) */
+            text-align: center; /* Centraliza o texto */
+        }
+        
+        /* Título principal da seção Hero */
+        .hero-section h1 {
+            font-size: 2.6rem; /* Ajustado */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--branco);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* Sombra mais forte para legibilidade */
+        }
+
+        /* Subtítulo da seção Hero */
+        .hero-section p.subtitle {
+            font-size: 1.35rem; /* Ajustado */
+            max-width: 750px;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            color: var(--branco); /* Adicionado para garantir cor branca */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para legibilidade */
+        }
+        
+        /* Botão Call-to-Action (CTA) na seção Hero */
+        .hero-section .cta-btn {
+            background-color: var(--branco);
+            color: var(--verde-principal);
+            font-weight: 600;
+            position: relative; /* Mantido, z-index é relativo ao .hero-content-overlay */
+            z-index: 2;
+        }
+        .hero-section .cta-btn:hover {
+            background-color: var(--verde-claro); /* Interação com cor da paleta */
+            color: var(--lilas-escuro);
+        }
+
+        /* Container para os cards de produtos */
+        .product-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grade responsiva */
+            gap: 1.5rem; /* Espaçamento entre os cards */
+            margin-top: 2rem;
+            margin-bottom: 2.5rem; /* Espaço antes do mapa */
+        }
+
+        /* Card individual de produto */
+        .product-card {
+            background-color: var(--lilas-claro);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--sombra-leve);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Para alinhar conteúdo se descrições variarem */
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra);
+        }
+        /* Estilos para as imagens dos produtos nos cards */
+        .product-card img { 
+            width: 200px; /* Tamanho da imagem do produto */
+            height: auto;
+            object-fit: scale-down;
+            border-radius: 8%; /* Imagens redondas */
+            margin: 0 auto 4rem auto; /* Centralizado */
+            border: 0px solid var(--verde-principal); 
+        }
+        .product-card h4 {
+            color: var(--lilas-escuro);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        .product-card p {
+            font-size: 0.9rem;
+            color: var(--cinza-texto);
+            flex-grow: 1; /* Para que os cards tenham altura similar se as descrições variarem */
+            margin-bottom: 0; /* Remover margem inferior padrão do parágrafo se não houver botão */
+        }
+        .product-thumbnail-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem; /* Espaço entre miniaturas */
+            padding: 1rem 0;
+            max-width: 900px; /* Limita a largura da navegação de miniaturas */
+            width: 100%;
+        }
+        .product-thumbnail-nav .product-card.active-thumbnail {
+            border-color: var(--lilas-principal);
+            box-shadow: 0 0 12px rgba(128, 0, 128, 0.5); /* Sombra lilás mais pronunciada */
+            transform: scale(1.05); /* Leve aumento para destacar */
+        }
+        .product-thumbnail-nav .product-card.active-thumbnail img {
+            border-color: var(--lilas-principal);
+        }
+
+        /* Legenda do Mapa */
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem; /* Espaço entre os itens da legenda */
+            margin-top: 1.25rem; /* Espaço acima da legenda */
+            padding: 0.75rem;
+            background-color: var(--lilas-claro); /* Fundo sutil para a legenda */
+            border-radius: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .legend-color-box {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        /* Container para os cards de estatísticas */
+        .stats-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2.5rem 0;
+        }
+
+        /* Card individual de estatística */
+        .stat-card {
+            background-color: var(--verde-claro);
+            border-radius: 10px;
+            padding: 1.5rem;
+            flex: 1 1 220px;
+            min-width: 180px;
+            text-align: center;
+            box-shadow: var(--sombra-leve);
+            border-left: 5px solid var(--verde-principal);
+        }
+        .stat-card h4 {
+            color: var(--verde-escuro);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .stat-card p.stat-value { /* Classe específica para o valor */
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+        }
+
+        /* Botão Call-to-Action (CTA) genérico */
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--lilas-principal);
+            color: var(--branco);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: var(--sombra-leve);
+            transition: var(--transicao-padrao);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-btn:hover {
+            background-color: var(--lilas-escuro);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra);
+        }
+        /* Variação de cor para o botão CTA */
+        .cta-btn.green { /* Botão verde alternativo */
+            background-color: var(--verde-principal);
+        }
+        .cta-btn.green:hover {
+            background-color: var(--verde-escuro);
+        }
+
+        /* Estilo para títulos de seção (H2) */
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--verde-escuro);
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        /* Linha decorativa abaixo do H2 */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--lilas-principal);
+            border-radius: 2px;
+        }
+        
+        /* Estilo para subtítulos (H3) */
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--lilas-escuro);
+        }
+        
+        /* Parágrafo introdutório para seções */
+        p.section-intro { /* Parágrafo introdutório para seções */
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.05rem;
+            color: var(--cinza-texto);
+        }
+
+        /* Lista personalizada */
+        ul.custom-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        /* Itens da lista personalizada */
+        ul.custom-list li {
+            padding: 0.7rem 0.5rem; /* Padding ajustado */
+            border-bottom: 1px dashed var(--verde-claro);
+            display: flex; /* Para ícones no futuro */
+            align-items: center;
+        }
+        /* Removed empty ruleset for ul.custom-list li::before */
+        ul.custom-list li:last-child {
+            border-bottom: none;
+        }
+        /* Links dentro da lista personalizada */
+        ul.custom-list a {
+            color: var(--verde-escuro);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        ul.custom-list a:hover {
+            color: var(--lilas-principal);
+            text-decoration: underline;
+        }
+        
+        /* Estilos para os segmentos de produtos */
+        .product-segment {
+            margin-top: 3rem; /* Espaço entre os segmentos */
+            padding-top: 2rem;
+            border-top: 1px solid var(--verde-claro);
+        }
+        .product-segment:first-of-type {
+            margin-top: 1.5rem; /* Menor margem para o primeiro segmento */
+            padding-top: 0;
+            border-top: none;
+        }
+        .product-segment h3 { /* Subtítulos dos segmentos */
+            text-align: left;
+            color: var(--lilas-escuro);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        .segment-intro { /* Parágrafo introdutório para cada segmento */
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--cinza-texto);
+        }
+        .coming-soon-container { /* Container para itens "Em Breve" */
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--lilas-claro);
+            border-radius: 10px;
+        }
+        .coming-soon-container img {
+            width: 400px;/* Tamanho da imagem do produto */
+            height: aulto;
+            object-fit: scale-down;
+            border-radius: 4%; /* Imagens redondas */
+            margin: 0 auto 1rem auto; /* Centralizado */
+            border: 0px solid var(--verde-principal); 
+        }
+        .coming-soon-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--lilas-escuro);
+        }
+
+        /* Estilos para o vídeo de fundo na seção "Sobre Nós" */
+
+        .video-background-container {
+            width: 100%;
+            height: 400px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
+            overflow: hidden;
+            margin: 2rem 0; /* Adiciona espaço vertical ao redor do vídeo */
+            border-radius: 8px; /* Opcional: para cantos arredondados no container do vídeo */
+            background-color: var(--cinza-muito-escuro); /* Cor de fundo caso o vídeo demore a carregar */
+        }
+        .video-background-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz o vídeo cobrir todo o container, cortando se necessário */
+        }
+        .faq dt {
+            font-weight: 600;
+            color: var(--lilas-escuro);
+            margin-top: 1rem;
+            cursor: pointer; 
+            padding: 0.5rem;
+            background-color: var(--lilas-claro);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .faq dt:hover {
+            background-color: hsl(270, 60%, 90%);
+        }
+        .faq dd {
+            margin-left: 0;
+            padding: 0.8rem 1rem; /* Padding aumentado */
+            border-left: 3px solid var(--verde-claro);
+            background-color: #fdfcff; /* Fundo levemente lilás */
+            margin-bottom: 0.5rem;
+        }
+        /* Wrapper para o conteúdo da seção "Sobre Nós" ficar acima do vídeo */
+       /* Formulário de contato */
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px; /* Aumentado */
+            margin: 1.5rem auto;
+        }
+        /* Labels do formulário */
+        form label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--verde-escuro);
+        }
+        form input, form textarea {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        form input:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--lilas-principal);
+            box-shadow: 0 0 0 2px var(--lilas-claro);
+        }
+        form button { 
+            align-self: flex-start;
+        }
+        
+        /* Informações de contato */
+        .contact-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--lilas-claro);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .contact-info strong {
+            color: var(--lilas-escuro);
+        }
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+        .contact-info a {
+            color: var(--lilas-escuro);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        /* Estilos para links de redes sociais na seção de contato */
+        .contact-info .social-media-links {
+            margin-top: 1.5rem; /* Espaço acima dos links sociais */
+            padding-top: 1rem;
+            border-top: 1px solid var(--lilas-principal); /* Linha separadora sutil */
+        }
+        .contact-info .social-media-links p strong { /* Para o título "Siga-nos em:" */
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            color: var(--lilas-escuro);
+        }
+        .contact-info .social-media-links a {
+            display: inline-flex; /* Para alinhar ícone e texto verticalmente */
+            align-items: center;
+            margin: 0.3rem 0.8rem; /* Espaçamento entre os links */
+            color: var(--lilas-escuro);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .contact-info .social-media-links a i {
+            margin-right: 0.5rem; /* Espaço entre o ícone e o texto */
+            font-size: 1.3rem; /* Tamanho do ícone */
+        }
+
+        /* Estilos específicos para a seção de Investidores com tons escuros */
+        #inversionistas {
+            background-color: var(--preto-azulado); /* Alterado para preto/cinza escuro */
+            color: var(--lilas-claro); /* Cor de texto base clara para contraste */
+            border-radius: 10px;
+            padding: 2.5rem; /* Manter padding interno */
+            margin-bottom: 2.5rem; /* Espaçamento igual às outras seções */
+            /* Esta seção tem um tema escuro para se destacar */
+        }
+
+        #inversionistas h2,
+        #inversionistas h3 {
+            color: var(--branco); /* Títulos em branco para destaque */
+        }
+        #inversionistas h2::after { /* Ajustar cor do sublinhado do título principal da seção */
+            background-color: var(--lilas-claro); /* Sublinhado em cor clara */
+        }
+
+        #inversionistas p,
+        #inversionistas ul.custom-list li,
+        #inversionistas .faq dt,
+        #inversionistas .faq dd,
+        #inversionistas p.section-intro {
+            color: hsl(270, 30%, 85%); /* Um lilás/cinza mais suave para parágrafos */
+        }
+
+        #inversionistas ul.custom-list a {
+            color: var(--lilas-claro); /* Links em cor clara */
+            font-weight: 500;
+        }
+        #inversionistas ul.custom-list a:hover {
+            color: var(--branco); /* Hover do link para branco */
+        }
+
+        #inversionistas .faq dt {
+            background-color: var(--cinza-muito-escuro); /* Fundo do FAQ dt mais escuro */
+            color: var(--lilas-claro);
+        }
+        #inversionistas .faq dt:hover {
+            background-color: hsl(0, 0%, 15%); /* Hover do FAQ dt */
+        }
+        #inversionistas .faq dd {
+            background-color: hsl(220, 15%, 20%); /* Fundo do FAQ dd um pouco mais claro que o principal */
+            border-left-color: var(--lilas-claro); /* Borda clara */
+        }
+        #inversionistas .cta-btn { /* Ajustar botões dentro da seção de investidores se necessário */
+            background-color: var(--lilas-principal);
+            color: var(--branco);
+        }
+        #inversionistas .cta-btn:hover {
+            background-color: var(--lilas-escuro);
+        }
+
+        /* Imagem/gráfico ilustrativo na seção de investidores */
+        .ri-graphic {
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: 2rem auto;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+        #inversionistas .ri-graphic {
+            border: 2px solid hsl(270, 30%, 70%); /* Borda sutil para o gráfico */
+        }
+
+        /* Bloco de informações sobre a Bolsa de Valores */
+        .bolsa-info {
+            background-color: var(--cinza-muito-escuro); /* Fundo da info da bolsa mais escuro */
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2.5rem; /* Espaçamento antes do próximo conteúdo */
+            text-align: center;
+            border: 1px solid hsl(0, 0%, 25%); /* Borda sutil */
+        }
+        /* Logo da Bolsa de Valores */
+        .bolsa-logo {
+            /* Ajuste para garantir que o logo da bolsa apareça */
+            display: block;
+            max-width: 180px;
+            margin-bottom: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .bolsa-info p {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        .bolsa-info a { /* Estilo específico para o link da bolsa */
+            color: var(--lilas-claro); /* Link da bolsa em cor clara */
+        }
+
+        /* Rodapé da página */
+        footer {
+            background-color: var(--verde-escuro);
+            color: var(--lilas-claro);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+        footer p {
+            margin-bottom: 0.8rem;
+        }
+        /* Links no rodapé */
+        .footer-links a {
+            color: var(--branco);
+            margin: 0 0.7rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--lilas-principal);
+            text-decoration: underline;
+        }
+        /* Estilo para ícones de redes sociais no rodapé */
+        .footer-links a .fab {
+            font-size: 1.3rem; /* Tamanho dos ícones sociais no rodapé */
+        }
+
+        /* Media Queries para Responsividade */
+        /* Para tablets e desktops menores */
+        @media (max-width: 1024px) { /* Ajustado breakpoint para nav */
+            .menu-toggle {
+                display: block; 
+                z-index: 1001; 
+            }
+            /* Estilos do menu de navegação mobile (hambúrguer) */
+            nav ul {
+                display: none; 
+                flex-direction: column;
+                align-items: flex-start; /* Alinhar itens à esquerda */
+                position: fixed;
+                top: 0;
+                left: -100%; 
+                width: 80%; /* Aumentado */
+                max-width: 320px; /* Máximo */
+                height: 100vh;
+                background-color: var(--verde-escuro); /* Um pouco mais escuro para contraste com itens */
+                padding-top: 5rem; /* Aumentado espaço */
+                transition: left 0.4s ease-in-out;
+                box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+                z-index: 999;
+                border-top-right-radius: 25px; /* Canto superior direito arredondado */
+                border-bottom-right-radius: 25px; /* Canto inferior direito arredondado */
+            }
+            /* Quando o menu mobile está ativo (aberto) */
+            nav ul.active {
+                display: flex;
+                left: 0; 
+            }
+            nav li {
+                width: calc(100% - 2rem); /* Ajustar largura para acomodar margens */
+                margin: 0.3rem 1rem; /* Adicionar margem para espaçar e mostrar o arredondamento */
+            }
+            /* Links dentro do menu mobile */
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem; /* Padding ajustado */
+                margin: 0;
+                font-size: 1rem;
+                /* border-bottom: 1px solid var(--verde-escuro); */ /* Removida borda inferior */
+                width: 100%;
+                border-radius: 10px; /* Arredondar os links */
+                color: var(--lilas-claro); /* Cor do texto dos links */
+            }
+            nav a:hover, nav a.active {
+                background-color: var(--verde-principal); /* Fundo no hover/active */
+                color: var(--branco); /* Texto branco no hover/active */
+            }
+            /* Seletor de idioma no menu mobile */
+            .language-switcher {
+                margin: 1rem 0 1rem 1.5rem; /* Posicionamento no menu mobile, alinhado com padding de 'nav a' */
+                align-self: flex-start;
+            }
+
+            /* Ajustes para o link de investidores no menu mobile */
+            nav ul li a.nav-link-investor {
+                /* Resetar para o estilo padrão dos links no menu mobile */
+                background-image: none;
+                background-color: transparent; 
+                color: var(--lilas-claro); /* Cor inicial do link de investidor */
+                padding: 0.8rem 1.5rem; 
+                border-radius: 0;
+                box-shadow: none;
+                margin-left: 0; 
+                /* border-bottom: 1px solid var(--verde-escuro); */ /* Removida borda */
+                transform: none; 
+                border-radius: 10px; /* Arredondar como os outros links */
+            }
+            nav ul li a.nav-link-investor:hover,
+            nav ul li a.nav-link-investor.active {
+                background-color: var(--verde-principal); /* Fundo no hover/active */
+                color: var(--branco); /* Texto branco no hover/active */
+            }
+        }
+
+        /* Para tablets menores e celulares em paisagem */
+        @media (max-width: 768px) {
+            header { padding: 1rem; }
+            .logo { font-size: 1.6rem; }
+            /* .logo img { height: 40px; } */ /* Ajuste da altura do logo para telas menores */
+            .logo a { font-size: 1.6rem; } /* Ajuste do tamanho da fonte do logo para telas menores */
+            main {
+                margin: 1rem auto;
+                padding: 1.5rem 1rem; /* Padding ajustado */
+            }
+            .hero-section { padding: 3rem 1rem; }
+            .hero-section h1 { font-size: 2rem; }
+            .hero-section p.subtitle { font-size: 1rem; }
+            .stats-cards { 
+                flex-direction: column; 
+                gap: 1rem; /* Reduzir o gap quando em coluna */
+            }
+            .stat-card { min-width: unset; } /* Permitir que o card ocupe a largura disponível */
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.3rem; }
+            form { max-width: 100%; }
+        }
+
+        /* Para celulares em retrato */
+        @media (max-width: 480px) {
+            .logo { font-size: 1.4rem; }
+            .logo a { font-size: 1.4rem; } /* Ajuste do tamanho da fonte do logo para celulares */
+            .hero-section h1 { font-size: 1.8rem; }
+            .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; } 
+        } 
+    </style>
+    <!-- Estilos Adicionais para Botões de Perguntas Pré-definidas no Chat -->
+    <style>
+        .predefined-question-button {
+            background-color: var(--lilas-claro);
+            color: var(--lilas-escuro);
+            border: 1px solid var(--lilas-principal);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .predefined-question-button:hover {
+            background-color: hsl(270, 60%, 90%);
+        }
+    </style>
+    <style>
+        /* Chat Widget Styles */
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001; /* Above header */
+        }
+
+        #chat-toggle-button {
+            background-color: var(--verde-principal);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #chat-toggle-button:hover {
+            background-color: var(--verde-escuro);
+            transform: scale(1.1);
+        }
+
+        #chat-window {
+            width: 350px;
+            max-height: 500px;
+            background-color: var(--branco);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex; /* Initially none, controlled by JS */
+            flex-direction: column;
+            overflow: hidden;
+            position: absolute;
+            bottom: 80px; /* Above the toggle button */
+            right: 0;
+        }
+
+        #chat-header {
+            background-color: var(--verde-principal);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chat-close-window-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: var(--cinza-fundo);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .chat-message.user {
+            background-color: var(--lilas-principal);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-message.bot {
+            background-color: #e9e9eb; /* Um cinza claro neutro */
+            color: var(--cinza-texto);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-message .timestamp {
+            font-size: 0.75em;
+            display: block;
+            margin-top: 5px;
+            text-align: right;
+        }
+        .chat-message.bot .timestamp {
+            color: rgba(0,0,0,0.5); 
+        }
+        .chat-message.user .timestamp {
+            color: rgba(255,255,255,0.7);
+        }
+
+        #chat-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background-color: var(--branco);
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        #chat-input:focus {
+            outline: none;
+            border-color: var(--verde-principal);
+            box-shadow: 0 0 0 2px var(--verde-claro);
+        }
+
+        #chat-send-button {
+            background-color: var(--verde-principal);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        #chat-send-button:hover {
+            background-color: var(--verde-escuro);
+        }
+
+        /* Estilos para botões de ação dentro das mensagens do bot */
+        .chat-action-buttons-container {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap; /* Permite que os botões quebrem linha se necessário */
+        }
+
+        .chat-action-button {
+            background-color: hsl(270, 60%, 92%); /* Lilás um pouco mais suave que o predefined-question-button */
+            color: var(--lilas-escuro);
+            border: 1px solid hsl(270, 50%, 75%); /* Borda lilás mais suave */
+            padding: 6px 12px;
+            border-radius: 15px; /* Mais arredondado */
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8em;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .chat-action-button:hover {
+            background-color: hsl(270, 60%, 85%);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -60,7 +1232,7 @@
                                         <!-- Container do Vídeo movido para cá -->
                 <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
-                        <source src="videos/video8.mp4" type="video/mp4">
+                        <source src="videos/video6.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
@@ -123,7 +1295,7 @@
                        data-lang-es="Especialistas en el beneficiamiento, comercialización y exportación de granos y superalimentos, conectando la riqueza agrícola de Guajayvi con mercados globales exigentes."
                        data-lang-en="Specialists in the processing, commercialization, and export of grains and superfoods, connecting the agricultural wealth of Guajayvi with demanding global markets."
                        data-lang-pt="Especialistas no beneficiamento, comercialização e exportação de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.">
-                       Especialistas en el beneficiamiento, comercialización y exportación de grãos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.
+                       Especialistas en el beneficiamiento, comercialización y exportación de granos e superalimentos, conectando a riqueza agrícola de Guajayvi com mercados globais exigentes.
                     </p>
                     <a href="#productos" class="cta-btn" onclick="navigateToSection('productos'); return false;" data-lang-es="Conozca Nuestros Productos" data-lang-en="Discover Our Products" data-lang-pt="Conheça Nossos Produtos">
                        Conozca Nuestros Productos
@@ -132,8 +1304,144 @@
             </div>
             </div>
                 </section>
-         <!-- Seção Produtos -->
-        <section id="productos"></section>
+
+        <!-- Seção Produtos -->
+        <!-- Seção Produtos -->
+        <section id="productos">
+            <!-- Título e introdução da seção de produtos -->
+            <h2 data-lang-es="Nuestras Líneas de Actuación" 
+                data-lang-en="Our Lines of Business" 
+                data-lang-pt="Nossas Linhas de Atuação">Nuestras Líneas de Actuación</h2>
+            <p class="section-intro"
+               data-lang-es="Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal."
+               data-lang-en="Discover our diverse lines of business, from the processing of high-quality grains and our line of selected foods, to future solutions for animal nutrition."
+               data-lang-pt="Conheça nossas diversas linhas de atuação, desde o beneficiamento de grãos de alta qualidade e nossa linha de alimentos selecionados, até futuras soluções para nutrição animal.">
+               Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal.
+            </p>
+
+            <!-- Segmento 1: Beneficiamento de Grãos -->
+            <div class="product-segment">
+                <h3 data-lang-es="Beneficiamiento de Granos" data-lang-en="Grain Processing" data-lang-pt="Beneficiamento de Grãos">Beneficiamiento de Granos</h3>
+                <p class="segment-intro"
+                   data-lang-es="Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes."
+                   data-lang-en="Our specialty is processing high-quality grains, with an emphasis on superfoods, ensuring purity and nutritional value for demanding markets."
+                   data-lang-pt="Nossa especialidade é o processamento de grãos de alta qualidade, com ênfase em superalimentos, garantindo pureza e valor nutricional para mercados exigentes.">
+                   Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes.
+                </p>
+                <div class="product-cards-container">
+                    <!-- Card 1: Chía -->
+                    <div class="product-card">
+                        <img src="images/chia.png" alt="Sementes de Chía" data-alt-es="Semillas de Chía" data-alt-en="Chia Seeds" data-alt-pt="Sementes de Chia">
+                        <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
+                        <p data-lang-es="Rica en Omega-3, fibra y antioxidantes. Ideal para una dieta saludable y nutritiva."
+                           data-lang-en="Rich in Omega-3, fiber, and antioxidants. Ideal for a healthy and nutritious diet."
+                           data-lang-pt="Rica em Ômega-3, fibra e antioxidantes. Ideal para uma dieta saudável e nutritiva.">Rica en Omega-3, fibra y antioxidantes. Ideal para una dieta saludable y nutritiva.</p>
+                    </div>
+                    <!-- Card 2: Mungo -->
+                    <div class="product-card">
+                        <img src="images/mung.png" alt="Grãos de Feijão Mungo" data-alt-es="Granos de Frijol Mungo" data-alt-en="Mung Beans" data-alt-pt="Grãos de Feijão Mungo">
+                        <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
+                        <p data-lang-es="Alto valor proteico y versatilidad culinaria. Excelente para sopas, ensaladas y germinados."
+                           data-lang-en="High protein value and culinary versatility. Excellent for soups, salads, and sprouts."
+                           data-lang-pt="Alto valor proteico e versatilidade culinária. Excelente para sopas, saladas e brotos.">Alto valor proteico y versatilidad culinaria. Excelente para sopas, ensaladas y germinados.</p>
+                    </div>
+                    <!-- Card 3: Gergelim -->
+                    <div class="product-card">
+                        <img src="images/sesame.png" alt="Sementes de Gergelim" data-alt-es="Semillas de Sésamo" data-alt-en="Sesame Seeds" data-alt-pt="Sementes de Gergelim">
+                        <h4 data-lang-es="Sésamo" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo</h4>
+                        <p data-lang-es="Fuente de calcio y grasas saludables. Perfecto para panificación, tahini y decoración de platos."
+                           data-lang-en="Source of calcium and healthy fats. Perfect for baking, tahini, and dish garnishing."
+                           data-lang-pt="Fonte de cálcio e gorduras saudáveis. Perfeito para panificação, tahine e decoração de pratos.">Fuente de calcio y grasas saludables. Perfecto para panificación, tahini y decoración de platos.</p>
+                    </div>
+                    <!-- Card 4: Sorgo -->
+                    <div class="product-card">
+                        <img src="images/sorghum.png" alt="Grãos de Sorgo" data-alt-es="Granos de Sorgo" data-alt-en="Sorghum Grains" data-alt-pt="Grãos de Sorgo">
+                        <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
+                        <p data-lang-es="Grano ancestral sin gluten, rico en nutrientes. Utilizado en harinas, alimentación animal y como cereal."
+                           data-lang-en="Gluten-free ancient grain, rich in nutrients. Used in flours, animal feed, and as a cereal."
+                           data-lang-pt="Grão ancestral sem glúten, rico em nutrientes. Utilizado em farinhas, alimentação animal e como cereal.">Grano ancestral sin gluten, rico en nutrientes. Utilizado en harinas, alimentación animal y como cereal.</p>
+                    </div>
+                    <!-- Card 5: Milho -->
+                    <div class="product-card">
+                        <img src="images/corn.png" alt="Grãos de Milho" data-alt-es="Granos de Maíz" data-alt-en="Corn Grains" data-alt-pt="Grãos de Milho">
+                        <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
+                        <p data-lang-es="Versátil y energético, base de la alimentación. Para consumo humano, animal e industrial."
+                           data-lang-en="Versatile and energetic, a dietary staple. For human, animal, and industrial consumption."
+                           data-lang-pt="Versátil e energético, base da alimentação. Para consumo humano, animal e industrial.">Versátil y energético, base de la alimentación. Para consumo humano, animal e industrial.</p>
+                    </div>
+                    <!-- Card 6: Soja -->
+                    <div class="product-card">
+                        <img src="images/soybean.png" alt="Grãos de Soja" data-alt-es="Granos de Soja" data-alt-en="Soybeans" data-alt-pt="Grãos de Soja">
+                        <h4 data-lang-es="Soja" data-lang-en="Soybean" data-lang-pt="Soja">Soja</h4>
+                        <p data-lang-es="Alta en proteínas y nutrientes esenciales. Fundamental en la industria alimentaria y de piensos."
+                           data-lang-en="High in protein and essential nutrients. Fundamental in the food and feed industry."
+                           data-lang-pt="Alta em proteínas e nutrientes essenciais. Fundamental na indústria alimentícia e de rações.">Alta en proteínas y nutrientes esenciales. Fundamental en la industria alimentaria y de piensos.</p>
+                    </div>
+                </div>
+            <!-- Segmento 3: Alimentos - Linha Don Luís -->
+            <div class="product-segment">
+                <h3 data-lang-es="Alimentos – Línea Don Luís" data-lang-en="Foods – Don Luís Line" data-lang-pt="Alimentos – Linha Don Luís">Alimentos – Línea Don Luís</h3>
+                <p class="segment-intro"
+                   data-lang-es="Descubra la calidad y el sabor de nuestra línea de alimentos seleccionados Don Luís, pensada para llevar lo mejor del campo a su mesa."
+                   data-lang-en="Discover the quality and taste of our Don Luís selected food line, designed to bring the best of the countryside to your table."
+                   data-lang-pt="Descubra a qualidade e o sabor da nossa linha de alimentos selecionados Don Luís, pensada para levar o melhor do campo para a sua mesa.">
+                   Descubra la calidad y el sabor de nuestra línea de alimentos seleccionados Don Luís, pensada para llevar lo mejor del campo a su mesa.
+                </p>
+                <div class="product-cards-container">
+                    <!-- Card Café Don Luís -->
+                    <div class="product-card">
+                        <img src="images/cafe.png" alt="Café Don Luís" 
+                             data-alt-es="Café Don Luís" data-alt-en="Don Luís Coffee" data-alt-pt="Café Don Luís">
+                        <h4 data-lang-es="Café Don Luís" data-lang-en="Don Luís Coffee" data-lang-pt="Café Don Luís">Café Don Luís</h4>
+                        <p data-lang-es="Granos de café seleccionados y tostados artesanalmente para un aroma y sabor incomparables."
+                           data-lang-en="Selected coffee beans, artisanally roasted for an incomparable aroma and flavor."
+                           data-lang-pt="Grãos de café selecionados e torrados artesanalmente para um aroma e sabor incomparáveis.">
+                           Granos de café seleccionados y tostados artesanalmente para un aroma y sabor incomparables.
+                        </p>
+                    </div>
+                    <!-- Card Açúcar Don Luís -->
+                    <div class="product-card">
+                        <img src="images/acucar.png" alt="Açúcar Don Luís"
+                             data-alt-es="Azúcar Don Luís" data-alt-en="Don Luís Sugar" data-alt-pt="Açúcar Don Luís">
+                        <h4 data-lang-es="Azúcar Don Luís" data-lang-en="Don Luís Sugar" data-lang-pt="Açúcar Don Luís">Azúcar Don Luís</h4>
+                        <p data-lang-es="Azúcar de alta pureza, ideal para endulzar sus momentos con la calidad que merece."
+                           data-lang-en="High-purity sugar, ideal for sweetening your moments with the quality you deserve."
+                           data-lang-pt="Açúcar de alta pureza, ideal para adoçar seus momentos com a qualidade que você merece.">
+                           Azúcar de alta pureza, ideal para endulzar sus momentos con la calidad que merece.
+                        </p>
+                    </div>
+                    <!-- Card Cereais Don Luís -->
+                    <div class="product-card">
+                        <img src="images/cereais.png" alt="Cereais Selecionados Don Luís"
+                             data-alt-es="Cereales Seleccionados Don Luís" data-alt-en="Don Luís Selected Cereals" data-alt-pt="Cereais Selecionados Don Luís">
+                        <h4 data-lang-es="Cereales Seleccionados Don Luís" data-lang-en="Don Luís Selected Cereals" data-lang-pt="Cereais Selecionados Don Luís">Cereales Seleccionados Don Luís</h4>
+                        <p data-lang-es="Una mezcla nutritiva de cereales seleccionados para un desayuno completo y energético."
+                           data-lang-en="A nutritious mix of selected cereals for a complete and energetic breakfast."
+                           data-lang-pt="Uma mistura nutritiva de cereais selecionados para um café da manhã completo e energético.">
+                           Una mezcla nutritiva de cereales seleccionados para un desayuno completo y energético.
+                        </p>
+                    </div>
+            </div>
+
+            <!-- Segmento 2: Ração Animal -->
+            <div class="product-segment">
+                <h3 data-lang-es="Nutrición Animal" data-lang-en="Animal Nutrition" data-lang-pt="Nutrição Animal">Nutrición Animal</h3>
+                <div class="coming-soon-container">
+                    <img src="images/racao.png" alt="Ração Animal" 
+                         data-alt-es="Ración Animal" data-alt-en="Animal Feed" data-alt-pt="Ração Animal">
+                    <p class="coming-soon-text"
+                       data-lang-es="PRÓXIMAMENTE: Soluciones innovadoras para la nutrición animal."
+                       data-lang-en="COMING SOON: Innovative solutions for animal nutrition."
+                       data-lang-pt="EM BREVE: Soluções inovadoras para a nutrição animal.">
+                       Próximamente: Soluciones innovadoras para la nutrición animal.
+                    </p>
+                </div>
+            </div>
+            </div>
+            </div>
+
+
+        </section>
         <!-- Sobre Nosotros -->
         <section id="nosotros">
             <div class="nosotros-content-wrapper">
@@ -141,16 +1449,16 @@
                 <!-- Container do Vídeo movido para cá -->
                 <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
-                        <source src="videos/video2.mp4" type="video/mp4">
+                        <source src="videos/video1.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
                                 <!-- Título e introdução da seção "Sobre Nós" -->
 
                 <p class="section-intro"
-                   data-lang-es="Multiagro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros grãos diferenciados.
+                   data-lang-es="Multiagro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados.
     
-                   La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, Multiagro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados e exigências de clientes nacionais e internacionais."
+                   La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, Multiagro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
                    data-lang-en="Multiagro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains.
     
                    The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, Multiagro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
@@ -202,9 +1510,9 @@
                     <div class="stat-card">
                         <h4 data-lang-es="Capacidad Productiva" data-lang-en="Productive Capacity" data-lang-pt="Capacidade Produtiva">Capacidad Productiva</h4>
                         <p class="stat-value" 
-                           data-lang-es="&gt; 10.000 t por ano" 
+                           data-lang-es="&gt; 10.000 t por año" 
                            data-lang-en="&gt; 10,000 t per year" 
-                           data-lang-pt="&gt; 10.000 t por ano">&gt; 10.000 t por ano</p>
+                           data-lang-pt="&gt; 10.000 t por ano">&gt; 10.000 t por año</p>
                     </div>
                 </div>
                 <div style="text-align:center; margin-top: 2rem;">
@@ -320,17 +1628,13 @@
                 <img src="https://www.bolsadevalores.com.py/wp-content/uploads/2024/08/logo.svg" 
                      alt="Logo Bolsa de Valores de Asunción" class="bolsa-logo"
                      data-alt-es="Logo Bolsa de Valores de Asunción"
-                     data-alt-en="Asunción Stock Exchange Logo" 
+                     data-alt-en="Asunción Stock Exchange Logo"
                      data-alt-pt="Logo Bolsa de Valores de Assunção">
-                <h3 data-lang-es="Multiagro: Preparándose para la Bolsa de Valores de Asunción" 
-                    data-lang-en="Multiagro: Preparing for the Asunción Stock Exchange" 
-                    data-lang-pt="Multiagro: Preparando-se para a Bolsa de Valores de Assunção">
-                    Multiagro: Preparándose para la Bolsa de Valores de Asunción
-                </h3>
-                <p data-lang-es="Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya."
-                   data-lang-en="Multiagro S.A. is in an advanced stage of preparation for its entry into the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This significant future step underscores our commitment to transparency, best corporate governance practices, and will offer investors a solid and regulated platform to participate in the growth of Paraguayan agribusiness."
-                   data-lang-pt="A Multiagro S.A. está em um avançado processo de preparação para sua entrada na Bolsa de Valores y Produtos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Este importante passo futuro destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferecerá aos investidores uma plataforma sólida e regulamentada para participar do crescimento da agroindústria paraguaia.">
-                   Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya.
+                <h3 data-lang-es="Multiagro en la Bolsa de Valores de Asunción" data-lang-en="Multiagro on the Asunción Stock Exchange" data-lang-pt="Multiagro na Bolsa de Valores de Assunção">Multiagro en la Bolsa de Valores de Asunción</h3>
+                <p data-lang-es="Multiagro S.A. se enorgullece de formar parte de la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Esta presencia subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrece a los inversores una plataforma sólida y regulada para participar en el futuro de la agroindustria paraguaya."
+                   data-lang-en="Multiagro S.A. is proud to be part of the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This presence underscores our commitment to transparency, best corporate governance practices, and offers investors a solid and regulated platform to participate in the future of Paraguayan agribusiness."
+                   data-lang-pt="A Multiagro S.A. orgulha-se de fazer parte da Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Esta presença destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferece aos investidores uma plataforma sólida e regulamentada para participar do futuro da agroindústria paraguaia.">
+                   Multiagro S.A. se enorgullece de formar parte de la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Esta presença subraya nuestro compromisso com a transparência, las melhores práticas de gobernanza corporativa e oferece aos investidores uma plataforma sólida e regulada para participar no futuro da agroindústria paraguaia.
                 </p>
                 <p><a href="https://www.bolsaasu.com.py/" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para mais informações</a></p>
             </div>
@@ -347,33 +1651,17 @@
             </p>
             <ul class="custom-list">
                 <li data-lang-es="Modernización y ampliación de planta industrial" data-lang-en="Modernization and expansion of industrial plant" data-lang-pt="Modernização e ampliação da planta industrial">Modernización y ampliación de planta industrial</li>
-                <li data-lang-es="Obtención de certificaciones internacionales (USDA, Europeas)" data-lang-en="Obtaining international certifications (USDA, European)" data-lang-pt="Obtenção de certificações internacionais (USDA, Europeias)">Obtención de certificaciones internacionales (USDA, Europeas)</li>
+                <li data-lang-es="Obtención de certificaciones internacionales (USDA, Europeas)" data-lang-en="Obtaining international certifications (USDA, European)" data-lang-pt="Obtenção de certificações internacionais (USDA, Europeias)">Obtención de certificaciones internacionais (USDA, Europeas)</li>
                 <li data-lang-es="Diversificación de portafolio (ej. ración animal, café white label)" data-lang-en="Portfolio diversification (e.g., animal feed, white-label coffee)" data-lang-pt="Diversificação de portfólio (ex. ração animal, café white label)">Diversificación de portafolio (ej. ración animal, café white label)</li>
                 <li data-lang-es="Expansión a nuevos mercados internacionales (Europa, Asia, América del Norte)" data-lang-en="Expansion into new international markets (Europe, Asia, North America)" data-lang-pt="Expansão para novos mercados internacionais (Europa, Ásia, América do Norte)">Expansión a nuevos mercados internacionais (Europa, Asia, América del Norte)</li>
                 <li data-lang-es="Profesionalización continua de la gestión y procesos" data-lang-en="Continuous professionalization of management and processes" data-lang-pt="Profissionalização contínua da gestão e processos">Profesionalización continua de la gestión y procesos</li>
             </ul>
 
-            <h3 data-lang-es="(PRÓXIMAMENTE) Informes y Presentaciones" 
-                data-lang-en="(COMING SOON) Reports and Presentations" 
-                data-lang-pt="(EM BREVE) Relatórios e Apresentações">
-                (PRÓXIMAMENTE) Informes y Presentaciones
-            </h3>
+            <h3 data-lang-es="Informes y Presentaciones" data-lang-en="Reports and Presentations" data-lang-pt="Relatórios e Apresentações">Informes y Presentaciones</h3>
             <!-- Links para relatórios e apresentações para investidores -->
             <ul class="custom-list">
-                <li><a href="/docs/presentacion-inversionistas-multiagro.pdf" target="_blank" 
-                       data-lang-es="(PRÓXIMAMENTE) Presentación Institucional para Inversionistas" 
-                       data-lang-en="(COMING SOON) Institutional Investor Presentation" 
-                       data-lang-pt="(EM BREVE) Apresentação Institucional para Investidores">
-                       (PRÓXIMAMENTE) Presentación Institucional para Inversionistas
-                    </a>
-                </li>
-                <li><a href="/docs/plan-estrategico-multiagro.pdf" target="_blank" 
-                       data-lang-es="(PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)" 
-                       data-lang-en="(COMING SOON) Strategic Growth Plan (Summary)" 
-                       data-lang-pt="(EM BREVE) Plano Estratégico de Crescimento (Resumo)">
-                       (PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)
-                    </a>
-                </li>
+                <li><a href="/docs/presentacion-inversionistas-multiagro.pdf" target="_blank" data-lang-es="Presentación Institucional para Inversionistas" data-lang-en="Institutional Investor Presentation" data-lang-pt="Apresentação Institucional para Investidores">Presentación Institucional para Inversionistas</a></li>
+                <li><a href="/docs/plan-estrategico-multiagro.pdf" target="_blank" data-lang-es="Plan Estratégico de Crecimiento (Sumario)" data-lang-en="Strategic Growth Plan (Summary)" data-lang-pt="Plano Estratégico de Crescimento (Resumo)">Plan Estratégico de Crecimiento (Sumario)</a></li>
                 <li><a href="#comunicados" onclick="navigateToSection('comunicados');return false;" data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</a></li>
             </ul>
 
@@ -401,18 +1689,8 @@
             <h2 data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</h2>
             <!-- Lista de comunicados (exemplos) -->
             <ul class="custom-list">
-                <li data-lang-es="(PRÓXIMAMENTE) 10/08/2025 – Anuncio: Inicio de proceso para certificación USDA." 
-                    data-lang-en="(COMING SOON) 08/10/2025 – Announcement: USDA certification process initiated." 
-                    data-lang-pt="(EM BREVE) 10/08/2025 – Anúncio: Início do processo para certificação USDA.">
-                    (PRÓXIMAMENTE) 10/08/2025 – Anuncio: Inicio de proceso para certificación USDA. 
-                    <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a>
-                </li>
-                <li data-lang-es="(PRÓXIMAMENTE) 20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa." 
-                    data-lang-en="(COMING SOON) 06/20/2025 – Multiagro participates in international food fair in Europe." 
-                    data-lang-pt="(EM BREVE) 20/06/2025 – Multiagro participa de feira internacional de alimentos na Europa.">
-                    (PRÓXIMAMENTE) 20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa. 
-                    <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a>
-                </li>
+                <li data-lang-es="10/08/2025 – Anuncio: Inicio de proceso para certificación USDA." data-lang-en="08/10/2025 – Announcement: USDA certification process initiated." data-lang-pt="10/08/2025 – Anúncio: Início do processo para certificação USDA.">10/08/2025 – Anuncio: Inicio de proceso para certificación USDA. <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a></li>
+                <li data-lang-es="20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa." data-lang-en="06/20/2025 – Multiagro participates in international food fair in Europe." data-lang-pt="20/06/2025 – Multiagro participa de feira internacional de alimentos na Europa.">20/06/2025 – Multiagro participa en feria internacional de alimentos en Europa. <a href="#" target="_blank" data-lang-es="(Ver más)" data-lang-en="(Read more)" data-lang-pt="(Ver mais)">(Ver más)</a></li>
             </ul>
             <div style="text-align:center; margin-top:2rem;">
               <!-- Botão para voltar à seção de investidores -->
@@ -467,7 +1745,6 @@
 
         <!-- Contacto -->
         <section id="contacto">
-            
             <!-- Título e introdução da seção de Contato -->
             <h2 data-lang-es="Contacto" data-lang-en="Contact Us" data-lang-pt="Contato">Contacto</h2>
             <p class="section-intro"
@@ -475,10 +1752,9 @@
                data-lang-en="We are available for inquiries about our products, investment opportunities, or any other information."
                data-lang-pt="Estamos à sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.">
                Estamos a sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.
-                        </p>
+            </p>
             <!-- Formulário de contato com campos internacionalizados -->
             <form id="contactForm">
-            
                 <label for="nombre" data-lang-es="Nombre Completo" data-lang-en="Full Name" data-lang-pt="Nome Completo">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" 
                        data-placeholder-es="Su nombre" data-placeholder-en="Your name" data-placeholder-pt="Seu nome" placeholder="Su nombre" required>
@@ -500,7 +1776,6 @@
             
             <!-- Mapa Google Maps: Guajayvi, San Pedro, Paraguay -->
             <!-- Iframe do Google Maps para exibir a localização -->
-             
     <div style="width:100%;max-width:600px;margin:2rem auto 1.5rem auto;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
         <iframe 
             src="https://www.google.com/maps?q=Guajayvi,+San+Pedro,+Paraguay&output=embed"
@@ -509,40 +1784,36 @@
             data-title-es="Mapa Multiagro Guajayvi Paraguay"
             data-title-en="Multiagro Guajayvi Paraguay Map"
             data-title-pt="Mapa Multiagro Guajayvi Paraguai"></iframe>
-            
     </div>
 
     <!-- Informações de contato adicionais -->
     <div class="contact-info">
- 
-        <div class="contact-info-overlay-content">
-            <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a></p>
-            <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
-            <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
-            <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
-            
-            <!-- Links de Redes Sociais -->
-            <div class="social-media-links">
-                <p><strong data-lang-es="Síganos en nuestras redes:" data-lang-en="Follow us on our networks:" data-lang-pt="Siga-nos em nossas redes:">Síganos en nuestras redes:</strong></p>
-                <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro">
-                    <i class="fab fa-linkedin"></i> <span data-lang-es="LinkedIn" data-lang-en="LinkedIn" data-lang-pt="LinkedIn">LinkedIn</span>
-                </a>
-                <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
-                    <i class="fab fa-facebook-square"></i> <span data-lang-es="Facebook" data-lang-en="Facebook" data-lang-pt="Facebook">Facebook</span>
-                </a>
-                <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
-                    <i class="fab fa-instagram"></i> <span data-lang-es="Instagram" data-lang-en="Instagram" data-lang-pt="Instagram">Instagram</span>
-                </a>
-            </div>
-        </div>
+                <p><strong data-lang-es="Correo Inversionistas:" data-lang-en="Investor Email:" data-lang-pt="E-mail Investidores:">Correo Inversionistas:</strong> <a href="mailto:invest@multiagro.com.py">invest@multiagro.com.py</a></p>
+                <p><strong data-lang-es="Correo General:" data-lang-en="General Email:" data-lang-pt="E-mail Geral:">Correo General:</strong> <a href="mailto:info@multiagro.com.py">info@multiagro.com.py</a></p>
+                <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
+                <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
+                
+                <!-- Links de Redes Sociais -->
+                <div class="social-media-links">
+                    <p><strong data-lang-es="Síganos en nuestras redes:" data-lang-en="Follow us on our networks:" data-lang-pt="Siga-nos em nossas redes:">Síganos en nuestras redes:</strong></p>
+                    <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro">
+                        <i class="fab fa-linkedin"></i> <span data-lang-es="LinkedIn" data-lang-en="LinkedIn" data-lang-pt="LinkedIn">LinkedIn</span>
+                    </a>
+                    <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
+                        <i class="fab fa-facebook-square"></i> <span data-lang-es="Facebook" data-lang-en="Facebook" data-lang-pt="Facebook">Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Multiagro">
+                        <i class="fab fa-instagram"></i> <span data-lang-es="Instagram" data-lang-en="Instagram" data-lang-pt="Instagram">Instagram</span>
+                    </a>
                 </div>
+            </div>
         </section>
     </main>
 
     <footer>
         <!-- Conteúdo do rodapé: informações da empresa, direitos autorais, links úteis -->
-        <p data-lang-es="Multiagro S.A. | RUC: 80050297-3" data-lang-en="Multiagro S.A. | Tax ID: 80050297-3" data-lang-pt="Multiagro S.A. | CNPJ/RUC: 80050297-3">Multiagro S.A. | RUC: 80050297-3</p>
-        <p><span data-lang-es="Sede: Guajayvi, San Pedro, Paraguay" data-lang-en="Headquarters: Guajayvi, San Pedro, Paraguay" data-lang-pt="Sede: Guajayvi, San Pedro, Paraguai">Sede: Guajayvi, San Pedro, Paraguay</span> | © <span id="currentYear"></span> Multiagro S.A. <span data-lang-es="Todos los derechos reservados." data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">Todos os direitos reservados.</span></p>
+        <p data-lang-es="Multiagro S.A. | RUC: XXXXXXX-X" data-lang-en="Multiagro S.A. | Tax ID: XXXXXXX-X" data-lang-pt="Multiagro S.A. | CNPJ/RUC: XXXXXXX-X">Multiagro S.A. | RUC: XXXXXXX-X</p>
+        <p><span data-lang-es="Sede: Guajayvi, San Pedro, Paraguay" data-lang-en="Headquarters: Guajayvi, San Pedro, Paraguay" data-lang-pt="Sede: Guajayvi, San Pedro, Paraguai">Sede: Guajayvi, San Pedro, Paraguay</span> | © <span id="currentYear"></span> Multiagro S.A. <span data-lang-es="Todos los derechos reservados." data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">Todos los derechos reservados.</span></p>
         <div class="footer-links">
             <a href="#inversionistas" onclick="navigateToSection('inversionistas');return false;" data-lang-es="Inversionistas" data-lang-en="Investors" data-lang-pt="Investidores">Inversionistas</a> |
             <!-- Outros links no rodapé -->
@@ -874,15 +2145,15 @@
                     { nameEs: 'Brasil', nameEn: 'Brazil', namePt: 'Brasil', lat: -14.2350, lng: -51.9253, status: 'atendido', radius: 8 },
                     { nameEs: 'Argentina', nameEn: 'Argentina', namePt: 'Argentina', lat: -38.4161, lng: -63.6167, status: 'atendido', radius: 8 },
                     { nameEs: 'Bolivia', nameEn: 'Bolivia', namePt: 'Bolívia', lat: -16.2902, lng: -63.5887, status: 'atendido', radius: 7 },
-                    { nameEs: 'Chile', nameEn: 'Chile', namePt: 'Chile', lat: -35.6751, lng: -71.5430, status: 'atendido', radius: 7 },
                     { nameEs: 'México', nameEn: 'Mexico', namePt: 'México', lat: 23.6345, lng: -102.5528, status: 'atendido', radius: 7 },
+                    { nameEs: 'Chile', nameEn: 'Chile', namePt: 'Chile', lat: -35.6751, lng: -71.5430, status: 'atendido', radius: 7 },
                     { nameEs: 'Colombia', nameEn: 'Colombia', namePt: 'Colômbia', lat: 4.5709, lng: -74.2973, status: 'atendido', radius: 7 },
                     // Países em Negociação
                     { nameEs: 'Estados Unidos', nameEn: 'United States', namePt: 'Estados Unidos', lat: 37.0902, lng: -95.7129, status: 'negociacao', radius: 8 },
                     { nameEs: 'China', nameEn: 'China', namePt: 'China', lat: 35.8617, lng: 104.1954, status: 'negociacao', radius: 8 },
+                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, status: 'negociacao', radius: 7 },
                     { nameEs: 'España', nameEn: 'Spain', namePt: 'Espanha', lat: 40.4637, lng: -3.7492, status: 'negociacao', radius: 7 },
-                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, status: 'negociacao', radius: 7 },
-                    { nameEs: 'Portugal', nameEn: 'Portugal', namePt: 'Portugal', lat: 39.3999, lng: -8.2245, status: 'negociacao', radius: 7 }
+                    { nameEs: 'Francia', nameEn: 'France', namePt: 'França', lat: 46.2276, lng: 2.2137, status: 'negociacao', radius: 7 }
                 ];
                 const markersArray = []; // Array para armazenar os marcadores
 
@@ -926,26 +2197,6 @@
             // Movido para ser chamado dentro de loadInitialViewRevised para garantir que o elemento #mapid está visível.
 
             loadInitialViewRevised();
-
-            // Carrega conteúdo externo para cada seção vazia
-    const sectionFiles = {
-        productos: 'sections/productos.html',
-        nosotros: 'sections/nosotros.html',
-        gobernanza: 'sections/gobernanza.html',
-        inversionistas: 'sections/inversionistas.html',
-        comunicados: 'sections/comunicados.html',
-        sostenibilidad: 'sections/sostenibilidad.html',
-        contacto: 'sections/contacto.html'
-    };
-
-    Object.entries(sectionFiles).forEach(([id, file]) => {
-        const section = document.getElementById(id);
-        if (section) {
-            fetch(file)
-                .then(res => res.text())
-                .then(html => { section.innerHTML = html; });
-        }
-    });
 
             // --- Manipulador para navegação de voltar/avançar do navegador ---
             window.addEventListener('popstate', () => {
@@ -1047,7 +2298,7 @@
         const chatCloseIcon = chatToggleButton.querySelector('.chat-close-icon');
         const chatShowPredefinedButton = document.getElementById('chat-show-predefined-button');
 
-        let isChatOpen = false;
+        let isChatOpen = false; // Inicia como falso, será aberto programaticamente
 
         const predefinedQAs = [
             {
@@ -1189,6 +2440,26 @@
                 actionsContainer.appendChild(backButton);
                 actionsContainer.appendChild(endButton);
                 messageDiv.appendChild(actionsContainer); // Append to the message div itself
+                chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            }
+        }
+
+
+        function addBotMessage(message, options = { addActionButtons: true }) {
+            // Replace \n with <br> for HTML display
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            addMessageToChat(formattedMessage, 'bot', options);
+        }
+
+        function addUserMessage(message) {
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            addMessageToChat(formattedMessage, 'user');
+        }
+
+        function displayPredefinedQuestions() {
+            // Remove qualquer conjunto anterior de perguntas para evitar duplicatas
+            removePredefinedQuestions();
+
             const questionsContainer = document.createElement('div');
             questionsContainer.id = 'predefined-questions-container';
             questionsContainer.style.padding = '5px 0px 10px 0px'; // Ajuste no padding
