@@ -296,7 +296,8 @@
             height: 100%;
             position: relative; /* Para o overlay */
         }
-        .carousel-slide img {
+        .carousel-slide img,
+        .carousel-slide video {
             width: 100%;
             height: 100%;
             object-fit:cover; /* Ensures the entire image is visible, scaled down to fit */
@@ -1251,8 +1252,7 @@
     </header>
 
     <main>
-        <!-- Sección de Hero/Principal -->
-        <!-- A classe 'hero-section' é a seção principal no topo da página -->
+
         <section id="home" class="hero-section">
 
                                         <!-- Container do Vídeo movido para cá -->
@@ -1270,40 +1270,67 @@
                     <div class="carousel-slides">
                     <div class="carousel-slide">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
-                        <source src="videos/00013.MTS" type="video/MTS">
+                        <source src="videos/00026.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
                         
-                        <div class="carousel-slide">
-                            <img src="images/produtor.jpeg" alt="Paisagem agrícola Multiagro"
-                                 data-alt-es="Paisaje agrícola Multiagro"
-                                 data-alt-en="Multiagro agricultural landscape"
-                                 data-alt-pt="Paisagem agrícola Multiagro">
-                            <!-- SEM TEXTO AQUI -->
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/paginaprincipal2.png" alt="Grãos de qualidade Multiagro"
-                                 data-alt-es="Granos de calidad Multiagro"
-                                 data-alt-en="Multiagro quality grains"
-                                 data-alt-pt="Grãos de qualidade Multiagro">
-                            <!-- SEM TEXTO AQUI -->
-                        </div>
-                        <!-- Outros slides seguem o mesmo padrão -->
-                        <div class="carousel-slide">
-                            <img src="images/paginaprincipal3.jpg" alt="Paisagem agrícola Multiagro"
-                                 data-alt-es="Paisaje agrícola Multiagro"
-                                 data-alt-en="Multiagro agricultural landscape"
-                                 data-alt-pt="Paisagem agrícola Multiagro">
-                            <!-- SEM TEXTO AQUI -->
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/paginaprincipal4.png" alt="Paisagem agrícola Multiagro"
-                                 data-alt-es="Paisaje agrícola Multiagro"
-                                 data-alt-en="Multiagro agricultural landscape"
-                                 data-alt-pt="Paisagem agrícola Multiagro">
-                            <!-- SEM TEXTO AQUI -->
-                        </div>
+
+<div class="carousel-slide">
+    <img src="images/img1.jpeg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img2.jpg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img3.jpg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img6.png" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img7.jpg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img11.jpg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img12.jpeg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img13.jpeg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+<div class="carousel-slide">
+    <img src="images/img14.jpeg" alt="Imagem Multiagro"
+         data-alt-es="Imagen Multiagro"
+         data-alt-en="Multiagro image"
+         data-alt-pt="Imagem Multiagro">
+</div>
+
                     </div>
                     <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
                     <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
@@ -1312,10 +1339,10 @@
                 <!-- Conteúdo Sobreposto (único e sobre todo o carrossel) -->
                 <div class="hero-content-overlay">
                     <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
-                    <h1 data-lang-es="Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo"
-                        data-lang-en="Multiagro: Quality and Tradition in Grains from Paraguay to the World"
-                        data-lang-pt="Multiagro: Qualidade e Tradição em Grãos do Paraguai para o Mundo">
-                        Multiagro: Calidad y Tradición en Granos desde Paraguay para el Mundo
+<h1 data-lang-es="Multiagro: calidad y tradición en granos desde Paraguay para el mundo"
+    data-lang-en="Multiagro: quality and tradition in grains from Paraguay to the world"
+    data-lang-pt="Multiagro: qualidade e tradição em grãos do Paraguai para o mundo">
+    Multiagro: qualidade e tradição em grãos do Paraguai para o mundo
                     </h1>
                     <p class="subtitle"
                        data-lang-es="Especialistas en el beneficiamiento, comercialización y exportación de granos y superalimentos, conectando la riqueza agrícola de Guajayvi con mercados globales exigentes."
@@ -1335,15 +1362,14 @@
         <!-- Seção Produtos -->
         <section id="productos">
             <!-- Título e introdução da seção de produtos -->
-            <h2 data-lang-es="Nuestras Líneas de Actuación" 
-                data-lang-en="Our Lines of Business" 
-                data-lang-pt="Nossas Linhas de Atuação">Nuestras Líneas de Actuación</h2>
+            <h2                 <h3 data-lang-es="Beneficiamiento de Granos" data-lang-en="Grain Processing" data-lang-pt="Beneficiamento de Grãos">Beneficiamiento de Granos</h3>
             <p class="section-intro"
-               data-lang-es="Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal."
-               data-lang-en="Discover our diverse lines of business, from the processing of high-quality grains and our line of selected foods, to future solutions for animal nutrition."
-               data-lang-pt="Conheça nossas diversas linhas de atuação, desde o beneficiamento de grãos de alta qualidade e nossa linha de alimentos selecionados, até futuras soluções para nutrição animal.">
+                   data-lang-es="Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes."
+                   data-lang-en="Our specialty is processing high-quality grains, with an emphasis on superfoods, ensuring purity and nutritional value for demanding markets."
+                   data-lang-pt="Nossa especialidade é o processamento de grãos de alta qualidade, com ênfase em superalimentos, garantindo pureza e valor nutricional para mercados exigentes.">
                Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal.
             </p>
+
                 <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
                         <source src="videos/00040.mp4" type="video/mp4">
@@ -1351,15 +1377,7 @@
                 </div>
 
 
-            <!-- Segmento 1: Beneficiamento de Grãos -->
-            <div class="product-segment">
-                <h3 data-lang-es="Beneficiamiento de Granos" data-lang-en="Grain Processing" data-lang-pt="Beneficiamento de Grãos">Beneficiamiento de Granos</h3>
-                <p class="segment-intro"
-                   data-lang-es="Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes."
-                   data-lang-en="Our specialty is processing high-quality grains, with an emphasis on superfoods, ensuring purity and nutritional value for demanding markets."
-                   data-lang-pt="Nossa especialidade é o processamento de grãos de alta qualidade, com ênfase em superalimentos, garantindo pureza e valor nutricional para mercados exigentes.">
-                   Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes.
-                </p>
+
                 <div class="product-cards-container">
                     <!-- Card 1: Chía -->
                     <div class="product-card">
@@ -1429,42 +1447,51 @@
                 </div>
                                 <!-- Título e introdução da seção "Sobre Nós" -->
 
-                <p class="section-intro"
-                   data-lang-es="Multiagro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados.
-    
-                   La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, Multiagro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
-                   data-lang-en="Multiagro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains.
-    
-                   The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, Multiagro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
-                   data-lang-pt="A Multiagro atua no mercado desde 2004, dedicando-se à importação e exportação de grãos, com ênfase em grãos especiais classificados como superfoods. Entre os principais produtos comercializados estão chia, feijão mungo, gergelim, sorgo, milho e soja, além de outros grãos diferenciados.
-    
-                   A empresa dispõe de uma fábrica especializada no beneficiamento desses produtos, atendendo aos mais rigorosos padrões de qualidade. Com ampla experiência também na comercialização de produtos orgânicos, a Multiagro oferece ao mercado tanto os itens tradicionais quanto linhas certificadas, agregando valor e diversidade ao portfólio para atender diferentes mercados e exigências de clientes nacionais e internacionais.">
-                   Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade. Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
+                <div class="section-intro">
+                    <p data-lang-es="Multiagro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados."
+                       data-lang-en="Multiagro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains."
+                       data-lang-pt="A Multiagro atua no mercado desde 2004, dedicando-se à importação e exportação de grãos, com ênfase em grãos especiais classificados como superfoods. Entre os principais produtos comercializados estão chia, feijão mungo, gergelim, sorgo, milho e soja, além de outros grãos diferenciados.">
+                       Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade.
+                    </p>
+                    <br>
+                    <p data-lang-es="La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, Multiagro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
+                       data-lang-en="The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, Multiagro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
+                       data-lang-pt="A empresa dispõe de uma fábrica especializada no beneficiamento desses produtos, atendendo aos mais rigorosos padrões de qualidade. Com ampla experiência também na comercialização de produtos orgânicos, a Multiagro oferece ao mercado tanto os itens tradicionais quanto linhas certificadas, agregando valor e diversidade ao portfólio para atender diferentes mercados e exigências de clientes nacionais e internacionais.">
+                       Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
+                    </p>
                 </p>
 
-                <h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
-                <!-- Lista de Missão e Visão -->
-                <ul class="custom-list">
-                    <li data-lang-es="<strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la producción paraguaya con el mundo, impulsados por la eficiencia, la innovación y prácticas sostenibles."
-                        data-lang-en="<strong>Mission:</strong> To process and market grains and superfoods of the highest quality, connecting Paraguayan production with the world, driven by efficiency, innovation, and sustainable practices."
-                        data-lang-pt="<strong>Missão:</strong> Processar e comercializar grãos e superalimentos da mais alta qualidade, conectando a produção paraguaia com o mundo, impulsionados pela eficiência, inovação e práticas sustentáveis.">
-                        <strong>Misión:</strong> Procesar y comercializar granos y superalimentos de la más alta calidad, conectando la produção paraguaya com o mundo, impulsados por a eficiência, a inovação e práticas sustentáveis.
-                    </li>
-                    <li data-lang-es="<strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados y superalimentos, reconocida globalmente por la excelencia, confiabilidad y nuestro compromiso con el desarrollo integral."
-                        data-lang-en="<strong>Vision:</strong> To be the leading agro-industry in Paraguay in the export of differentiated grains and superfoods, globally recognized for excellence, reliability, and our commitment to integral development."
-                        data-lang-pt="<strong>Visão:</strong> Ser a agroindústria líder no Paraguai na exportação de grãos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.">
-                        <strong>Visión:</strong> Ser la agroindustria líder en Paraguay en la exportación de granos diferenciados e superalimentos, reconhecida globalmente pela excelência, confiabilidade e nosso compromisso com o desenvolvimento integral.
-                    </li>
-                </ul>
-                <h3 data-lang-es="Nuestros Valores" data-lang-en="Our Values" data-lang-pt="Nossos Valores">Nuestros Valores</h3>
-                <!-- Lista de Valores da empresa -->
-                <ul class="custom-list">
-                    <li data-lang-es="Calidad Superior y Trazabilidad" data-lang-en="Superior Quality and Traceability" data-lang-pt="Qualidade Superior e Rastreabilidade">Calidad Superior y Trazabilidad</li>
-                    <li data-lang-es="Integridad y Transparencia" data-lang-en="Integrity and Transparency" data-lang-pt="Integridade e Transparência">Integridad y Transparencia</li>
-                    <li data-lang-es="Innovación y Adaptabilidad" data-lang-en="Innovation and Adaptability" data-lang-pt="Inovação e Adaptabilidade">Innovación y Adaptabilidad</li>
-                    <li data-lang-es="Compromiso con Productores y Comunidades" data-lang-en="Commitment to Producers and Communities" data-lang-pt="Compromisso com Produtores e Comunidades">Compromiso con Productores y Comunidades</li>
-                    <li data-lang-es="Orientación al Cliente y Mercados Globales" data-lang-en="Customer Focus and Global Markets" data-lang-pt="Orientação ao Cliente e Mercados Globais">Orientación al Cliente y Mercados Globais</li>
-                </ul>
+
+
+
+
+
+<h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
+<!-- Lista de Missão e Visão -->
+<ul class="custom-list">
+    <li data-lang-es="<strong>Misión:</strong> Ofrecer alimentos naturales y de alto valor nutricional, con calidad, seguridad y trazabilidad, generando valor para productores, socios y mercados globales, con responsabilidad social, ambiental y compromiso con la innovación en el agro."
+        data-lang-en="<strong>Mission:</strong> To offer natural and high-nutritional-value foods with quality, safety, and traceability, generating value for producers, partners, and global markets, with social and environmental responsibility and a commitment to innovation in agribusiness."
+        data-lang-pt="<strong>Missão:</strong> Oferecer alimentos naturais e de alto valor nutricional, com qualidade, segurança e rastreabilidade, gerando valor para produtores, parceiros e mercados globais, com responsabilidade social, ambiental e compromisso com a inovação no agronegócio.">
+        <strong>Misión:</strong> Ofrecer alimentos naturales y de alto valor nutricional, con calidad, seguridad y trazabilidad, generando valor para productores, socios y mercados globales, con responsabilidad social, ambiental y compromiso con la innovación en el agro.
+    </li>
+    <li data-lang-es="<strong>Visión:</strong> Ser reconocida como referencia en Sudamérica en la producción y exportación de superalimentos, destacándose por la excelencia operativa, la sostenibilidad y la integración entre el campo y el mercado internacional."
+        data-lang-en="<strong>Vision:</strong> To be recognized as a South American reference in the production and export of superfoods, standing out for operational excellence, sustainability, and integration between the field and international markets."
+        data-lang-pt="<strong>Visão:</strong> Ser reconhecida como referência sul-americana na produção e exportação de superfoods, destacando-se pela excelência operacional, sustentabilidade e integração entre campo e mercado internacional.">
+        <strong>Visión:</strong> Ser reconocida como referencia en Sudamérica en la producción y exportación de superalimentos, destacándose por la excelencia operativa, la sostenibilidad y la integración entre el campo y el mercado internacional.
+    </li>
+</ul>
+
+<h3 data-lang-es="Nuestros Valores" data-lang-en="Our Values" data-lang-pt="Nossos Valores">Nuestros Valores</h3>
+<!-- Lista de Valores da empresa -->
+<ul class="custom-list">
+    <li data-lang-es="Integridad y transparencia" data-lang-en="Integrity and transparency" data-lang-pt="Integridade e transparência">Integridad y transparencia</li>
+    <li data-lang-es="Calidad y excelencia operativa" data-lang-en="Quality and operational excellence" data-lang-pt="Qualidade e excelência operacional">Calidad y excelencia operativa</li>
+    <li data-lang-es="Sostenibilidad ambiental y social" data-lang-en="Environmental and social sustainability" data-lang-pt="Sustentabilidade ambiental e social">Sostenibilidad ambiental y social</li>
+    <li data-lang-es="Innovación continua" data-lang-en="Continuous innovation" data-lang-pt="Inovação contínua">Innovación continua</li>
+    <li data-lang-es="Valoración del productor" data-lang-en="Valuing the producer" data-lang-pt="Valorização do produtor">Valoración del productor</li>
+    <li data-lang-es="Trazabilidad y confianza" data-lang-en="Traceability and trust" data-lang-pt="Rastreabilidade e confiança">Trazabilidad y confianza</li>
+</ul>
+
                 <div class="stats-cards">
                     <!-- Cards com estatísticas/números da empresa -->
                     <div class="stat-card">
@@ -1609,12 +1636,12 @@
                     data-lang-pt="Multiagro: Preparando-se para a Bolsa de Valores de Assunção">
                     Multiagro: Preparándose para la Bolsa de Valores de Asunción
                 </h3>
-                <p data-lang-es="Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya."
-                   data-lang-en="Multiagro S.A. is in an advanced stage of preparation for its entry into the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This significant future step underscores our commitment to transparency, best corporate governance practices, and will offer investors a solid and regulated platform to participate in the growth of Paraguayan agribusiness."
-                   data-lang-pt="A Multiagro S.A. está em um avançado processo de preparação para sua entrada na Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Este importante passo futuro destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferecerá aos investidores uma plataforma sólida e regulamentada para participar do crescimento da agroindústria paraguaia.">
-                   Multiagro S.A. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya.
+                <p data-lang-es="Multiagro S.A.E. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya."
+                   data-lang-en="Multiagro S.A.E. is in an advanced stage of preparation for its entry into the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This significant future step underscores our commitment to transparency, best corporate governance practices, and will offer investors a solid and regulated platform to participate in the growth of Paraguayan agribusiness."
+                   data-lang-pt="A Multiagro S.A.E. está em um avançado processo de preparação para sua entrada na Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Este importante passo futuro destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferecerá aos investidores uma plataforma sólida e regulamentada para participar do crescimento da agroindústria paraguaia.">
+                   Multiagro S.A.E. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya.
                 </p>
-                <p><a href="https://www.bolsaasu.com.py/" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para mais informações</a></p>
+                <p><a href="https://www.bolsadevalores.com.py" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para mais informações</a></p>
             </div>
 
             <!-- Imagem ilustrativa de crescimento -->
@@ -1823,14 +1850,10 @@
 
     <footer>
         <!-- Conteúdo do rodapé: informações da empresa, direitos autorais, links úteis -->
-        <p data-lang-es="Multiagro S.A. | RUC: 80050297-3" data-lang-en="Multiagro S.A. | Tax ID: 80050297-3" data-lang-pt="Multiagro S.A. | CNPJ/RUC: 80050297-3">Multiagro S.A. | RUC: 80050297-3</p>
-        <p><span data-lang-es="Sede: Guajayvi, San Pedro, Paraguay" data-lang-en="Headquarters: Guajayvi, San Pedro, Paraguay" data-lang-pt="Sede: Guajayvi, San Pedro, Paraguai">Sede: Guajayvi, San Pedro, Paraguay</span> | © <span id="currentYear"></span> Multiagro S.A. <span data-lang-es="Todos los derechos reservados." data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">Todos los derechos reservados.</span></p>
+        <p data-lang-es="Multiagro S.A.E. | RUC: 80050297-3" data-lang-en="Multiagro S.A.E. | Tax ID: 80050297-3" data-lang-pt="Multiagro S.A.E. | CNPJ/RUC: 80050297-3">Multiagro S.A.E. | RUC: 80050297-3</p>
+        <p><span data-lang-es="Sede: Guajayvi, San Pedro, Paraguay" data-lang-en="Headquarters: Guajayvi, San Pedro, Paraguay" data-lang-pt="Sede: Guajayvi, San Pedro, Paraguai">Sede: Guajayvi, San Pedro, Paraguay</span> | © <span id="currentYear"></span> Multiagro S.A.E. <span data-lang-es="Todos los derechos reservados." data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">Todos los derechos reservados.</span></p>
         <div class="footer-links">
-            <a href="#inversionistas" onclick="navigateToSection('inversionistas');return false;" data-lang-es="Inversionistas" data-lang-en="Investors" data-lang-pt="Investidores">Inversionistas</a> |
-            <!-- Outros links no rodapé -->
-            <a href="#sostenibilidad" onclick="navigateToSection('sostenibilidad');return false;" data-lang-es="Sostenibilidad" data-lang-en="Sustainability" data-lang-pt="Sustentabilidade">Sostenibilidad</a> |
-            <a href="/docs/politica-privacidad-multiagro.pdf" target="_blank" data-lang-es="Política de Privacidad" data-lang-en="Privacy Policy" data-lang-pt="Política de Privacidade">Política de Privacidad</a>
-            
+
             <!-- Ícones de Redes Sociais no Rodapé -->
             <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro" style="margin-left: 1.5rem;"> <!-- Margem para separar dos links de texto -->
                 <i class="fab fa-linkedin"></i>
@@ -2073,15 +2096,6 @@
                 const targetSection = document.getElementById(id);
                 if (targetSection) {
                     targetSection.classList.add('visible');
-                    // Se a seção "home" for ativada, mostrar também "productos"
-                    // Isso mantém o comportamento de carregar a home junto com produtos na carga inicial
-                    // e quando se navega para #home.
-                    if (id === 'home') {
-                        const productosSection = document.getElementById('productos');
-                        if (productosSection) {
-                            productosSection.classList.add('visible');
-                        }
-                    }
                 }
             }
 
@@ -2330,7 +2344,7 @@
             {
                 id: 'investor_info',
                 questionText: "Informações para Investidores?",
-                botResponse: "A Multiagro S.A. está listada na Bolsa de Valores de Asunción (BVPASA). Na seção 'Inversionistas', você encontra nosso foco estratégico, relatórios, e informações sobre como participar do futuro da agroindústria paraguaia."
+                botResponse: "A Multiagro S.A.E. está listada na Bolsa de Valores de Asunción (BVPASA). Na seção 'Inversionistas', você encontra nosso foco estratégico, relatórios, e informações sobre como participar do futuro da agroindústria paraguaia."
             },
             {
                 id: 'sustainability_info',
@@ -2531,7 +2545,7 @@
             } else if (lowerMessage.includes("história") || lowerMessage.includes("sobre") || lowerMessage.includes("quem são")) {
                 return "A Multiagro, desde 2004, atua em Guajayvi, Paraguai, focada em grãos de qualidade e superalimentos para o mercado nacional e internacional. Conheça nossa missão, visão e valores na seção 'Nosotros'.";
             } else if (lowerMessage.includes("investidor") || lowerMessage.includes("investir") || lowerMessage.includes("ações") || lowerMessage.includes("bolsa") || lowerMessage.includes("bvpasa")) {
-                return "Para investidores: A Multiagro S.A. é listada na BVPASA. Detalhes sobre oportunidades, nosso foco estratégico e relatórios estão na seção 'Inversionistas'.";
+                return "Para investidores: A Multiagro S.A.E. é listada na BVPASA. Detalhes sobre oportunidades, nosso foco estratégico e relatórios estão na seção 'Inversionistas'.";
             } else if (lowerMessage.includes("sustentabilidade") || lowerMessage.includes("meio ambiente") || lowerMessage.includes("social") || lowerMessage.includes("governança")) {
                 return "Nosso compromisso com a sustentabilidade envolve práticas ambientais responsáveis, apoio à comunidade de Guajayvi e governança transparente. Saiba mais na seção 'Sostenibilidad'.";
             } else if (lowerMessage.includes("localização") || lowerMessage.includes("onde fica")) {
