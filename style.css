@@ -240,11 +240,11 @@
         .hero-main-content-area {
             position: relative;
             width: 100%;
-            margin: 0 auto 2rem auto; /* Centralizado e com margem inferior */
-            border-radius: 12px; /* Mantido */
-            overflow: hidden; /* Para cortar o carrossel nos cantos arredondados */
-            height: 0; /* Necessário para o truque de padding-bottom do aspect ratio */
-            padding-bottom: 50%; /* Proporção 16:8 ou 2:1 (8 / 16 * 100) */
+            margin: 0 auto 2rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 0;
+            padding-bottom: 100%; /* Dobrou de 50% para 100%: agora o carrossel terá o dobro da altura (proporção 1:1 quadrada) */
         }
 
         /* Mostra a seção ativa (Hero usa flex, outras usam block) */
@@ -322,15 +322,24 @@
 
         /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
         .hero-content-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            position: relative;
             z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            pointer-events: none; /* permite clicar nos botões do carrossel se necessário */
+            margin-bottom: 2 rem; /* Espaço entre o texto e o carrossel */
+            pointer-events: auto;
+            background: rgba(0, 66, 14, 0.682); /* Fundo escuro semi-transparente */
+            color: #fff;                        /* Letras brancas */
+            border-radius: 18px;
+            padding: 2.5rem 2rem 2rem 2rem;
+            box-shadow: 0 6px 32px 0 rgba(0,0,0,0.25);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         /* Garante que o conteúdo da hero section esteja visível quando a seção está visível */
         .hero-section.visible .hero-content-overlay {
