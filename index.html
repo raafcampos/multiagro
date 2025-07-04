@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- O atributo lang="es" define o idioma principal da página como espanhol s -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +7,14 @@
            data-lang-en="Multiagro S.A.E."
            data-lang-pt="Multiagro S.A.E.">
            Multiagro | Granos de Calidad para el Mundo</title>
-    <!-- Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Font Awesome para ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <!-- Link para o nosso arquivo de estilos CSS -->
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <!-- Conteúdo do Cabeçalho: Logo, Navegação, Seletor de Idioma, Botão de Menu Mobile -->
         <div class="header-content">
             <div class="logo">
                 <a href="#home" onclick="navigateToSection('home'); return false;" aria-label="Ir para o início" data-aria-es="Ir para o início" data-aria-en="Go to home" data-aria-pt="Ir para o início">
@@ -30,118 +24,84 @@
             <nav>
                 <ul id="nav-links">
                     <li><a href="#home" class="active nav-link" data-lang-es="Inicio" data-lang-en="Home" data-lang-pt="Início">Inicio</a></li>
-                    <!-- Outros links de navegação com atributos data-lang-* para internacionalização -->
                     <li><a href="#productos" class="nav-link" data-lang-es="Productos" data-lang-en="Products" data-lang-pt="Produtos">Productos</a></li>
                     <li><a href="#nosotros" class="nav-link" data-lang-es="Nosotros" data-lang-en="About Us" data-lang-pt="Sobre Nós">Nosotros</a></li>
-                     <!-- <li><a href="#gobernanza" class="nav-link" data-lang-es="Gobernanza" data-lang-en="Governance" data-lang-pt="Governança">Gobernanza</a></li>
-                    <li><a href="#sostenibilidad" class="nav-link" data-lang-es="Sostenibilidad" data-lang-en="Sustainability" data-lang-pt="Sustentabilidade">Sostenibilidad</a></li> -->
-                    <li><a href="#contacto" class="nav-link" data-lang-es="Contacto" data-lang-en="Contact" data-lang-pt="Contato">Contacto</a></li>
+                     <li><a href="#contacto" class="nav-link" data-lang-es="Contacto" data-lang-en="Contact" data-lang-pt="Contato">Contacto</a></li>
                     <li><a href="#inversionistas" class="nav-link nav-link-investor" data-lang-es="Inversionistas" data-lang-en="Investors" data-lang-pt="Investidores">Inversionistas</a></li>
                     <li class="language-switcher">
-                        <!-- Botões para trocar o idioma da página -->
                         <button id="lang-es" class="active-lang">ES</button>
                         <button id="lang-en">EN</button> 
                         <button id="lang-pt">PT</button>
                     </li>
                 </ul>
             </nav>
-            <!-- Atributos data-aria-* para acessibilidade do menu toggle em diferentes idiomas -->
             <button class="menu-toggle"
                     data-aria-open-es="Abrir menú" data-aria-open-en="Open menu" data-aria-open-pt="Abrir menu"
                     data-aria-close-es="Cerrar menú" data-aria-close-en="Close menu" data-aria-close-pt="Fechar menu"
-                    aria-label="Abrir menú">☰</button> <!-- O texto '☰' é o ícone do menu hambúrguer -->
-        </div>
+                    aria-label="Abrir menú">☰</button> </div>
     </header>
 
     <main>
 
         <section id="home" class="hero-section">
 
-                                        <!-- Container do Vídeo movido para cá -->
-                <div class="video-background-container">
+                                            <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
                         <source src="videos/video8.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
-            
-            <!-- Nova área para o conteúdo principal da Hero (carrossel + texto) -->
-            <div class="hero-main-content-area">
-                <!-- Hero Carousel -->
-                <div class="hero-carousel">
-                    <div class="carousel-slides">
-                    <div class="carousel-slide">
-                    <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
-                        <source src="videos/00026.mp4" type="video/mp4">
-                        Seu navegador não suporta o elemento de vídeo.
-                    </video>
-                </div>
-                        
 
-<div class="carousel-slide">
-    <img src="images/img1.jpeg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img2.jpg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img3.jpg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img6.png" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img7.jpg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img11.jpg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img12.jpeg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img13.jpeg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
-<div class="carousel-slide">
-    <img src="images/img14.jpeg" alt="Imagem Multiagro"
-         data-alt-es="Imagen Multiagro"
-         data-alt-en="Multiagro image"
-         data-alt-pt="Imagem Multiagro">
-</div>
+<div class="hero-main-content-area">
+    <div class="hero-carousel">
+<div class="carousel-slides">
+    <div class="carousel-slide">
+           <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+            <source src="videos/DJI_0922.mov" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+                       </div>
+    <div class="carousel-slide">
+        <img src="images/img2.jpeg" alt="Banner institucional 3">
 
-                    </div>
-                    <button class="carousel-prev" aria-label="Anterior" data-aria-es="Anterior" data-aria-en="Previous" data-aria-pt="Anterior">&#10094;</button>
-                    <button class="carousel-next" aria-label="Siguiente" data-aria-es="Siguiente" data-aria-en="Next" data-aria-pt="Próximo">&#10095;</button>
-                </div>
-
-                <!-- Conteúdo Sobreposto (único e sobre todo o carrossel) -->
-                <div class="hero-content-overlay">
-                    <!-- Conteúdo de texto da seção Hero, também internacionalizado -->
-<h1 data-lang-es="Multiagro: calidad y tradición en granos desde Paraguay para el mundo"
+    </div>
+    <div class="carousel-slide">
+        <img src="videos/VID-20250528-WA0016.mp4" alt="Banner institucional 1">
+               </div>
+    <div class="carousel-slide">
+        <img src="images/paginaprincipal1.jpg" alt="Banner institucional 3">
+    </div>
+    
+    <div class="carousel-slide">
+        <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+            <source src="videos/00027.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+    <div class="carousel-slide">
+        <img src="images/img12.jpeg" alt="Banner institucional 2">
+    </div>
+    <div class="carousel-slide">
+        <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+            <source src="videos/00039.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+    <div class="carousel-slide">
+        <img src="images/img7.jpg" alt="Banner institucional 3">
+    </div>
+    <div class="carousel-slide">
+        <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+            <source src="videos/00013.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+           </div>
+    <div class="carousel-slide">
+        <img src="images/paginaprincipal1.jpg" alt="Banner institucional 3">
+    </div>
+        
+             <section id="home" class="hero-content-overlay">
+                    <h1 data-lang-es="Multiagro: calidad y tradición en granos desde Paraguay para el mundo"
     data-lang-en="Multiagro: quality and tradition in grains from Paraguay to the world"
     data-lang-pt="Multiagro: qualidade e tradição em grãos do Paraguai para o mundo">
     Multiagro: qualidade e tradição em grãos do Paraguai para o mundo
@@ -156,32 +116,32 @@
                        Conozca Nuestros Productos
                     </a>
                 </div>
+            </section>
+
+</div>  
             </div>
             </div>
                 </section>
 
-        <!-- Seção Produtos -->
-        <!-- Seção Produtos -->
         <section id="productos">
-            <!-- Título e introdução da seção de produtos -->
-            <h2                 <h3 data-lang-es="Beneficiamiento de Granos" data-lang-en="Grain Processing" data-lang-pt="Beneficiamento de Grãos">Beneficiamiento de Granos</h3>
+            <h2           <h3 data-lang-es="Beneficiamiento de Granos" data-lang-en="Grain Processing" data-lang-pt="Beneficiamento de Grãos">Beneficiamiento de Granos</h3>
             <p class="section-intro"
-                   data-lang-es="Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes."
-                   data-lang-en="Our specialty is processing high-quality grains, with an emphasis on superfoods, ensuring purity and nutritional value for demanding markets."
-                   data-lang-pt="Nossa especialidade é o processamento de grãos de alta qualidade, com ênfase em superalimentos, garantindo pureza e valor nutricional para mercados exigentes.">
-               Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal.
+                       data-lang-es="Nuestra especialidad es el procesamiento de granos de alta calidad, con énfasis en superalimentos, garantizando pureza y valor nutricional para mercados exigentes."
+                       data-lang-en="Our specialty is processing high-quality grains, with an emphasis on superfoods, ensuring purity and nutritional value for demanding markets."
+                       data-lang-pt="Nossa especialidade é o processamento de grãos de alta qualidade, com ênfase em superalimentos, garantindo pureza e valor nutricional para mercados exigentes.">
+                Conozca nuestras diversas líneas de actuación, desde el beneficiamiento de granos de alta calidad y nuestra línea de alimentos seleccionados, hasta futuras soluciones para nutrición animal.
             </p>
 
                 <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
                         <source src="videos/00040.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
 
 
 
                 <div class="product-cards-container">
-                    <!-- Card 1: Chía -->
                     <div class="product-card">
                         <img src="images/grao2.png" alt="Sementes de Chía" data-alt-es="Semillas de Chía" data-alt-en="Chia Seeds" data-alt-pt="Sementes de Chia">
                         <h4 data-lang-es="Chía" data-lang-en="Chia" data-lang-pt="Chia">Chía</h4>
@@ -189,7 +149,6 @@
                            data-lang-en="Rich in Omega-3, fiber, and antioxidants. Ideal for a healthy and nutritious diet."
                            data-lang-pt="Rica em Ômega-3, fibra e antioxidantes. Ideal para uma dieta saudável e nutritiva.">Rica en Omega-3, fibra y antioxidantes. Ideal para una dieta saludable y nutritiva.</p>
                     </div>
-                    <!-- Card 2: Mungo -->
                     <div class="product-card">
                         <img src="images/grao1.png" alt="Grãos de Feijão Mungo" data-alt-es="Granos de Frijol Mungo" data-alt-en="Mung Beans" data-alt-pt="Grãos de Feijão Mungo">
                         <h4 data-lang-es="Frijol Mungo" data-lang-en="Mung Beans" data-lang-pt="Feijão Mungo">Frijol Mungo</h4>
@@ -197,7 +156,6 @@
                            data-lang-en="High protein value and culinary versatility. Excellent for soups, salads, and sprouts."
                            data-lang-pt="Alto valor proteico e versatilidade culinária. Excelente para sopas, saladas e brotos.">Alto valor proteico y versatilidad culinaria. Excelente para sopas, ensaladas y germinados.</p>
                     </div>
-                    <!-- Card 3: Gergelim -->
                     <div class="product-card">
                         <img src="images/grao3.png" alt="Sementes de Gergelim" data-alt-es="Semillas de Sésamo" data-alt-en="Sesame Seeds" data-alt-pt="Sementes de Gergelim">
                         <h4 data-lang-es="Sésamo" data-lang-en="Sesame" data-lang-pt="Gergelim">Sésamo</h4>
@@ -205,7 +163,6 @@
                            data-lang-en="Source of calcium and healthy fats. Perfect for baking, tahini, and dish garnishing."
                            data-lang-pt="Fonte de cálcio e gorduras saudáveis. Perfeito para panificação, tahine e decoração de pratos.">Fuente de calcio y grasas saludables. Perfecto para panificación, tahini y decoración de platos.</p>
                     </div>
-                    <!-- Card 4: Sorgo -->
                     <div class="product-card">
                         <img src="images/grao4.png" alt="Grãos de Sorgo" data-alt-es="Granos de Sorgo" data-alt-en="Sorghum Grains" data-alt-pt="Grãos de Sorgo">
                         <h4 data-lang-es="Sorgo" data-lang-en="Sorghum" data-lang-pt="Sorgo">Sorgo</h4>
@@ -213,7 +170,6 @@
                            data-lang-en="Gluten-free ancient grain, rich in nutrients. Used in flours, animal feed, and as a cereal."
                            data-lang-pt="Grão ancestral sem glúten, rico em nutrientes. Utilizado em farinhas, alimentação animal e como cereal.">Grano ancestral sin gluten, rico en nutrientes. Utilizado en harinas, alimentación animal y como cereal.</p>
                     </div>
-                    <!-- Card 5: Milho -->
                     <div class="product-card">
                         <img src="images/grao6.png" alt="Grãos de Milho" data-alt-es="Granos de Maíz" data-alt-en="Corn Grains" data-alt-pt="Grãos de Milho">
                         <h4 data-lang-es="Maíz" data-lang-en="Corn" data-lang-pt="Milho">Maíz</h4>
@@ -221,7 +177,6 @@
                            data-lang-en="Versatile and energetic, a dietary staple. For human, animal, and industrial consumption."
                            data-lang-pt="Versátil e energético, base da alimentação. Para consumo humano, animal e industrial.">Versátil y energético, base de la alimentación. Para consumo humano, animal e industrial.</p>
                     </div>
-                    <!-- Card 6: Soja -->
                     <div class="product-card">
                         <img src="images/grao.png" alt="Grãos de Soja" data-alt-es="Granos de Soja" data-alt-en="Soybeans" data-alt-pt="Grãos de Soja">
                         <h4 data-lang-es="Soja" data-lang-en="Soybean" data-lang-pt="Soja">Soja</h4>
@@ -238,30 +193,26 @@
 
 
         </section>
-        <!-- Sobre Nosotros -->
         <section id="nosotros">
             <div class="nosotros-content-wrapper">
-                                <h2 data-lang-es="Sobre Multiagro" data-lang-en="About Multiagro" data-lang-pt="Sobre a Multiagro">Sobre Multiagro</h2>
-                <!-- Container do Vídeo movido para cá -->
+                                            <h2 data-lang-es="Sobre Multiagro" data-lang-en="About Multiagro" data-lang-pt="Sobre a Multiagro">Sobre Multiagro</h2>
                 <div class="video-background-container">
                     <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
                         <source src="videos/DJI_0666.MP4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
-                                <!-- Título e introdução da seção "Sobre Nós" -->
-
-                <div class="section-intro">
+                                            <div class="section-intro">
                     <p data-lang-es="Multiagro opera en el mercado desde 2004, dedicándose a la importación y exportación de granos, con énfasis en granos especiales clasificados como superalimentos. Entre los principales productos comercializados se encuentran la chía, el poroto mung, el sésamo, el sorgo, el maíz y la soja, además de otros granos diferenciados."
                        data-lang-en="Multiagro has been operating in the market since 2004, specializing in the import and export of grains, with a focus on special grains classified as superfoods. The main products traded include chia, mung beans, sesame, sorghum, corn, and soybeans, as well as other specialty grains."
                        data-lang-pt="A Multiagro atua no mercado desde 2004, dedicando-se à importação e exportação de grãos, com ênfase em grãos especiais classificados como superfoods. Entre os principais produtos comercializados estão chia, feijão mungo, gergelim, sorgo, milho e soja, além de outros grãos diferenciados.">
-                       Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade.
+                        Desde Guajayvi, Paraguay, Multiagro se dedica al beneficiamiento, comercialización y exportación de grãos, com um firme compromisso com a qualidade, a inovação e a sustentabilidade.
                     </p>
                     <br>
                     <p data-lang-es="La empresa cuenta con una planta especializada en el procesamiento de estos productos, cumpliendo con los más rigurosos estándares de calidad. Con amplia experiencia también en la comercialización de productos orgánicos, Multiagro ofrece al mercado tanto los productos tradicionales como líneas certificadas, aportando valor y diversidad a su portafolio para atender a diferentes mercados y exigencias de clientes nacionales e internacionales."
                        data-lang-en="The company has a dedicated facility for processing these products, adhering to the highest quality standards. With extensive experience in the commercialization of organic products, Multiagro offers both traditional and certified organic lines, adding value and diversity to its portfolio to meet the demands of both domestic and international clients."
                        data-lang-pt="A empresa dispõe de uma fábrica especializada no beneficiamento desses produtos, atendendo aos mais rigorosos padrões de qualidade. Com ampla experiência também na comercialização de produtos orgânicos, a Multiagro oferece ao mercado tanto os itens tradicionais quanto linhas certificadas, agregando valor e diversidade ao portfólio para atender diferentes mercados e exigências de clientes nacionais e internacionais.">
-                       Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
+                        Nos especializamos em superalimentos, atendendo tanto ao mercado interno quanto a exigentes mercados internacionais.
                     </p>
                 </p>
 
@@ -271,7 +222,6 @@
 
 
 <h3 data-lang-es="Nuestra Esencia" data-lang-en="Our Essence" data-lang-pt="Nossa Essência">Nuestra Esencia</h3>
-<!-- Lista de Missão e Visão -->
 <ul class="custom-list">
     <li data-lang-es="<strong>Misión:</strong> Ofrecer alimentos naturales y de alto valor nutricional, con calidad, seguridad y trazabilidad, generando valor para productores, socios y mercados globales, con responsabilidad social, ambiental y compromiso con la innovación en el agro."
         data-lang-en="<strong>Mission:</strong> To offer natural and high-nutritional-value foods with quality, safety, and traceability, generating value for producers, partners, and global markets, with social and environmental responsibility and a commitment to innovation in agribusiness."
@@ -286,7 +236,6 @@
 </ul>
 
 <h3 data-lang-es="Nuestros Valores" data-lang-en="Our Values" data-lang-pt="Nossos Valores">Nuestros Valores</h3>
-<!-- Lista de Valores da empresa -->
 <ul class="custom-list">
     <li data-lang-es="Integridad y transparencia" data-lang-en="Integrity and transparency" data-lang-pt="Integridade e transparência">Integridad y transparencia</li>
     <li data-lang-es="Calidad y excelencia operativa" data-lang-en="Quality and operational excellence" data-lang-pt="Qualidade e excelência operacional">Calidad y excelencia operativa</li>
@@ -297,7 +246,6 @@
 </ul>
 
                 <div class="stats-cards">
-                    <!-- Cards com estatísticas/números da empresa -->
                     <div class="stat-card">
                         <h4 data-lang-es="Años de Experiencia" data-lang-en="Years of Experience" data-lang-pt="Anos de Experiência">Años de Experiencia</h4>
                         <p class="stat-value" 
@@ -315,20 +263,18 @@
                     <div class="stat-card">
                         <h4 data-lang-es="Capacidad Productiva" data-lang-en="Productive Capacity" data-lang-pt="Capacidade Produtiva">Capacidad Productiva</h4>
                         <p class="stat-value" 
-                           data-lang-es="&gt; 10.000 t por año" 
-                           data-lang-en="&gt; 10,000 t per year" 
-                           data-lang-pt="&gt; 10.000 t por ano">&gt; 10.000 t por año</p>
+                           data-lang-es="> 10.000 t por año" 
+                           data-lang-en="> 10,000 t per year" 
+                           data-lang-pt="> 10.000 t por ano">> 10.000 t por año</p>
                     </div>
                 </div>
                 <div style="text-align:center; margin-top: 2rem;">
-                    <!-- Botão CTA para a seção de investidores -->
                     <a class="cta-btn green" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Oportunidades para Inversionistas" data-lang-en="Investor Opportunities" data-lang-pt="Oportunidades para Investidores">
-                       Oportunidades para Inversionistas
+                        Oportunidades para Inversionistas
                     </a>
                 </div>
             </div>
-                        <!-- Mapa Mundi de Exportação (agora ao final da seção de produtos) -->
-            <div class="product-segment" style="width:100%;max-width:800px;margin:3rem auto 0 auto;">
+                        <div class="product-segment" style="width:100%;max-width:800px;margin:3rem auto 0 auto;">
                 <h3 style="text-align:center;margin-bottom:1rem;"
                     data-lang-es="Presencia Global de Multiagro"
                     data-lang-en="Multiagro Global Presence"
@@ -336,7 +282,6 @@
                     Presencia Global de Multiagro
                 </h3>
                 <div id="mapid" style="height: 450px; border-radius:12px; box-shadow:var(--sombra-leve);"></div>
-                <!-- Legenda do Mapa -->
                 <div class="map-legend">
                     <div class="legend-item">
                         <span class="legend-color-box" style="background-color: #1e824c;"></span>
@@ -354,18 +299,15 @@
         </div>
         </section>
 
-        <!-- Gobernanza Corporativa -->
         <section id="gobernanza">
-            <!-- Título e introdução da seção de Governança Corporativa -->
             <h2 data-lang-es="Gobernanza Corporativa" data-lang-en="Corporate Governance" data-lang-pt="Governança Corporativa">Gobernanza Corporativa</h2>
             <p class="section-intro"
                data-lang-es="Multiagro se rige por principios de transparencia, ética y responsabilidad. Nuestra estructura de gobernanza busca asegurar la profesionalización de la gestión y la protección de los intereses de todos nuestros stakeholders."
                data-lang-en="Multiagro is governed by principles of transparency, ethics, and responsibility. Our governance structure aims to ensure professional management and protect the interests of all our stakeholders."
                data-lang-pt="A Multiagro rege-se por princípios de transparência, ética e responsabilidade. Nossa estrutura de governança busca assegurar a profissionalização da gestão e a proteção dos interesses de todos os nossos stakeholders.">
-               Multiagro se rige por principios de transparencia, ética y responsabilidad. Nuestra estructura de gobernanza busca asegurar la profesionalización de la gestión e a proteção dos interesses de todos os nossos stakeholders.
+                Multiagro se rige por principios de transparencia, ética y responsabilidad. Nuestra estructura de gobernanza busca asegurar la profesionalización de la gestión e a proteção dos interesses de todos os nossos stakeholders.
             </p>
             <h3 data-lang-es="Estructura y Prácticas" data-lang-en="Structure and Practices" data-lang-pt="Estrutura e Práticas">Estructura y Prácticas</h3>
-            <!-- Lista de práticas de governança -->
             <ul class="custom-list">
                 <li data-lang-es="Consejo de Administración Estratégico" data-lang-en="Strategic Board of Directors" data-lang-pt="Conselho de Administração Estratégico">Consejo de Administración Estratégico</li>
                 <li data-lang-es="Dirección Ejecutiva Profesionalizada" data-lang-en="Professionalized Executive Management" data-lang-pt="Direção Executiva Profissionalizada">Dirección Ejecutiva Profesionalizada</li>
@@ -373,7 +315,6 @@
                 <li data-lang-es="Políticas Claras de Conducta y Cumplimiento" data-lang-en="Clear Conduct and Compliance Policies" data-lang-pt="Políticas Claras de Conduta e Cumprimento">Políticas Claras de Conducta y Cumplimiento</li>
             </ul>
             <h3 data-lang-es="Documentos Relevantes" data-lang-en="Relevant Documents" data-lang-pt="Documentos Relevantes">Documentos Relevantes</h3>
-            <!-- Links para documentos importantes (PDFs) -->
             <ul class="custom-list">
                 <li><a href="/docs/codigo-etica-multiagro.pdf" target="_blank" data-lang-es="Código de Ética y Conducta Multiagro" data-lang-en="Multiagro Code of Ethics and Conduct" data-lang-pt="Código de Ética e Conduta Multiagro">Código de Ética y Conducta Multiagro</a></li>
                 <li><a href="/docs/politica-calidad-multiagro.pdf" target="_blank" data-lang-es="Política de Calidad y Trazabilidad" data-lang-en="Quality and Traceability Policy" data-lang-pt="Política de Qualidade e Rastreabilidade">Política de Calidad y Trazabilidad</a></li>
@@ -381,13 +322,9 @@
             </ul>
         </section>
 
-        <!-- Relación com Inversionistas -->
         <section id="inversionistas">
-            <!-- Título da seção de Relação com Investidores -->
             <h2 data-lang-es="Relación con Inversionistas" data-lang-en="Investor Relations" data-lang-pt="Relação com Investidores">Relación con Inversionistas</h2>
             
-            <!-- TradingView Widget BEGIN -->
-            <!-- Widget da TradingView para exibir cotações de ações -->
             <div class="tradingview-widget-container" style="margin-bottom: 2.5rem;">
               <div class="tradingview-widget-container__widget"></div>
               <div class="tradingview-widget-copyright" style="font-size: 0.8em; text-align: center; margin-top: 0.5rem;">
@@ -395,7 +332,6 @@
                       <span style="color: var(--lilas-claro);" data-lang-es="Cotizaciones por TradingView" data-lang-en="Quotes by TradingView" data-lang-pt="Cotações por TradingView">Cotizaciones por TradingView</span>
                   </a>
               </div>
-              <!-- Script para carregar o widget da TradingView. A configuração é feita via JSON. -->
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
                 {
                   "symbols": [
@@ -409,26 +345,22 @@
                     { "description": "SUDAMERIS", "proName": "BVPASA:SUDAP" },
                     { "description": "BBVA PARAGUAY", "proName": "BVPASA:BBVA" },
                     { "description": "CEMENTOS CONC", "proName": "BVPASA:CEMP" }
-    ],
-    "showSymbolLogo": true,
-    "colorTheme": "dark",
-    "isTransparent": true,
-    "displayMode": "adaptive",
-    "locale": tvLocale // tvLocale será 'es', 'en', ou 'br'
-}
-                </script>
+            ],
+            "showSymbolLogo": true,
+            "colorTheme": "dark",
+            "isTransparent": true,
+            "displayMode": "adaptive",
+            "locale": tvLocale // tvLocale será 'es', 'en', ou 'br'
+        }
+              </script>
             </div>
-            <!-- TradingView Widget END -->
-
-            <!-- Introdução da seção de investidores -->
             <p class="section-intro"
                data-lang-es="Multiagro presenta una atractiva oportunidad de inversión en el creciente sector agroindustrial, con un enfoque en superalimentos y mercados de exportación. Estamos comprometidos con la modernización, la expansión y la generación de valor sostenible."
                data-lang-en="Multiagro presents an attractive investment opportunity in the growing agro-industrial sector, with a focus on superfoods and export markets. We are committed to modernization, expansion, and sustainable value generation."
                data-lang-pt="A Multiagro apresenta uma oportunidade de investimento atraente no crescente setor agroindustrial, com foco em superalimentos e mercados de exportação. Estamos comprometidos com a modernização, a expansão e a geração de valor sustentável.">
-               Multiagro apresenta uma oportunidade de investimento atraente no crescente setor agroindustrial, com foco em superalimentos e mercados de exportação. Estamos comprometidos com a modernização, a expansão e a geração de valor sustentável.
+                Multiagro apresenta uma oportunidade de investimento atraente no crescente setor agroindustrial, com foco em superalimentos e mercados de exportação. Estamos comprometidos com a modernização, a expansão e a geração de valor sustentável.
             </p>
 
-            <!-- Informações sobre a listagem na Bolsa de Valores de Assunção -->
             <div class="bolsa-info">
                 <img src="https://www.bolsadevalores.com.py/wp-content/uploads/2024/08/logo.svg" 
                      alt="Logo Bolsa de Valores de Asunción" class="bolsa-logo"
@@ -442,13 +374,12 @@
                 </h3>
                 <p data-lang-es="Multiagro S.A.E. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya."
                    data-lang-en="Multiagro S.A.E. is in an advanced stage of preparation for its entry into the Bolsa de Valores y Productos de Asunción S.A. (BVPASA), Paraguay's main capital market. This significant future step underscores our commitment to transparency, best corporate governance practices, and will offer investors a solid and regulated platform to participate in the growth of Paraguayan agribusiness."
-                   data-lang-pt="A Multiagro S.A.E. está em um avançado processo de preparação para sua entrada na Bolsa de Valores y Productos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Este importante passo futuro destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferecerá aos investidores uma plataforma sólida e regulamentada para participar do crescimento da agroindústria paraguaia.">
+                   data-lang-pt="A Multiagro S.A.E. está em um avançado processo de preparação para sua entrada na Bolsa de Valores y Produtos de Asunción S.A. (BVPASA), o principal mercado de capitais do Paraguai. Este importante passo futuro destaca nosso compromisso com a transparência, as melhores práticas de governança corporativa e oferecerá aos investidores uma plataforma sólida e regulamentada para participar do crescimento da agroindústria paraguaia.">
                    Multiagro S.A.E. está en un avanzado proceso de preparación para su ingreso a la Bolsa de Valores y Productos de Asunción S.A. (BVPASA), el principal mercado de capitales de Paraguay. Este importante paso futuro subraya nuestro compromiso con la transparencia, las mejores prácticas de gobernanza corporativa y ofrecerá a los inversores una plataforma sólida y regulada para participar en el crecimiento de la agroindustria paraguaya.
                 </p>
                 <p><a href="https://www.bolsadevalores.com.py" target="_blank" rel="noopener noreferrer" data-lang-es="Visite el sitio web de BVPASA para más información" data-lang-en="Visit the BVPASA website for more information" data-lang-pt="Visite o site da BVPASA para mais informações">Visite el sitio web de BVPASA para mais informações</a></p>
             </div>
 
-            <!-- Imagem ilustrativa de crescimento -->
             <img class="ri-graphic" src="https://img.freepik.com/fotos-premium/conceito-de-analise-e-investimento-com-a-mao-do-empresario-tocando-a-tela-virtual-com-grafico-de-crescimento-do-mercado-de-acoes_670147-479.jpg" 
                  alt="Gráfico Ilustrativo de Crecimento e Estratégia de Negócios"
                  data-alt-es="Gráfico Ilustrativo de Crecimiento e Estrategia de Negocios"
@@ -456,13 +387,12 @@
                  data-alt-pt="Gráfico Ilustrativo de Crescimento e Estratégia de Negócios">
             
             <h3 data-lang-es="Foco Estratégico y Oportunidades" data-lang-en="Strategic Focus and Opportunities" data-lang-pt="Foco Estratégico e Oportunidades">Foco Estratégico y Oportunidades</h3>
-            <!-- Lista de focos estratégicos e oportunidades -->
             </p>
             <ul class="custom-list">
                 <li data-lang-es="Modernización y ampliación de planta industrial" data-lang-en="Modernization and expansion of industrial plant" data-lang-pt="Modernização e ampliação da planta industrial">Modernización y ampliación de planta industrial</li>
-                <li data-lang-es="Obtención de certificaciones internacionales (USDA, Europeas)" data-lang-en="Obtaining international certifications (USDA, European)" data-lang-pt="Obtenção de certificações internacionais (USDA, Europeias)">Obtención de certificaciones internacionais (USDA, Europeas)</li>
+                <li data-lang-es="Obtención de certificaciones internacionales (USDA, Europeas)" data-lang-en="Obtaining international certifications (USDA, European)" data-lang-pt="Obtenção de certificações internacionais (USDA, Europeias)">Obtención de certificaciones internacionales (USDA, Europeas)</li>
                 <li data-lang-es="Diversificación de portafolio (ej. ración animal, café white label)" data-lang-en="Portfolio diversification (e.g., animal feed, white-label coffee)" data-lang-pt="Diversificação de portfólio (ex. ração animal, café white label)">Diversificación de portafolio (ej. ración animal, café white label)</li>
-                <li data-lang-es="Expansión a nuevos mercados internacionales (Europa, Asia, América del Norte)" data-lang-en="Expansion into new international markets (Europe, Asia, North America)" data-lang-pt="Expansão para novos mercados internacionais (Europa, Ásia, América do Norte)">Expansión a nuevos mercados internacionais (Europa, Asia, América del Norte)</li>
+                <li data-lang-es="Expansión a nuevos mercados internacionales (Europa, Asia, América del Norte)" data-lang-en="Expansion into new international markets (Europe, Asia, North America)" data-lang-pt="Expansão para novos mercados internacionais (Europa, Ásia, América do Norte)">Expansión a nuevos mercados internacionales (Europa, Asia, América del Norte)</li>
                 <li data-lang-es="Profesionalización continua de la gestión y procesos" data-lang-en="Continuous professionalization of management and processes" data-lang-pt="Profissionalização contínua da gestão e processos">Profesionalización continua de la gestión y procesos</li>
             </ul>
 
@@ -471,27 +401,25 @@
                 data-lang-pt="(EM BREVE) Relatórios e Apresentações">
                 (PRÓXIMAMENTE) Informes y Presentaciones
             </h3>
-            <!-- Links para relatórios e apresentações para investidores -->
             <ul class="custom-list">
                 <li><a href="/docs/presentacion-inversionistas-multiagro.pdf" target="_blank" 
-                       data-lang-es="(PRÓXIMAMENTE) Presentación Institucional para Inversionistas" 
-                       data-lang-en="(COMING SOON) Institutional Investor Presentation" 
-                       data-lang-pt="(EM BREVE) Apresentação Institucional para Investidores">
-                       (PRÓXIMAMENTE) Presentación Institucional para Inversionistas
+                        data-lang-es="(PRÓXIMAMENTE) Presentación Institucional para Inversionistas" 
+                        data-lang-en="(COMING SOON) Institutional Investor Presentation" 
+                        data-lang-pt="(EM BREVE) Apresentação Institucional para Investidores">
+                        (PRÓXIMAMENTE) Presentación Institucional para Inversionistas
                     </a>
                 </li>
                 <li><a href="/docs/plan-estrategico-multiagro.pdf" target="_blank" 
-                       data-lang-es="(PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)" 
-                       data-lang-en="(COMING SOON) Strategic Growth Plan (Summary)" 
-                       data-lang-pt="(EM BREVE) Plano Estratégico de Crescimento (Resumo)">
-                       (PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)
+                        data-lang-es="(PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)" 
+                        data-lang-en="(COMING SOON) Strategic Growth Plan (Summary)" 
+                        data-lang-pt="(EM BREVE) Plano Estratégico de Crescimento (Resumo)">
+                        (PRÓXIMAMENTE) Plan Estratégico de Crecimiento (Sumario)
                     </a>
                 </li>
                 <li><a href="#comunicados" onclick="navigateToSection('comunicados');return false;" data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</a></li>
             </ul>
 
             <h3 data-lang-es="Preguntas Frecuentes (FAQ)" data-lang-en="Frequently Asked Questions (FAQ)" data-lang-pt="Perguntas Frequentes (FAQ)">Preguntas Frecuentes (FAQ)</h3>
-            <!-- Seção de Perguntas Frequentes (FAQ) para investidores -->
             <dl class="faq">
                 <dt data-lang-es="¿Cuál es el principal diferencial de Multiagro?" data-lang-en="What is Multiagro's main differentiator?" data-lang-pt="Qual é o principal diferencial da Multiagro?">¿Cuál es el principal diferencial de Multiagro?</dt>
                 <dd data-lang-es="Nuestro foco en superalimentos de alta calidad, la integración con productores locales, la capacidad de adaptación a estándares internacionales y un claro plan de modernización y expansión." 
@@ -508,11 +436,8 @@
             </dl>
         </section>
 
-        <!-- Comunicados -->
         <section id="comunicados">
-            <!-- Título da seção de Comunicados Relevantes -->
             <h2 data-lang-es="Comunicados Relevantes" data-lang-en="Relevant Announcements" data-lang-pt="Comunicados Relevantes">Comunicados Relevantes</h2>
-            <!-- Lista de comunicados (exemplos) -->
             <ul class="custom-list">
                 <li data-lang-es="(PRÓXIMAMENTE) 10/08/2025 – Anuncio: Inicio de proceso para certificación USDA." 
                     data-lang-en="(COMING SOON) 08/10/2025 – Announcement: USDA certification process initiated." 
@@ -528,24 +453,20 @@
                 </li>
             </ul>
             <div style="text-align:center; margin-top:2rem;">
-              <!-- Botão para voltar à seção de investidores -->
               <a class="cta-btn" href="#inversionistas" onclick="navigateToSection('inversionistas'); return false;" data-lang-es="Volver a Inversionistas" data-lang-en="Back to Investors" data-lang-pt="Voltar para Investidores">
-                 Volver a Inversionistas
+                  Volver a Inversionistas
               </a>
             </div>
         </section>
 
-        <!-- Sostenibilidad -->
         <section id="sostenibilidad">
-            <!-- Título e introdução da seção de Sostenibilidade -->
             <h2 data-lang-es="Sostenibilidad y Compromiso Social" data-lang-en="Sustainability and Social Commitment" data-lang-pt="Sustentabilidade e Compromisso Social">Sostenibilidad y Compromiso Social</h2>
             <p class="section-intro"
                data-lang-es="En Multiagro, la sostenibilidad es un pilar fundamental. Buscamos un equilibrio entre el crecimiento económico, el respeto por el medio ambiente y el desarrollo de las comunidades con las que trabajamos, especialmente nuestros productores rurales."
                data-lang-en="At Multiagro, sustainability is a fundamental pillar. We seek a balance between economic growth, respect for the environment, and the development of the communities we work with, especially our rural producers."
                data-lang-pt="Na Multiagro, a sustentabilidade é um pilar fundamental. Buscamos um equilíbrio entre o crescimento econômico, o respeito pelo meio ambiente e o desenvolvimento das comunidades com as quais trabalhamos, especialmente nossos produtores rurais.">
-               Na Multiagro, a sustentabilidade é um pilar fundamental. Buscamos um equilíbrio entre o crescimento econômico, o respeito pelo meio ambiente e o desenvolvimento das comunidades com as quais trabalhamos, especialmente nossos produtores rurais.
+                Na Multiagro, a sustentabilidade é um pilar fundamental. Buscamos um equilíbrio entre o crescimento econômico, o respeito pelo meio ambiente e o desenvolvimento das comunidades com as quais trabalhamos, especialmente nossos produtores rurais.
             </p>
-            <!-- Container do Vídeo para Sustentabilidade -->
             <div class="video-background-container">
                 <video autoplay loop muted playsinline poster="images/sustentabilidade_placeholder.jpg">
                     <source src="videos/video5.mp4" type="video/mp4">
@@ -553,7 +474,6 @@
                 </video>
             </div>
             <ul class="custom-list">
-                <!-- Pilares da sustentabilidade: Ambiental, Social, Governança -->
                 <li data-lang-es="<strong>Ambiental:</strong> Fomento de buenas prácticas agrícolas, optimización de recursos, estudio para aprovechamiento de residuos industriales (ej. ración animal)." 
                     data-lang-en="<strong>Environmental:</strong> Promotion of good agricultural practices, resource optimization, study for industrial waste utilization (e.g., animal feed)."
                     data-lang-pt="<strong>Ambiental:</strong> Fomento de boas práticas agrícolas, otimização de recursos, estudo para aproveitamento de resíduos industriais (ex. ração animal).">
@@ -571,50 +491,49 @@
                 </li>
             </ul>
             <p style="margin-top: 2rem; text-align:center;">
-                <!-- Link para o relatório de sustentabilidade -->
                 <a href="/docs/informe-sostenibilidad-multiagro.pdf" target="_blank" class="cta-btn green" data-lang-es="Conozca Más Sobre Nuestro Impacto" data-lang-en="Learn More About Our Impact" data-lang-pt="Saiba Mais Sobre Nosso Impacto">
-                   Conozca Más Sobre Nuestro Impacto
+                    Conozca Más Sobre Nuestro Impacto
                 </a>
             </p>
         </section>
 
-        <!-- Contacto -->
         <section id="contacto">
             
-            <!-- Título e introdução da seção de Contato -->
             <h2 data-lang-es="Contacto" data-lang-en="Contact Us" data-lang-pt="Contato">Contacto</h2>
             <p class="section-intro"
                data-lang-es="Estamos a su disposición para consultas sobre nuestros productos, oportunidades de inversión o cualquier otra información."
                data-lang-en="We are available for inquiries about our products, investment opportunities, or any other information."
                data-lang-pt="Estamos à sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.">
-               Estamos a sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.
-                        </p>
-            <!-- Formulário de contato com campos internacionalizados -->
+                Estamos a sua disposição para consultas sobre nossos produtos, oportunidades de investimento ou qualquer outra informação.
+            </p>
+            <p class="section-intro"
+               data-lang-es="Si usted está interesado en comprar nuestros productos, representar nuestra marca en su región o incluso ofrecer sus granos para evaluación, no dude en escribirnos. Nuestro equipo responderá con agilidad y compromiso."
+               data-lang-en="If you are interested in buying our products, representing our brand in your region, or even offering your grains for evaluation, do not hesitate to write to us. Our team will respond with agility and commitment."
+               data-lang-pt="Se você está interessado em comprar nossos produtos, representar nossa marca em sua região ou até mesmo oferecer seus grãos para avaliação, não hesite em nos escrever. Nossa equipe responderá com agilidade e compromisso.">
+                Si usted está interesado en comprar nuestros productos, representar nuestra marca en su región o incluso ofrecer sus granos para evaluación, no dude en escribirnos. Nuestro equipo responderá con agilidad y compromiso.
+            </p>
             <form id="contactForm">
             
                 <label for="nombre" data-lang-es="Nombre Completo" data-lang-en="Full Name" data-lang-pt="Nome Completo">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" 
-                       data-placeholder-es="Su nombre" data-placeholder-en="Your name" data-placeholder-pt="Seu nome" placeholder="Su nombre" required>
+                        data-placeholder-es="Su nombre" data-placeholder-en="Your name" data-placeholder-pt="Seu nome" placeholder="Su nombre" required>
                 
                 <label for="email" data-lang-es="Correo Electrónico" data-lang-en="Email" data-lang-pt="E-mail">Correo Electrónico</label>
                 <input type="email" id="email" name="email" 
-                       data-placeholder-es="suemail@ejemplo.com" data-placeholder-en="youremail@example.com" data-placeholder-pt="seuemail@exemplo.com" placeholder="suemail@ejemplo.com" required>
+                        data-placeholder-es="suemail@ejemplo.com" data-placeholder-en="youremail@example.com" data-placeholder-pt="seuemail@exemplo.com" placeholder="suemail@ejemplo.com" required>
 
                 <label for="asunto" data-lang-es="Asunto" data-lang-en="Subject" data-lang-pt="Assunto">Asunto</label>
                 <input type="text" id="asunto" name="asunto" 
-                       data-placeholder-es="Ej: Consulta sobre Chía" data-placeholder-en="E.g.: Inquiry about Chia" data-placeholder-pt="Ex: Consulta sobre Chia" placeholder="Ej: Consulta sobre Chía" required>
+                        data-placeholder-es="Ej: Consulta sobre Chía" data-placeholder-en="E.g.: Inquiry about Chia" data-placeholder-pt="Ex: Consulta sobre Chia" placeholder="Ej: Consulta sobre Chía" required>
                 
                 <label for="mensaje" data-lang-es="Mensaje" data-lang-en="Message" data-lang-pt="Mensagem">Mensaje</label>
                 <textarea id="mensaje" name="mensagem" rows="5" 
-                          data-placeholder-es="Escriba su mensaje aquí..." data-placeholder-en="Write your message here..." data-placeholder-pt="Escreva sua mensagem aqui..." placeholder="Escriba su mensagem aqui..." required></textarea>
+                              data-placeholder-es="Escriba su mensaje aquí..." data-placeholder-en="Write your message here..." data-placeholder-pt="Escreva sua mensagem aqui..." placeholder="Escriba su mensagem aqui..." required></textarea>
                 
                 <button type="submit" class="cta-btn" data-lang-es="Enviar Mensaje" data-lang-en="Send Message" data-lang-pt="Enviar Mensagem">Enviar Mensaje</button>
             </form>
             
-            <!-- Mapa Google Maps: Guajayvi, San Pedro, Paraguay -->
-            <!-- Iframe do Google Maps para exibir a localização -->
-             
-    <div style="width:100%;max-width:600px;margin:2rem auto 1.5rem auto;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+            <div style="width:100%;max-width:600px;margin:2rem auto 1.5rem auto;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.688126084151!2d-56.38608452462319!3d-24.99369997783038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945c5a0115555555%3A0x1c353518c8868695!2sMultiagro%20S.A.E.!5e0!3m2!1sen!2sbr!4v1721326848139!5m2!1sen!2sbr"
             width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -625,7 +544,6 @@
             
     </div>
 
-    <!-- Informações de contato adicionais -->
     <div class="contact-info">
  
         <div class="contact-info-overlay-content">
@@ -634,7 +552,6 @@
             <p><strong data-lang-es="Teléfono:" data-lang-en="Phone:" data-lang-pt="Telefone:">Teléfono:</strong> +595 XXX XXX XXX (Paraguay)</p>
             <p><strong data-lang-es="Dirección:" data-lang-en="Address:" data-lang-pt="Endereço:">Dirección:</strong> Guajayvi, Departamento de San Pedro, Paraguay</p>
             
-            <!-- Links de Redes Sociais -->
             <div class="social-media-links">
                 <p><strong data-lang-es="Síganos en nuestras redes:" data-lang-en="Follow us on our networks:" data-lang-pt="Siga-nos em nossas redes:">Síganos en nuestras redes:</strong></p>
                 <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro">
@@ -653,14 +570,11 @@
     </main>
 
     <footer>
-        <!-- Conteúdo do rodapé: informações da empresa, direitos autorais, links úteis -->
         <p data-lang-es="Multiagro S.A.E. | RUC: 80050297-3" data-lang-en="Multiagro S.A.E. | Tax ID: 80050297-3" data-lang-pt="Multiagro S.A.E. | CNPJ/RUC: 80050297-3">Multiagro S.A.E. | RUC: 80050297-3</p>
         <p><span data-lang-es="Sede: Guajayvi, San Pedro, Paraguay" data-lang-en="Headquarters: Guajayvi, San Pedro, Paraguay" data-lang-pt="Sede: Guajayvi, San Pedro, Paraguai">Sede: Guajayvi, San Pedro, Paraguay</span> | © <span id="currentYear"></span> Multiagro S.A.E. <span data-lang-es="Todos los derechos reservados." data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">Todos los derechos reservados.</span></p>
         <div class="footer-links">
 
-            <!-- Ícones de Redes Sociais no Rodapé -->
-            <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro" style="margin-left: 1.5rem;"> <!-- Margem para separar dos links de texto -->
-                <i class="fab fa-linkedin"></i>
+            <a href="https://www.linkedin.com/company/multiagro-paraguay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Multiagro" style="margin-left: 1.5rem;"> <i class="fab fa-linkedin"></i>
             </a>
             <a href="https://www.facebook.com/multiagroparaguay" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Multiagro">
                 <i class="fab fa-facebook-square"></i>
@@ -671,28 +585,9 @@
         </div>
     </footer>
 
-    <!-- Chatbot Widget HTML -->
-    <div id="chat-widget-container">
-        <button id="chat-toggle-button" aria-label="Abrir chat">
-            <span class="chat-icon">💬</span>
-            <span class="chat-close-icon" style="display:none;">✕</span>
-        </button>
-        <div id="chat-window" style="display:none;">
-            <div id="chat-header">
-                Chat Multiagro
-                <button id="chat-close-window-button" aria-label="Fechar chat">✕</button>
-            </div>
-            <div id="chat-messages"></div>
-            <div id="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Digite sua dúvida...">
-                <button id="chat-send-button" data-lang-es="Enviar" data-lang-en="Send" data-lang-pt="Enviar">Enviar</button>
-                <button id="chat-show-predefined-button" style="display:none; margin-left: 5px; padding: 10px 15px; background-color: var(--lilas-claro); color: var(--lilas-escuro); border: 1px solid var(--lilas-principal); border-radius: 20px; cursor: pointer; font-size: 13px;" data-lang-es="Preguntas Principales" data-lang-en="Main Questions" data-lang-pt="Perguntas Principais">Perguntas Principais</button>
-            </div>
-        </div>
-    </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-       crossorigin=""></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Seletores de elementos do DOM
@@ -806,12 +701,6 @@
                 const pageTitleData = document.querySelector('head title');
                 if (pageTitleData) {
                     const titleText = pageTitleData.getAttribute(`data-lang-${lang}`);
-                    // Update chat button texts based on language
-                    const chatSendBtn = document.getElementById('chat-send-button');
-                    const chatShowPredefinedBtn = document.getElementById('chat-show-predefined-button');
-                    if(chatSendBtn) chatSendBtn.textContent = chatSendBtn.getAttribute(`data-lang-${lang}`) || chatSendBtn.textContent;
-                    if(chatShowPredefinedBtn) chatShowPredefinedBtn.textContent = chatShowPredefinedBtn.getAttribute(`data-lang-${lang}`) || chatShowPredefinedBtn.textContent;
-                // Note: i18n for inline action buttons will be handled when they are created.
                     if (titleText) document.title = titleText;
                 }
 
@@ -827,7 +716,7 @@
                         }
                     }
                 });
-                 // Atualiza os placeholders de inputs e textareas
+                   // Atualiza os placeholders de inputs e textareas
                 document.querySelectorAll('input[data-placeholder-es], textarea[data-placeholder-es]').forEach(el => {
                     const placeholderText = el.getAttribute(`data-placeholder-${lang}`);
                     if (placeholderText) {
@@ -846,7 +735,7 @@
                     const ariaLabelText = el.getAttribute(`data-aria-${lang}`);
                     if (ariaLabelText) el.setAttribute('aria-label', ariaLabelText);
                 });
-                 // Atualiza os atributos 'title' (ex: para iframes)
+                   // Atualiza os atributos 'title' (ex: para iframes)
                 document.querySelectorAll('[data-title-es]').forEach(el => {
                     const titleText = el.getAttribute(`data-title-${lang}`);
                     if (titleText) el.setAttribute('title', titleText);
@@ -964,7 +853,7 @@
                 // Inicializa o mapa sem setView, pois fitBounds cuidará disso
                 mapInstance = L.map('mapid'); 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(mapInstance);
 
                 const countries = [
@@ -1115,294 +1004,6 @@
             // Correção: A função loadInitialViewRevised já foi definida e modificada anteriormente.
             // A segunda definição de loadInitialViewRevised foi removida.
         });
-        
-        // Simulated Chatbot Logic
-        const chatToggleButton = document.getElementById('chat-toggle-button');
-        const chatWindow = document.getElementById('chat-window');
-        const chatMessagesContainer = document.getElementById('chat-messages');
-        const chatInput = document.getElementById('chat-input');
-        const chatSendButton = document.getElementById('chat-send-button');
-        const chatCloseWindowButton = document.getElementById('chat-close-window-button');
-        const chatIcon = chatToggleButton.querySelector('.chat-icon');
-        const chatCloseIcon = chatToggleButton.querySelector('.chat-close-icon');
-        const chatShowPredefinedButton = document.getElementById('chat-show-predefined-button');
-
-        let isChatOpen = false; // Inicia como falso, será aberto programaticamente
-
-        const predefinedQAs = [
-            {
-                id: 'products_overview',
-                questionText: "Quais são seus principais produtos?",
-                botResponse: "Nossas principais linhas são: \n1. Beneficiamento de Grãos: Chía, Feijão Mungo, Gergelim, Sorgo, Milho e Soja. \n2. Alimentos Don Luís: Café, Açúcar e Cereais selecionados. \n3. Nutrição Animal (em breve!). \nVeja detalhes na seção 'Productos'."
-            },
-            {
-                id: 'contact_info',
-                questionText: "Como posso entrar em contato?",
-                botResponse: "Para contato geral, use o formulário na seção 'Contacto' ou o e-mail info@multiagro.com.py. Para investidores, o e-mail é invest@multiagro.com.py. Nosso telefone é +595 XXX XXX XXX e estamos em Guajayvi, San Pedro, Paraguai."
-            },
-            {
-                id: 'about_multiagro',
-                questionText: "Conte-me mais sobre a Multiagro.",
-                botResponse: "A Multiagro, desde 2004 em Guajayvi, Paraguai, é especialista no beneficiamento, comercialização e exportação de grãos, com foco em superalimentos e produtos orgânicos. Nossa missão é conectar a produção paraguaia ao mundo com qualidade e inovação. Mais em 'Nosotros'."
-            },
-            {
-                id: 'investor_info',
-                questionText: "Informações para Investidores?",
-                botResponse: "A Multiagro S.A.E. está listada na Bolsa de Valores de Asunción (BVPASA). Na seção 'Inversionistas', você encontra nosso foco estratégico, relatórios, e informações sobre como participar do futuro da agroindústria paraguaia."
-            },
-            {
-                id: 'sustainability_info',
-                questionText: "Qual o compromisso com a sustentabilidade?",
-                botResponse: "A sustentabilidade é um pilar! Focamos no ambiental (boas práticas agrícolas), social (apoio a produtores de Guajayvi) e governança (ética e transparência). Detalhes na seção 'Sostenibilidad'."
-            },
-            {
-                id: 'export_markets',
-                questionText: "Vocês exportam para quais mercados?",
-                botResponse: "Sim, exportamos para diversos mercados globais, incluindo países da América Latina, e estamos em negociação com EUA, China e Europa. Veja nosso mapa de presença global no final da seção 'Nosotros'."
-            }
-        ];
-
-        function removePredefinedQuestions() {
-            const containerToRemove = document.getElementById('predefined-questions-container');
-            if (containerToRemove) {
-                containerToRemove.remove();
-                if (chatShowPredefinedButton && isChatOpen) {
-                    chatShowPredefinedButton.style.display = 'inline-block';
-                }
-            }
-        }
-
-        function toggleChatWindow() {
-            isChatOpen = !isChatOpen;
-            const currentSiteLang = localStorage.getItem('preferredLang') || 'es';
-            const openChatLabel = currentSiteLang === 'pt' ? 'Fechar chat' : (currentSiteLang === 'en' ? 'Close chat' : 'Cerrar chat');
-            const closeChatLabel = currentSiteLang === 'pt' ? 'Abrir chat' : (currentSiteLang === 'en' ? 'Open chat' : 'Abrir chat');
-
-            if (isChatOpen) {
-                chatWindow.style.display = 'flex';
-                chatIcon.style.display = 'none';
-                chatCloseIcon.style.display = 'inline';
-                chatToggleButton.setAttribute('aria-label', openChatLabel);
-                if (chatMessagesContainer.children.length === 0) { 
-                    addBotMessage("Olá! 👋 Sou o assistente virtual da Multiagro. Como posso ajudar você hoje?", { addActionButtons: false });
-                    displayPredefinedQuestions();
-                } else {
-                    if (!document.getElementById('predefined-questions-container') && chatShowPredefinedButton) {
-                        chatShowPredefinedButton.style.display = 'inline-block';
-                    } else if (chatShowPredefinedButton) {
-                         chatShowPredefinedButton.style.display = 'none';
-                    }
-                }
-            } else {
-                chatWindow.style.display = 'none';
-                chatIcon.style.display = 'inline';
-                chatCloseIcon.style.display = 'none';
-                chatToggleButton.setAttribute('aria-label', closeChatLabel);
-                if (chatShowPredefinedButton) {
-                    chatShowPredefinedButton.style.display = 'none';
-                }
-            }
-        }
-
-        if (chatToggleButton) chatToggleButton.addEventListener('click', toggleChatWindow);
-        if (chatCloseWindowButton) chatCloseWindowButton.addEventListener('click', toggleChatWindow);
-
-        function getCurrentTime() {
-            return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        }
-
-        function removeBotActionButtons() {
-            const actionButtonContainers = chatMessagesContainer.querySelectorAll('.chat-action-buttons-container');
-            actionButtonContainers.forEach(container => container.remove());
-        }
-
-        function addMessageToChat(message, sender, options = {}) {
-            if (sender === 'bot') { // Only remove action buttons before adding a new bot message.
-                removeBotActionButtons();
-            }
-
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', sender);
-            
-            const messageText = document.createElement('span');
-            messageText.innerHTML = message; // Use innerHTML to allow line breaks like \n to be <br>
-            messageDiv.appendChild(messageText);
-            const timestampSpan = document.createElement('span');
-            timestampSpan.classList.add('timestamp');
-            timestampSpan.textContent = getCurrentTime();
-            messageDiv.appendChild(timestampSpan);
-            
-            chatMessagesContainer.appendChild(messageDiv);
-            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
-
-            // Add action buttons if it's a bot message and addActionButtons is true
-            if (sender === 'bot' && options.addActionButtons) {
-                const currentSiteLang = localStorage.getItem('preferredLang') || 'es';
-                const actionsContainer = document.createElement('div');
-                actionsContainer.classList.add('chat-action-buttons-container');
-
-                const backButton = document.createElement('button');
-                backButton.classList.add('chat-action-button');
-                backButton.setAttribute('data-lang-pt', "Voltar às perguntas principais");
-                backButton.setAttribute('data-lang-en', "Back to main questions");
-                backButton.setAttribute('data-lang-es', "Volver a preguntas principales");
-                backButton.textContent = backButton.getAttribute(`data-lang-${currentSiteLang}`) || backButton.getAttribute('data-lang-pt');
-                backButton.addEventListener('click', () => {
-                    let msg;
-                    if (currentSiteLang === 'pt') msg = "Certo! Retornando às perguntas principais:";
-                    else if (currentSiteLang === 'en') msg = "Okay! Returning to the main questions:";
-                    else msg = "¡Claro! Volviendo a las preguntas principales:";
-                    addBotMessage(msg, { addActionButtons: false });
-                    displayPredefinedQuestions();
-                });
-
-                const endButton = document.createElement('button');
-                endButton.classList.add('chat-action-button');
-                endButton.setAttribute('data-lang-pt', "Encerrar chat");
-                endButton.setAttribute('data-lang-en', "End chat");
-                endButton.setAttribute('data-lang-es', "Cerrar chat");
-                endButton.textContent = endButton.getAttribute(`data-lang-${currentSiteLang}`) || endButton.getAttribute('data-lang-pt');
-                endButton.addEventListener('click', () => {
-                    toggleChatWindow(); // This will also hide the chatShowPredefinedButton
-                });
-
-                actionsContainer.appendChild(backButton);
-                actionsContainer.appendChild(endButton);
-                messageDiv.appendChild(actionsContainer); // Append to the message div itself
-                chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
-            }
-        }
-
-
-        function addBotMessage(message, options = { addActionButtons: true }) {
-            // Replace \n with <br> for HTML display
-            const formattedMessage = message.replace(/\n/g, '<br>');
-            addMessageToChat(formattedMessage, 'bot', options);
-        }
-
-        function addUserMessage(message) {
-            const formattedMessage = message.replace(/\n/g, '<br>');
-            addMessageToChat(formattedMessage, 'user');
-        }
-
-        function displayPredefinedQuestions() {
-            // Remove qualquer conjunto anterior de perguntas para evitar duplicatas
-            removePredefinedQuestions();
-
-            const questionsContainer = document.createElement('div');
-            questionsContainer.id = 'predefined-questions-container';
-            questionsContainer.style.padding = '5px 0px 10px 0px'; // Ajuste no padding
-            questionsContainer.style.display = 'flex';
-            questionsContainer.style.flexDirection = 'column';
-            questionsContainer.style.gap = '8px';
-
-            predefinedQAs.forEach(qa => {
-                const button = document.createElement('button');
-                button.textContent = qa.questionText;
-                button.classList.add('predefined-question-button'); // Classe para estilização CSS
-
-                button.addEventListener('click', () => {
-                    addUserMessage(qa.questionText); 
-                    addBotMessage(qa.botResponse); // This will add action buttons by default
-                    removePredefinedQuestions(); // Remove os botões após um ser clicado
-                });
-                questionsContainer.appendChild(button);
-            });
-            // Adiciona o container de perguntas após a última mensagem (que deve ser a de boas-vindas do bot)
-            chatMessagesContainer.appendChild(questionsContainer);
-            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
-            if (chatShowPredefinedButton) chatShowPredefinedButton.style.display = 'none';
-        }
-
-        function getSimulatedBotResponse(userMessage) {
-            const lowerMessage = userMessage.toLowerCase();
-
-            // Check for direct matches with predefined questions first (more specific)
-            if (lowerMessage.includes("quais são seus principais produtos") || lowerMessage.includes("que produtos vocês têm")) {
-                return predefinedQAs.find(qa => qa.id === 'products_overview').botResponse;
-            }
-            if (lowerMessage.includes("como posso entrar em contato") || lowerMessage.includes("fale com vocês")) {
-                return predefinedQAs.find(qa => qa.id === 'contact_info').botResponse;
-            }
-            if (lowerMessage.includes("conte-me mais sobre a multiagro") || lowerMessage.includes("quem é a multiagro")) {
-                return predefinedQAs.find(qa => qa.id === 'about_multiagro').botResponse;
-            }
-            if (lowerMessage.includes("informações para investidores") || lowerMessage.includes("quero investir")) {
-                return predefinedQAs.find(qa => qa.id === 'investor_info').botResponse;
-            }
-            if (lowerMessage.includes("compromisso com a sustentabilidade") || lowerMessage.includes("sustentabilidade na multiagro")) {
-                return predefinedQAs.find(qa => qa.id === 'sustainability_info').botResponse;
-            }
-            if (lowerMessage.includes("exportam para quais mercados") || lowerMessage.includes("para onde exportam")) {
-                return predefinedQAs.find(qa => qa.id === 'export_markets').botResponse;
-            }
-
-            // General keyword matching
-            if (lowerMessage.includes("olá") || lowerMessage.includes("oi") || lowerMessage.includes("bom dia") || lowerMessage.includes("boa tarde") || lowerMessage.includes("boa noite")) {
-                return "Olá! 👋 Sou o assistente virtual da Multiagro. Como posso ajudar? Você pode perguntar sobre nossos produtos, contato, ou usar o botão 'Perguntas Principais'.";
-            } else if (lowerMessage.includes("produto") || lowerMessage.includes("grão") || lowerMessage.includes("vendem") || lowerMessage.includes("chia") || lowerMessage.includes("mungo") || lowerMessage.includes("gergelim") || lowerMessage.includes("sésamo") || lowerMessage.includes("sorgo") || lowerMessage.includes("milho") || lowerMessage.includes("maíz") || lowerMessage.includes("soja") || lowerMessage.includes("café") || lowerMessage.includes("açúcar") || lowerMessage.includes("cereal") || lowerMessage.includes("ração")) {
-                return "Falando em produtos, oferecemos Chía, Feijão Mungo, Gergelim, Sorgo, Milho, Soja, e a linha Don Luís (Café, Açúcar, Cereais). Em breve, teremos Nutrição Animal! Mais detalhes na seção 'Productos'. O que gostaria de saber especificamente?";
-            } else if (lowerMessage.includes("contato") || lowerMessage.includes("falar com") || lowerMessage.includes("telefone") || lowerMessage.includes("email") || lowerMessage.includes("endereço")) {
-                return "Para contato: e-mail info@multiagro.com.py (geral) ou invest@multiagro.com.py (investidores), telefone +595 XXX XXX XXX. Estamos em Guajayvi, San Pedro, Paraguai. Veja mais na seção 'Contacto'.";
-            } else if (lowerMessage.includes("obrigado") || lowerMessage.includes("valeu") || lowerMessage.includes("grato")) {
-                return "De nada! Se precisar de mais alguma coisa, é só perguntar ou clique em 'Perguntas Principais'. 😊";
-            } else if (lowerMessage.includes("história") || lowerMessage.includes("sobre") || lowerMessage.includes("quem são")) {
-                return "A Multiagro, desde 2004, atua em Guajayvi, Paraguai, focada em grãos de qualidade e superalimentos para o mercado nacional e internacional. Conheça nossa missão, visão e valores na seção 'Nosotros'.";
-            } else if (lowerMessage.includes("investidor") || lowerMessage.includes("investir") || lowerMessage.includes("ações") || lowerMessage.includes("bolsa") || lowerMessage.includes("bvpasa")) {
-                return "Para investidores: A Multiagro S.A.E. é listada na BVPASA. Detalhes sobre oportunidades, nosso foco estratégico e relatórios estão na seção 'Inversionistas'.";
-            } else if (lowerMessage.includes("sustentabilidade") || lowerMessage.includes("meio ambiente") || lowerMessage.includes("social") || lowerMessage.includes("governança")) {
-                return "Nosso compromisso com a sustentabilidade envolve práticas ambientais responsáveis, apoio à comunidade de Guajayvi e governança transparente. Saiba mais na seção 'Sostenibilidad'.";
-            } else if (lowerMessage.includes("localização") || lowerMessage.includes("onde fica")) {
-                return "Nossa sede e planta de processamento estão em Guajayvi, Departamento de San Pedro, Paraguai. Há um mapa na seção 'Contacto'.";
-            } else if (lowerMessage.includes("exportação") || lowerMessage.includes("exportam") || lowerMessage.includes("mercados") || lowerMessage.includes("países")) {
-                return "Sim, exportamos para diversos países! Conectamos a produção paraguaia com o mundo. Veja nosso mapa de presença global no final da seção 'Nosotros'.";
-            } else if (lowerMessage.includes("don luis")) {
-                return "A linha Don Luís oferece produtos selecionados como Café, Açúcar e Cereais, levando o melhor do campo para sua mesa. Veja mais na seção 'Productos'.";
-            } else if (lowerMessage.includes("orgânico") || lowerMessage.includes("organicos")) {
-                return "Sim, temos ampla experiência na comercialização de produtos orgânicos, oferecendo linhas certificadas além dos tradicionais. Consulte-nos para mais detalhes sobre a disponibilidade atual.";
-            } else {
-                return "Desculpe, não entendi bem. Poderia reformular? Você também pode clicar em 'Perguntas Principais' para ver os tópicos que posso ajudar.";
-            }
-        }
-
-        function handleSendMessage() {
-            const message = chatInput.value.trim();
-            if (message) {
-                addUserMessage(message);
-                removePredefinedQuestions(); // Remove botões de pergunta se o usuário digitar algo
-                chatInput.value = ''; 
-
-                setTimeout(() => {
-                    const botResponse = getSimulatedBotResponse(message);
-                    addBotMessage(botResponse);
-                }, 1000 + Math.random() * 1000);
-            }
-        }
-
-        if (chatShowPredefinedButton) {
-            chatShowPredefinedButton.addEventListener('click', () => {
-                const currentSiteLang = localStorage.getItem('preferredLang') || 'es';
-                let messageText = "Certo! Aqui estão as principais perguntas que posso ajudar a responder:";
-                if (currentSiteLang === 'en') messageText = "Okay! Here are the main questions I can help answer:";
-                else if (currentSiteLang === 'es') messageText = "¡Claro! Aquí están las principales preguntas que puedo ayudar a responder:";
-                
-                addBotMessage(messageText, { addActionButtons: false });
-                displayPredefinedQuestions();
-                // chatShowPredefinedButton.style.display = 'none'; // Already handled by displayPredefinedQuestions
-            });
-        }
-
-        if (chatSendButton) chatSendButton.addEventListener('click', handleSendMessage);
-        if (chatInput) chatInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                handleSendMessage();
-            }
-        });
-
-        // Auto-open chat window on page load (Commented out by default)
-        // if (chatToggleButton && chatWindow) {
-        //     toggleChatWindow(); // Uncomment to auto-open chat
-        // }
     </script>
 </body>
 </html>

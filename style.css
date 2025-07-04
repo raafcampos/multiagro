@@ -1,4 +1,4 @@
-        :root {
+:root {
             /* Verde um pouco mais escuro */
             --verde-principal: hsl(140, 40%, 28%); /* Ajustado para mais escuro */
             --verde-escuro: hsl(140, 40%, 35%);   /* Ajustado para mais escuro */
@@ -256,14 +256,7 @@
             display: none !important;
         }
         .hero-carousel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0; /* Atrás do hero-content-overlay */
-            border-radius: 12px;
+            position: relative; /* importante para overlay absoluto */
         }
         /* Container dos slides do carrossel */
         .carousel-slides {
@@ -274,17 +267,18 @@
         /* Estilo individual de cada slide */
         .carousel-slide {
             min-width: 100%;
-            flex-shrink: 0;
+            flex-shrink: 1 ;
             height: 100%;
             position: relative; /* Para o overlay */
         }
         .carousel-slide img,
         .carousel-slide video {
             width: 100%;
-            height: 100%;
-            object-fit:cover; /* Ensures the entire image is visible, scaled down to fit */
-            display: block;
-            background-color: var(--cinza-muito-escuro); /* Fills empty space if aspect ratios differ */
+            height: auto;
+            object-fit: contain;      /* Garante que a imagem/vídeo fique centralizado e sem cortes */
+    object-position: center;  /* Centraliza o conteúdo */
+    display: block;
+    background-color: var(--cinza-muito-escuro); /* Preenche as bordas com cor neutra */
         }
         .carousel-slide::after { /* Overlay para contraste do texto */
             content: '';
@@ -328,18 +322,15 @@
 
         /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
         .hero-content-overlay {
-            position: absolute; /* Alterado para absoluto para sobrepor cada slide */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%; /* Ocupa toda a altura do slide pai */
-            z-index: 2; /* Acima do overlay ::after do slide, abaixo dos botões de navegação do carrossel */
-            padding: 2rem; /* Padding geral para o conteúdo de texto */
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Centraliza o conteúdo verticalmente */
-            box-sizing: border-box;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none; /* permite clicar nos botões do carrossel se necessário */
         }
         /* Garante que o conteúdo da hero section esteja visível quando a seção está visível */
         .hero-section.visible .hero-content-overlay {
