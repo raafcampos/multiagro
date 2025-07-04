@@ -329,7 +329,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-bottom: 2 rem; /* Espaço entre o texto e o carrossel */
+            margin-bottom: 2rem; /* Espaço entre o texto e o carrossel */
             pointer-events: auto;
             background: rgba(0, 66, 14, 0.682); /* Fundo escuro semi-transparente */
             color: #fff;                        /* Letras brancas */
@@ -337,7 +337,7 @@
             padding: 2.5rem 2rem 2rem 2rem;
             box-shadow: 0 6px 32px 0 rgba(0,0,0,0.25);
             margin-bottom: 2rem;
-            max-width: 700px;
+            max-width: 1150px;
             margin-left: auto;
             margin-right: auto;
         }
