@@ -256,7 +256,7 @@
             display: none !important;
         }
         .hero-carousel {
-            position: relative; /* importante para overlay absoluto */
+            position: relative;
         }
         /* Container dos slides do carrossel */
         .carousel-slides {
