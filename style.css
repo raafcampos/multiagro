@@ -1,5 +1,3 @@
-    <style>
-        /* Definição de variáveis CSS (Custom Properties) para o tema do site */
         :root {
             /* Verde um pouco mais escuro */
             --verde-principal: hsl(140, 40%, 28%); /* Ajustado para mais escuro */
@@ -280,7 +278,8 @@
             height: 100%;
             position: relative; /* Para o overlay */
         }
-        .carousel-slide img {
+        .carousel-slide img,
+        .carousel-slide video {
             width: 100%;
             height: 100%;
             object-fit:cover; /* Ensures the entire image is visible, scaled down to fit */
@@ -716,9 +715,35 @@
         .contact-info {
             margin-top: 2rem;
             padding: 1.5rem;
-            background-color: var(--lilas-claro);
+            background-color: var(--lilas-claro); /* Cor de fallback ou base */
             border-radius: 8px;
             text-align: center;
+            position: relative; /* Para posicionar o vídeo de fundo */
+            overflow: hidden; /* Para cortar o vídeo nos cantos arredondados */
+        }
+        .contact-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Atrás do conteúdo */
+        }
+        .contact-video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25; /* Ajuste a transparência aqui (0.0 a 1.0) */
+        }
+        .contact-info-overlay-content {
+            position: relative;
+            z-index: 1; /* Acima do vídeo */
+        }
+        /* Ajuste opcional de cor para melhor contraste sobre o vídeo */
+        .contact-info-overlay-content p,
+        .contact-info-overlay-content strong,
+        .contact-info-overlay-content a {
+            /* color: var(--preto-azulado); /* Exemplo se o vídeo for muito claro */
         }
         .contact-info strong {
             color: var(--lilas-escuro);
@@ -985,9 +1010,7 @@
             .hero-section h1 { font-size: 1.8rem; }
             .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; } 
         } 
-    </style>
-    <!-- Estilos Adicionais para Botões de Perguntas Pré-definidas no Chat -->
-    <style>
+
         .predefined-question-button {
             background-color: var(--lilas-claro);
             color: var(--lilas-escuro);
@@ -1004,8 +1027,7 @@
         .predefined-question-button:hover {
             background-color: hsl(270, 60%, 90%);
         }
-    </style>
-    <style>
+
         /* Chat Widget Styles */
         #chat-widget-container {
             position: fixed;
@@ -1171,4 +1193,3 @@
         .chat-action-button:hover {
             background-color: hsl(270, 60%, 85%);
         }
-    </style>
