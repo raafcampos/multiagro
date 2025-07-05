@@ -1,24 +1,23 @@
 :root {
     /* Verde folha - remete à agricultura, sustentabilidade e saúde. */
-    --verde-principal: #4CAF50;   /* Verde mais vibrante e forte */
-    --verde-escuro: #388E3C;      /* Tom mais escuro para contraste */
-    --verde-medio: #8BC34A;       /* Um verde intermediário, mais quente */
-    --verde-claro: #DCEDC8;       /* Tom muito claro para fundos e bordas sutis */
+    --verde-principal: #5A8D3B; /* Verde folha */
+    --verde-escuro: hsl(92, 40%, 25%);   /* Tom um pouco mais escuro para contraste */
+    --verde-claro: hsl(92, 60%, 88%);   /* Tom mais claro para fundos e bordas */
     
     /* Lilás suave - transmite inovação, delicadeza e diferenciação no setor. */
-    --lilas-principal: #B39DDB;   /* Lilás suave, um pouco mais pastel */
-    --lilas-escuro: #7E57C2;      /* Tom mais escuro de lilás, usado com moderação */
-    --lilas-claro: #F3E5F5;       /* Tom muito claro de lilás, quase branco, para suavidade */
+    --lilas-principal: #A58AC3; /* Lilás suave */
+    --lilas-escuro: hsl(270, 30%, 45%); /* Tom mais escuro para títulos e textos de destaque */
+    --lilas-claro: hsl(270, 60%, 95%); /* Tom muito claro para fundos */
     
     /* Cores complementares (neutras) */
-    --preto-azulado: #263238; /* Usado como cinza grafite principal */
-    --cinza-muito-escuro: #212121; /* Para seções de alto contraste, se necessário */
-    --cinza-texto: #424242;   /* Cinza grafite para textos */
-    --cinza-fundo: #F5F5F5;   /* Cinza claro para fundos gerais */
-    --branco: #FFFFFF;        /* Branco puro */
+    --preto-azulado: #333333; /* Usado como cinza grafite principal */
+    --cinza-muito-escuro: #1A1A1A; /* Para seções de alto contraste, se necessário */
+    --cinza-texto: #333333; /* Cinza grafite para textos */
+    --cinza-fundo: #F4F4F4; /* Cinza claro para fundos gerais */
+    --branco: #FFFFFF;     /* Branco puro */
     
-    --sombra: 0 8px 25px rgba(0,0,0,0.15); /* Sombra um pouco mais pronunciada */
-    --sombra-leve: 0 3px 12px rgba(0,0,0,0.08); /* Sombra leve */
+    --sombra: 0 5px 15px rgba(0,0,0,0.1);
+    --sombra-leve: 0 2px 8px rgba(0,0,0,0.07);
 
     --transicao-padrao: all 0.3s ease-in-out;
 }
@@ -43,8 +42,8 @@ body {
 }
 
 header {
-    /* Gradiente na barra de menu: predominância verde, toque sutil de lilás */
-    background: linear-gradient(to right, var(--verde-principal), var(--lilas-principal));
+    /* Gradiente na barra de menu */
+    background: linear-gradient(to right, var(--lilas-principal), var(--verde-principal));
     color: var(--branco);
     padding: 1rem 1.5rem;
     display: flex;
@@ -121,8 +120,8 @@ nav a {
 }
 
 nav a:hover, nav a.active {
-    color: var(--verde-claro); /* Foco no verde claro para navegação */
-    border-bottom-color: var(--verde-claro);
+    color: var(--lilas-claro);
+    border-bottom-color: var(--lilas-claro); /* Mantido lilás claro para contraste com o gradiente */
 }
 
 .language-switcher {
@@ -132,7 +131,7 @@ nav a:hover, nav a.active {
 
 .language-switcher button {
     background: none;
-    border: 1px solid var(--verde-claro);
+    border: 1px solid var(--lilas-claro);
     color: var(--branco);
     padding: 0.3rem 0.6rem;
     border-radius: 15px;
@@ -144,14 +143,14 @@ nav a:hover, nav a.active {
 }
 
 .language-switcher button:hover, .language-switcher button.active-lang {
-    background-color: var(--verde-escuro); /* Mais verde no hover */
+    background-color: var(--lilas-escuro); /* Gradiente já no header, então um sólido aqui */
     color: var(--branco);
-    border-color: var(--verde-escuro);
+    border-color: var(--lilas-escuro);
 }
 
 nav a.nav-link-investor {
-    background-image: linear-gradient(to bottom, var(--cinza-muito-escuro), #1A1A1A);
-    color: var(--verde-claro); /* Botão investidor com texto verde claro */
+    background-image: linear-gradient(to bottom, var(--cinza-muito-escuro), #101010);
+    color: var(--lilas-claro);
     padding: 0.6rem 1.2rem;
     border-radius: 25px;
     border-bottom: none;
@@ -162,7 +161,7 @@ nav a.nav-link-investor {
 
 nav a.nav-link-investor:hover,
 nav a.nav-link-investor.active {
-    background-image: linear-gradient(to bottom, var(--preto-azulado), var(--cinza-muito-escuro)); /* Manter tons de cinza/preto no hover */
+    background-image: linear-gradient(to bottom, hsl(0, 0%, 20%), hsl(0, 0%, 10%));
     color: var(--branco);
     box-shadow: 0 2px 5px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.1);
     border-bottom: none;
@@ -206,54 +205,11 @@ nav a.nav-link-investor.active {
         min-width: 0;
     }
 }
-
-/* --- Estilos para o Carrossel de Fundo --- */
-.site-background-carousel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Ocupa a tela inteira */
-    z-index: -1; /* Coloca atrás de todo o conteúdo */
-    overflow: hidden;
-}
-
-.site-background-carousel .carousel-slides {
-    display: flex;
-    width: 100%;
-    height: auto;
-    transition: transform 1s ease-in-out;
-}
-
-.site-background-carousel .carousel-slide {
-    min-width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cobre todo o espaço, cortando se necessário */
-}
-
-.site-background-carousel .carousel-slide video {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Cobre todo o espaço, cortando se necessário */
-}
-
-/* Overlay escuro para melhorar o contraste do texto sobre o fundo */
-.site-background-carousel::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.517);
-    z-index: 0;
-}
-
 main {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: rgb(246, 246, 246); /* Fundo branco com transparência */
+    background-color: var(--branco);
     border-radius: 12px;
     box-shadow: var(--sombra);
 }
@@ -268,7 +224,7 @@ main section.visible {
 
 section {
     padding: 2.5rem 0;
-    border-bottom: 1px solid var(--verde-claro); /* Borda em verde claro */
+    border-bottom: 1px solid var(--verde-claro);
 }
 section:last-of-type {
     border-bottom: none;
@@ -284,7 +240,7 @@ section:last-of-type {
     justify-content: flex-start;
     position: relative;
     min-height: 200px;
-    background-color: transparent; /* Fundo transparente para revelar o carousel principal */
+    background-color: var(--branco);
 }
 
 .hero-main-content-area {
@@ -295,7 +251,6 @@ section:last-of-type {
     overflow: hidden;
     height: 0;
     padding-bottom: 100%;
-    display: none; /* Este elemento não é mais necessário, ocultado */
 }
 
 .hero-section.visible {
@@ -306,21 +261,82 @@ section:last-of-type {
     display: none !important;
 }
 
-/* Carousel de slides de fundo (ajustado para o global) */
-/* As regras para .hero-carousel, .carousel-slides, etc. dentro do .hero-section
-   são agora redundantes se o carrossel de fundo for global.
-   Mantenho os estilos mais gerais para .carousel-slides e .carousel-slide
-   já definidos para o .site-background-carousel. */
+/* Contêiner para o vídeo/imagens de fundo que vai ocupar todo o espaço da hero section */
+.hero-background-carousel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* Coloca o carrossel no fundo */
+}
 
-.carousel-slide::after { /* Overlay para contraste do texto - mantido para slides */
+/* Carousel de slides de fundo */
+.hero-carousel {
+    position: absolute; /* Posicionamento absoluto dentro do seu contêiner */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Garante que os slides não transbordem */
+}
+
+/* Container dos slides do carrossel */
+.carousel-slides {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Ocupa 100% da altura do hero-carousel */
+    transition: transform 0.7s ease-in-out;
+}
+
+/* Estilo individual de cada slide */
+.carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0; /* Impede que os slides encolham */
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide img,
+.carousel-slide video {
+    width: 100%;
+    height: 100%; /* Ocupa 100% da altura do slide */
+    object-fit: cover; /* Faz o conteúdo cobrir todo o espaço, cortando se necessário */
+    object-position: center;
+    display: block;
+    background-color: var(--cinza-muito-escuro);
+}
+
+.carousel-slide::after { /* Overlay para contraste do texto */
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 253, 253, 0.76); /* Overlay escuro para melhorar contraste do texto */
+    background: rgba(0, 0, 0, 0.45); /* Overlay escuro para melhorar contraste do texto */
     z-index: 1;
+}
+
+/* Botões de navegação do carrossel (anterior/próximo) */
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    z-index: 3; /* Acima do overlay */
+}
+.carousel-prev { left: 20px; }
+.carousel-next { right: 20px; }
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .slide-product-caption {
@@ -343,6 +359,7 @@ section:last-of-type {
 }
 
 /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
+
 .hero-content-overlay {
     position: relative;
     z-index: 2;
@@ -351,14 +368,14 @@ section:last-of-type {
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-bottom: 2rem;
     pointer-events: auto;
-    background: rgba(76, 175, 80, 0.9); /* Verde principal com mais opacidade */
-    color: var(--branco);
+    background: rgba(90, 141, 59, 0.85); /* Verde principal com transparência */
+    color: #fff;
     border-radius: 18px;
     padding: 2.5rem 2rem 2rem 2rem;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 32px 0 rgba(0,0,0,0.25);
     margin-bottom: 2rem;
-    min-width: 1150px;
     max-width: 1150px;
     margin-left: auto;
     margin-right: auto;
@@ -397,14 +414,14 @@ section:last-of-type {
 
 .hero-section .cta-btn {
     background-color: var(--branco);
-    color: var(--verde-principal); /* Botão em branco com texto verde */
+    color: var(--verde-principal);
     font-weight: 600;
     position: relative;
     z-index: 2;
 }
 .hero-section .cta-btn:hover {
     background-color: var(--verde-claro);
-    color: var(--verde-escuro); /* No hover, verde claro com texto verde escuro */
+    color: var(--lilas-escuro);
 }
 
 .product-cards-container {
@@ -416,13 +433,13 @@ section:last-of-type {
 }
 
 .product-card {
-    /* Gradiente verde claro para lilás claro - Invertido e suavizado */
-    background: linear-gradient(to bottom right, var(--verde-claro), var(--lilas-claro));
+    /* Gradiente lilás para verde nos cards de produto */
+    background: linear-gradient(to bottom right, var(--lilas-claro), var(--verde-claro));
     border-radius: 10px;
     padding: 1.5rem;
     text-align: center;
     box-shadow: var(--sombra-leve);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -430,8 +447,8 @@ section:last-of-type {
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--sombra);
-    /* No hover, verde principal */
-    background: var(--verde-principal);
+    /* Um pequeno ajuste no gradiente ao hover para dar um efeito de "pressão" */
+    background: linear-gradient(to bottom right, var(--lilas-principal), var(--verde-principal));
     color: var(--branco); /* Texto branco no hover para melhor contraste */
 }
 
@@ -451,7 +468,7 @@ section:last-of-type {
 }
 
 .product-card h4 {
-    color: var(--verde-escuro); /* Títulos do card em verde escuro */
+    color: var(--lilas-escuro);
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
 }
@@ -471,12 +488,12 @@ section:last-of-type {
     width: 100%;
 }
 .product-thumbnail-nav .product-card.active-thumbnail {
-    border-color: var(--verde-principal); /* Borda em verde principal */
-    box-shadow: 0 0 12px rgba(76, 175, 80, 0.7); /* Sombra em verde principal */
+    border-color: var(--lilas-principal);
+    box-shadow: 0 0 12px rgba(165, 138, 195, 0.7);
     transform: scale(1.05);
 }
 .product-thumbnail-nav .product-card.active-thumbnail img {
-    border-color: var(--verde-principal);
+    border-color: var(--lilas-principal);
 }
 
 .map-legend {
@@ -487,7 +504,7 @@ section:last-of-type {
     gap: 1.5rem;
     margin-top: 1.25rem;
     padding: 0.75rem;
-    background-color: var(--verde-claro); /* Fundo da legenda em verde claro */
+    background-color: var(--lilas-claro);
     border-radius: 8px;
 }
 .legend-item {
@@ -512,8 +529,8 @@ section:last-of-type {
 }
 
 .stat-card {
-    /* Gradiente verde claro para branco (reduzindo lilás) */
-    background: linear-gradient(to top left, var(--verde-claro), var(--branco));
+    /* Gradiente verde para lilás nos cards de estatísticas */
+    background: linear-gradient(to top left, var(--verde-claro), var(--lilas-claro));
     border-radius: 10px;
     padding: 1.5rem;
     flex: 1 1 220px;
@@ -535,7 +552,7 @@ section:last-of-type {
 
 .cta-btn {
     display: inline-block;
-    background-color: var(--verde-principal); /* Botão de ação padrão em verde principal */
+    background-color: var(--lilas-principal);
     color: var(--branco);
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
@@ -549,7 +566,7 @@ section:last-of-type {
     cursor: pointer;
 }
 .cta-btn:hover {
-    background-color: var(--verde-escuro); /* Hover em verde escuro */
+    background-color: var(--lilas-escuro);
     transform: translateY(-2px);
     box-shadow: var(--sombra);
 }
@@ -564,7 +581,7 @@ section:last-of-type {
 h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--verde-escuro); /* Títulos H2 em verde escuro */
+    color: var(--verde-escuro);
     text-align: center;
     position: relative;
     padding-bottom: 0.5rem;
@@ -578,7 +595,7 @@ h2::after {
     transform: translateX(-50%);
     width: 60px;
     height: 4px;
-    background-color: var(--verde-principal); /* Linha divisória em verde principal */
+    background-color: var(--lilas-principal);
     border-radius: 2px;
 }
 
@@ -586,7 +603,7 @@ h3 {
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: var(--verde-escuro); /* Títulos H3 em verde escuro */
+    color: var(--lilas-escuro);
 }
 
 p.section-intro {
@@ -604,7 +621,7 @@ ul.custom-list {
 
 ul.custom-list li {
     padding: 0.7rem 0.5rem;
-    border-bottom: 1px dashed var(--verde-claro); /* Borda da lista em verde claro */
+    border-bottom: 1px dashed var(--verde-claro);
     display: flex;
     align-items: center;
 }
@@ -614,13 +631,13 @@ ul.custom-list li:last-child {
 }
 
 ul.custom-list a {
-    color: var(--verde-escuro); /* Links da lista em verde escuro */
+    color: var(--verde-escuro);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 ul.custom-list a:hover {
-    color: var(--verde-principal); /* Hover em verde principal */
+    color: var(--lilas-principal);
     text-decoration: underline;
 }
 
@@ -636,7 +653,7 @@ ul.custom-list a:hover {
 }
 .product-segment h3 {
     text-align: left;
-    color: var(--verde-escuro); /* Título do segmento em verde escuro */
+    color: var(--lilas-escuro);
     margin-bottom: 1rem;
     font-size: 1.6rem;
 }
@@ -648,7 +665,7 @@ ul.custom-list a:hover {
 .coming-soon-container {
     text-align: center;
     padding: 2rem;
-    background-color: var(--verde-claro); /* Fundo em verde claro */
+    background-color: var(--lilas-claro);
     border-radius: 10px;
 }
 .coming-soon-container img {
@@ -662,7 +679,7 @@ ul.custom-list a:hover {
 .coming-soon-text {
     font-size: 1.3rem;
     font-weight: 500;
-    color: var(--verde-escuro); /* Texto em verde escuro */
+    color: var(--lilas-escuro);
 }
 
 .video-background-container {
@@ -688,22 +705,22 @@ ul.custom-list a:hover {
 }
 .faq dt {
     font-weight: 600;
-    color: var(--verde-escuro); /* Perguntas do FAQ em verde escuro */
+    color: var(--lilas-escuro);
     margin-top: 1rem;
     cursor: pointer; 
     padding: 0.5rem;
-    background-color: var(--verde-claro); /* Fundo da pergunta em verde claro */
+    background-color: var(--lilas-claro);
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 .faq dt:hover {
-    background-color: hsl(92, 70%, 90%); /* Hover em tom de verde */
+    background-color: hsl(270, 60%, 90%);
 }
 .faq dd {
     margin-left: 0;
     padding: 0.8rem 1rem;
-    border-left: 3px solid var(--verde-medio); /* Borda em verde médio */
-    background-color: #F7FFF7; /* Fundo mais claro */
+    border-left: 3px solid var(--verde-claro);
+    background-color: #fdfcff;
     margin-bottom: 0.5rem;
 }
 
@@ -722,7 +739,7 @@ form label {
 form input, form textarea {
     margin-bottom: 1rem;
     padding: 0.8rem;
-    border: 1px solid var(--verde-claro); /* Borda em verde claro */
+    border: 1px solid #ccc;
     border-radius: 8px;
     font-family: inherit;
     font-size: 0.95rem;
@@ -730,8 +747,8 @@ form input, form textarea {
 }
 form input:focus, form textarea:focus {
     outline: none;
-    border-color: var(--verde-principal); /* Foco em verde principal */
-    box-shadow: 0 0 0 2px var(--verde-medio); /* Sombra em verde médio */
+    border-color: var(--lilas-principal);
+    box-shadow: 0 0 0 2px var(--lilas-claro);
 }
 form button { 
     align-self: flex-start;
@@ -740,8 +757,8 @@ form button {
 .contact-info {
     margin-top: 2rem;
     padding: 1.5rem;
-    /* Gradiente verde para lilás suave nas informações de contato */
-    background: linear-gradient(to top left, var(--verde-claro), var(--lilas-claro));
+    /* Gradiente lilás para verde nas informações de contato */
+    background: linear-gradient(to top left, var(--lilas-claro), var(--verde-claro));
     border-radius: 8px;
     text-align: center;
     position: relative;
@@ -774,8 +791,8 @@ form button {
 }
 
 .contact-column {
-    /* Gradiente verde claro para branco nas colunas de introdução de contato */
-    background: linear-gradient(to bottom right, var(--verde-claro), var(--branco));
+    /* Gradiente verde para lilás nas colunas de introdução de contato */
+    background: linear-gradient(to bottom right, var(--verde-claro), var(--lilas-claro));
     padding: 1.5rem;
     border-radius: 10px;
     border-left: 4px solid var(--verde-principal);
@@ -796,36 +813,36 @@ form button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    /* Gradiente verde claro para verde médio nos blocos de essência e valores */
-    background: linear-gradient(to bottom, var(--verde-claro), var(--verde-medio));
+    /* Gradiente lilás para verde nos blocos de essência e valores */
+    background: linear-gradient(to bottom, var(--lilas-claro), var(--verde-claro));
     padding: 2rem;
     border-radius: 12px;
     margin: 2.5rem 0;
     box-shadow: var(--sombra-leve);
-    border-left: 5px solid var(--verde-principal);
+    border-left: 5px solid var(--lilas-principal);
 }
 
 .essence-values-container h3 {
     margin-top: 0;
     text-align: left;
     padding-bottom: 0.8rem;
-    border-bottom: 2px solid var(--verde-principal); /* Borda em verde principal */
+    border-bottom: 2px solid var(--lilas-principal);
     margin-bottom: 1rem;
 }
 
 .essence-values-container .custom-list li {
-    border-bottom-color: hsl(92, 50%, 80%); /* Borda em tom de verde */
+    border-bottom-color: hsl(270, 50%, 80%);
     padding: 0.8rem 0;
 }
 
 .contact-info strong {
-    color: var(--verde-escuro); /* Texto em verde escuro */
+    color: var(--lilas-escuro);
 }
 .contact-info p {
     margin-bottom: 0.5rem;
 }
 .contact-info a {
-    color: var(--verde-escuro); /* Links em verde escuro */
+    color: var(--lilas-escuro);
     text-decoration: none;
 }
 .contact-info a:hover {
@@ -835,19 +852,19 @@ form button {
 .contact-info .social-media-links {
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--verde-principal); /* Borda em verde principal */
+    border-top: 1px solid var(--lilas-principal);
 }
 .contact-info .social-media-links p strong {
     display: block;
     margin-bottom: 0.75rem;
     font-size: 1.05rem;
-    color: var(--verde-escuro); /* Texto em verde escuro */
+    color: var(--lilas-escuro);
 }
 .contact-info .social-media-links a {
     display: inline-flex;
     align-items: center;
     margin: 0.3rem 0.8rem;
-    color: var(--verde-escuro); /* Ícones sociais em verde escuro */
+    color: var(--lilas-escuro);
     text-decoration: none;
     font-size: 0.95rem;
 }
@@ -858,7 +875,7 @@ form button {
 
 #inversionistas {
     background-color: var(--preto-azulado);
-    color: var(--lilas-claro); /* Mantido um lilás claro para contraste em fundo escuro, mas menos dominante */
+    color: var(--lilas-claro);
     border-radius: 10px;
     padding: 2.5rem;
     margin-bottom: 2.5rem;
@@ -869,7 +886,7 @@ form button {
     color: var(--branco);
 }
 #inversionistas h2::after {
-    background-color: var(--verde-principal); /* Linha em verde principal */
+    background-color: var(--lilas-claro);
 }
 
 #inversionistas p,
@@ -877,11 +894,11 @@ form button {
 #inversionistas .faq dt,
 #inversionistas .faq dd,
 #inversionistas p.section-intro {
-    color: hsl(0, 0%, 90%); /* Tons de cinza muito claro */
+    color: hsl(270, 30%, 85%);
 }
 
 #inversionistas ul.custom-list a {
-    color: var(--verde-claro); /* Links em verde claro */
+    color: var(--lilas-claro);
     font-weight: 500;
 }
 #inversionistas ul.custom-list a:hover {
@@ -890,21 +907,21 @@ form button {
 
 #inversionistas .faq dt {
     background-color: var(--cinza-muito-escuro);
-    color: var(--verde-claro); /* Fundo da pergunta em verde claro */
+    color: var(--lilas-claro);
 }
 #inversionistas .faq dt:hover {
-    background-color: hsl(0, 0%, 20%);
+    background-color: hsl(0, 0%, 15%);
 }
 #inversionistas .faq dd {
-    background-color: hsl(0, 0%, 25%);
-    border-left-color: var(--verde-claro); /* Borda em verde claro */
+    background-color: hsl(0, 0%, 20%);
+    border-left-color: var(--lilas-claro);
 }
 #inversionistas .cta-btn {
-    background-color: var(--verde-principal); /* Botão em verde principal */
+    background-color: var(--lilas-principal);
     color: var(--branco);
 }
 #inversionistas .cta-btn:hover {
-    background-color: var(--verde-escuro);
+    background-color: var(--lilas-escuro);
 }
 
 .ri-graphic {
@@ -916,7 +933,7 @@ form button {
     box-shadow: var(--sombra);
 }
 #inversionistas .ri-graphic {
-    border: 2px solid var(--verde-medio); /* Borda em verde médio */
+    border: 2px solid hsl(270, 30%, 70%);
 }
 
 .bolsa-info {
@@ -939,13 +956,13 @@ form button {
     margin-bottom: 0.75rem;
 }
 .bolsa-info a {
-    color: var(--verde-claro); /* Links da bolsa em verde claro */
+    color: var(--lilas-claro);
 }
 
 footer {
-    /* Gradiente no rodapé: predominantemente verde, com um toque suave de lilás no final */
-    background: linear-gradient(to right, var(--verde-escuro), var(--lilas-principal));
-    color: var(--branco); /* Cor de texto ajustada para o gradiente */
+    /* Gradiente no rodapé */
+    background: linear-gradient(to right, var(--verde-principal), var(--lilas-principal));
+    color: var(--lilas-claro); /* Cor de texto ajustada para o gradiente */
     padding: 2.5rem 1.5rem;
     text-align: center;
     font-size: 0.9rem;
@@ -986,7 +1003,7 @@ footer p {
         width: 80%;
         max-width: 320px;
         height: 100vh;
-        /* Fundo do menu mobile ajustado para verde escuro */
+        /* Fundo do menu mobile ajustado */
         background-color: var(--verde-escuro); 
         padding-top: 5rem;
         transition: left 0.4s ease-in-out;
@@ -1010,7 +1027,7 @@ footer p {
         font-size: 1rem;
         width: 100%;
         border-radius: 10px;
-        color: var(--branco); /* Links em branco no menu mobile */
+        color: var(--lilas-claro);
     }
     nav a:hover, nav a.active {
         background-color: var(--verde-principal);
@@ -1024,7 +1041,7 @@ footer p {
     nav ul li a.nav-link-investor {
         background-image: none;
         background-color: transparent; 
-        color: var(--branco); /* Botão Investidor em branco no menu mobile */
+        color: var(--lilas-claro);
         padding: 0.8rem 1.5rem; 
         border-radius: 0;
         box-shadow: none;
@@ -1078,9 +1095,9 @@ footer p {
 } 
 
 .predefined-question-button {
-    background-color: var(--verde-claro); /* Fundo em verde claro */
-    color: var(--verde-escuro); /* Texto em verde escuro */
-    border: 1px solid var(--verde-medio); /* Borda em verde médio */
+    background-color: var(--lilas-claro);
+    color: var(--lilas-escuro);
+    border: 1px solid var(--lilas-principal);
     padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
@@ -1091,7 +1108,7 @@ footer p {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 .predefined-question-button:hover {
-    background-color: hsl(92, 60%, 80%); /* Hover em tom de verde ligeiramente mais escuro */
+    background-color: hsl(270, 60%, 90%);
 }
 
 #chat-widget-container {
@@ -1173,7 +1190,7 @@ footer p {
 }
 
 .chat-message.user {
-    background-color: var(--verde-medio); /* Mensagem do usuário em verde médio */
+    background-color: var(--lilas-principal);
     color: white;
     align-self: flex-end;
     border-bottom-right-radius: 5px;
@@ -1244,9 +1261,9 @@ footer p {
 }
 
 .chat-action-button {
-    background-color: var(--verde-claro); /* Botões de ação do chat em verde claro */
-    color: var(--verde-escuro); /* Texto em verde escuro */
-    border: 1px solid var(--verde-medio); /* Borda em verde médio */
+    background-color: hsl(270, 60%, 92%);
+    color: var(--lilas-escuro);
+    border: 1px solid hsl(270, 50%, 75%);
     padding: 6px 12px;
     border-radius: 15px;
     cursor: pointer;
@@ -1255,7 +1272,7 @@ footer p {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 .chat-action-button:hover {
-    background-color: hsl(92, 60%, 80%); /* Hover em tom de verde ligeiramente mais escuro */
+    background-color: hsl(270, 60%, 85%);
 }
 
 .process-flow-container {
@@ -1268,11 +1285,11 @@ footer p {
     display: flex;
     width: 100%;
     min-height: 150px;
-    /* Gradiente verde claro para branco nas etapas do processo */
-    background: linear-gradient(to right, var(--verde-claro), var(--branco));
+    /* Gradiente lilás para verde nas etapas do processo */
+    background: linear-gradient(to right, var(--lilas-claro), var(--verde-claro));
     border-radius: 12px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    transition: box-shadow 0.4s, background 0.4s ease;
+    transition: box-shadow 0.4s, background 0.4s ease; /* Adicionado transição para background */
     cursor: pointer;
     align-items: stretch;
     position: relative;
@@ -1281,8 +1298,8 @@ footer p {
 .process-step:hover {
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
     z-index: 2;
-    /* Fundo em verde principal no hover */
-    background: var(--verde-principal);
+    /* Inverte o gradiente ou o escurece no hover */
+    background: linear-gradient(to left, var(--lilas-principal), var(--verde-principal));
     color: var(--branco); /* Ajuste de cor de texto para o hover */
 }
 /* Ajuste das cores de texto dentro do .process-step no hover */
@@ -1309,8 +1326,7 @@ footer p {
 .process-image {
     flex: 0 0 220px;
     width: auto;
-    height: auto;
-
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1319,7 +1335,7 @@ footer p {
 
 .process-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 8px;
     object-fit: cover;
     max-height: 180px;
@@ -1334,7 +1350,7 @@ footer p {
 .process-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--verde-principal); /* Número do processo em verde principal */
+    color: var(--lilas-principal);
     margin-bottom: 0.5rem;
 }
 
@@ -1360,13 +1376,13 @@ footer p {
 .process-header .process-number {
     font-weight: bold;
     font-size: 1.4em;
-    color: var(--verde-principal); /* Número do cabeçalho em verde principal */
+    color: var(--lilas-principal);
 }
 
 .process-title-text {
     font-weight: bold;
     font-size: 1.4em;
-    color: var(--verde-principal); /* Título do texto em verde principal */
+    color: var(--lilas-principal);
 }
 .process-tags {
     font-size: 1em;
