@@ -1,1401 +1,1358 @@
 :root {
-            /* Verde um pouco mais escuro */
-            --verde-principal: hsl(140, 40%, 28%); /* Ajustado para mais escuro */
-            --verde-escuro: hsl(140, 40%, 35%);   /* Ajustado para mais escuro */
-            --verde-claro: hsl(140, 60%, 88%);   /* Levemente ajustado */
-            
-            --lilas-principal: hsl(270, 50%, 55%); /* Lilás um pouco menos vibrante para combinar */
-            --lilas-escuro: hsl(270, 50%, 40%);
-            --lilas-claro: hsl(270, 60%, 95%);
-            
-            --preto-azulado: hsl(220, 15%, 15%); /* Preto com leve tom azulado */
-            --cinza-muito-escuro: hsl(0, 0%, 10%);
-            --cinza-texto: #333;
-            --cinza-fundo: #f9f9f9;
-            --branco: #fff;
-            
-            --sombra: 0 5px 15px rgba(0,0,0,0.1);
-            --sombra-leve: 0 2px 8px rgba(0,0,0,0.07);
+    /* Verde folha - remete à agricultura, sustentabilidade e saúde. */
+    --verde-principal: #5A8D3B; /* Verde folha */
+    --verde-escuro: hsl(92, 40%, 25%);   /* Tom um pouco mais escuro para contraste */
+    --verde-claro: hsl(92, 60%, 88%);   /* Tom mais claro para fundos e bordas */
+    
+    /* Lilás suave - transmite inovação, delicadeza e diferenciação no setor. */
+    --lilas-principal: #A58AC3; /* Lilás suave */
+    --lilas-escuro: hsl(270, 30%, 45%); /* Tom mais escuro para títulos e textos de destaque */
+    --lilas-claro: hsl(270, 60%, 95%); /* Tom muito claro para fundos */
+    
+    /* Cores complementares (neutras) */
+    --preto-azulado: #333333; /* Usado como cinza grafite principal */
+    --cinza-muito-escuro: #1A1A1A; /* Para seções de alto contraste, se necessário */
+    --cinza-texto: #333333; /* Cinza grafite para textos */
+    --cinza-fundo: #F4F4F4; /* Cinza claro para fundos gerais */
+    --branco: #FFFFFF;     /* Branco puro */
+    
+    --sombra: 0 5px 15px rgba(0,0,0,0.1);
+    --sombra-leve: 0 2px 8px rgba(0,0,0,0.07);
 
-            --transicao-padrao: all 0.3s ease-in-out;
-        }
+    --transicao-padrao: all 0.3s ease-in-out;
+}
 
-        /* Reset básico e box-sizing */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+/* Reset básico e box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        html {
-            /* Habilita a rolagem suave para links de âncora */
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        body {
-            /* Estilos base para o corpo da página */
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--cinza-fundo);
-            color: var(--cinza-texto);
-            line-height: 1.7;
-            font-size: 16px;
-        }
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cinza-fundo);
+    color: var(--cinza-texto);
+    line-height: 1.7;
+    font-size: 16px;
+}
 
-        header {
-            /* Estilos do cabeçalho principal */
-            background-color: var(--verde-principal);
-            color: var(--branco);
-            padding: 1rem 1.5rem; /* Reduzido um pouco para acomodar o seletor de idioma */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--sombra-leve);
-            transition: var(--transicao-padrao);
-        }
-        /* Container para a bandeira do Paraguai */
-        .paraguay-flag-container {
-            display: flex;
-            align-items: center;
-        }
-        /* Estilos para a bandeira do Paraguai com efeito de gradiente e sombra */
-        .paraguay-flag {
-            width: 36px;
-            height: 24px;
-            background: linear-gradient(to bottom, #d52b1e 33.33%, #ffffff 33.33% 66.66%, #0038a8 66.66%);
-            margin-right: 15px; /* Levemente aumentado para acomodar a sombra e rotação */
-            transform: rotate(-7deg); /* Inclinação para a esquerda */
-            box-shadow: 
-                /* Sombra base para profundidade, considerando a rotação */
-                1px 1px 4px rgba(0, 0, 0, 0.25), 
-                /* Camadas de brilho "flamejante" */
-                0 0 7px 2px rgba(255, 69, 0, 0.6),  /* Laranja-avermelhado intenso (como uma brasa) */
-                0 0 14px 4px rgba(255, 165, 0, 0.4); /* Laranja mais suave externo (como uma chama) */
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transição suave */
-        }
-        /* Efeito hover para a bandeira */
-        .paraguay-flag:hover {
-            transform: rotate(-5deg) scale(1.1); /* Endireita um pouco e aumenta no hover */
-            box-shadow: 
-                2px 2px 6px rgba(0, 0, 0, 0.3),
-                0 0 10px 3px rgba(255, 69, 0, 0.75), /* Brilho mais intenso */
-                0 0 20px 6px rgba(255, 165, 0, 0.55); /* Brilho mais amplo */
-        }
-        /* Container do conteúdo do cabeçalho (logo e navegação) */
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
+header {
+    /* Gradiente na barra de menu */
+    background: linear-gradient(to right, var(--lilas-principal), var(--verde-principal));
+    color: var(--branco);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--sombra-leve);
+    transition: var(--transicao-padrao);
+}
 
-        .logo {
-            display: flex; /* Para alinhar a imagem se necessário */
-            align-items: center;
-        }
-        .logo a { /* Estilos para o texto do logo "Multiagro" */
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--branco);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-        /* .logo img {
-            height: 65px; /* Ajuste a altura conforme necessário */
-            /* width: auto; */ /* Mantém a proporção */
-        /* } */
+.paraguay-flag-container {
+    display: flex;
+    align-items: center;
+}
 
-        nav ul {
-            /* Estilos da lista de navegação */
-            list-style: none;
-            display: flex;
-            align-items: center; /* Alinhar itens incluindo o seletor de idioma */
-        }
+.paraguay-flag {
+    width: 36px;
+    height: 24px;
+    background: linear-gradient(to bottom, #d52b1e 33.33%, #ffffff 33.33% 66.66%, #0038a8 66.66%);
+    margin-right: 15px;
+    transform: rotate(-7deg);
+    box-shadow: 
+        1px 1px 4px rgba(0, 0, 0, 0.25), 
+        0 0 7px 2px rgba(255, 69, 0, 0.6),
+        0 0 14px 4px rgba(255, 165, 0, 0.4);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
 
-        nav a {
-            /* Estilos dos links de navegação */
-            color: var(--branco);
-            margin: 0 0.8rem; /* Espaçamento ajustado */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem; /* Tamanho ajustado */
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid transparent;
-            transition: var(--transicao-padrao);
-        }
+.paraguay-flag:hover {
+    transform: rotate(-5deg) scale(1.1);
+    box-shadow: 
+        2px 2px 6px rgba(0, 0, 0, 0.3),
+        0 0 10px 3px rgba(255, 69, 0, 0.75),
+        0 0 20px 6px rgba(255, 165, 0, 0.55);
+}
 
-        /* Estilo para link ativo ou em hover */
-        nav a:hover, nav a.active {
-            color: var(--lilas-claro);
-            border-bottom-color: var(--lilas-principal);
-        }
-        
-        /* Seletor de idioma */
-        .language-switcher {
-            margin-left: 1rem;
-            font-size: 0.85rem;
-        }
-        .language-switcher button {
-            /* Estilos dos botões de idioma */
-            background: none;
-            border: 1px solid var(--lilas-claro);
-            color: var(--branco); /* Alterado para branco para melhor contraste inicial */
-            padding: 0.3rem 0.6rem;
-            border-radius: 15px; /* Mais arredondado */
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            margin: 0 0.2rem;
-            transition: var(--transicao-padrao);
-        }
-        /* Estilo para botão de idioma ativo ou em hover */
-        .language-switcher button:hover, .language-switcher button.active-lang {
-            background-color: var(--lilas-principal);
-            color: var(--branco);
-            border-color: var(--lilas-principal);
-        }
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
 
-        /* Estilos para o link de navegação de Investidores */
-        nav a.nav-link-investor { /* Estilo especial para o link "Inversionistas" parecer um botão */
-            background-image: linear-gradient(to bottom, hsl(220, 15%, 22%), hsl(220, 15%, 12%)); /* Gradiente sutil escuro */
-            color: var(--lilas-claro);
-            padding: 0.6rem 1.2rem; /* Padding para dar forma de botão */
-            border-radius: 25px; /* Efeito pílula */
-            border-bottom: none; /* Remover a borda inferior padrão dos links de navegação */
-            margin-left: 0.8rem; /* Manter algum espaçamento dos outros itens */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.08); /* Sombra externa e interna sutil */
-            transition: var(--transicao-padrao), background-image 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Adicionar transições específicas */
-        }
+.logo {
+    display: flex;
+    align-items: center;
+}
 
-        /* Efeito hover e ativo para o link de Investidores */
-        nav a.nav-link-investor:hover,
-        nav a.nav-link-investor.active {
-            background-image: linear-gradient(to bottom, hsl(220, 15%, 28%), hsl(220, 15%, 18%)); /* Gradiente um pouco mais claro no hover/active */
-            color: var(--branco);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.1);
-            border-bottom: none; /* Garantir que a borda inferior não reapareça */
-            transform: translateY(-1px); /* Leve elevação no hover */
-        }
+.logo a {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--branco);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
 
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
 
-        /* Botão de menu hambúrguer para telas menores */
-        .menu-toggle {
-            display: none; 
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--branco);
-            cursor: pointer;
-            padding: 0.3rem 0.5rem; /* Adicionado padding */
-            border-radius: 8px; /* Levemente arredondado */
-        }
+nav a {
+    color: var(--branco);
+    margin: 0 0.8rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid transparent;
+    transition: var(--transicao-padrao);
+}
+
+nav a:hover, nav a.active {
+    color: var(--lilas-claro);
+    border-bottom-color: var(--lilas-claro); /* Mantido lilás claro para contraste com o gradiente */
+}
+
+.language-switcher {
+    margin-left: 1rem;
+    font-size: 0.85rem;
+}
+
+.language-switcher button {
+    background: none;
+    border: 1px solid var(--lilas-claro);
+    color: var(--branco);
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    margin: 0 0.2rem;
+    transition: var(--transicao-padrao);
+}
+
+.language-switcher button:hover, .language-switcher button.active-lang {
+    background-color: var(--lilas-escuro); /* Gradiente já no header, então um sólido aqui */
+    color: var(--branco);
+    border-color: var(--lilas-escuro);
+}
+
+nav a.nav-link-investor {
+    background-image: linear-gradient(to bottom, var(--cinza-muito-escuro), #101010);
+    color: var(--lilas-claro);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    border-bottom: none;
+    margin-left: 0.8rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.08);
+    transition: var(--transicao-padrao), background-image 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+nav a.nav-link-investor:hover,
+nav a.nav-link-investor.active {
+    background-image: linear-gradient(to bottom, hsl(0, 0%, 20%), hsl(0, 0%, 10%));
+    color: var(--branco);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.1);
+    border-bottom: none;
+    transform: translateY(-1px);
+}
+
+.menu-toggle {
+    display: none; 
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--branco);
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    border-radius: 8px;
+}
 .about-two-columns {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 .about-text {
-  flex: 1 1 320px;
-  min-width: 260px;
+    flex: 1 1 320px;
+    min-width: 260px;
 }
 .about-image {
-  flex: 1 1 320px;
-  min-width: 220px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    flex: 1 1 320px;
+    min-width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 @media (max-width: 900px) {
-  .about-two-columns {
+    .about-two-columns {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .about-image, .about-text {
+        min-width: 0;
+    }
+}
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--branco);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+main section {
+    display: none;
+}
+
+main section.visible {
+    display: block;
+}
+
+section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--verde-claro);
+}
+section:last-of-type {
+    border-bottom: none;
+}
+
+.hero-section {
+    padding: 0;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    min-height: 200px;
+    background-color: var(--branco);
+}
+
+.hero-main-content-area {
+    position: relative;
+    width: 100%;
+    margin: 0 auto 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 100%;
+}
+
+.hero-section.visible {
+    display: flex;
+}
+
+.hero-hidden-on-subpage {
+    display: none !important;
+}
+
+.hero-carousel {
+    position: relative;
+}
+
+.carousel-slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.7s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    flex-shrink: 1 ;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide img,
+.carousel-slide video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background-color: var(--cinza-muito-escuro);
+}
+
+.carousel-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(158, 158, 158, 0.45);
+    z-index: 1;
+}
+
+.carousel-prev, .carousel-next {
+    z-index: 3;
+}
+.carousel-prev { left: 20px; }
+.carousel-next { right: 20px; }
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.slide-product-caption {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    z-index: 3; 
+    color: var(--branco);
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    max-width: calc(100% - 50px);
+}
+
+.slide-product-caption h4 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.hero-content-overlay {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    pointer-events: auto;
+    background: rgba(90, 141, 59, 0.85); /* Verde principal com transparência */
+    color: #fff;
+    border-radius: 18px;
+    padding: 2.5rem 2rem 2rem 2rem;
+    box-shadow: 0 6px 32px 0 rgba(0,0,0,0.25);
+    margin-bottom: 2rem;
+    max-width: 1150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-section.visible .hero-content-overlay {
+     display: flex;
+}
+
+.hero-logo-main {
+    font-size: 6.37rem;
+    font-weight: 700;
+    color: var(--verde-principal);
+    text-shadow: 1px 1px 3px var(--verde-escuro);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--branco);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.hero-section p.subtitle {
+    font-size: 1.35rem;
+    max-width: 750px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    color: var(--branco);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .cta-btn {
+    background-color: var(--branco);
+    color: var(--verde-principal);
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+.hero-section .cta-btn:hover {
+    background-color: var(--verde-claro);
+    color: var(--lilas-escuro);
+}
+
+.product-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.product-card {
+    /* Gradiente lilás para verde nos cards de produto */
+    background: linear-gradient(to bottom right, var(--lilas-claro), var(--verde-claro));
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--sombra-leve);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra);
+    /* Um pequeno ajuste no gradiente ao hover para dar um efeito de "pressão" */
+    background: linear-gradient(to bottom right, var(--lilas-principal), var(--verde-principal));
+    color: var(--branco); /* Texto branco no hover para melhor contraste */
+}
+
+/* Ajuste das cores de texto no hover do product-card */
+.product-card:hover h4,
+.product-card:hover p {
+    color: var(--branco);
+}
+
+.product-card img { 
+    width: 200px;
+    height: auto;
+    object-fit: scale-down;
+    border-radius: 8%;
+    margin: 0 auto 4rem auto;
+    border: 0px solid var(--verde-principal); 
+}
+
+.product-card h4 {
+    color: var(--lilas-escuro);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+.product-card p {
+    font-size: 0.9rem;
+    color: var(--cinza-texto);
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+.product-thumbnail-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    max-width: 900px;
+    width: 100%;
+}
+.product-thumbnail-nav .product-card.active-thumbnail {
+    border-color: var(--lilas-principal);
+    box-shadow: 0 0 12px rgba(165, 138, 195, 0.7);
+    transform: scale(1.05);
+}
+.product-thumbnail-nav .product-card.active-thumbnail img {
+    border-color: var(--lilas-principal);
+}
+
+.map-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    padding: 0.75rem;
+    background-color: var(--lilas-claro);
+    border-radius: 8px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+.legend-color-box {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.stats-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 2.5rem 0;
+}
+
+.stat-card {
+    /* Gradiente verde para lilás nos cards de estatísticas */
+    background: linear-gradient(to top left, var(--verde-claro), var(--lilas-claro));
+    border-radius: 10px;
+    padding: 1.5rem;
+    flex: 1 1 220px;
+    min-width: 180px;
+    text-align: center;
+    box-shadow: var(--sombra-leve);
+    border-left: 5px solid var(--verde-principal);
+}
+.stat-card h4 {
+    color: var(--verde-escuro);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.stat-card p.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--verde-escuro);
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: var(--lilas-principal);
+    color: var(--branco);
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: var(--sombra-leve);
+    transition: var(--transicao-padrao);
+    border: none;
+    cursor: pointer;
+}
+.cta-btn:hover {
+    background-color: var(--lilas-escuro);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra);
+}
+
+.cta-btn.green {
+    background-color: var(--verde-principal);
+}
+.cta-btn.green:hover {
+    background-color: var(--verde-escuro);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--verde-escuro);
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--lilas-principal);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--lilas-escuro);
+}
+
+p.section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.05rem;
+    color: var(--cinza-texto);
+}
+
+ul.custom-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.custom-list li {
+    padding: 0.7rem 0.5rem;
+    border-bottom: 1px dashed var(--verde-claro);
+    display: flex;
+    align-items: center;
+}
+
+ul.custom-list li:last-child {
+    border-bottom: none;
+}
+
+ul.custom-list a {
+    color: var(--verde-escuro);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+ul.custom-list a:hover {
+    color: var(--lilas-principal);
+    text-decoration: underline;
+}
+
+.product-segment {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--verde-claro);
+}
+.product-segment:first-of-type {
+    margin-top: 1.5rem;
+    padding-top: 0;
+    border-top: none;
+}
+.product-segment h3 {
+    text-align: left;
+    color: var(--lilas-escuro);
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+.segment-intro {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--cinza-texto);
+}
+.coming-soon-container {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--lilas-claro);
+    border-radius: 10px;
+}
+.coming-soon-container img {
+    width: 400px;
+    height: auto;
+    object-fit: scale-down;
+    border-radius: 4%;
+    margin: 0 auto 1rem auto;
+    border: 0px solid var(--verde-principal); 
+}
+.coming-soon-text {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--lilas-escuro);
+}
+
+.video-background-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    margin: 2rem 0;
+    border-radius: 8px;
+    background-color: var(--cinza-muito-escuro);
+}
+.video-background-container-nosotros {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    margin: 2rem 0;
+    border-radius: 8px;
+    background-color: var(--cinza-muito-escuro);
+}
+.video-background-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.faq dt {
+    font-weight: 600;
+    color: var(--lilas-escuro);
+    margin-top: 1rem;
+    cursor: pointer; 
+    padding: 0.5rem;
+    background-color: var(--lilas-claro);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.faq dt:hover {
+    background-color: hsl(270, 60%, 90%);
+}
+.faq dd {
+    margin-left: 0;
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--verde-claro);
+    background-color: #fdfcff;
+    margin-bottom: 0.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 1.5rem auto;
+}
+
+form label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--verde-escuro);
+}
+form input, form textarea {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--lilas-principal);
+    box-shadow: 0 0 0 2px var(--lilas-claro);
+}
+form button { 
+    align-self: flex-start;
+}
+
+.contact-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    /* Gradiente lilás para verde nas informações de contato */
+    background: linear-gradient(to top left, var(--lilas-claro), var(--verde-claro));
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.contact-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.contact-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+}
+.contact-info-overlay-content {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-intro-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-column {
+    /* Gradiente verde para lilás nas colunas de introdução de contato */
+    background: linear-gradient(to bottom right, var(--verde-claro), var(--lilas-claro));
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--verde-principal);
+    box-shadow: var(--sombra-leve);
+}
+
+.contact-column h3 {
+    margin-top: 0;
+    color: var(--verde-escuro);
+    border-bottom: 2px solid var(--verde-claro);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+.essence-values-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    /* Gradiente lilás para verde nos blocos de essência e valores */
+    background: linear-gradient(to bottom, var(--lilas-claro), var(--verde-claro));
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2.5rem 0;
+    box-shadow: var(--sombra-leve);
+    border-left: 5px solid var(--lilas-principal);
+}
+
+.essence-values-container h3 {
+    margin-top: 0;
+    text-align: left;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--lilas-principal);
+    margin-bottom: 1rem;
+}
+
+.essence-values-container .custom-list li {
+    border-bottom-color: hsl(270, 50%, 80%);
+    padding: 0.8rem 0;
+}
+
+.contact-info strong {
+    color: var(--lilas-escuro);
+}
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+.contact-info a {
+    color: var(--lilas-escuro);
+    text-decoration: none;
+}
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-info .social-media-links {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--lilas-principal);
+}
+.contact-info .social-media-links p strong {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    color: var(--lilas-escuro);
+}
+.contact-info .social-media-links a {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.3rem 0.8rem;
+    color: var(--lilas-escuro);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.contact-info .social-media-links a i {
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+}
+
+#inversionistas {
+    background-color: var(--preto-azulado);
+    color: var(--lilas-claro);
+    border-radius: 10px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+#inversionistas h2,
+#inversionistas h3 {
+    color: var(--branco);
+}
+#inversionistas h2::after {
+    background-color: var(--lilas-claro);
+}
+
+#inversionistas p,
+#inversionistas ul.custom-list li,
+#inversionistas .faq dt,
+#inversionistas .faq dd,
+#inversionistas p.section-intro {
+    color: hsl(270, 30%, 85%);
+}
+
+#inversionistas ul.custom-list a {
+    color: var(--lilas-claro);
+    font-weight: 500;
+}
+#inversionistas ul.custom-list a:hover {
+    color: var(--branco);
+}
+
+#inversionistas .faq dt {
+    background-color: var(--cinza-muito-escuro);
+    color: var(--lilas-claro);
+}
+#inversionistas .faq dt:hover {
+    background-color: hsl(0, 0%, 15%);
+}
+#inversionistas .faq dd {
+    background-color: hsl(0, 0%, 20%);
+    border-left-color: var(--lilas-claro);
+}
+#inversionistas .cta-btn {
+    background-color: var(--lilas-principal);
+    color: var(--branco);
+}
+#inversionistas .cta-btn:hover {
+    background-color: var(--lilas-escuro);
+}
+
+.ri-graphic {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+}
+#inversionistas .ri-graphic {
+    border: 2px solid hsl(270, 30%, 70%);
+}
+
+.bolsa-info {
+    background-color: var(--cinza-muito-escuro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    border: 1px solid hsl(0, 0%, 25%);
+}
+.bolsa-logo {
+    display: block;
+    max-width: 180px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bolsa-info p {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+.bolsa-info a {
+    color: var(--lilas-claro);
+}
+
+footer {
+    /* Gradiente no rodapé */
+    background: linear-gradient(to right, var(--verde-principal), var(--lilas-principal));
+    color: var(--lilas-claro); /* Cor de texto ajustada para o gradiente */
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+}
+footer p {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--branco); /* Links em branco para contraste no gradiente do footer */
+    margin: 0 0.7rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--verde-claro); /* Hover em verde claro para combinar */
+    text-decoration: underline;
+}
+
+.footer-links a .fab {
+    font-size: 1.3rem;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: block; 
+        z-index: 1001; 
+    }
+    nav ul {
+        display: none; 
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        left: -100%; 
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        /* Fundo do menu mobile ajustado */
+        background-color: var(--verde-escuro); 
+        padding-top: 5rem;
+        transition: left 0.4s ease-in-out;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+        z-index: 999;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+    }
+    nav ul.active {
+        display: flex;
+        left: 0; 
+    }
+    nav li {
+        width: calc(100% - 2rem);
+        margin: 0.3rem 1rem;
+    }
+    nav a {
+        display: block;
+        padding: 0.8rem 1.5rem;
+        margin: 0;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 10px;
+        color: var(--lilas-claro);
+    }
+    nav a:hover, nav a.active {
+        background-color: var(--verde-principal);
+        color: var(--branco);
+    }
+    .language-switcher {
+        margin: 1rem 0 1rem 1.5rem;
+        align-self: flex-start;
+    }
+
+    nav ul li a.nav-link-investor {
+        background-image: none;
+        background-color: transparent; 
+        color: var(--lilas-claro);
+        padding: 0.8rem 1.5rem; 
+        border-radius: 0;
+        box-shadow: none;
+        margin-left: 0; 
+        transform: none; 
+        border-radius: 10px;
+    }
+    nav ul li a.nav-link-investor:hover,
+    nav ul li a.nav-link-investor.active {
+        background-color: var(--verde-principal);
+        color: var(--branco);
+    }
+
+    .essence-values-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .contact-intro-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header { padding: 1rem; }
+    .logo { font-size: 1.6rem; }
+    .logo a { font-size: 1.6rem; }
+    main {
+        margin: 1rem auto;
+        padding: 1.5rem 1rem;
+    }
+    .hero-section { padding: 3rem 1rem; }
+    .hero-section h1 { font-size: 2rem; }
+    .hero-section p.subtitle { font-size: 1rem; }
+    .stats-cards { 
+        flex-direction: column; 
+        gap: 1rem;
+    }
+    .stat-card { min-width: unset; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.3rem; }
+    form { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .logo { font-size: 1.4rem; }
+    .logo a { font-size: 1.4rem; }
+    .hero-section h1 { font-size: 1.8rem; }
+    .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; } 
+} 
+
+.predefined-question-button {
+    background-color: var(--lilas-claro);
+    color: var(--lilas-escuro);
+    border: 1px solid var(--lilas-principal);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.predefined-question-button:hover {
+    background-color: hsl(270, 60%, 90%);
+}
+
+#chat-widget-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+#chat-toggle-button {
+    background-color: var(--verde-principal);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#chat-toggle-button:hover {
+    background-color: var(--verde-escuro);
+    transform: scale(1.1);
+}
+
+#chat-window {
+    width: 350px;
+    max-height: 500px;
+    background-color: var(--branco);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+}
+
+#chat-header {
+    background-color: var(--verde-principal);
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chat-close-window-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: var(--cinza-fundo);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.chat-message.user {
+    background-color: var(--lilas-principal);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.chat-message.bot {
+    background-color: #e9e9eb;
+    color: var(--cinza-texto);
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.chat-message .timestamp {
+    font-size: 0.75em;
+    display: block;
+    margin-top: 5px;
+    text-align: right;
+}
+.chat-message.bot .timestamp {
+    color: rgba(0,0,0,0.5); 
+}
+.chat-message.user .timestamp {
+    color: rgba(255,255,255,0.7);
+}
+
+#chat-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background-color: var(--branco);
+}
+
+#chat-input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+#chat-input:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 0 2px var(--verde-claro);
+}
+
+#chat-send-button {
+    background-color: var(--verde-principal);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#chat-send-button:hover {
+    background-color: var(--verde-escuro);
+}
+
+.chat-action-buttons-container {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chat-action-button {
+    background-color: hsl(270, 60%, 92%);
+    color: var(--lilas-escuro);
+    border: 1px solid hsl(270, 50%, 75%);
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.chat-action-button:hover {
+    background-color: hsl(270, 60%, 85%);
+}
+
+.process-flow-container {
+    display: flex;
     flex-direction: column;
     gap: 1.5rem;
-  }
-  .about-image, .about-text {
-    min-width: 0;
-  }
-}
-        main {
-            /* Estilos do conteúdo principal da página */
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: var(--branco);
-            border-radius: 12px;
-            box-shadow: var(--sombra);
-        }
-
-        /* Oculta todas as seções por padrão */
-        main section {
-            display: none;
-        }
-
-        /* Mostra a seção ativa que não é a hero section */
-        main section.visible {
-            display: block;
-        }
-
-        section {
-            /* Estilos base para cada seção de conteúdo */
-            padding: 2.5rem 0; /* Aumentado o padding vertical */
-            border-bottom: 1px solid var(--verde-claro);
-        }
-        section:last-of-type {
-            border-bottom: none;
-        }
-
-        /* Seção Hero (principal, no topo) */
-        .hero-section {
-            padding: 0; /* Removido padding para o carrossel ocupar tudo */
-            /* border-radius: 12px; */ /* Movido para o carrossel */
-            text-align: center;
-            margin-bottom: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; /* Alinha itens ao topo */
-            position: relative; /* Para o carrossel absoluto e o conteúdo */
-            min-height: 200px; /* Altura mínima aumentada para acomodar logo + carrossel */
-            background-color: var(--branco); /* Fundo para a seção hero, onde a logo ficará */
-        }
-
-        /* Nova área para o conteúdo principal da Hero (carrossel + texto) */
-        .hero-main-content-area {
-            position: relative;
-            width: 100%;
-            margin: 0 auto 2rem auto;
-            border-radius: 12px;
-            overflow: hidden;
-            height: 0;
-            padding-bottom: 100%; /* Dobrou de 50% para 100%: agora o carrossel terá o dobro da altura (proporção 1:1 quadrada) */
-        }
-
-        /* Mostra a seção ativa (Hero usa flex, outras usam block) */
-        .hero-section.visible {
-            display: flex;
-        }
-        /* Classe para ocultar a hero section em subpáginas via JavaScript */
-        .hero-hidden-on-subpage {
-            display: none !important;
-        }
-        .hero-carousel {
-            position: relative;
-        }
-        /* Container dos slides do carrossel */
-        .carousel-slides {
-            display: flex;
-            height: 100%;
-            transition: transform 0.7s ease-in-out;
-        }
-        /* Estilo individual de cada slide */
-        .carousel-slide {
-            min-width: 100%;
-            flex-shrink: 1 ;
-            height: 100%;
-            position: relative; /* Para o overlay */
-        }
-        .carousel-slide img,
-        .carousel-slide video {
-            width: 100%;
-            height: auto;
-            object-fit: contain;      /* Garante que a imagem/vídeo fique centralizado e sem cortes */
-    object-position: center;  /* Centraliza o conteúdo */
-    display: block;
-    background-color: var(--cinza-muito-escuro); /* Preenche as bordas com cor neutra */
-        }
-        .carousel-slide::after { /* Overlay para contraste do texto */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(158, 158, 158, 0.45); /* Dark overlay for text contrast on each slide */
-            z-index: 1;
-        }
-        /* Botões de navegação do carrossel (anterior/próximo) */
-        .carousel-prev, .carousel-next {
-            z-index: 3; /* Acima do hero-content-overlay */
-        }
-        .carousel-prev { left: 20px; }
-        .carousel-next { right: 20px; }
-        .carousel-prev:hover, .carousel-next:hover {
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .slide-product-caption {
-            position: absolute;
-            bottom: 25px;
-            left: 25px;
-            /* z-index: 2; */ /* Ajustado para z-index: 3 se for sobrepor o overlay ::after */
-            z-index: 3; 
-            color: var(--branco);
-            background-color: rgba(0, 0, 0, 0.55); /* Fundo semi-transparente para a legenda */
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            max-width: calc(100% - 50px); /* Evitar que a legenda seja muito larga */
-        }
-
-        .slide-product-caption h4 {
-            margin: 0;
-            font-size: 1.6rem; /* Tamanho do nome do produto no slide */
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-        }
-
-        /* Conteúdo de texto sobreposto ao carrossel na seção Hero */
-        .hero-content-overlay {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin-bottom: 2rem; /* Espaço entre o texto e o carrossel */
-            pointer-events: auto;
-            background: rgba(0, 66, 14, 0.682); /* Fundo escuro semi-transparente */
-            color: #fff;                        /* Letras brancas */
-            border-radius: 18px;
-            padding: 2.5rem 2rem 2rem 2rem;
-            box-shadow: 0 6px 32px 0 rgba(0,0,0,0.25);
-            margin-bottom: 2rem;
-            max-width: 1150px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* Garante que o conteúdo da hero section esteja visível quando a seção está visível */
-        .hero-section.visible .hero-content-overlay {
-             display: flex; /* Garante que o conteúdo flexível apareça */
-        }
-        /* Estilo para a logo principal na seção Hero */
-        .hero-logo-main { /* Agora estiliza o texto "Multiagro" */
-            font-size: 6.37rem; /* Tamanho da fonte aumentado em 15% (3.8 * 1.15) */
-            font-weight: 700; /* Negrito */
-            color: var(--verde-principal); /* Cor verde principal */
-            text-shadow: 1px 1px 3px var(--verde-escuro); /* Sombra verde escura para legibilidade */
-            margin-top: 1.5rem; /* Espaço acima da logo, abaixo do header */
-            margin-bottom: 1.5rem; /* Espaço entre a logo e o conteúdo de texto abaixo (H1) */
-            text-align: center; /* Centraliza o texto */
-        }
-        
-        /* Título principal da seção Hero */
-        .hero-section h1 {
-            font-size: 2.6rem; /* Ajustado */
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--branco);
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* Sombra mais forte para legibilidade */
-        }
-
-        /* Subtítulo da seção Hero */
-        .hero-section p.subtitle {
-            font-size: 1.35rem; /* Ajustado */
-            max-width: 750px;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            color: var(--branco); /* Adicionado para garantir cor branca */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para legibilidade */
-        }
-        
-        /* Botão Call-to-Action (CTA) na seção Hero */
-        .hero-section .cta-btn {
-            background-color: var(--branco);
-            color: var(--verde-principal);
-            font-weight: 600;
-            position: relative; /* Mantido, z-index é relativo ao .hero-content-overlay */
-            z-index: 2;
-        }
-        .hero-section .cta-btn:hover {
-            background-color: var(--verde-claro); /* Interação com cor da paleta */
-            color: var(--lilas-escuro);
-        }
-
-        /* Container para os cards de produtos */
-        .product-cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grade responsiva */
-            gap: 1.5rem; /* Espaçamento entre os cards */
-            margin-top: 2rem;
-            margin-bottom: 2.5rem; /* Espaço antes do mapa */
-        }
-
-        /* Card individual de produto */
-        .product-card {
-            background-color: var(--lilas-claro);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--sombra-leve);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Para alinhar conteúdo se descrições variarem */
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--sombra);
-        }
-        /* Estilos para as imagens dos produtos nos cards */
-        .product-card img { 
-            width: 200px; /* Tamanho da imagem do produto */
-            height: auto;
-            object-fit: scale-down;
-            border-radius: 8%; /* Imagens redondas */
-            margin: 0 auto 4rem auto; /* Centralizado */
-            border: 0px solid var(--verde-principal); 
-        }
-        .product-card h4 {
-            color: var(--lilas-escuro);
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-        }
-        .product-card p {
-            font-size: 0.9rem;
-            color: var(--cinza-texto);
-            flex-grow: 1; /* Para que os cards tenham altura similar se as descrições variarem */
-            margin-bottom: 0; /* Remover margem inferior padrão do parágrafo se não houver botão */
-        }
-        .product-thumbnail-nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem; /* Espaço entre miniaturas */
-            padding: 1rem 0;
-            max-width: 900px; /* Limita a largura da navegação de miniaturas */
-            width: 100%;
-        }
-        .product-thumbnail-nav .product-card.active-thumbnail {
-            border-color: var(--lilas-principal);
-            box-shadow: 0 0 12px rgba(128, 0, 128, 0.5); /* Sombra lilás mais pronunciada */
-            transform: scale(1.05); /* Leve aumento para destacar */
-        }
-        .product-thumbnail-nav .product-card.active-thumbnail img {
-            border-color: var(--lilas-principal);
-        }
-
-        /* Legenda do Mapa */
-        .map-legend {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem; /* Espaço entre os itens da legenda */
-            margin-top: 1.25rem; /* Espaço acima da legenda */
-            padding: 0.75rem;
-            background-color: var(--lilas-claro); /* Fundo sutil para a legenda */
-            border-radius: 8px;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-        .legend-color-box {
-            width: 18px;
-            height: 18px;
-            margin-right: 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-        /* Container para os cards de estatísticas */
-        .stats-cards {
-            display: flex;
-            justify-content: space-around;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin: 2.5rem 0;
-        }
-
-        /* Card individual de estatística */
-        .stat-card {
-            background-color: var(--verde-claro);
-            border-radius: 10px;
-            padding: 1.5rem;
-            flex: 1 1 220px;
-            min-width: 180px;
-            text-align: center;
-            box-shadow: var(--sombra-leve);
-            border-left: 5px solid var(--verde-principal);
-        }
-        .stat-card h4 {
-            color: var(--verde-escuro);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .stat-card p.stat-value { /* Classe específica para o valor */
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--verde-escuro);
-        }
-
-        /* Botão Call-to-Action (CTA) genérico */
-        .cta-btn {
-            display: inline-block;
-            background-color: var(--lilas-principal);
-            color: var(--branco);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: var(--sombra-leve);
-            transition: var(--transicao-padrao);
-            border: none;
-            cursor: pointer;
-        }
-        .cta-btn:hover {
-            background-color: var(--lilas-escuro);
-            transform: translateY(-2px);
-            box-shadow: var(--sombra);
-        }
-        /* Variação de cor para o botão CTA */
-        .cta-btn.green { /* Botão verde alternativo */
-            background-color: var(--verde-principal);
-        }
-        .cta-btn.green:hover {
-            background-color: var(--verde-escuro);
-        }
-
-        /* Estilo para títulos de seção (H2) */
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--verde-escuro);
-            text-align: center;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        /* Linha decorativa abaixo do H2 */
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background-color: var(--lilas-principal);
-            border-radius: 2px;
-        }
-        
-        /* Estilo para subtítulos (H3) */
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--lilas-escuro);
-        }
-        
-        /* Parágrafo introdutório para seções */
-        p.section-intro { /* Parágrafo introdutório para seções */
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
-            font-size: 1.05rem;
-            color: var(--cinza-texto);
-        }
-
-        /* Lista personalizada */
-        ul.custom-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        /* Itens da lista personalizada */
-        ul.custom-list li {
-            padding: 0.7rem 0.5rem; /* Padding ajustado */
-            border-bottom: 1px dashed var(--verde-claro);
-            display: flex; /* Para ícones no futuro */
-            align-items: center;
-        }
-        /* Removed empty ruleset for ul.custom-list li::before */
-        ul.custom-list li:last-child {
-            border-bottom: none;
-        }
-        /* Links dentro da lista personalizada */
-        ul.custom-list a {
-            color: var(--verde-escuro);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        ul.custom-list a:hover {
-            color: var(--lilas-principal);
-            text-decoration: underline;
-        }
-        
-        /* Estilos para os segmentos de produtos */
-        .product-segment {
-            margin-top: 3rem; /* Espaço entre os segmentos */
-            padding-top: 2rem;
-            border-top: 1px solid var(--verde-claro);
-        }
-        .product-segment:first-of-type {
-            margin-top: 1.5rem; /* Menor margem para o primeiro segmento */
-            padding-top: 0;
-            border-top: none;
-        }
-        .product-segment h3 { /* Subtítulos dos segmentos */
-            text-align: left;
-            color: var(--lilas-escuro);
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-        }
-        .segment-intro { /* Parágrafo introdutório para cada segmento */
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            color: var(--cinza-texto);
-        }
-        .coming-soon-container { /* Container para itens "Em Breve" */
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--lilas-claro);
-            border-radius: 10px;
-        }
-        .coming-soon-container img {
-            width: 400px;/* Tamanho da imagem do produto */
-            height: aulto;
-            object-fit: scale-down;
-            border-radius: 4%; /* Imagens redondas */
-            margin: 0 auto 1rem auto; /* Centralizado */
-            border: 0px solid var(--verde-principal); 
-        }
-        .coming-soon-text {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--lilas-escuro);
-        }
-
-        /* Estilos para o vídeo de fundo na seção "Sobre Nós" */
-
-        .video-background-container {
-            width: 100%;
-            height: 250px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
-            overflow: hidden;
-            margin: 2rem 0; /* Adiciona espaço vertical ao redor do vídeo */
-            border-radius: 8px; /* Opcional: para cantos arredondados no container do vídeo */
-            background-color: var(--cinza-muito-escuro); /* Cor de fundo caso o vídeo demore a carregar */
-        }
-        .video-background-container-nosotros {
-            width: 100%;
-            height: 250px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
-            overflow: hidden;
-            margin: 2rem 0; /* Adiciona espaço vertical ao redor do vídeo */
-            border-radius: 8px; /* Opcional: para cantos arredondados no container do vídeo */
-            background-color: var(--cinza-muito-escuro); /* Cor de fundo caso o vídeo demore a carregar */
-        }
-        .video-background-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Faz o vídeo cobrir todo o container, cortando se necessário */
-        }
-        .faq dt {
-            font-weight: 600;
-            color: var(--lilas-escuro);
-            margin-top: 1rem;
-            cursor: pointer; 
-            padding: 0.5rem;
-            background-color: var(--lilas-claro);
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .faq dt:hover {
-            background-color: hsl(270, 60%, 90%);
-        }
-        .faq dd {
-            margin-left: 0;
-            padding: 0.8rem 1rem; /* Padding aumentado */
-            border-left: 3px solid var(--verde-claro);
-            background-color: #fdfcff; /* Fundo levemente lilás */
-            margin-bottom: 0.5rem;
-        }
-        /* Wrapper para o conteúdo da seção "Sobre Nós" ficar acima do vídeo */
-       /* Formulário de contato */
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 600px; /* Aumentado */
-            margin: 1.5rem auto;
-        }
-        /* Labels do formulário */
-        form label {
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--verde-escuro);
-        }
-        form input, form textarea {
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        form input:focus, form textarea:focus {
-            outline: none;
-            border-color: var(--lilas-principal);
-            box-shadow: 0 0 0 2px var(--lilas-claro);
-        }
-        form button { 
-            align-self: flex-start;
-        }
-        
-        /* Informações de contato */
-        .contact-info {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background-color: var(--lilas-claro); /* Cor de fallback ou base */
-            border-radius: 8px;
-            text-align: center;
-            position: relative; /* Para posicionar o vídeo de fundo */
-            overflow: hidden; /* Para cortar o vídeo nos cantos arredondados */
-        }
-        .contact-video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Atrás do conteúdo */
-        }
-        .contact-video-bg video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.25; /* Ajuste a transparência aqui (0.0 a 1.0) */
-        }
-        .contact-info-overlay-content {
-            position: relative;
-            z-index: 1; /* Acima do vídeo */
-        }
-        /* Ajuste opcional de cor para melhor contraste sobre o vídeo */
-        .contact-info-overlay-content p,
-        .contact-info-overlay-content strong,
-        .contact-info-overlay-content a {
-            /* color: var(--preto-azulado); /* Exemplo se o vídeo for muito claro */
-        }
-
-        /* Colunas de introdução do contato */
-        .contact-intro-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1rem; /* Reduzido para aproximar do parágrafo seguinte */
-        }
-
-        .contact-column {
-            background-color: var(--lilas-claro);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--verde-principal);
-            box-shadow: var(--sombra-leve);
-        }
-
-        .contact-column h3 {
-            margin-top: 0;
-            color: var(--verde-escuro);
-            border-bottom: 2px solid var(--verde-claro);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.2rem; /* Ajuste de tamanho */
-            text-align: left; /* Alinhamento à esquerda */
-        }
-
-        /* Container para Missão/Visão e Valores */
-        .essence-values-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            background-color: var(--lilas-claro);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2.5rem 0;
-            box-shadow: var(--sombra-leve);
-            border-left: 5px solid var(--lilas-principal);
-        }
-
-        /* Ajustes nos títulos dentro da caixa */
-        .essence-values-container h3 {
-            margin-top: 0; /* Remover margem superior do h3 dentro da caixa */
-            text-align: left; /* Alinhar à esquerda */
-            padding-bottom: 0.8rem;
-            border-bottom: 2px solid var(--lilas-principal);
-            margin-bottom: 1rem;
-        }
-
-        /* Ajustes na lista dentro da caixa */
-        .essence-values-container .custom-list li {
-            border-bottom-color: hsl(270, 50%, 80%); /* Cor de borda mais sutil */
-            padding: 0.8rem 0;
-        }
-
-        .contact-info strong {
-            color: var(--lilas-escuro);
-        }
-        .contact-info p {
-            margin-bottom: 0.5rem;
-        }
-        .contact-info a {
-            color: var(--lilas-escuro);
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        /* Estilos para links de redes sociais na seção de contato */
-        .contact-info .social-media-links {
-            margin-top: 1.5rem; /* Espaço acima dos links sociais */
-            padding-top: 1rem;
-            border-top: 1px solid var(--lilas-principal); /* Linha separadora sutil */
-        }
-        .contact-info .social-media-links p strong { /* Para o título "Siga-nos em:" */
-            display: block;
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            color: var(--lilas-escuro);
-        }
-        .contact-info .social-media-links a {
-            display: inline-flex; /* Para alinhar ícone e texto verticalmente */
-            align-items: center;
-            margin: 0.3rem 0.8rem; /* Espaçamento entre os links */
-            color: var(--lilas-escuro);
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-        .contact-info .social-media-links a i {
-            margin-right: 0.5rem; /* Espaço entre o ícone e o texto */
-            font-size: 1.3rem; /* Tamanho do ícone */
-        }
-
-        /* Estilos específicos para a seção de Investidores com tons escuros */
-        #inversionistas {
-            background-color: var(--preto-azulado); /* Alterado para preto/cinza escuro */
-            color: var(--lilas-claro); /* Cor de texto base clara para contraste */
-            border-radius: 10px;
-            padding: 2.5rem; /* Manter padding interno */
-            margin-bottom: 2.5rem; /* Espaçamento igual às outras seções */
-            /* Esta seção tem um tema escuro para se destacar */
-        }
-
-        #inversionistas h2,
-        #inversionistas h3 {
-            color: var(--branco); /* Títulos em branco para destaque */
-        }
-        #inversionistas h2::after { /* Ajustar cor do sublinhado do título principal da seção */
-            background-color: var(--lilas-claro); /* Sublinhado em cor clara */
-        }
-
-        #inversionistas p,
-        #inversionistas ul.custom-list li,
-        #inversionistas .faq dt,
-        #inversionistas .faq dd,
-        #inversionistas p.section-intro {
-            color: hsl(270, 30%, 85%); /* Um lilás/cinza mais suave para parágrafos */
-        }
-
-        #inversionistas ul.custom-list a {
-            color: var(--lilas-claro); /* Links em cor clara */
-            font-weight: 500;
-        }
-        #inversionistas ul.custom-list a:hover {
-            color: var(--branco); /* Hover do link para branco */
-        }
-
-        #inversionistas .faq dt {
-            background-color: var(--cinza-muito-escuro); /* Fundo do FAQ dt mais escuro */
-            color: var(--lilas-claro);
-        }
-        #inversionistas .faq dt:hover {
-            background-color: hsl(0, 0%, 15%); /* Hover do FAQ dt */
-        }
-        #inversionistas .faq dd {
-            background-color: hsl(220, 15%, 20%); /* Fundo do FAQ dd um pouco mais claro que o principal */
-            border-left-color: var(--lilas-claro); /* Borda clara */
-        }
-        #inversionistas .cta-btn { /* Ajustar botões dentro da seção de investidores se necessário */
-            background-color: var(--lilas-principal);
-            color: var(--branco);
-        }
-        #inversionistas .cta-btn:hover {
-            background-color: var(--lilas-escuro);
-        }
-
-        /* Imagem/gráfico ilustrativo na seção de investidores */
-        .ri-graphic {
-            width: 100%;
-            max-width: 700px;
-            display: block;
-            margin: 2rem auto;
-            border-radius: 10px;
-            box-shadow: var(--sombra);
-        }
-        #inversionistas .ri-graphic {
-            border: 2px solid hsl(270, 30%, 70%); /* Borda sutil para o gráfico */
-        }
-
-        /* Bloco de informações sobre a Bolsa de Valores */
-        .bolsa-info {
-            background-color: var(--cinza-muito-escuro); /* Fundo da info da bolsa mais escuro */
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2.5rem; /* Espaçamento antes do próximo conteúdo */
-            text-align: center;
-            border: 1px solid hsl(0, 0%, 25%); /* Borda sutil */
-        }
-        /* Logo da Bolsa de Valores */
-        .bolsa-logo {
-            /* Ajuste para garantir que o logo da bolsa apareça */
-            display: block;
-            max-width: 180px;
-            margin-bottom: 1rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .bolsa-info p {
-            font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-        }
-        .bolsa-info a { /* Estilo específico para o link da bolsa */
-            color: var(--lilas-claro); /* Link da bolsa em cor clara */
-        }
-
-        /* Rodapé da página */
-        footer {
-            background-color: var(--verde-escuro);
-            color: var(--lilas-claro);
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            font-size: 0.9rem;
-            margin-top: 3rem;
-        }
-        footer p {
-            margin-bottom: 0.8rem;
-        }
-        /* Links no rodapé */
-        .footer-links a {
-            color: var(--branco);
-            margin: 0 0.7rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-links a:hover {
-            color: var(--lilas-principal);
-            text-decoration: underline;
-        }
-        /* Estilo para ícones de redes sociais no rodapé */
-        .footer-links a .fab {
-            font-size: 1.3rem; /* Tamanho dos ícones sociais no rodapé */
-        }
-
-        /* Media Queries para Responsividade */
-        /* Para tablets e desktops menores */
-        @media (max-width: 1024px) { /* Ajustado breakpoint para nav */
-            .menu-toggle {
-                display: block; 
-                z-index: 1001; 
-            }
-            /* Estilos do menu de navegação mobile (hambúrguer) */
-            nav ul {
-                display: none; 
-                flex-direction: column;
-                align-items: flex-start; /* Alinhar itens à esquerda */
-                position: fixed;
-                top: 0;
-                left: -100%; 
-                width: 80%; /* Aumentado */
-                max-width: 320px; /* Máximo */
-                height: 100vh;
-                background-color: var(--verde-escuro); /* Um pouco mais escuro para contraste com itens */
-                padding-top: 5rem; /* Aumentado espaço */
-                transition: left 0.4s ease-in-out;
-                box-shadow: 5px 0 15px rgba(0,0,0,0.2);
-                z-index: 999;
-                border-top-right-radius: 25px; /* Canto superior direito arredondado */
-                border-bottom-right-radius: 25px; /* Canto inferior direito arredondado */
-            }
-            /* Quando o menu mobile está ativo (aberto) */
-            nav ul.active {
-                display: flex;
-                left: 0; 
-            }
-            nav li {
-                width: calc(100% - 2rem); /* Ajustar largura para acomodar margens */
-                margin: 0.3rem 1rem; /* Adicionar margem para espaçar e mostrar o arredondamento */
-            }
-            /* Links dentro do menu mobile */
-            nav a {
-                display: block;
-                padding: 0.8rem 1.5rem; /* Padding ajustado */
-                margin: 0;
-                font-size: 1rem;
-                /* border-bottom: 1px solid var(--verde-escuro); */ /* Removida borda inferior */
-                width: 100%;
-                border-radius: 10px; /* Arredondar os links */
-                color: var(--lilas-claro); /* Cor do texto dos links */
-            }
-            nav a:hover, nav a.active {
-                background-color: var(--verde-principal); /* Fundo no hover/active */
-                color: var(--branco); /* Texto branco no hover/active */
-            }
-            /* Seletor de idioma no menu mobile */
-            .language-switcher {
-                margin: 1rem 0 1rem 1.5rem; /* Posicionamento no menu mobile, alinhado com padding de 'nav a' */
-                align-self: flex-start;
-            }
-
-            /* Ajustes para o link de investidores no menu mobile */
-            nav ul li a.nav-link-investor {
-                /* Resetar para o estilo padrão dos links no menu mobile */
-                background-image: none;
-                background-color: transparent; 
-                color: var(--lilas-claro); /* Cor inicial do link de investidor */
-                padding: 0.8rem 1.5rem; 
-                border-radius: 0;
-                box-shadow: none;
-                margin-left: 0; 
-                /* border-bottom: 1px solid var(--verde-escuro); */ /* Removida borda */
-                transform: none; 
-                border-radius: 10px; /* Arredondar como os outros links */
-            }
-            nav ul li a.nav-link-investor:hover,
-            nav ul li a.nav-link-investor.active {
-                background-color: var(--verde-principal); /* Fundo no hover/active */
-                color: var(--branco); /* Texto branco no hover/active */
-            }
-
-            .essence-values-container {
-                grid-template-columns: 1fr; /* Uma coluna */
-                gap: 1.5rem;
-                padding: 1.5rem;
-            }
-
-            .contact-intro-columns {
-                grid-template-columns: 1fr; /* Uma coluna em telas menores */
-            }
-        }
-
-        /* Para tablets menores e celulares em paisagem */
-        @media (max-width: 768px) {
-            header { padding: 1rem; }
-            .logo { font-size: 1.6rem; }
-            /* .logo img { height: 40px; } */ /* Ajuste da altura do logo para telas menores */
-            .logo a { font-size: 1.6rem; } /* Ajuste do tamanho da fonte do logo para telas menores */
-            main {
-                margin: 1rem auto;
-                padding: 1.5rem 1rem; /* Padding ajustado */
-            }
-            .hero-section { padding: 3rem 1rem; }
-            .hero-section h1 { font-size: 2rem; }
-            .hero-section p.subtitle { font-size: 1rem; }
-            .stats-cards { 
-                flex-direction: column; 
-                gap: 1rem; /* Reduzir o gap quando em coluna */
-            }
-            .stat-card { min-width: unset; } /* Permitir que o card ocupe a largura disponível */
-            h2 { font-size: 1.8rem; }
-            h3 { font-size: 1.3rem; }
-            form { max-width: 100%; }
-        }
-
-        /* Para celulares em retrato */
-        @media (max-width: 480px) {
-            .logo { font-size: 1.4rem; }
-            .logo a { font-size: 1.4rem; } /* Ajuste do tamanho da fonte do logo para celulares */
-            .hero-section h1 { font-size: 1.8rem; }
-            .cta-btn { font-size: 0.9rem; padding: 0.7rem 1.5rem; } 
-        } 
-
-        .predefined-question-button {
-            background-color: var(--lilas-claro);
-            color: var(--lilas-escuro);
-            border: 1px solid var(--lilas-principal);
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: left;
-            width: 100%;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9em;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        .predefined-question-button:hover {
-            background-color: hsl(270, 60%, 90%);
-        }
-
-        /* Chat Widget Styles */
-        #chat-widget-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1001; /* Above header */
-        }
-
-        #chat-toggle-button {
-            background-color: var(--verde-principal);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 28px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        #chat-toggle-button:hover {
-            background-color: var(--verde-escuro);
-            transform: scale(1.1);
-        }
-
-        #chat-window {
-            width: 350px;
-            max-height: 500px;
-            background-color: var(--branco);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            display: flex; /* Initially none, controlled by JS */
-            flex-direction: column;
-            overflow: hidden;
-            position: absolute;
-            bottom: 80px; /* Above the toggle button */
-            right: 0;
-        }
-
-        #chat-header {
-            background-color: var(--verde-principal);
-            color: white;
-            padding: 15px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #chat-close-window-button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        #chat-messages {
-            flex-grow: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background-color: var(--cinza-fundo);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .chat-message {
-            padding: 10px 15px;
-            border-radius: 18px;
-            max-width: 80%;
-            line-height: 1.4;
-            word-wrap: break-word;
-        }
-
-        .chat-message.user {
-            background-color: var(--lilas-principal);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-
-        .chat-message.bot {
-            background-color: #e9e9eb; /* Um cinza claro neutro */
-            color: var(--cinza-texto);
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-
-        .chat-message .timestamp {
-            font-size: 0.75em;
-            display: block;
-            margin-top: 5px;
-            text-align: right;
-        }
-        .chat-message.bot .timestamp {
-            color: rgba(0,0,0,0.5); 
-        }
-        .chat-message.user .timestamp {
-            color: rgba(255,255,255,0.7);
-        }
-
-        #chat-input-area {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #eee;
-            background-color: var(--branco);
-        }
-
-        #chat-input {
-            flex-grow: 1;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            padding: 10px 15px;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-
-        #chat-input:focus {
-            outline: none;
-            border-color: var(--verde-principal);
-            box-shadow: 0 0 0 2px var(--verde-claro);
-        }
-
-        #chat-send-button {
-            background-color: var(--verde-principal);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        #chat-send-button:hover {
-            background-color: var(--verde-escuro);
-        }
-
-        /* Estilos para botões de ação dentro das mensagens do bot */
-        .chat-action-buttons-container {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap; /* Permite que os botões quebrem linha se necessário */
-        }
-
-        .chat-action-button {
-            background-color: hsl(270, 60%, 92%); /* Lilás um pouco mais suave que o predefined-question-button */
-            color: var(--lilas-escuro);
-            border: 1px solid hsl(270, 50%, 75%); /* Borda lilás mais suave */
-            padding: 6px 12px;
-            border-radius: 15px; /* Mais arredondado */
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8em;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        .chat-action-button:hover {
-            background-color: hsl(270, 60%, 85%);
-        }
-
-        .process-flow-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 .process-step {
-  display: flex;
-  width: 100%;
-  min-height: 150px;
-  background: var(--branco, #fff);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  /* overflow: hidden; -> Removido para permitir que a imagem se expanda */
-  transition: box-shadow 0.4s;
-  cursor: pointer;
-  align-items: stretch;
-  position: relative; /* Garante que o z-index funcione corretamente */
+    display: flex;
+    width: 100%;
+    min-height: 150px;
+    /* Gradiente lilás para verde nas etapas do processo */
+    background: linear-gradient(to right, var(--lilas-claro), var(--verde-claro));
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: box-shadow 0.4s, background 0.4s ease; /* Adicionado transição para background */
+    cursor: pointer;
+    align-items: stretch;
+    position: relative;
 }
 
 .process-step:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  z-index: 2;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    z-index: 2;
+    /* Inverte o gradiente ou o escurece no hover */
+    background: linear-gradient(to left, var(--lilas-principal), var(--verde-principal));
+    color: var(--branco); /* Ajuste de cor de texto para o hover */
+}
+/* Ajuste das cores de texto dentro do .process-step no hover */
+.process-step:hover .process-number,
+.process-step:hover .process-title-text,
+.process-step:hover .process-tags,
+.process-step:hover .process-description p {
+    color: var(--branco);
 }
 
+
 .process-col {
-  padding: 1.2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .process-title, .process-description {
-  flex: 1 1 0;
-  min-width: 0;
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .process-image {
-  flex: 0 0 220px;
-  width: auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f7f7f7;
+    flex: 0 0 220px;
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
 }
 
 .process-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  max-height: 180px;
-  transition: transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 180px;
+    transition: transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s;
 }
 
 .process-step:hover .process-image img {
-  transform: scale(4);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
 .process-number {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--lilas-principal, #8816bd);
-  margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--lilas-principal);
+    margin-bottom: 0.5rem;
 }
 
 @media (max-width: 900px) {
-  .process-step {
-    flex-direction: column;
-    max-height: none !important;
-    min-height: 120px;
-  }
-  .process-image {
-    max-width: 100%;
-    min-width: 0;
-    margin-top: 1rem;
-  }
+    .process-step {
+        flex-direction: column;
+        max-height: none !important;
+        min-height: 120px;
+    }
+    .process-image {
+        max-width: 100%;
+        min-width: 0;
+        margin-top: 1rem;
+    }
 }
 .process-header {
-  display: flex;
-  align-items: bottom;
-width: 5200px;
-  gap: 20px; /* espaço entre número e título */
-  margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 10px;
 }
 
 .process-header .process-number {
-  font-weight: bold;
-  font-size: 1.4em;
-
-  color: #8816bd;
+    font-weight: bold;
+    font-size: 1.4em;
+    color: var(--lilas-principal);
 }
 
 .process-title-text {
-  font-weight: bold;
-  font-size: 1.4em;
-
-  color: #8816bd;
+    font-weight: bold;
+    font-size: 1.4em;
+    color: var(--lilas-principal);
 }
 .process-tags {
-  font-size: 1.4em;
-  color: #075502;
-  margin-top: 4px;
-
+    font-size: 1em;
+    color: var(--verde-escuro);
+    margin-top: 4px;
+}
