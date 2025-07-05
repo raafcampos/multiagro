@@ -191,7 +191,33 @@
             padding: 0.3rem 0.5rem; /* Adicionado padding */
             border-radius: 8px; /* Levemente arredondado */
         }
-
+.about-two-columns {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.about-text {
+  flex: 1 1 320px;
+  min-width: 260px;
+}
+.about-image {
+  flex: 1 1 320px;
+  min-width: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .about-two-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .about-image, .about-text {
+    min-width: 0;
+  }
+}
         main {
             /* Estilos do conteúdo principal da página */
             max-width: 1200px;
@@ -648,7 +674,15 @@
 
         .video-background-container {
             width: 100%;
-            height: 400px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
+            height: 250px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
+            overflow: hidden;
+            margin: 2rem 0; /* Adiciona espaço vertical ao redor do vídeo */
+            border-radius: 8px; /* Opcional: para cantos arredondados no container do vídeo */
+            background-color: var(--cinza-muito-escuro); /* Cor de fundo caso o vídeo demore a carregar */
+        }
+        .video-background-container-nosotros {
+            width: 100%;
+            height: 250px; /* Altura definida para o bloco do vídeo. Ajuste conforme necessário. */
             overflow: hidden;
             margin: 2rem 0; /* Adiciona espaço vertical ao redor do vídeo */
             border-radius: 8px; /* Opcional: para cantos arredondados no container do vídeo */
@@ -745,6 +779,61 @@
         .contact-info-overlay-content a {
             /* color: var(--preto-azulado); /* Exemplo se o vídeo for muito claro */
         }
+
+        /* Colunas de introdução do contato */
+        .contact-intro-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1rem; /* Reduzido para aproximar do parágrafo seguinte */
+        }
+
+        .contact-column {
+            background-color: var(--lilas-claro);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--verde-principal);
+            box-shadow: var(--sombra-leve);
+        }
+
+        .contact-column h3 {
+            margin-top: 0;
+            color: var(--verde-escuro);
+            border-bottom: 2px solid var(--verde-claro);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem; /* Ajuste de tamanho */
+            text-align: left; /* Alinhamento à esquerda */
+        }
+
+        /* Container para Missão/Visão e Valores */
+        .essence-values-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background-color: var(--lilas-claro);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+            box-shadow: var(--sombra-leve);
+            border-left: 5px solid var(--lilas-principal);
+        }
+
+        /* Ajustes nos títulos dentro da caixa */
+        .essence-values-container h3 {
+            margin-top: 0; /* Remover margem superior do h3 dentro da caixa */
+            text-align: left; /* Alinhar à esquerda */
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--lilas-principal);
+            margin-bottom: 1rem;
+        }
+
+        /* Ajustes na lista dentro da caixa */
+        .essence-values-container .custom-list li {
+            border-bottom-color: hsl(270, 50%, 80%); /* Cor de borda mais sutil */
+            padding: 0.8rem 0;
+        }
+
         .contact-info strong {
             color: var(--lilas-escuro);
         }
@@ -978,6 +1067,16 @@
                 background-color: var(--verde-principal); /* Fundo no hover/active */
                 color: var(--branco); /* Texto branco no hover/active */
             }
+
+            .essence-values-container {
+                grid-template-columns: 1fr; /* Uma coluna */
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .contact-intro-columns {
+                grid-template-columns: 1fr; /* Uma coluna em telas menores */
+            }
         }
 
         /* Para tablets menores e celulares em paisagem */
@@ -1193,3 +1292,110 @@
         .chat-action-button:hover {
             background-color: hsl(270, 60%, 85%);
         }
+
+        .process-flow-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.process-step {
+  display: flex;
+  width: 100%;
+  min-height: 150px;
+  background: var(--branco, #fff);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  /* overflow: hidden; -> Removido para permitir que a imagem se expanda */
+  transition: box-shadow 0.4s;
+  cursor: pointer;
+  align-items: stretch;
+  position: relative; /* Garante que o z-index funcione corretamente */
+}
+
+.process-step:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+
+.process-col {
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.process-title, .process-description {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.process-image {
+  flex: 0 0 220px;
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+}
+
+.process-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 180px;
+  transition: transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s;
+}
+
+.process-step:hover .process-image img {
+  transform: scale(4);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.process-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--lilas-principal, #8816bd);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .process-step {
+    flex-direction: column;
+    max-height: none !important;
+    min-height: 120px;
+  }
+  .process-image {
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 1rem;
+  }
+}
+.process-header {
+  display: flex;
+  align-items: bottom;
+width: 5200px;
+  gap: 20px; /* espaço entre número e título */
+  margin-bottom: 10px;
+}
+
+.process-header .process-number {
+  font-weight: bold;
+  font-size: 1.4em;
+
+  color: #8816bd;
+}
+
+.process-title-text {
+  font-weight: bold;
+  font-size: 1.4em;
+
+  color: #8816bd;
+}
+.process-tags {
+  font-size: 1.4em;
+  color: #075502;
+  margin-top: 4px;
+
