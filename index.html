@@ -17,25 +17,25 @@
     <div class="site-background-carousel">
         <div class="carousel-slides">
             <div class="carousel-slide">
-                <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
-                    <source src="videos/00039.mp4" type="video/mp4">
+                <video autoplay muted playsinline poster="images/img1.jpeg">
+                    <source src="videos/DJI_0724.mp4" type="video/mp4">
                     Seu navegador não suporta o elemento de vídeo.
                 </video>
             </div>
             <div class="carousel-slide">
-                <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                <video autoplay muted playsinline poster="images/placeholder_video.jpg">
                     <source src="videos/VID-20250528-WA0016.mp4" type="video/mp4">
                     Seu navegador não suporta o elemento de vídeo.
                 </video>
             </div>        
             <div class="carousel-slide">
-                <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                <video autoplay muted playsinline poster="images/placeholder_video.jpg">
                     <source src="videos/DJI_0724.mp4" type="video/mp4">
                     Seu navegador não suporta o elemento de vídeo.
                 </video>
                             </div>  
             <div class="carousel-slide">
-                <video autoplay loop muted playsinline poster="images/placeholder_video.jpg">
+                <video autoplay muted playsinline poster="images/grao5.png">
                     <source src="videos/00017.mp4" type="video/mp4">
                     Seu navegador não suporta o elemento de vídeo.
                 </video>           
@@ -342,7 +342,7 @@
     </p>
   </div>
       <div class="about-image">
-        <img src="images/img2.jpg" alt="Multiagro Planta Industrial" style="border-radius:12px;max-width:100%;height:auto;">
+        <img src="images/img2.JPG" alt="Multiagro Planta Industrial" style="border-radius:12px;max-width:100%;height:auto;">
       </div>
     </div>
 
@@ -1031,41 +1031,56 @@
                 });
             }
 
-            // --- Hero Carousel Logic (Agora para o site-background-carousel) ---
+            // --- Lógica do Carrossel de Fundo (Duração Dinâmica para Vídeos) ---
             const siteBackgroundCarousel = document.querySelector('.site-background-carousel');
             if (siteBackgroundCarousel) {
                 const slidesContainer = siteBackgroundCarousel.querySelector('.carousel-slides');
-                const slides = siteBackgroundCarousel.querySelectorAll('.carousel-slide');
-                // Removed prev/next buttons as they are not typically used for a background carousel
+                const slides = Array.from(siteBackgroundCarousel.querySelectorAll('.carousel-slide'));
                 let currentSlideIndex = 0;
-                const slideIntervalTime = 7000; // 7 seconds for auto-slide
-                let slideTimer;
+                const imageSlideIntervalTime = 7000; // 7 segundos para slides de imagem
 
+                // Função para ir para um slide específico e configurar o próximo avanço
                 function goToSlide(index) {
                     if (!slidesContainer || slides.length === 0) return;
+
+                    // Pausa o vídeo do slide anterior para economizar recursos
+                    const previousSlide = slides[currentSlideIndex];
+                    const previousVideo = previousSlide.querySelector('video');
+                    if (previousVideo) {
+                        previousVideo.pause();
+                    }
+
+                    // Move para o novo slide
                     slidesContainer.style.transform = `translateX(-${index * 100}%)`;
                     currentSlideIndex = index;
-                }
 
-                function nextSlideAuto() {
-                    let newIndex = currentSlideIndex + 1;
-                    if (newIndex >= slides.length) newIndex = 0;
-                    goToSlide(newIndex);
-                }
+                    // Lida com o slide atual
+                    const currentSlide = slides[currentSlideIndex];
+                    const video = currentSlide.querySelector('video');
 
-                function startSlideTimer() {
-                    if (slides.length > 1) {
-                        clearInterval(slideTimer); // Clear existing timer before starting a new one
-                        slideTimer = setInterval(nextSlideAuto, slideIntervalTime);
+                    if (video) {
+                        // Se for um slide de VÍDEO
+                        video.currentTime = 0; // Reinicia o vídeo
+                        video.play().catch(error => console.error("Erro ao tocar vídeo:", error));
+                        
+                        // Adiciona um ouvinte para avançar QUANDO O VÍDEO TERMINAR
+                        video.removeEventListener('ended', playNextSlide); // Remove ouvintes antigos para evitar duplicação
+                        video.addEventListener('ended', playNextSlide, { once: true }); // 'once: true' garante que seja chamado uma única vez
+                    } else {
+                        // Se for um slide de IMAGEM, usa um tempo fixo
+                        setTimeout(playNextSlide, imageSlideIntervalTime);
                     }
                 }
 
-                if (slides.length > 0) { // Initialize and start timer if slides exist
-                    goToSlide(0);
-                    startSlideTimer();
-                    // Optional: pause on hover for background carousel (usually not desired)
-                    // siteBackgroundCarousel.addEventListener('mouseenter', () => clearInterval(slideTimer));
-                    // siteBackgroundCarousel.addEventListener('mouseleave', startSlideTimer);
+                // Função para calcular e ir para o próximo slide
+                function playNextSlide() {
+                    let newIndex = currentSlideIndex + 1;
+                    if (newIndex >= slides.length) newIndex = 0; // Volta ao início se chegar ao fim
+                    goToSlide(newIndex);
+                }
+
+                if (slides.length > 1) { // Inicia o carrossel
+                    goToSlide(0); // Começa pelo primeiro slide
                 }
             }
             // --- End Site Background Carousel Logic ---
