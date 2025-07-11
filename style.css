@@ -1393,7 +1393,7 @@ footer p {
 /* Efeito de hover para o passo do processo */
 .process-step:hover {
     box-shadow: 0 8px 32px rgba(0,0,0,0.18); /* Sombra mais pronunciada */
-    z-index: 2; /* Garante que o item em hover esteja acima de outros */
+    z-index: 10; /* Garante que o item em hover esteja acima de outros, para o zoom da imagem */
     background: var(--verde-principal); /* Fundo em verde principal no hover */
     color: var(--branco); /* Ajuste de cor de texto para o hover */
 }
@@ -1416,6 +1416,11 @@ footer p {
 .process-title, .process-description {
     flex: 1 1 0; /* Permite que cresçam/encolham */
     min-width: 0;
+}
+
+/* Ao passar o mouse sobre o card, permite que a imagem "vaze" para fora */
+.process-step:hover .process-image {
+    overflow: visible;
 }
 
 /* Imagem dentro do passo do processo */
@@ -1442,11 +1447,12 @@ footer p {
 
 /* Efeito de zoom na imagem do processo no hover */
 .process-step:hover .process-image img {
-    transform: scale(3); /* Forte zoom na imagem */
-    max-width: 100%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transform: scale(3);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    /* Garante que a imagem com zoom fique acima do conteúdo do próprio card */
+    position: relative; 
+    z-index: 11;
 }
-
 /* Número da etapa do processo */
 .process-number {
     font-size: 1.5rem;
