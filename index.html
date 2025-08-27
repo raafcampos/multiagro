@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <link rel="stylesheet" href="style.css?v=1.32"> <!-- Adicionando versão para cache busting, SEMPRE QUE MUDAR O CODIGO CSS MUDAR AQUI TBM -->
+    <link rel="stylesheet" href="style.css?v=1.4"> <!-- Adicionando versão para cache busting, SEMPRE QUE MUDAR O CODIGO CSS MUDAR AQUI TBM -->
 </head>
 <body>
     <div class="site-background-carousel">
@@ -679,7 +679,7 @@
             const navLinksContainer = document.getElementById('nav-links');
             const navLinks = navLinksContainer.querySelectorAll('a.nav-link');
             const menuToggle = document.querySelector('.menu-toggle');
-            const sections = document.querySelectorAll('main section');
+            // const sections = document.querySelectorAll('main section'); // Removido para consulta dinâmica
             // Objeto para armazenar os botões de idioma
             const langButtons = {
                 es: document.getElementById('lang-es'),
@@ -867,27 +867,44 @@
                 });
             });
 
-            // --- Função para mostrar a seção correta na interface ---
-            function showSectionUI(id) {
-                // Oculta todas as seções e exibe apenas a seção alvo.
-                sections.forEach(s => s.classList.remove('visible'));
-                const targetSection = document.getElementById(id);
-                if (targetSection) {
-                    targetSection.classList.add('visible');
-                }
-            }
-
             // --- Função para atualizar a visualização da página com base no hash da URL ---
-            function refreshViewForCurrentHash() {
+            async function refreshViewForCurrentHash() {
                 // Controla a visibilidade da seção Hero e mostra a seção principal correta.
                 updateHeroSectionVisibilityBasedOnHash(); // Controla visibilidade da hero section
 
                 let sectionIdFromHash = window.location.hash ? window.location.hash.substring(1) : 'home';
-                if (!document.getElementById(sectionIdFromHash)) { // Fallback se hash for inválido
-                    sectionIdFromHash = 'home';
+                let targetSection = document.getElementById(sectionIdFromHash);
+
+                // Se a seção não for encontrada e for a 'linklist', carregue-a dinamicamente.
+                if (!targetSection && sectionIdFromHash === 'linklist') {
+                    try {
+                        const response = await fetch('sections/linklist.html');
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        const html = await response.text();
+                        document.querySelector('main').insertAdjacentHTML('beforeend', html);
+                        // Agora a seção existe, vamos pegá-la novamente
+                        targetSection = document.getElementById(sectionIdFromHash);
+                        // Aplica a tradução ao novo conteúdo carregado
+                        setLanguage(currentLang); 
+                    } catch (e) {
+                        console.error("Não foi possível carregar a seção de links:", e);
+                        sectionIdFromHash = 'home'; // Fallback para home em caso de erro
+                        targetSection = document.getElementById(sectionIdFromHash);
+                    }
                 }
-                
-                showSectionUI(sectionIdFromHash); // Mostra a seção principal
+
+                // Fallback final se o hash for inválido e não for o linklist
+                if (!targetSection) {
+                    sectionIdFromHash = 'home';
+                    targetSection = document.getElementById(sectionIdFromHash);
+                }
+
+                // Oculta todas as seções e exibe apenas a seção alvo.
+                // É importante fazer a query aqui para incluir seções carregadas dinamicamente.
+                document.querySelectorAll('main section').forEach(s => s.classList.remove('visible'));
+                if (targetSection) {
+                    targetSection.classList.add('visible');
+                }
 
                 // Atualiza links ativos na navegação e estado do menu mobile
                 navLinks.forEach(a => a.classList.remove('active'));
@@ -908,21 +925,21 @@
             }
 
             // --- Lógica de Navegação SPA (Single Page Application) ---
-            window.navigateToSection = function(targetId) { // Expor globalmente para onclicks
+            window.navigateToSection = async function(targetId) { // Expor globalmente para onclicks
                 if (history.pushState) {
                     history.pushState(null, null, `#${targetId}`);
                 } else {
                     window.location.hash = `#${targetId}`;
                 }
-                refreshViewForCurrentHash(); // Atualiza a visualização completa
+                await refreshViewForCurrentHash(); // Atualiza a visualização completa
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
             
             // --- Carregamento Inicial ---
             // Função chamada quando a página é carregada pela primeira vez.
-            function loadInitialViewRevised() {
+            async function loadInitialViewRevised() {
                 setLanguage(currentLang); // Aplicar idioma salvo/padrão
-                refreshViewForCurrentHash();
+                await refreshViewForCurrentHash();
                 // A inicialização do mapa agora é tratada dentro de refreshViewForCurrentHash
             }
 
@@ -1002,10 +1019,10 @@
             loadInitialViewRevised();
 
             // --- Manipulador para navegação de voltar/avançar do navegador ---
-            window.addEventListener('popstate', () => {
+            window.addEventListener('popstate', async () => {
                 // Reaplicar o idioma e atualizar a visualização quando o usuário navega pelo histórico.
                 setLanguage(localStorage.getItem('preferredLang') || 'es'); // Reaplicar idioma
-                refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
+                await refreshViewForCurrentHash(); // Atualizar visualização para o novo hash
                 // A inicialização do mapa é tratada por refreshViewForCurrentHash se 'nosotros' for a seção ativa
             }); 
 

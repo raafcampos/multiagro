@@ -1499,3 +1499,78 @@ footer p {
     color: var(--verde-escuro); /* Tags em verde escuro */
     margin-top: 4px;
 }
+  color: #075502;
+  margin-top: 4px;
+
+/* --- Linklist Section --- */
+.linklist-container {
+    display: grid;
+    /* Em telas maiores, duas colunas. Em telas menores, o auto-fit fará com que vire uma coluna. */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.link-block {
+    background: linear-gradient(to bottom right, var(--branco), var(--cinza-fundo));
+    border: 1px solid var(--verde-claro);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit; /* Herda a cor do texto do pai, para que o link não fique azul */
+    box-shadow: var(--sombra-leve);
+    transition: var(--transicao-padrao);
+}
+
+.link-block:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: var(--sombra);
+    border-color: var(--verde-principal);
+    background: var(--branco);
+}
+
+.link-block-icon {
+    flex-shrink: 0; /* Impede que o ícone encolha */
+    font-size: 2.5rem;
+    color: var(--verde-principal);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--verde-claro);
+    border-radius: 50%;
+    transition: var(--transicao-padrao);
+}
+
+.link-block:hover .link-block-icon {
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    transform: rotate(-10deg);
+}
+
+.link-block-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.link-block-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--verde-escuro);
+    margin-bottom: 0.25rem;
+}
+
+.link-block-data {
+    font-size: 0.95rem;
+    color: var(--cinza-texto);
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Ajustes para tablets e telas médias (até 1024px) */
+
